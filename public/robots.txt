@@ -1,0 +1,48 @@
+# robots.txt for OEM Radio Repair
+# Professional Infotainment Repair Service
+# Last updated: December 2024
+
+User-agent: *
+Allow: /
+Disallow: /studio/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Allow crawling of important assets
+Allow: /meta.png
+Allow: /*.css$
+Allow: /*.js$
+Allow: /images/
+
+# Prevent duplicate content issues
+Disallow: /*?
+Disallow: /*%
+Disallow: /*.pdf$
+Disallow: /*.docx$
+Disallow: /*.xlsx$
+Disallow: /*.pptx$
+
+# No crawl delay for better indexing
+# Crawl-delay: 0
+
+# Specify sitemap location
+Sitemap: https://www.oemradiorepair.com/sitemap.xml
+Sitemap: https://www.oemradiorepair.com/sitemap-0.xml
+
+# Google-specific directives
+User-agent: Googlebot
+Allow: /
+Disallow: /studio/
+
+# Bing-specific directives
+User-agent: Bingbot
+Allow: /
+Disallow: /studio/
+
+# Prevent media crawling bots from overloading server
+User-agent: Googlebot-Image
+Crawl-delay: 15
+
+User-agent: Bingbot-Image
+Crawl-delay: 15

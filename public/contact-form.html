@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Contact Form - OEM Radio Repair</title>
+  <script src="https://www.google.com/recaptcha/api.js?render=6LeuDKwrAAAAAOqkZ4X6evNVXkcOzgHzdlMMpKsB"></script>
+</head>
+<body>
+  <!-- This form is for Netlify form detection - NOT for actual use -->
+  <form name="contact" netlify netlify-honeypot="bot-field" action="/__forms.html" method="POST" hidden>
+    <input type="hidden" name="form-name" value="contact" />
+    <input name="bot-field" type="text" />
+    
+    <!-- Contact Information -->
+    <input name="name" type="text" />
+    <input name="phone" type="tel" />
+    <input name="email" type="email" />
+    
+    <!-- Vehicle Information -->
+    <input name="vehicle" type="text" />
+    <input name="customYear" type="text" />
+    <input name="customMakeModel" type="text" />
+    
+    <!-- Issue Description -->
+    <select name="primaryIssue">
+      <option value="screen-cracked">Screen is cracked or shattered</option>
+      <option value="touch-not-working">Touchscreen not responding</option>
+      <option value="screen-black">Screen is black/won't turn on</option>
+      <option value="ghost-touches">Random touches/ghost touching</option>
+      <option value="display-issues">Display problems (lines, colors, flickering)</option>
+      <option value="partial-touch">Only part of screen responds to touch</option>
+      <option value="intermittent">Works sometimes, not others</option>
+      <option value="other">Other issue</option>
+    </select>
+    <select name="whenStarted">
+      <option value="today">Today</option>
+      <option value="this-week">This week</option>
+      <option value="this-month">This month</option>
+      <option value="few-months">A few months ago</option>
+      <option value="gradual">Gradual decline over time</option>
+      <option value="unknown">Not sure</option>
+    </select>
+    <textarea name="issueDescription"></textarea>
+    
+    <!-- Service Information -->
+    <select name="serviceType">
+      <option value="repair-quote">Free repair quote & diagnosis</option>
+      <option value="repair-service">Repair service (ready to proceed)</option>
+      <option value="compatibility-check">Check if my vehicle is supported</option>
+      <option value="warranty-service">Warranty service (previous repair)</option>
+      <option value="general-question">General question</option>
+    </select>
+    <select name="referralSource">
+      <option value="google-search">Google search</option>
+      <option value="facebook">Facebook</option>
+      <option value="youtube">YouTube</option>
+      <option value="referral">Friend/family referral</option>
+      <option value="forum">Online forum</option>
+      <option value="other">Other</option>
+    </select>
+    <input name="zipCode" type="text" />
+    <select name="contactPreference">
+      <option value="phone">Phone call</option>
+      <option value="email">Email</option>
+      <option value="text">Text message</option>
+      <option value="either">Either phone or email</option>
+    </select>
+    
+    <!-- Acknowledgment -->
+    <input name="acknowledgment" type="checkbox" />
+    
+    <!-- reCAPTCHA -->
+    <div data-netlify-recaptcha="true"></div>
+  </form>
+</body>
+</html>

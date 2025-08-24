@@ -1,0 +1,96 @@
+
+> newport-pitstop@0.1.0 build
+> next build
+
+   ▲ Next.js 15.2.4
+   - Environments: .env.local
+   - Experiments (use with caution):
+     ✓ optimizeCss
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/71) ...
+   Generating static pages (17/71) 
+   Generating static pages (35/71) 
+   Generating static pages (53/71) 
+ ✓ Generating static pages (71/71)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS  Revalidate  Expire
+┌ ○ /                                    5.04 kB         183 kB          1m      1y
+├ ○ /_not-found                            169 B         101 kB
+├ ○ /about                               4.03 kB         182 kB          1m      1y
+├ ○ /book-now                            3.53 kB         181 kB          1m      1y
+├ ○ /cities                                153 B         180 kB          1m      1y
+├ ● /cities/[slug]                         153 B         181 kB          1m      1y
+├   ├ /cities/dandridge-tn                                               1m      1y
+├   ├ /cities/morristown-tn                                              1m      1y
+├   ├ /cities/jefferson-city-tn                                          1m      1y
+├   └ [+10 more paths]
+├ ○ /contact                             1.93 kB         179 kB          1m      1y
+├ ○ /contact-us                           4.2 kB         182 kB          1m      1y
+├ ○ /counties                              153 B         180 kB          1m      1y
+├ ● /counties/[slug]                       153 B         181 kB          1m      1y
+├   ├ /counties/cocke-county-tn                                          1m      1y
+├   ├ /counties/jefferson-county-tn                                      1m      1y
+├   ├ /counties/hamblen-county-tn                                        1m      1y
+├   └ [+5 more paths]
+├ ƒ /events                              2.18 kB         298 kB
+├ ƒ /events/[slug]                       1.43 kB         297 kB
+├ ƒ /events/feed.xml                       464 B         156 kB
+├ ƒ /external-link                         175 B         105 kB
+├ ○ /external-link-demo                  1.53 kB         106 kB          1m      1y
+├ ○ /gallery                              2.6 kB         214 kB          1m      1y
+├ ƒ /gallery/[slug]                      3.61 kB         215 kB
+├ ○ /merch                               3.41 kB         215 kB          1m      1y
+├ ƒ /merch/[slug]                        3.45 kB         215 kB
+├ ○ /offline                             1.22 kB         111 kB          1m      1y
+├ ○ /packages                            4.86 kB         182 kB          1m      1y
+├ ○ /parts                               3.46 kB         181 kB          1m      1y
+├ ○ /privacy                               203 B         178 kB          1m      1y
+├ ○ /pwa-test                              169 B         101 kB          1m      1y
+├ ○ /robots.txt                              0 B            0 B
+├ ○ /services                            5.08 kB         183 kB          1m      1y
+├ ○ /services/air-filter                   250 B         180 kB          1m      1y
+├ ○ /services/alignments                 1.72 kB         182 kB          1m      1y
+├ ○ /services/battery                      250 B         180 kB          1m      1y
+├ ○ /services/brake-fluid                  250 B         180 kB          1m      1y
+├ ○ /services/bumpers                      250 B         180 kB          1m      1y
+├ ○ /services/cabin-filter                 250 B         180 kB          1m      1y
+├ ○ /services/coolant                      250 B         180 kB          1m      1y
+├ ○ /services/high-mileage-oil             250 B         180 kB          1m      1y
+├ ○ /services/inspection                   250 B         180 kB          1m      1y
+├ ○ /services/lift-kits                    250 B         180 kB          1m      1y
+├ ○ /services/lighting                     250 B         180 kB          1m      1y
+├ ○ /services/motor-building             1.54 kB         182 kB          1m      1y
+├ ○ /services/oil-change                   250 B         180 kB          1m      1y
+├ ○ /services/performance-oil              250 B         180 kB          1m      1y
+├ ○ /services/power-steering               250 B         180 kB          1m      1y
+├ ○ /services/sound-systems                250 B         180 kB          1m      1y
+├ ○ /services/suspension                 1.75 kB         182 kB          1m      1y
+├ ○ /services/synthetic-oil                250 B         180 kB          1m      1y
+├ ○ /services/transmission-fluid           250 B         180 kB          1m      1y
+├ ○ /services/underglow                  1.77 kB         182 kB          1m      1y
+├ ○ /services/wheels-tires               1.86 kB         182 kB          1m      1y
+├ ○ /services/wiper-blades                 250 B         180 kB          1m      1y
+├ ○ /sitemap.xml                           169 B         101 kB
+├ ○ /specials                            3.29 kB         181 kB          1m      1y
+├ ○ /spectators                          6.48 kB         181 kB          1m      1y
+├ ○ /studio/[[...tool]]                  1.52 MB        1.68 MB
+├ ○ /terms                                 203 B         178 kB          1m      1y
+└ ○ /warranty                            5.45 kB         183 kB          1m      1y
++ First Load JS shared by all             101 kB
+  ├ chunks/1684-23937d2a42103e7b.js      45.5 kB
+  ├ chunks/4bd1b696-b1aff6d872122421.js  53.3 kB
+  └ other shared chunks (total)          2.53 kB
+
+
+ƒ Middleware                             32.7 kB
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+

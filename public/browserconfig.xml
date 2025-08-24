@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<browserconfig>
+    <msapplication>
+        <tile>
+            <square70x70logo src="/favicon-70x70.png"/>
+            <square150x150logo src="/favicon-150x150.png"/>
+            <square310x310logo src="/favicon-310x310.png"/>
+            <wide310x150logo src="/meta.png"/>
+            <TileColor>#1890ff</TileColor>
+        </tile>
+        <notification>
+            <polling-uri src="https://www.oemradiorepair.com/"/>
+            <frequency>30</frequency>
+            <cycle>1</cycle>
+        </notification>
+    </msapplication>
+</browserconfig>

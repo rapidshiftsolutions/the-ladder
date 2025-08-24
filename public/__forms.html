@@ -1,0 +1,33 @@
+<html>
+  <head></head>
+  <body>
+    <!-- Hidden form for Netlify to detect during build -->
+    <form name="contact" data-netlify="true" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <!-- Contact Information -->
+      <input name="firstName" type="text" />
+      <input name="lastName" type="text" />
+      <input name="email" type="email" />
+      <input name="phone" type="tel" />
+      <!-- Vehicle Information -->
+      <select name="year"></select>
+      <select name="make"></select>
+      <input name="model" type="text" />
+      <input name="trim" type="text" />
+      <input name="vin" type="text" />
+      <!-- Service Request -->
+      <select name="issue"></select>
+      <textarea name="description"></textarea>
+      <select name="issueStart"></select>
+      <select name="urgency"></select>
+      <!-- Location -->
+      <input name="address1" type="text" />
+      <input name="address2" type="text" />
+      <input name="city" type="text" />
+      <select name="state"></select>
+      <input name="zipCode" type="text" />
+      <!-- reCAPTCHA -->
+      <input name="g-recaptcha-token" type="hidden" />
+    </form>
+  </body>
+</html>

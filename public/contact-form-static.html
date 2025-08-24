@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Form</title>
+</head>
+<body>
+  <!-- This static HTML form is for Netlify to detect during build -->
+  <!-- It will not be displayed to users -->
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="contact" />
+    <input type="text" name="bot-field" />
+    
+    <!-- Contact Information -->
+    <input type="text" name="name" />
+    <input type="tel" name="phone" />
+    <input type="email" name="email" />
+    
+    <!-- Vehicle Information -->
+    <select name="vehicle">
+      <option value="">Select</option>
+    </select>
+    <input type="text" name="customYear" />
+    <input type="text" name="customMakeModel" />
+    
+    <!-- Issue Description -->
+    <select name="primaryIssue">
+      <option value="">Select</option>
+    </select>
+    <select name="whenStarted">
+      <option value="">Select</option>
+    </select>
+    <textarea name="issueDescription"></textarea>
+    
+    <!-- Service Information -->
+    <select name="serviceType">
+      <option value="">Select</option>
+    </select>
+    <select name="referralSource">
+      <option value="">Select</option>
+    </select>
+    <input type="text" name="zipCode" />
+    <select name="contactPreference">
+      <option value="">Select</option>
+    </select>
+    
+    <!-- Acknowledgment -->
+    <input type="checkbox" name="acknowledgment" />
+  </form>
+</body>
+</html>

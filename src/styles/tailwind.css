@@ -1,0 +1,205 @@
+/**
+ * Tailwind CSS Configuration
+ * 
+ * This file configures Tailwind CSS with custom font settings, utility classes,
+ * and animations for the ServFirst application.
+ * 
+ * --- Font Configuration ---
+ * Font families:
+ * - Times/Lora (serif): Used for headings and title elements
+ * - OpenSans (sans-serif): Default body text and UI elements
+ * 
+ * Both fonts are loaded locally from the /fonts directory with optimized loading
+ * using font-display: swap for better performance.
+ * 
+ * --- Utility Classes ---
+ * Font selection:
+ * - .times/.Times: Forces Times/Lora font
+ * - .sans/.Sans/.opensans/.OpenSans: Forces OpenSans font
+ * 
+ * Other utilities:
+ * - .hide-scrollbar: Removes scrollbars across browsers while maintaining functionality
+ * 
+ * --- Base Styles ---
+ * The @layer base section applies font families to specific HTML elements:
+ * - Headings (h1-h6): Times/Lora font
+ * - Body text and UI elements: OpenSans font
+ * - Special selectors ensure child elements of headings maintain the correct font
+ * 
+ * --- Custom Elements ---
+ * - Custom radio button styling with gradient background when checked
+ * 
+ * --- Animations ---
+ * - move-x: Horizontal translation animation using CSS variables for control
+ * - melting-bg: Smooth background position transition effect
+ * - dividerRollDown: Vertical scaling animation for dividers
+ * - .divider-animation: Class to apply the divider rolldown effect
+ */
+ 
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+/* Font loading is now handled by Next.js font optimization in layout.jsx
+ * Using OEM Radio Repair fonts from /OEMRadioRepair/fonts/:
+ * - Exo2: Clean headers and titles
+ * - Inter: Body text and UI elements
+ * - Anton: Maps to Exo2 for backward compatibility
+ * - Lacquer: Accent text and decorative elements
+ */
+
+/* Mobile menu scrollbar styling */
+.mobile-menu-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.mobile-menu-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mobile-menu-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 242, 40, 0.3);
+  border-radius: 2px;
+}
+
+.mobile-menu-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 242, 40, 0.5);
+}
+
+/* OEM Radio Repair font utility classes */
+.font-anton {
+  font-family: var(--font-exo2), 'Arial', sans-serif !important;
+}
+
+.font-exo2 {
+  font-family: var(--font-exo2), 'Arial', sans-serif !important;
+}
+
+.font-lacquer {
+  font-family: var(--font-lacquer), 'cursive', serif !important;
+}
+
+.font-inter {
+  font-family: var(--font-inter), 'Arial', sans-serif !important;
+}
+
+/* Legacy font classes for backward compatibility */
+.opensans, .OpenSans {
+  font-family: var(--font-inter), 'Arial', sans-serif !important;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera */
+}
+
+/* Root variables for OEM Radio Repair font families */
+:root {
+  --font-sans: var(--font-inter), 'Arial', sans-serif;
+  --font-heading: var(--font-exo2), 'Arial', sans-serif;
+  --font-accent: var(--font-lacquer), 'cursive', serif;
+}
+
+/* Layer to apply font families to specific elements */
+@layer base {
+  /* Apply Inter to the body */
+  body {
+    font-family: var(--font-sans);
+  }
+
+  /* Apply Exo2 font to headings for clean aesthetic */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
+
+  /* Apply Inter to all other text elements */
+  p,
+  span,
+  a,
+  div,
+  li,
+  button,
+  input,
+  textarea {
+    font-family: var(--font-sans);
+  }
+
+  /* Ensure all children of headings explicitly use the Anton font
+     with higher specificity to override other selectors */
+  h1 span, h1 strong, h1 em, h1 b, h1 i, h1 a,
+  h2 span, h2 strong, h2 em, h2 b, h2 i, h2 a,
+  h3 span, h3 strong, h3 em, h3 b, h3 i, h3 a,
+  h4 span, h4 strong, h4 em, h4 b, h4 i, h4 a,
+  h5 span, h5 strong, h5 em, h5 b, h5 i, h5 a,
+  h6 span, h6 strong, h6 em, h6 b, h6 i, h6 a {
+    font-family: var(--font-heading) !important;
+  }
+}
+
+/* Radio button styles */
+input[type="radio"]:checked ~ .box .circle {
+  background: #e6efff;
+  background: linear-gradient(to right, #e6efff 50%, #bfd6ff 100%, #89b2ff 200%, #528aff 300%);
+}
+
+/* Sample keyframe animation */
+@keyframes move-x {
+  0% {
+    transform: translateX(var(--move-x-from));
+  }
+  100% {
+    transform: translateX(var(--move-x-to));
+  }
+}
+
+@keyframes melting-bg {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes dividerRollDown {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  120% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.divider-animation {
+  animation: dividerRollDown 0.5s ease-in-out forwards;
+  transform-origin: top;
+}
+
+.grecaptcha-badge {
+  bottom: 70px !important; /* Adjust the value (90px) to move the badge higher or lower */
+}
+
+@keyframes fadeOut {
+  0% { opacity: 0.8; }
+  70% { opacity: 0.8; }
+  100% { opacity: 0; }
+}
+
+.animate-fade-out {
+  animation: fadeOut 3s forwards;
+}

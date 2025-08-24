@@ -1,0 +1,137 @@
+"use client";
+import React, { useState, useEffect } from "react";
+import ReactDOM from 'react-dom';
+
+export default function TextInfoModal({
+  title,
+  content,
+  sidebarTitle = "Additional Information",
+  sidebarContent,
+  thumbnailUrl,
+  thumbnailAlt = "Information thumbnail",
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Use client-side rendering to create a portal
+  useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") setIsOpen(false);
+    };
+    
+    if (isOpen) {
+      document.addEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = 'auto';
+    }
+    
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
+
+  const openModal = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsOpen(true);
+  };
+
+  const closeModal = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsOpen(false);
+  };
+
+  // Render thumbnail inside component
+  const thumbnailContent = (
+    <div 
+      onClick={openModal}
+      className="relative inline-block cursor-pointer w-full overflow-hidden group"
+    >
+      <div className="aspect-video w-full relative rounded-lg shadow-md overflow-hidden">
+        <img
+          src={thumbnailUrl}
+          alt={thumbnailAlt}
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center transition-opacity duration-300 group-hover:bg-opacity-20">
+          <div className="bg-black bg-opacity-60 rounded-full w-16 h-16 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:bg-primary-700">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  // Render modal content for portal - styled like the Vimeo modal
+  const modalContent = isOpen && (
+    <div
+      className="fixed inset-0 z-[9999] bg-black bg-opacity-95 flex items-center justify-center"
+      onClick={closeModal}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full h-full flex flex-col md:flex-row bg-white overflow-hidden"
+      >
+        {/* Close button */}
+        <button
+          onClick={closeModal}
+          className="absolute top-4 right-4 z-50 text-white hover:text-gray-300 transition-colors duration-200 bg-black bg-opacity-50 rounded-full p-2"
+          aria-label="Close information"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        
+        {/* Main content - takes 70% width on desktop */}
+        <div className="w-full md:w-[70%] h-[60vh] md:h-full bg-white overflow-y-auto">
+          <div className="p-8 md:p-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">{title}</h2>
+            <div className="prose prose-lg max-w-none text-gray-700">
+              {content}
+            </div>
+          </div>
+        </div>
+        
+        {/* Sidebar content - takes 30% width on desktop */}
+        {sidebarContent && (
+          <div className="w-full md:w-[30%] h-[40vh] md:h-full bg-gray-50 overflow-y-auto flex flex-col border-t md:border-t-0 md:border-l border-gray-200">
+            <div className="p-6 bg-gray-100 sticky top-0 border-b border-gray-200 z-10">
+              <h3 className="text-lg font-bold text-gray-900">
+                {sidebarTitle}
+              </h3>
+            </div>
+            <div className="p-6 flex-grow overflow-y-auto">
+              <div className="text-gray-700 leading-relaxed">
+                {sidebarContent}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+
+  return (
+    <>
+      {thumbnailContent}
+      {mounted && isOpen && typeof window !== 'undefined' 
+        ? ReactDOM.createPortal(
+            modalContent, 
+            document.body
+          )
+        : null}
+    </>
+  );
+}
