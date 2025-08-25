@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '@/components/sitewide-navbar';
+import GlassNavigation from '/src/components/GlassNavigation';
 import Footer from '@/components/sitewide-footer';
 import Link from 'next/link';
 import { Heart, Home, HelpingHand, Phone } from 'lucide-react';
@@ -7,7 +7,7 @@ import { Heart, Home, HelpingHand, Phone } from 'lucide-react';
 export default function NotFound() {
   return (
     <div className="bg-white min-h-screen">
-      <Navbar />
+      <GlassNavigation />
       <main className="relative">
         <div className="flex flex-col items-center justify-center min-h-[60vh] py-16 px-4 sm:px-6 lg:px-8">
           <div className="mb-8">

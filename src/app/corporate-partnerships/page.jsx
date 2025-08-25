@@ -128,29 +128,37 @@ export default function CorporatePartnershipsPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[var(--ladder-blue)] via-[var(--ladder-blue-light)] to-[var(--ladder-gold)] text-white py-20">
-        <div className="container mx-auto px-4">
+      <section className="relative bg-gradient-to-br from-[var(--ladder-blue)] via-[var(--ladder-blue-light)] to-[var(--ladder-gold)] text-white py-20 overflow-hidden">
+        {/* Glass morphism background elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/3 left-1/5 w-80 h-80 bg-white/4 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/3 right-1/5 w-96 h-96 bg-white/3 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <Building2 className="h-16 w-16 mx-auto mb-6 text-white" />
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Corporate Partnerships
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 leading-relaxed">
-              Join Birmingham's leading businesses in removing barriers and strengthening our community through strategic partnerships that create lasting impact.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="#partnership-tiers" 
-                className="bg-white text-[var(--ladder-blue)] px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
-              >
-                View Partnership Options
-              </a>
-              <a 
-                href="#contact-partnerships" 
-                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-[var(--ladder-blue)] transition-colors"
-              >
-                Schedule Consultation
-              </a>
+            <div className="glass-card bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 shadow-2xl">
+              <Building2 className="h-16 w-16 mx-auto mb-6 text-white" />
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+                Corporate Partnerships
+              </h1>
+              <p className="text-xl md:text-2xl mb-8 leading-relaxed">
+                Join Birmingham's leading businesses in removing barriers and strengthening our community through strategic partnerships that create lasting impact.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a 
+                  href="#partnership-tiers" 
+                  className="glass-button bg-white/20 backdrop-blur-md text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/30 transition-all duration-300 border border-white/30"
+                >
+                  View Partnership Options
+                </a>
+                <a 
+                  href="#contact-partnerships" 
+                  className="glass-button bg-white/10 backdrop-blur-md border-2 border-white/40 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/20 transition-all duration-300"
+                >
+                  Schedule Consultation
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -217,7 +225,7 @@ export default function CorporatePartnershipsPage() {
             {partnershipTiers.map((tier, index) => (
               <div 
                 key={index} 
-                className={`relative bg-white rounded-xl shadow-lg border-2 p-8 ${tier.popular ? 'border-[var(--ladder-gold)] transform scale-105' : 'border-gray-200'}`}
+                className={`relative glass-card backdrop-blur-xl border-2 rounded-2xl shadow-2xl p-8 transition-all duration-300 hover:scale-105 ${tier.popular ? 'bg-white/70 border-[var(--ladder-gold)]/60 transform scale-105' : 'bg-white/60 border-white/40'}`}
               >
                 {tier.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
@@ -275,7 +283,7 @@ export default function CorporatePartnershipsPage() {
 
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {volunteerPrograms.map((program, index) => (
-              <div key={index} className="bg-white rounded-lg p-6 shadow-md">
+              <div key={index} className="glass-card bg-white/60 backdrop-blur-xl border border-white/40 rounded-xl p-6 shadow-xl hover:bg-white/70 transition-all duration-300">
                 <h3 className="text-xl font-semibold mb-3">{program.title}</h3>
                 <p className="text-gray-600 mb-4">{program.description}</p>
                 <div className="flex justify-between items-center text-sm">
@@ -307,7 +315,7 @@ export default function CorporatePartnershipsPage() {
 
           <div className="space-y-12 max-w-6xl mx-auto">
             {caseStudies.map((study, index) => (
-              <div key={index} className="bg-gray-50 rounded-xl p-8">
+              <div key={index} className="glass-card bg-white/50 backdrop-blur-xl border border-white/30 rounded-2xl p-8 shadow-xl hover:bg-white/60 transition-all duration-300">
                 <div className="grid lg:grid-cols-2 gap-8">
                   <div>
                     <h3 className="text-2xl font-bold mb-4">{study.partner}</h3>
@@ -350,7 +358,7 @@ export default function CorporatePartnershipsPage() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
             {currentPartners.map((partner, index) => (
-              <div key={index} className="bg-white rounded-lg p-6 shadow-md text-center">
+              <div key={index} className="glass-card bg-white/60 backdrop-blur-xl border border-white/40 rounded-xl p-6 shadow-xl text-center hover:bg-white/70 transition-all duration-300">
                 <div className="text-lg font-semibold text-gray-700">{partner}</div>
               </div>
             ))}

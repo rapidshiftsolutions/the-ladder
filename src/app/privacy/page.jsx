@@ -1,4 +1,4 @@
-import Navbar from '/src/components/sitewide-navbar'
+import GlassNavigation from '/src/components/GlassNavigation'
 import Footer from '/src/components/sitewide-footer'
 
 export const metadata = {
@@ -29,7 +29,7 @@ export const metadata = {
 export default function PrivacyPage() {
   return (
     <main className="flex min-h-screen flex-col">
-      <Navbar />
+      <GlassNavigation />
       <div className="bg-gradient-to-b from-background-dark to-surface-900 min-h-screen py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-surface-800/50 backdrop-blur-sm border border-primary-500/20 rounded-xl p-8 space-y-8">

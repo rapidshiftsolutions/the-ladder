@@ -1,0 +1,298 @@
+{
+  "featured": {
+    "id": "gatlin-transportation",
+    "name": "Gatlin",
+    "title": "From Three Jobs to Career Dreams: Gatlin's Transportation Victory",
+    "situation": "19-year-old caring for younger siblings while working three jobs",
+    "barriers": ["Transportation", "Family responsibilities", "Career development"],
+    "timeframe": "Immediate impact",
+    "quote": "When we met Gatlin, he was caring for his younger siblings and working three jobs at just 19 years old—all without a vehicle of his own! His goal is to become a corrections officer and then a police officer. The obstacle he faced was transportation, forcing him to depend on others for rides.",
+    "fullTestimony": [
+      "When we met Gatlin, he was caring for his younger siblings and working three jobs at just 19 years old—all without a vehicle of his own! His goal is to become a corrections officer and then a police officer.",
+      "The obstacle he faced was transportation, forcing him to depend on others for rides. Even so, he was faithful to his employment and was serving others through small groups and church youth ministry.",
+      "The Ladder provided him with a car, so he has been able to continue to help his family and serve his community, while pursuing his career goals."
+    ],
+    "outcomes": [
+      "Received reliable transportation",
+      "Continued faithful employment at three jobs",
+      "Able to care for younger siblings",
+      "Pursuing career goals in law enforcement",
+      "Continuing service in youth ministry"
+    ],
+    "partnerOrganizations": [],
+    "currentStatus": "Pursuing career goals as corrections officer and police officer while serving family and community",
+    "category": "Transportation & Career Development",
+    "rating": 5,
+    "image": "Gatlin 1.jpg"
+  },
+  "stories": [
+    {
+      "id": "victoria-single-mother",
+      "name": "Victoria",
+      "title": "Single Mom's Transportation Crisis to New Job Success",
+      "situation": "Single mother with two children lost car in accident",
+      "barriers": ["Transportation loss", "Employment access", "Child care transportation", "Depression and anxiety"],
+      "timeframe": "Until new vehicle obtained",
+      "quote": "I am a single mom with two small children. When I lost my car in an accident that was not my fault, I was stuck in my apartment and feeling anxious and depressed, as I had no transportation to get to work and grocery stores, take my son to school, etc.",
+      "outcomes": [
+        "Received rental car during crisis",
+        "Found new job that she loves",
+        "Moved into beautiful new home",
+        "Regained independence and mobility"
+      ],
+      "partnerOrganizations": [],
+      "currentStatus": "New job that she loves and moved into a beautiful new home",
+      "category": "Transportation & Housing",
+      "rating": 5,
+      "image": "Victoria.jpg"
+    },
+    {
+      "id": "craig-debt-relief",
+      "name": "Craig",
+      "title": "Breaking the High-Interest Debt Trap",
+      "situation": "Financial difficulties from high-interest vehicle loan during divorce",
+      "barriers": ["High-interest debt", "Divorce-related financial strain", "Debt trap"],
+      "timeframe": "Ongoing repayment helping others",
+      "quote": "Craig was in financial straits because he had borrowed against his vehicle during a divorce. The high interest rate on this loan kept him trapped.",
+      "outcomes": [
+        "Received zero-interest loan from The Ladder",
+        "Paid off high-interest debt",
+        "Able to move forward financially",
+        "Repayments helping other clients"
+      ],
+      "partnerOrganizations": [],
+      "currentStatus": "Moving forward financially, repaying zero-interest loan to help others",
+      "category": "Financial Relief",
+      "rating": 5,
+      "thankYouNote": "Craig's thank you note reminds us why we do what we do"
+    },
+    {
+      "id": "jennifer-recovery",
+      "name": "Jennifer",
+      "title": "Recovery Success: From Debt to Housing Stability",
+      "situation": "Single mother in recovery saddled with debt",
+      "barriers": ["High-interest credit card debt", "Housing instability", "Poor credit score", "Recovery challenges"],
+      "timeframe": "Improving credit score for housing",
+      "quote": "Jennifer is a single mother in recovery. She has overcome many obstacles and is moving forward in her life, but she is saddled with debt.",
+      "outcomes": [
+        "High-interest credit cards paid off (half gifted, half loaned at 0%)",
+        "Improved credit score significantly",
+        "Able to secure permanent housing",
+        "Continued recovery progress"
+      ],
+      "partnerOrganizations": [],
+      "currentStatus": "Moving into permanent housing with improved credit score",
+      "category": "Recovery & Housing",
+      "rating": 5
+    },
+    {
+      "id": "jamil-erika-family",
+      "name": "Jamil & Erika",
+      "title": "From Homelessness to Family Transportation Solution",
+      "situation": "Family with six children overcame homelessness after losing everything in car fire",
+      "barriers": ["Homelessness", "Transportation for large family", "Loss of all possessions"],
+      "timeframe": "After months of transition",
+      "quote": "The Ladder is an amazing group of people who offer guidance, assistance, and mentoring to people in need. They are the true hands and feet of Jesus.",
+      "outcomes": [
+        "Overcame homelessness",
+        "Received funds to purchase minivan",
+        "Both parents working hard to provide",
+        "Continued service through Birmingham Dream Center"
+      ],
+      "partnerOrganizations": ["Birmingham Dream Center"],
+      "currentStatus": "Both working to provide for six children with reliable family transportation",
+      "category": "Housing & Transportation",
+      "rating": 5,
+      "image": "Jamil.jpg"
+    },
+    {
+      "id": "kim-woody-medical",
+      "name": "Kim & Woody",
+      "title": "Medical Crisis Housing Relief",
+      "situation": "Disabled wife and working husband faced homelessness after medical emergency",
+      "barriers": ["Medical emergency", "No job benefits", "Disability", "Housing instability"],
+      "timeframe": "One month rent assistance",
+      "quote": "I just want to thank the Ladder for your help. I'm disabled and my husband works a job with no benefits or time off. When he ended up in the hospital with two surgeries we got behind on our rent.",
+      "outcomes": [
+        "Rent paid for one month during crisis",
+        "Husband able to recover and return to work",
+        "Avoided homelessness",
+        "Husband found better employment"
+      ],
+      "partnerOrganizations": [],
+      "currentStatus": "Husband has better job, looking forward to even better opportunities",
+      "category": "Medical & Housing Crisis",
+      "rating": 5,
+      "image": "IMG_8391.heic"
+    },
+    {
+      "id": "brandon-candy-foster",
+      "name": "Brandon & Candy",
+      "title": "Caring for Seven: Roof Repair for Foster Family",
+      "situation": "Young couple caring for seven children whose families couldn't care for them",
+      "barriers": ["Home maintenance", "Safety concerns", "Large family needs"],
+      "timeframe": "Immediate roof repair",
+      "quote": "Brandon & Candy are a hard-working young couple with a huge heart for children. They are caring for seven children whose families of origin could not care for them.",
+      "outcomes": [
+        "Materials provided for roof repair",
+        "Brandon and his father completed repairs",
+        "Ensured safety and comfort for all children",
+        "Continued foster care service"
+      ],
+      "partnerOrganizations": [],
+      "currentStatus": "Continuing to care for seven children in safe, comfortable home",
+      "category": "Foster Care & Home Maintenance",
+      "rating": 5,
+      "image": "Brandon & Candy.jpg"
+    },
+    {
+      "id": "asha-widow-support",
+      "name": "Asha",
+      "title": "Widow's Recovery: From Job Loss to Career Development",
+      "situation": "Single mother raising three children after husband's murder in 2019",
+      "barriers": ["Vehicle breakdown", "Job loss", "Utility bills", "Grief and single parenting"],
+      "timeframe": "During job search period",
+      "quote": "Asha is raising her three children alone since her husband was murdered in 2019. She works hard to care for them, but suffered a setback when her vehicle had mechanical issues.",
+      "outcomes": [
+        "Past-due water and utility bills paid",
+        "Vehicle repair completed",
+        "Partner nonprofit guiding job search",
+        "Career development support"
+      ],
+      "partnerOrganizations": ["Partner nonprofit for job search guidance"],
+      "currentStatus": "Actively job searching with career development support",
+      "category": "Crisis Support & Career Development",
+      "rating": 5
+    },
+    {
+      "id": "sobriety-recovery",
+      "name": "Recovery Client",
+      "title": "Climbing the Ladder to Sobriety",
+      "situation": "Man working toward sobriety after years of challenges",
+      "barriers": ["Addiction", "Need for rehabilitation", "Living expenses during treatment"],
+      "timeframe": "Ongoing recovery journey",
+      "quote": "One man is climbing the ladder to sobriety after years of difficult challenges.",
+      "outcomes": [
+        "Rehab facility time paid for",
+        "Rent and utilities covered during treatment",
+        "Life coaching provided",
+        "Continued progress in recovery"
+      ],
+      "partnerOrganizations": ["Rehabilitation facility", "Life coaching services"],
+      "currentStatus": "Climbing his ladder to success in ongoing recovery",
+      "category": "Addiction Recovery",
+      "rating": 5
+    },
+    {
+      "id": "dj-rachel-family-growth",
+      "name": "D.J. & Rachel",
+      "title": "Family Growth: From Four to Seven",
+      "situation": "Family grew from 4 to 7 when they took in sister's three teenagers",
+      "barriers": ["Sudden family growth", "Transportation needs", "Tragic family circumstances"],
+      "timeframe": "After taking in three teenagers",
+      "quote": "D. J. and Rachel's family grew from 4 to 7 when they took in his sister's three teenagers after their mother suffered a tragic accident.",
+      "outcomes": [
+        "Van purchased for larger family needs",
+        "Three teenagers given stable home",
+        "Family transportation needs met",
+        "Continued family support"
+      ],
+      "partnerOrganizations": [],
+      "currentStatus": "Successfully caring for family of seven with appropriate transportation",
+      "category": "Family Support & Transportation",
+      "rating": 5
+    },
+    {
+      "id": "tonia-housing-stability",
+      "name": "Tonia",
+      "title": "From Shelter to Permanent Home",
+      "situation": "Mother and young son living in shelter due to housing loss",
+      "barriers": ["Homelessness", "Back rent owed", "Shelter living with child"],
+      "timeframe": "Transition to permanent housing",
+      "quote": "Tonia had lost her apartment and was living in a shelter with her young son.",
+      "outcomes": [
+        "Back rent paid in full",
+        "Able to move forward from shelter",
+        "Secured permanent housing",
+        "Stability for young son"
+      ],
+      "partnerOrganizations": [],
+      "currentStatus": "Moved into permanent home with son",
+      "category": "Housing Stability",
+      "rating": 5
+    },
+    {
+      "id": "tim-covid-cancer",
+      "name": "Tim",
+      "title": "COVID and Cancer: New Business Opportunity",
+      "situation": "Career affected by COVID-19 shutdowns, then diagnosed with cancer",
+      "barriers": ["COVID-19 job impact", "Cancer diagnosis", "Need for home-based income"],
+      "timeframe": "Supporting family business launch",
+      "quote": "Tim's career was greatly affected by the shutdowns in response to the COVID-19 pandemic. And then he was also diagnosed with cancer.",
+      "outcomes": [
+        "New laptop provided",
+        "At-home business startup support",
+        "Ability to support family during health crisis",
+        "Flexible work arrangement during treatment"
+      ],
+      "partnerOrganizations": [],
+      "currentStatus": "Running at-home business to support family during cancer treatment",
+      "category": "Health Crisis & Employment",
+      "rating": 5
+    },
+    {
+      "id": "trey-jennifer-job-loss",
+      "name": "Trey & Jennifer",
+      "title": "Medical Emergency Job Loss Recovery",
+      "situation": "Husband lost job after knee injury, recovery longer than expected",
+      "barriers": ["Job loss due to injury", "Extended recovery", "Medical bills", "Mortgage and utilities at risk"],
+      "timeframe": "During job search period",
+      "quote": "My husband lost his job when he hurt his knee and told his employer that he needed to have surgery. Recovery was longer than expected and so was getting hired at a new company.",
+      "outcomes": [
+        "Financial assistance prevented debt and late fees",
+        "Mortgage, power, and water bills covered",
+        "Avoided credit issues and worse consequences",
+        "Husband successfully re-hired"
+      ],
+      "partnerOrganizations": [],
+      "currentStatus": "Husband re-hired, family continuing to climb thanks to The Ladder",
+      "category": "Medical & Employment Crisis",
+      "rating": 5
+    }
+  ],
+  "partnerTestimonials": [
+    {
+      "organization": "Grace Klein Community",
+      "program": "Community Volunteer Support",
+      "contactName": "Jenny Waltman",
+      "title": "Representative",
+      "testimonial": "Grace Klein Community is thankful for our partnership with The Ladder. When one of our long-term volunteers found herself in a difficult financial situation after taking in extra people and facing personal illness, The Ladder assisted her with a water bill. The Ladder empowered our volunteer to continue living out Jesus' teachings in John 15:13, 'Greater love has no one than this: to lay down one's life for one's friends.'"
+    },
+    {
+      "organization": "Birmingham Dream Center",
+      "program": "Community Outreach & Service",
+      "contactName": "Program Staff",
+      "title": "Partner Organization",
+      "testimonial": "We've seen firsthand how The Ladder's support enables families like Jamil and Erika's to continue serving our community even while overcoming their own challenges. Their transportation assistance allowed this family to maintain their volunteer commitments while caring for six children."
+    }
+  ],
+  "statistics": {
+    "totalIndividuals": 500,
+    "totalBarriers": 1200,
+    "successfulReferrals": 2100,
+    "successRate": 95,
+    "averageBarriersPerPerson": 2.3,
+    "averageResolutionTime": "30 days",
+    "longTermStability": 85,
+    "barrierTypes": {
+      "transportation": 35,
+      "housingUtilities": 28,
+      "employmentIncome": 22,
+      "healthcareMedical": 20,
+      "debtFinancial": 18,
+      "familySupport": 15,
+      "recoveryAddiction": 12,
+      "educationTraining": 8
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import Navbar from '/src/components/sitewide-navbar'
+import GlassNavigation from '/src/components/GlassNavigation'
 import Footer from '/src/components/sitewide-footer'
 import { Download, FileText, Calendar, TrendingUp, Users, DollarSign, Award, ExternalLink, Shield } from 'lucide-react'
 
@@ -37,7 +37,7 @@ export const metadata = {
 export default function AnnualReportsPage() {
   return (
     <main className="flex min-h-screen flex-col">
-      <Navbar />
+      <GlassNavigation />
       <div className="flex-1 bg-gradient-to-b from-background-dark to-surface-900">
         
         {/* Hero Section */}

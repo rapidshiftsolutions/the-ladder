@@ -25,19 +25,27 @@ export default function TermsOfServicePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[var(--ladder-blue)] via-[var(--ladder-blue-light)] to-[var(--ladder-purple)] text-white py-16">
-        <div className="container mx-auto px-4">
+      <section className="relative bg-gradient-to-br from-[var(--ladder-blue)] via-[var(--ladder-blue-light)] to-[var(--ladder-purple)] text-white py-16 overflow-hidden">
+        {/* Glass morphism background elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 right-1/4 w-72 h-72 bg-white/4 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-white/2 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <Scale className="h-16 w-16 mx-auto mb-6 text-white" />
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Terms of Service
-            </h1>
-            <p className="text-xl leading-relaxed mb-4">
-              Legal terms and conditions governing the use of The Ladder's website and services.
-            </p>
-            <p className="text-lg opacity-90">
-              Last updated: {lastUpdated}
-            </p>
+            <div className="glass-card bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 shadow-2xl">
+              <Scale className="h-16 w-16 mx-auto mb-6 text-white" />
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+                Terms of Service
+              </h1>
+              <p className="text-xl leading-relaxed mb-4">
+                Legal terms and conditions governing the use of The Ladder's website and services.
+              </p>
+              <p className="text-lg opacity-90">
+                Last updated: {lastUpdated}
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -46,7 +54,7 @@ export default function TermsOfServicePage() {
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-[var(--ladder-blue)]/10 border-l-4 border-[var(--ladder-blue)] p-6 rounded-r-lg">
+            <div className="glass-card bg-[var(--ladder-blue)]/10 backdrop-blur-xl border-l-4 border-[var(--ladder-blue)] border border-white/30 p-6 rounded-2xl shadow-xl">
               <div className="flex items-start">
                 <AlertCircle className="h-6 w-6 text-[var(--ladder-blue)] mt-1 mr-3 flex-shrink-0" />
                 <div>
@@ -72,7 +80,7 @@ export default function TermsOfServicePage() {
                 <FileText className="h-6 w-6 text-[var(--ladder-blue)] mr-3" />
                 1. Definitions
               </h2>
-              <div className="bg-gray-50 rounded-lg p-6">
+              <div className="glass-card bg-white/50 backdrop-blur-xl border border-white/30 rounded-xl p-6 shadow-lg">
                 <ul className="space-y-3 text-gray-700">
                   <li><strong>"Organization"</strong> refers to The Ladder, a 501(c)(3) nonprofit organization (EIN: 47-2123160) based in Birmingham, Alabama.</li>
                   <li><strong>"Website"</strong> refers to https://the-ladder.org and all associated subdomains and pages.</li>
@@ -137,7 +145,7 @@ export default function TermsOfServicePage() {
               <p className="text-gray-700 mb-4">
                 Your privacy is important to us. Our collection and use of personal information is governed by our Privacy Policy, which is incorporated into these Terms by reference. By using our Website and Services, you consent to the collection and use of information as outlined in our Privacy Policy.
               </p>
-              <div className="bg-[var(--ladder-gold)]/10 border border-[var(--ladder-gold)] rounded-lg p-4">
+              <div className="glass-card bg-[var(--ladder-gold)]/15 backdrop-blur-xl border border-[var(--ladder-gold)]/40 rounded-xl p-4 shadow-lg">
                 <p className="text-gray-700">
                   <strong>Important:</strong> We collect and process personal information in accordance with applicable privacy laws, including but not limited to the General Data Protection Regulation (GDPR) and California Consumer Privacy Act (CCPA).
                 </p>

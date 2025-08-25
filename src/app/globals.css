@@ -43,12 +43,12 @@
 
 /* iOS 26 Glass Morphism Design System */
 :root {
-  /* The Ladder Brand Colors - Enhanced for Glass Morphism */
+  /* The Ladder Brand Colors - Based on Official Logo */
   --ladder-red: #E74C3C;         /* Logo red - "The" text and climbing figures */
   --ladder-blue: #2C3E50;        /* Logo dark blue - "LADDER" text */
   --ladder-blue-light: #34495E;  /* Lighter blue for hover states */
-  --ladder-green: #27AE60;       /* Success, growth - secondary color */
-  --ladder-gold: #F39C12;        /* Hope, urgency - accent color */
+  --ladder-blue-dark: #1C2833;   /* Darker blue for depth */
+  --ladder-gray: #4A5568;        /* Gray for secondary text */
   --ladder-white: #FFFFFF;       /* Clean white background */
   --ladder-black: #000000;       /* Black for ladder structure */
   
@@ -57,9 +57,9 @@
   --glass-white-strong: rgba(255, 255, 255, 0.25);
   --glass-blue: rgba(44, 62, 80, 0.15);
   --glass-blue-strong: rgba(44, 62, 80, 0.25);
-  --glass-green: rgba(39, 174, 96, 0.12);
-  --glass-accent: rgba(231, 76, 60, 0.1);
-  --glass-gold: rgba(243, 156, 18, 0.15);
+  --glass-red: rgba(231, 76, 60, 0.15);
+  --glass-gray: rgba(74, 85, 104, 0.12);
+  --glass-dark: rgba(28, 40, 51, 0.15);
   
   /* High Contrast Text (WCAG AA Compliant) */
   --text-primary: #1A1A1A;       /* 15.3:1 contrast ratio on white */
@@ -440,6 +440,8 @@ select,
 @media (max-width: 768px) {
   .glass-card {
     backdrop-filter: var(--blur-sm);
+    /* Ensure touch targets are large enough on mobile */
+    min-height: 44px;
   }
   
   .glass-nav {
@@ -448,6 +450,42 @@ select,
   
   .glass-modal {
     backdrop-filter: var(--blur-lg);
+  }
+  
+  /* Enhance glass button touch experience on mobile */
+  .glass-button {
+    min-height: 48px;
+    min-width: 48px;
+    padding: var(--space-4) var(--space-6);
+  }
+  
+  /* Reduce animation complexity on mobile for better performance */
+  .glass-card:hover {
+    transform: none; /* Disable hover transform on mobile */
+  }
+  
+  /* Ensure glass elements don't break layout on small screens */
+  .glass-card {
+    margin: var(--space-2) 0;
+    border-radius: var(--radius-md); /* Slightly smaller radius on mobile */
+  }
+}
+
+/* Extra small devices (phones, 480px and down) */
+@media (max-width: 480px) {
+  .glass-card {
+    backdrop-filter: blur(2px); /* Minimal blur for better performance */
+    margin: var(--space-1) 0;
+  }
+  
+  .glass-button {
+    width: 100%; /* Full width buttons on very small screens when needed */
+    font-size: 0.9rem;
+  }
+  
+  /* Reduce complex glass effects on very small screens */
+  .glass-card::before {
+    display: none; /* Remove decorative elements for performance */
   }
 }
 

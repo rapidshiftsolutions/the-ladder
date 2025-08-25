@@ -1,4 +1,4 @@
-import Navbar from '/src/components/sitewide-navbar'
+import GlassNavigation from '/src/components/GlassNavigation'
 import Footer from '/src/components/sitewide-footer'
 import ContactForm from '/src/components/ContactForm.jsx'
 import RecaptchaDebugger from '/src/components/RecaptchaDebugger.jsx'
@@ -40,7 +40,7 @@ export default function ContactPage() {
   return (
     <main className="flex min-h-screen flex-col">
       <RecaptchaDebugger />
-      <Navbar />
+      <GlassNavigation />
       <div className="flex-1 bg-gradient-to-b from-background-dark to-surface-900">
         
         {/* Hero Section */}

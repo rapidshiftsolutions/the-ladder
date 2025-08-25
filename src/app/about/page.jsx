@@ -1,4 +1,4 @@
-import Navbar from '/src/components/sitewide-navbar'
+import GlassNavigation from '/src/components/GlassNavigation'
 import Footer from '/src/components/sitewide-footer'
 
 export const metadata = {
@@ -22,7 +22,7 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <main className="flex min-h-screen flex-col">
-      <Navbar />
+      <GlassNavigation />
       
       {/* Hero Section */}
       <section className="py-16 bg-gradient-to-b from-primary-50 to-white">

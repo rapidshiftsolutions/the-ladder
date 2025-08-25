@@ -147,30 +147,38 @@ export default function AccessibilityPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[var(--ladder-blue)] via-[var(--ladder-blue-light)] to-[var(--ladder-green)] text-white py-20">
-        <div className="container mx-auto px-4">
+      <section className="relative bg-gradient-to-br from-[var(--ladder-blue)] via-[var(--ladder-blue-light)] to-[var(--ladder-green)] text-white py-20 overflow-hidden">
+        {/* Glass morphism background elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
+          <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-white/3 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <Heart className="h-16 w-16 mx-auto mb-6 text-white" />
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Accessibility Statement
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 leading-relaxed">
-              The Ladder is committed to ensuring digital accessibility for all users, including those with disabilities. 
-              We strive to provide an inclusive experience for everyone in our community.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="#accessibility-features" 
-                className="bg-white text-[var(--ladder-blue)] px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
-              >
-                View Features
-              </a>
-              <a 
-                href="#contact-accessibility" 
-                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-[var(--ladder-blue)] transition-colors"
-              >
-                Request Accommodations
-              </a>
+            <div className="glass-card bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 shadow-2xl">
+              <Heart className="h-16 w-16 mx-auto mb-6 text-white" />
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+                Accessibility Statement
+              </h1>
+              <p className="text-xl md:text-2xl mb-8 leading-relaxed">
+                The Ladder is committed to ensuring digital accessibility for all users, including those with disabilities. 
+                We strive to provide an inclusive experience for everyone in our community.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a 
+                  href="#accessibility-features" 
+                  className="glass-button bg-white/20 backdrop-blur-md text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/30 transition-all duration-300 border border-white/30"
+                >
+                  View Features
+                </a>
+                <a 
+                  href="#contact-accessibility" 
+                  className="glass-button bg-white/10 backdrop-blur-md border-2 border-white/40 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/20 transition-all duration-300"
+                >
+                  Request Accommodations
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -186,7 +194,7 @@ export default function AccessibilityPage() {
               </h2>
             </div>
 
-            <div className="bg-white rounded-xl p-8 shadow-lg mb-12">
+            <div className="glass-card bg-white/60 backdrop-blur-xl border border-white/40 rounded-2xl p-8 shadow-2xl mb-12">
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
                 The Ladder believes that access to information and services should be available to all people, 
                 regardless of their abilities or disabilities. We are committed to providing a website that is 
@@ -240,7 +248,7 @@ export default function AccessibilityPage() {
 
             <div className="grid lg:grid-cols-2 gap-12">
               {accessibilityFeatures.map((category, index) => (
-                <div key={index} className="bg-gray-50 rounded-xl p-8">
+                <div key={index} className="glass-card bg-white/50 backdrop-blur-xl border border-white/30 rounded-2xl p-8 shadow-xl hover:bg-white/60 transition-all duration-300">
                   <div className="flex items-center mb-6">
                     {category.icon}
                     <h3 className="text-2xl font-bold ml-4">{category.title}</h3>
@@ -275,7 +283,7 @@ export default function AccessibilityPage() {
 
             <div className="space-y-6">
               {assistiveTechnologies.map((tech, index) => (
-                <div key={index} className="bg-white rounded-lg p-6 shadow-md">
+                <div key={index} className="glass-card bg-white/60 backdrop-blur-xl border border-white/40 rounded-xl p-6 shadow-xl hover:bg-white/70 transition-all duration-300">
                   <div className="grid md:grid-cols-3 gap-4">
                     <div>
                       <h3 className="font-semibold text-lg text-[var(--ladder-blue)] mb-2">{tech.name}</h3>
