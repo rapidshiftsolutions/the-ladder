@@ -37,29 +37,33 @@
   --font-inter: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* The Ladder Brand Colors - Based on nonprofit color psychology from CLAUDE.md */
+/* The Ladder Brand Colors - Matching Logo */
 :root {
-  /* Primary Brand Colors */
-  --ladder-blue: #0066CC;        /* Trust, stability, professionalism - primary brand color */
-  --ladder-blue-light: #4A90E2;  /* Lighter blue for gradients and accents */
-  --ladder-green: #22A662;       /* Growth, progress, positive change - secondary color */
-  --ladder-gold: #FF8C00;        /* Hope, urgency, conversion - accent color */
-  --ladder-red: #DC2626;         /* Emergency, urgent help - CTA color */
-  --ladder-purple: #8B5CF6;      /* Community, support - supplementary */
-  --ladder-teal: #0D9488;        /* Wellness, balance - health/wellness */
+  /* Primary Brand Colors from Logo */
+  --ladder-red: #E74C3C;         /* Logo red - "The" text and climbing figures */
+  --ladder-blue: #2C3E50;        /* Logo dark blue - "LADDER" text */
+  --ladder-blue-light: #34495E;  /* Lighter blue for hover states */
+  --ladder-white: #FFFFFF;       /* Clean white background */
+  --ladder-black: #000000;       /* Black for ladder structure */
+  
+  /* Extended Palette for UI */
+  --ladder-green: #27AE60;       /* Success, growth - secondary color */
+  --ladder-gold: #F39C12;        /* Hope, urgency - accent color */
+  --ladder-purple: #8E44AD;      /* Community, support - supplementary */
+  --ladder-teal: #16A085;        /* Wellness, balance - health/wellness */
   
   /* Supporting Palette */
-  --ladder-gray-warm: #6B7280;   /* Body text, supporting elements */
-  --ladder-gray-light: #F9FAFB;  /* Backgrounds, subtle sections */
-  --ladder-white: #FFFFFF;       /* Clean backgrounds, cards, contrast */
-  --ladder-success: #10B981;     /* Confirmations, achievements */
-  --ladder-alert: #EF4444;       /* Errors, urgent messaging (use sparingly) */
+  --ladder-gray-warm: #7F8C8D;   /* Body text, supporting elements */
+  --ladder-gray-light: #ECF0F1;  /* Backgrounds, subtle sections */
+  --ladder-gray-medium: #95A5A6; /* Secondary text */
+  --ladder-success: #27AE60;     /* Confirmations, achievements */
+  --ladder-alert: #E74C3C;       /* Errors, urgent messaging (matches red) */
   
   /* Semantic Colors for Components */
   --primary-500: var(--ladder-blue);
-  --primary-600: #0052A3;
+  --primary-600: #1C2833;
   --text-primary: var(--ladder-gray-warm);
-  --text-secondary: #9CA3AF;
+  --text-secondary: var(--ladder-gray-medium);
   --surface-900: #111827;
   --surface-800: #1F2937;
   --surface-600: #4B5563;
