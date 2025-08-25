@@ -48,6 +48,10 @@
   --ladder-blue: #2C3E50;        /* Logo dark blue - "LADDER" text */
   --ladder-blue-light: #34495E;  /* Lighter blue for hover states */
   --ladder-blue-dark: #1C2833;   /* Darker blue for depth */
+  --ladder-green: #27AE60;       /* Success/growth green */
+  --ladder-gold: #F39C12;        /* Accent gold/orange */
+  --ladder-purple: #8E44AD;      /* Secondary purple */
+  --ladder-teal: #16A085;        /* Accent teal/turquoise */
   --ladder-gray: #4A5568;        /* Gray for secondary text */
   --ladder-white: #FFFFFF;       /* Clean white background */
   --ladder-black: #000000;       /* Black for ladder structure */
@@ -58,6 +62,15 @@
   --glass-blue: rgba(44, 62, 80, 0.15);
   --glass-blue-strong: rgba(44, 62, 80, 0.25);
   --glass-red: rgba(231, 76, 60, 0.15);
+  --glass-red-strong: rgba(231, 76, 60, 0.25);
+  --glass-green: rgba(39, 174, 96, 0.15);
+  --glass-green-strong: rgba(39, 174, 96, 0.25);
+  --glass-gold: rgba(243, 156, 18, 0.15);
+  --glass-gold-strong: rgba(243, 156, 18, 0.25);
+  --glass-purple: rgba(142, 68, 173, 0.15);
+  --glass-purple-strong: rgba(142, 68, 173, 0.25);
+  --glass-teal: rgba(22, 160, 133, 0.15);
+  --glass-teal-strong: rgba(22, 160, 133, 0.25);
   --glass-gray: rgba(74, 85, 104, 0.12);
   --glass-dark: rgba(28, 40, 51, 0.15);
   
@@ -229,6 +242,26 @@ select,
   border: 1px solid rgba(39, 174, 96, 0.3);
 }
 
+.glass-card-red {
+  background: var(--glass-red);
+  border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+.glass-card-gold {
+  background: var(--glass-gold);
+  border: 1px solid rgba(243, 156, 18, 0.3);
+}
+
+.glass-card-purple {
+  background: var(--glass-purple);
+  border: 1px solid rgba(142, 68, 173, 0.3);
+}
+
+.glass-card-teal {
+  background: var(--glass-teal);
+  border: 1px solid rgba(22, 160, 133, 0.3);
+}
+
 /* Glass Buttons */
 .glass-button {
   background: rgba(44, 62, 80, 0.9);
@@ -295,6 +328,42 @@ select,
 .glass-button-secondary:hover {
   background: rgba(255, 255, 255, 0.4);
   transform: scale(1.02);
+}
+
+.glass-button-green {
+  background: rgba(39, 174, 96, 0.9);
+}
+
+.glass-button-green:hover {
+  background: rgba(39, 174, 96, 1);
+  box-shadow: 0 8px 25px rgba(39, 174, 96, 0.3);
+}
+
+.glass-button-gold {
+  background: rgba(243, 156, 18, 0.9);
+}
+
+.glass-button-gold:hover {
+  background: rgba(243, 156, 18, 1);
+  box-shadow: 0 8px 25px rgba(243, 156, 18, 0.3);
+}
+
+.glass-button-purple {
+  background: rgba(142, 68, 173, 0.9);
+}
+
+.glass-button-purple:hover {
+  background: rgba(142, 68, 173, 1);
+  box-shadow: 0 8px 25px rgba(142, 68, 173, 0.3);
+}
+
+.glass-button-teal {
+  background: rgba(22, 160, 133, 0.9);
+}
+
+.glass-button-teal:hover {
+  background: rgba(22, 160, 133, 1);
+  box-shadow: 0 8px 25px rgba(22, 160, 133, 0.3);
 }
 
 /* Glass Navigation */
@@ -524,4 +593,98 @@ select,
   .glass-skeleton {
     animation: none;
   }
+}
+
+/* Line clamp utilities for text truncation */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Ensure images in glass cards have proper aspect ratio */
+.glass-card img {
+  object-fit: cover;
+}
+
+/* Additional Glass Morphism Utility Classes */
+.glass-bg-white-10 {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.glass-bg-white-15 {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.glass-bg-white-60 {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.glass-bg-white-70 {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.glass-bg-white-80 {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* Glass border utilities */
+.glass-border-white-20 {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-border-white-30 {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-border-white-40 {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.glass-border-white-50 {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Glass backdrop blur utilities */
+.glass-blur-md {
+  backdrop-filter: var(--blur-md);
+}
+
+.glass-blur-lg {
+  backdrop-filter: var(--blur-lg);
+}
+
+.glass-blur-xl {
+  backdrop-filter: var(--blur-xl);
+}
+
+/* Glass shadow utilities */
+.glass-shadow-sm {
+  box-shadow: var(--shadow-glass-sm);
+}
+
+.glass-shadow-md {
+  box-shadow: var(--shadow-glass-md);
+}
+
+.glass-shadow-lg {
+  box-shadow: var(--shadow-glass-lg);
+}
+
+.glass-shadow-xl {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.glass-shadow-2xl {
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }

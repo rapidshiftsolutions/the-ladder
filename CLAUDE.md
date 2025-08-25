@@ -223,10 +223,13 @@ Board members have personal experiences overcoming significant life obstacles, i
 
 This comprehensive documentation captures The Ladder's unique positioning as a gap-filling nonprofit that partners with other organizations to help individuals overcome specific barriers preventing their success.
 
-## iOS 26 Design System & Modern Web Standards
+## Apple iOS Glass Morphism Design System
 
-### Glass Morphism Design Language
-The Ladder website employs cutting-edge iOS 26-inspired glass morphism design elements to create a premium, professional appearance that conveys trust and sophistication.
+### Official Design Methodology
+**IMPORTANT**: All design and development work MUST follow the comprehensive design methodology documented in `DESIGN_METHODOLOGY.md`. This document contains the complete Apple iOS glass morphism design system developed specifically for The Ladder.
+
+### Core Design Principles
+The Ladder website employs authentic Apple iOS glass morphism design principles to create a premium, trustworthy, and modern user experience that aligns with Apple's human interface guidelines while maintaining nonprofit accessibility.
 
 #### Core Glass Elements
 - **Glassmorphism Cards**: Semi-transparent backgrounds with blur effects
@@ -1688,3 +1691,36 @@ with explicit consent of participants.</p>
 - Annual legal compliance review
 
 This comprehensive legal framework ensures The Ladder meets all federal, state, and regulatory requirements while protecting both the organization and its stakeholders. Regular updates and legal review maintain ongoing compliance as laws evolve.
+
+---
+
+## Design System Reference
+
+### Required Reading
+**Before any design or UI work, developers and designers MUST consult:**
+
+1. **`DESIGN_METHODOLOGY.md`** - Complete Apple iOS glass morphism design system
+   - Authentic Apple design principles and implementation
+   - CSS/HTML code standards and examples
+   - Component library and usage guidelines
+   - Accessibility requirements and testing procedures
+   - Performance optimization standards
+   - Brand integration guidelines for The Ladder
+
+### Design Work Protocol
+1. **Read DESIGN_METHODOLOGY.md** before starting any UI component
+2. **Follow iOS design principles** exactly as documented
+3. **Use provided CSS patterns** and component examples
+4. **Test on iOS devices** to ensure authentic experience
+5. **Validate accessibility** using documented standards
+6. **Maintain brand consistency** with The Ladder's mission
+
+### Key Design Standards Summary
+- **Glass Effects**: `backdrop-filter: blur(30px)` with proper webkit prefixes
+- **Colors**: Official iOS system colors (#007AFF, #34C759, #FF9500, #FF3B30)
+- **Typography**: Apple system font stack with iOS-standard sizing
+- **Spacing**: 8-point grid system matching iOS conventions
+- **Animations**: Apple's cubic-bezier easing curves
+- **Accessibility**: WCAG AA compliance with 44px touch targets
+
+**This design methodology ensures consistency, authenticity, and premium user experience across all of The Ladder's digital touchpoints.**

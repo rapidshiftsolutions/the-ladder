@@ -1,0 +1,182 @@
+{
+  "stories": [
+    {
+      "id": "gatlin",
+      "name": "Gatlin",
+      "image": "/TheLadder/photos/Gatlin 1.jpg",
+      "situation": "Caring for younger siblings and working three jobs at just 19 years old",
+      "barrier": "Transportation - no vehicle of his own",
+      "assistance": "Vehicle purchase",
+      "outcome": "Able to continue helping family and serving community while pursuing career goals as corrections officer",
+      "quote": "When we met Gatlin, he was caring for his younger siblings and working three jobs at just 19 years old—all without a vehicle of his own! His goal is to become a corrections officer and then a police officer. The obstacle he faced was transportation, forcing him to depend on others for rides. Even so, he was faithful to his employment and was serving others through small groups and church youth ministry. The Ladder provided him with a car, so he has been able to continue to help his family and serve his community, while pursuing his career goals.",
+      "timeframe": "2023",
+      "category": "Transportation"
+    },
+    {
+      "id": "craig",
+      "name": "Craig",
+      "image": "/TheLadder/photos/IMG_23952.jpg",
+      "situation": "Financial difficulties due to high-interest vehicle loan during divorce",
+      "barrier": "Trapped in high-interest debt cycle",
+      "assistance": "Zero-interest loan to pay off high-interest debt",
+      "outcome": "Debt paid off, able to move forward financially",
+      "quote": "Craig was in financial straits because he had borrowed against his vehicle during a divorce. The high interest rate on this loan kept him trapped. The Ladder provided a zero-interest loan so that he could pay off his debt and move forward. The Ladder is using the money Craig repays to help others.",
+      "timeframe": "2023",
+      "category": "Financial Assistance"
+    },
+    {
+      "id": "jennifer-recovery",
+      "name": "Jennifer",
+      "image": null,
+      "situation": "Single mother in recovery saddled with debt",
+      "barrier": "High-interest credit card debt preventing permanent housing",
+      "assistance": "Credit card debt payoff (half gift, half 0% loan)",
+      "outcome": "Improved credit score, able to secure permanent housing",
+      "quote": "Jennifer is a single mother in recovery. She has overcome many obstacles and is moving forward in her life, but she is saddled with debt. The Ladder paid off several of her high-interest credit cards by gifting half and loaning the other half at 0% interest. This has improved her credit score so that she can get into permanent housing. The money she repays The Ladder will be used to help others.",
+      "timeframe": "2023",
+      "category": "Recovery Support"
+    },
+    {
+      "id": "jamil-erika",
+      "name": "Jamil & Erika",
+      "image": "/TheLadder/photos/Jamil.jpg",
+      "situation": "Overcame homelessness after losing everything in car fire during cross-country move",
+      "barrier": "Transportation for family of eight with only one small vehicle",
+      "assistance": "Minivan purchase",
+      "outcome": "Better transportation for six children while continuing community service",
+      "quote": "The Ladder is an amazing group of people who offer guidance, assistance, and mentoring to people in need. They are the true hands and feet of Jesus. Jamil and Erika have overcome homelessness, losing everything due to a car fire during a cross-country move, and other obstacles. Throughout months of living in transition and beyond, they served in multiple ways through Birmingham Dream Center and other avenues. They both work hard to provide for their six children, but transportation was an issue with only one small vehicle. The Ladder provided the funds to purchase a minivan.",
+      "timeframe": "2022",
+      "category": "Transportation"
+    },
+    {
+      "id": "kim-woody",
+      "name": "Kim & Woody",
+      "image": "/TheLadder/photos/Victoria.jpg",
+      "situation": "Husband hospitalized with two surgeries, no job benefits or time off",
+      "barrier": "Behind on rent due to medical emergency and lost income",
+      "assistance": "One month rent payment",
+      "outcome": "Husband recovered, returned to work, found better employment",
+      "quote": "I just want to thank the Ladder for your help. I'm disabled and my husband works a job with no benefits or time off. When he ended up in the hospital with two surgeries we got behind on our rent. The Ladder stepped in and paid our rent for a month. This gave him time to recover and get back to work. We have always worked and provided for ourselves and haven't ever taken help like this. But we would have been homeless without it and without you. Woody has a better job now, and we are looking forward to the day when he can get an even better one. We are so grateful for your help, and it really did give us all we needed - a chance!",
+      "timeframe": "2022",
+      "category": "Emergency Housing"
+    },
+    {
+      "id": "victoria",
+      "name": "Victoria",
+      "image": "/TheLadder/photos/IMG_8391.heic",
+      "situation": "Single mother of two small children who lost car in accident",
+      "barrier": "No transportation for work, school, or daily needs",
+      "assistance": "Rental car until replacement vehicle secured",
+      "outcome": "New job she loves, moved into beautiful new home",
+      "quote": "I am a single mom with two small children. When I lost my car in an accident that was not my fault, I was stuck in my apartment and feeling anxious and depressed, as I had no transportation to get to work and grocery stores, take my son to school, etc. The Ladder provided a rental car for me until I could get a different vehicle. I now have a new job that I love and have moved into a beautiful new home. Everyone at The Ladder was so kind and loving. It was such a blessing for my family, and I will forever be grateful.",
+      "timeframe": "2023",
+      "category": "Transportation"
+    },
+    {
+      "id": "grace-klein-volunteer",
+      "name": "Grace Klein Community Volunteer",
+      "image": null,
+      "situation": "Long-term volunteer facing financial difficulty after taking in extra people and personal illness",
+      "barrier": "Unable to pay water bill while serving others",
+      "assistance": "Water bill payment",
+      "outcome": "Able to continue serving community and living out faith",
+      "quote": "Grace Klein Community is thankful for our partnership with The Ladder. When one of our long-term volunteers found herself in a difficult financial situation after taking in extra people and facing personal illness, The Ladder assisted her with a water bill. The Ladder empowered our volunteer to continue living out Jesus' teachings in John 15:13, 'Greater love has no one than this: to lay down one's life for one's friends.' – Jenny Waltman, Grace Klein Community",
+      "timeframe": "2022",
+      "category": "Utility Assistance"
+    },
+    {
+      "id": "brandon-candy",
+      "name": "Brandon & Candy",
+      "image": "/TheLadder/photos/Brandon & Candy.jpg",
+      "situation": "Caring for seven children whose families of origin could not care for them",
+      "barrier": "Roof repair needed for safety and comfort",
+      "assistance": "Materials for roof repair",
+      "outcome": "Roof repaired, safe and comfortable home for seven children",
+      "quote": "Brandon & Candy are a hard-working young couple with a huge heart for children. They are caring for seven children whose families of origin could not care for them. In order to ensure their safety and comfort, they needed their roof fixed. The Ladder paid for the materials, and Brandon and his father made the repair!",
+      "timeframe": "2022",
+      "category": "Home Repair"
+    },
+    {
+      "id": "asha",
+      "name": "Asha",
+      "image": null,
+      "situation": "Raising three children alone since husband was murdered in 2019",
+      "barrier": "Vehicle breakdown led to job loss and unpaid bills",
+      "assistance": "Vehicle repair, water and utility bills",
+      "outcome": "Transportation restored, utilities maintained while job searching",
+      "quote": "Asha is raising her three children alone since her husband was murdered in 2019. She works hard to care for them, but suffered a setback when her vehicle had mechanical issues. She subsequently lost her job and got behind on bills. While a partner nonprofit guides her job search and career development, The Ladder paid her past-due water and utility bills and provided for her vehicle repair.",
+      "timeframe": "2023",
+      "category": "Crisis Support"
+    },
+    {
+      "id": "sobriety-journey",
+      "name": "Anonymous Client",
+      "image": null,
+      "situation": "Years of difficult challenges, climbing ladder to sobriety",
+      "barrier": "Financial barriers to rehabilitation and stability",
+      "assistance": "Rehab facility payment, rent, utilities, life coaching",
+      "outcome": "Continuing successful recovery journey",
+      "quote": "One man is climbing the ladder to sobriety after years of difficult challenges. The Ladder helped to pay for time in a rehab facility, rent and utilities while he was away from work, and life coaching to help him keep climbing his ladder to success.",
+      "timeframe": "2022",
+      "category": "Recovery Support"
+    },
+    {
+      "id": "dj-rachel",
+      "name": "D.J. & Rachel",
+      "image": null,
+      "situation": "Family grew from 4 to 7 when they took in sister's three teenagers after tragic accident",
+      "barrier": "Transportation for expanded family needs",
+      "assistance": "Van purchase",
+      "outcome": "Adequate transportation for family of seven",
+      "quote": "D. J. and Rachel's family grew from 4 to 7 when they took in his sister's three teenagers after their mother suffered a tragic accident. The Ladder helped them purchase a van that better serves their needs.",
+      "timeframe": "2022",
+      "category": "Transportation"
+    },
+    {
+      "id": "tonia",
+      "name": "Tonia",
+      "image": null,
+      "situation": "Lost apartment and living in shelter with young son",
+      "barrier": "Back rent owed preventing permanent housing",
+      "assistance": "Back rent payment",
+      "outcome": "Able to secure permanent home",
+      "quote": "Tonia had lost her apartment and was living in a shelter with her young son. The Ladder helped her pay the back rent she owed so that she could move forward and secure a permanent home.",
+      "timeframe": "2023",
+      "category": "Emergency Housing"
+    },
+    {
+      "id": "tim",
+      "name": "Tim",
+      "image": null,
+      "situation": "Career affected by COVID-19 shutdowns and cancer diagnosis",
+      "barrier": "Need equipment to start home business during recovery",
+      "assistance": "New laptop for home business",
+      "outcome": "Able to start home business to support family",
+      "quote": "Tim's career was greatly affected by the shutdowns in response to the COVID-19 pandemic. And then he was also diagnosed with cancer. The Ladder provided a new laptop to support Tim in starting an at-home business that will support his family.",
+      "timeframe": "2021",
+      "category": "Employment Support"
+    },
+    {
+      "id": "trey-jennifer",
+      "name": "Trey & Jennifer",
+      "image": "/TheLadder/photos/LadderImage.jpg",
+      "situation": "Husband lost job due to knee injury and surgery, recovery longer than expected",
+      "barrier": "Unable to pay mortgage, utilities, or medical bills during unemployment",
+      "assistance": "Financial support to prevent debt and credit issues",
+      "outcome": "Husband re-hired, family able to continue climbing",
+      "quote": "My husband lost his job when he hurt his knee and told his employer that he needed to have surgery. Recovery was longer than expected and so was getting hired at a new company. After using all of our savings, the amount that the bank account showed was not going allow us to pay our mortgage, power or water bill—not to mention the medical bills from the knee surgery. The Ladder met our needs. A financial blessing that would keep us from more debt, late fees, credit issues, or worse while my husband was waiting to be hired by a new company. He has now been re-hired, and we continue to climb, thanks to The Ladder!",
+      "timeframe": "2021",
+      "category": "Financial Assistance"
+    }
+  ],
+  "categories": [
+    "Transportation",
+    "Financial Assistance",
+    "Recovery Support",
+    "Emergency Housing",
+    "Utility Assistance",
+    "Home Repair",
+    "Crisis Support",
+    "Employment Support"
+  ]
+}

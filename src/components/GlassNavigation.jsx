@@ -9,7 +9,20 @@ import {
   XMarkIcon, 
   HeartIcon, 
   HandRaisedIcon,
-  ChevronDownIcon 
+  ChevronDownIcon,
+  HomeIcon,
+  UserGroupIcon,
+  CurrencyDollarIcon,
+  DocumentTextIcon,
+  PhoneIcon,
+  InformationCircleIcon,
+  BuildingOffice2Icon,
+  CalendarDaysIcon,
+  QuestionMarkCircleIcon,
+  ShieldCheckIcon,
+  DocumentDuplicateIcon,
+  ExclamationTriangleIcon,
+  ChatBubbleLeftRightIcon
 } from "@heroicons/react/24/outline";
 import { NavItems } from '/src/data/navigation';
 
@@ -62,6 +75,57 @@ const GlassNavigation = memo(() => {
     setActiveDropdown(activeDropdown === itemName ? null : itemName);
   };
 
+  // Get appropriate icon and color for each section
+  const getSectionIcon = (heading) => {
+    const iconMap = {
+      // How We Help sections
+      'Our Services': HeartIcon,
+      'Common Barriers': ExclamationTriangleIcon,
+      'Success Stories': DocumentDuplicateIcon,
+      
+      // Get Involved sections  
+      'Support Our Mission': CurrencyDollarIcon,
+      'Partner With Us': BuildingOffice2Icon,
+      'Stay Connected': ChatBubbleLeftRightIcon,
+    };
+    
+    return iconMap[heading] || InformationCircleIcon;
+  };
+
+  // Get brand color for each section
+  const getSectionColor = (heading) => {
+    const colorMap = {
+      // How We Help sections
+      'Our Services': 'var(--ladder-red)',
+      'Common Barriers': 'var(--ladder-gold)',
+      'Success Stories': 'var(--ladder-green)',
+      
+      // Get Involved sections  
+      'Support Our Mission': 'var(--ladder-blue)',
+      'Partner With Us': 'var(--ladder-purple)',
+      'Stay Connected': 'var(--ladder-teal)',
+    };
+    
+    return colorMap[heading] || 'var(--ladder-blue)';
+  };
+
+  // Get glass background color for each section
+  const getSectionGlassColor = (heading) => {
+    const glassColorMap = {
+      // How We Help sections
+      'Our Services': 'glass-card-red',
+      'Common Barriers': 'glass-card-gold',
+      'Success Stories': 'glass-card-green',
+      
+      // Get Involved sections  
+      'Support Our Mission': 'glass-card',
+      'Partner With Us': 'glass-card-purple',
+      'Stay Connected': 'glass-card-teal',
+    };
+    
+    return glassColorMap[heading] || 'glass-card';
+  };
+
   return (
     <>
       {/* Main Navigation */}
@@ -74,13 +138,11 @@ const GlassNavigation = memo(() => {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center group">
-              <div className="glass-card-strong p-2 rounded-xl shadow-glass-sm group-hover:shadow-glass-md transition-all duration-300">
-                <img 
-                  src="/TheLadder/logos/The Ladder - Logo.png" 
-                  alt="The Ladder - A Helping Hand To People Who Are Climbing Up"
-                  className="h-8 w-auto sm:h-10"
-                />
-              </div>
+              <img 
+                src="/TheLadder/logos/The Ladder - Logo.png" 
+                alt="The Ladder - A Helping Hand To People Who Are Climbing Up"
+                className="h-12 w-auto sm:h-14 lg:h-16 group-hover:scale-105 transition-all duration-300"
+              />
             </Link>
 
             {/* Desktop Navigation */}
@@ -121,29 +183,81 @@ const GlassNavigation = memo(() => {
                         initial={{ opacity: 0, y: -10, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                        transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
-                        className="absolute top-full left-0 mt-2 glass-modal p-6 rounded-2xl shadow-glass-lg min-w-[600px]"
+                        transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                        className="absolute top-full left-0 mt-2 bg-white/90 backdrop-blur-xl border border-white/50 rounded-xl shadow-2xl w-[800px] overflow-hidden"
                       >
-                        <div className="grid grid-cols-3 gap-8">
-                          {item.sections.map((section) => (
-                            <div key={section.heading}>
-                              <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-3 font-heading">
-                                {section.heading}
-                              </h3>
-                              <ul className="space-y-2">
-                                {section.links.map((link) => (
-                                  <li key={link.href}>
-                                    <Link
-                                      href={link.href}
-                                      className="text-sm text-[var(--text-secondary)] hover:text-[var(--ladder-blue)] transition-colors duration-200 block py-1"
+                        {/* Branded header with gradient */}
+                        <div className="bg-gradient-to-r from-[var(--ladder-blue)]/12 via-[var(--ladder-red)]/8 to-[var(--ladder-green)]/6 px-4 py-3 border-b border-white/30">
+                          <h2 className="text-sm font-bold text-[var(--ladder-blue)] flex items-center">
+                            <div className="w-2 h-2 bg-[var(--ladder-red)] rounded-full mr-2"></div>
+                            {item.name}
+                          </h2>
+                        </div>
+                        
+                        <div className="p-4">
+                          <div className="grid grid-cols-3 gap-6">
+                            {item.sections.map((section, index) => (
+                              <div key={section.heading} className="relative">
+                                {/* Subtle divider */}
+                                {index > 0 && (
+                                  <div className="absolute left-0 top-0 w-px h-full bg-[var(--ladder-blue)]/15 -ml-3"></div>
+                                )}
+                                
+                                <div className={`${getSectionGlassColor(section.heading)} backdrop-blur-md border border-white/30 rounded-xl p-3 hover:scale-[1.02] transition-all duration-300 shadow-sm`}>
+                                  <div className="flex items-center mb-2">
+                                    {(() => {
+                                      const IconComponent = getSectionIcon(section.heading);
+                                      const sectionColor = getSectionColor(section.heading);
+                                      return (
+                                        <div 
+                                          className="w-5 h-5 mr-2 flex-shrink-0"
+                                          style={{ color: sectionColor }}
+                                        >
+                                          <IconComponent className="w-5 h-5" />
+                                        </div>
+                                      );
+                                    })()}
+                                    <h3 
+                                      className="text-xs font-bold uppercase tracking-wide"
+                                      style={{ color: getSectionColor(section.heading) }}
                                     >
-                                      {link.name}
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          ))}
+                                      {section.heading}
+                                    </h3>
+                                  </div>
+                                  
+                                  <ul className="space-y-1 ml-2">
+                                    {section.links.map((link) => (
+                                      <li key={link.href}>
+                                        <Link
+                                          href={link.href}
+                                          className="group flex items-center text-sm text-[var(--text-secondary)] hover:bg-white/60 transition-all duration-200 py-1.5 px-2 rounded-md"
+                                          style={{
+                                            '--hover-color': getSectionColor(section.heading)
+                                          }}
+                                        >
+                                          <div 
+                                            className="w-1 h-1 rounded-full mr-2 flex-shrink-0 transition-all duration-200 group-hover:scale-125"
+                                            style={{ 
+                                              backgroundColor: `${getSectionColor(section.heading)}40`,
+                                              '--group-hover-bg': getSectionColor(section.heading)
+                                            }}
+                                          ></div>
+                                          <span 
+                                            className="font-medium group-hover:font-semibold transition-all duration-200 text-ellipsis overflow-hidden"
+                                            style={{ color: 'inherit' }}
+                                            onMouseEnter={(e) => e.target.style.color = getSectionColor(section.heading)}
+                                            onMouseLeave={(e) => e.target.style.color = 'var(--text-secondary)'}
+                                          >
+                                            {link.name}
+                                          </span>
+                                        </Link>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       </motion.div>
                     )}
@@ -220,27 +334,61 @@ const GlassNavigation = memo(() => {
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: "auto" }}
                                 exit={{ opacity: 0, height: 0 }}
-                                transition={{ duration: 0.2 }}
-                                className="mt-2 pl-4 space-y-3"
+                                transition={{ duration: 0.3 }}
+                                className="mt-2 bg-white/85 backdrop-blur-md border border-white/40 rounded-lg p-3 shadow-lg"
                               >
-                                {item.sections.map((section) => (
-                                  <div key={section.heading}>
-                                    <h4 className="text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider mb-2">
-                                      {section.heading}
-                                    </h4>
-                                    <div className="space-y-1">
-                                      {section.links.map((link) => (
-                                        <Link
-                                          key={link.href}
-                                          href={link.href}
-                                          className="block py-2 text-sm text-[var(--text-secondary)] hover:text-[var(--ladder-blue)] transition-colors duration-200"
+                                <div className="space-y-3">
+                                  {item.sections.map((section, index) => (
+                                    <div key={section.heading}>
+                                      {index > 0 && <div className="border-t border-white/30 -mx-3 pt-3"></div>}
+                                      
+                                      <div className="flex items-center mb-2">
+                                        {(() => {
+                                          const IconComponent = getSectionIcon(section.heading);
+                                          const sectionColor = getSectionColor(section.heading);
+                                          return (
+                                            <div 
+                                              className="w-4 h-4 mr-2 flex-shrink-0"
+                                              style={{ color: sectionColor }}
+                                            >
+                                              <IconComponent className="w-4 h-4" />
+                                            </div>
+                                          );
+                                        })()}
+                                        <h4 
+                                          className="text-xs font-bold uppercase"
+                                          style={{ color: getSectionColor(section.heading) }}
                                         >
-                                          {link.name}
-                                        </Link>
-                                      ))}
+                                          {section.heading}
+                                        </h4>
+                                      </div>
+                                      
+                                      <div className="space-y-0.5 ml-2">
+                                        {section.links.map((link) => (
+                                          <Link
+                                            key={link.href}
+                                            href={link.href}
+                                            className="group flex items-center py-1.5 px-2 text-sm text-[var(--text-secondary)] hover:bg-white/60 rounded transition-all duration-200"
+                                          >
+                                            <div 
+                                              className="w-1 h-1 rounded-full mr-2 flex-shrink-0 transition-all duration-200 group-hover:scale-150"
+                                              style={{ 
+                                                backgroundColor: `${getSectionColor(section.heading)}40`
+                                              }}
+                                            ></div>
+                                            <span 
+                                              className="font-medium group-hover:font-semibold transition-all duration-200"
+                                              onMouseEnter={(e) => e.target.style.color = getSectionColor(section.heading)}
+                                              onMouseLeave={(e) => e.target.style.color = 'var(--text-secondary)'}
+                                            >
+                                              {link.name}
+                                            </span>
+                                          </Link>
+                                        ))}
+                                      </div>
                                     </div>
-                                  </div>
-                                ))}
+                                  ))}
+                                </div>
                               </motion.div>
                             )}
                           </AnimatePresence>

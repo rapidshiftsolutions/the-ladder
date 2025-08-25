@@ -1,7 +1,7 @@
 import GlassNavigation from '/src/components/GlassNavigation'
 import Footer from '/src/components/sitewide-footer'
-import { Heart, Star, CheckCircle, ArrowRight, Users, TrendingUp, Award, Quote } from 'lucide-react'
-import testimoniesData from '/src/data/testimonies.json'
+import { Heart, Star, CheckCircle, ArrowRight, Users, TrendingUp, Award, Quote, Filter, Search, Calendar, MapPin, UserCheck } from 'lucide-react'
+import ClientStoriesGrid from '/src/components/ClientStoriesGrid'
 
 export const metadata = {
   title: 'Success Stories | The Ladder Birmingham Impact & Testimonials',
@@ -36,7 +36,36 @@ export const metadata = {
 }
 
 export default function SuccessStoriesPage() {
-  const { featured, stories, partnerTestimonials, statistics } = testimoniesData
+  const impactStats = [
+    {
+      icon: Users,
+      number: "150+",
+      label: "People Helped",
+      description: "Birmingham residents assisted since 2021",
+      color: "var(--ladder-blue)"
+    },
+    {
+      icon: CheckCircle,
+      number: "87%",
+      label: "Success Rate",
+      description: "Barriers successfully removed",
+      color: "var(--ladder-green)"
+    },
+    {
+      icon: Calendar,
+      number: "24hr",
+      label: "Response Time",
+      description: "Average time to initial contact",
+      color: "var(--ladder-red)"
+    },
+    {
+      icon: Award,
+      number: "100%",
+      label: "Partner Referrals",
+      description: "Work with trusted nonprofit partners",
+      color: "var(--ladder-gold)"
+    }
+  ]
 
   return (
     <main className="flex min-h-screen flex-col bg-white">
@@ -44,255 +73,115 @@ export default function SuccessStoriesPage() {
       <div className="flex-1">
         
         {/* Hero Section */}
-        <section className="relative py-16 lg:py-20 bg-gradient-to-br from-[#2C3E50] to-[#34495E]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative py-16 lg:py-24 bg-gradient-to-br from-[var(--ladder-blue)] via-[var(--ladder-blue-light)] to-[var(--ladder-green)] overflow-hidden">
+          {/* Glass morphism background elements */}
+          <div className="absolute inset-0">
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-white/3 rounded-full blur-3xl"></div>
+            <div className="absolute top-2/3 left-2/3 w-64 h-64 bg-white/4 rounded-full blur-3xl"></div>
+          </div>
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-16">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
-                <span className="text-[#E74C3C]">Success</span> Stories
-              </h1>
-              <p className="text-xl sm:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed">
-                Every barrier removed represents a life changed. These are the stories of Birmingham residents 
-                who found their path forward through The Ladder's assistance and our partner network.
-              </p>
+              <div className="glass-card bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 lg:p-12 shadow-2xl">
+                <Quote className="h-16 w-16 mx-auto mb-6 text-white" />
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+                  Real <span className="text-[var(--ladder-red)]">Success</span> Stories
+                </h1>
+                <p className="text-xl sm:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-8">
+                  Every barrier removed represents a life changed. These are the stories of Birmingham residents 
+                  who found their path forward through The Ladder's assistance and our partner network.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <a 
+                    href="/get-help"
+                    className="glass-button-accent inline-flex items-center justify-center px-8 py-3 bg-[var(--ladder-red)]/90 backdrop-blur-md text-white font-semibold rounded-xl border border-white/30 hover:bg-[var(--ladder-red)] transition-all duration-300"
+                  >
+                    <Heart className="w-5 h-5 mr-2" />
+                    Start Your Success Story
+                  </a>
+                  <a 
+                    href="#stories"
+                    className="glass-button-secondary inline-flex items-center justify-center px-8 py-3 bg-white/15 backdrop-blur-md text-white font-semibold rounded-xl border border-white/30 hover:bg-white/25 transition-all duration-300"
+                  >
+                    Read Stories Below
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </a>
+                </div>
+              </div>
             </div>
 
             {/* Impact Stats */}
-            <div className="grid md:grid-cols-4 gap-8 mb-16">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-[#E74C3C] mb-2">{statistics.successRate}%</div>
-                <div className="text-white/80">Success Rate</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-[#E74C3C] mb-2">{statistics.averageBarriersPerPerson}</div>
-                <div className="text-white/80">Avg. Barriers Removed</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-[#E74C3C] mb-2">{statistics.averageResolutionTime}</div>
-                <div className="text-white/80">Avg. Resolution Time</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-[#E74C3C] mb-2">{statistics.longTermStability}%</div>
-                <div className="text-white/80">Long-term Stability</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Featured Success Story */}
-        <section className="py-16 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl font-bold text-[#1A1A1A] mb-4">
-                Featured Success Story
-              </h2>
-              <p className="text-xl text-[#4A5568] max-w-3xl mx-auto">
-                Real people, real barriers, real solutions
-              </p>
-            </div>
-
-            <div className="bg-white rounded-2xl border border-gray-200 p-8 lg:p-12">
-              <div className="grid lg:grid-cols-3 gap-8 items-center">
-                <div className="lg:col-span-2">
-                  <div className="flex items-center mb-6">
-                    <Quote className="w-8 h-8 text-[#E74C3C] mr-3" />
-                    <h3 className="text-2xl font-bold text-[#1A1A1A]">
-                      {featured.title}
-                    </h3>
-                  </div>
-                  <div className="space-y-4 text-[#4A5568]">
-                    {featured.fullTestimony.map((paragraph, index) => (
-                      <p key={index} className="text-lg leading-relaxed">
-                        "{paragraph}"
-                      </p>
-                    ))}
-                  </div>
-                  <div className="mt-6 pt-6 border-t border-gray-200">
-                    <p className="text-sm text-[#4A5568]">
-                      <strong className="text-[#1A1A1A]">{featured.name}, Birmingham resident</strong> • 
-                      Barriers removed: {featured.barriers.join(', ')} • 
-                      Time to resolution: {featured.timeframe}
-                    </p>
-                  </div>
-                </div>
-                <div>
-                  <div className="bg-gray-50 rounded-xl p-6">
-                    <h4 className="text-xl font-semibold text-[#1A1A1A] mb-4">Outcome Highlights</h4>
-                    <div className="space-y-3">
-                      {featured.outcomes.map((outcome, index) => (
-                        <div key={index} className="flex items-center gap-3">
-                          <CheckCircle className="w-5 h-5 text-[#E74C3C] flex-shrink-0" />
-                          <span className="text-[#4A5568] text-sm">{outcome}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Success Stories Grid */}
-        <section className="py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl font-bold text-[#1A1A1A] mb-4">
-                More Success Stories
-              </h2>
-              <p className="text-xl text-[#4A5568] max-w-3xl mx-auto">
-                Each story represents someone who refused to give up and found the help they needed
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {stories.map((story, index) => (
-                <div key={story.id} className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 bg-[#E74C3C]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Heart className="w-6 h-6 text-[#E74C3C]" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-[#1A1A1A] mb-2">{story.title}</h3>
-                      <p className="text-sm text-[#4A5568]">{story.category}</p>
-                    </div>
-                  </div>
-                  <blockquote className="text-[#4A5568] mb-4 leading-relaxed">
-                    "{story.quote}"
-                  </blockquote>
-                  <div className="pt-4 border-t border-gray-100">
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-[#4A5568]">
-                        <strong className="text-[#1A1A1A]">{story.name}</strong> • {story.currentStatus.split(',')[0]}
-                      </span>
-                      <div className="flex items-center gap-1">
-                        {[...Array(story.rating)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 text-[#E74C3C] fill-current" />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {impactStats.map((stat, index) => (
+                <div key={index} className="glass-card bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 text-center shadow-xl hover:bg-white/15 transition-all duration-300">
+                  <stat.icon className="h-12 w-12 mx-auto mb-4 text-white" />
+                  <div className="text-3xl font-bold text-white mb-2">{stat.number}</div>
+                  <div className="text-white/90 font-semibold mb-1">{stat.label}</div>
+                  <div className="text-sm text-white/70">{stat.description}</div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Impact by the Numbers */}
-        <section className="py-16 bg-gray-50">
+        {/* Success Stories Grid Section */}
+        <section id="stories" className="relative py-16 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
+          {/* Glass morphism background elements */}
+          <div className="absolute inset-0">
+            <div className="absolute top-1/3 left-1/5 w-72 h-72 bg-[var(--ladder-blue)]/5 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-1/3 right-1/5 w-80 h-80 bg-[var(--ladder-red)]/5 rounded-full blur-3xl"></div>
+          </div>
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-6">
+                Stories of <span className="text-[var(--ladder-red)]">Transformation</span>
+              </h2>
+              <p className="text-xl text-[var(--text-secondary)] max-w-4xl mx-auto leading-relaxed">
+                Each story represents someone who refused to give up and found the help they needed to overcome life's barriers. 
+                These are real people with real challenges who found real solutions through The Ladder's partnership network.
+              </p>
+            </div>
+
+            {/* Client Stories Grid Component */}
+            <ClientStoriesGrid />
+          </div>
+        </section>
+
+        {/* Impact Categories */}
+        <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl font-bold text-[#1A1A1A] mb-4">
-                Impact by the Numbers
+              <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-6">
+                Types of Barriers We Address
               </h2>
-              <p className="text-xl text-[#4A5568] max-w-3xl mx-auto">
-                These statistics represent real lives changed and barriers overcome in Birmingham
+              <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
+                Every individual faces unique challenges. Here are the most common barriers we help remove.
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {/* People Helped */}
-              <div className="text-center">
-                <div className="w-16 h-16 bg-[#E74C3C]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-8 h-8 text-[#E74C3C]" />
-                </div>
-                <div className="text-3xl font-bold text-[#E74C3C] mb-2">{statistics.totalIndividuals}+</div>
-                <div className="text-[#4A5568] text-sm">Individuals Assisted</div>
-                <div className="text-xs text-[#4A5568] mt-1">Since founding</div>
-              </div>
-
-              {/* Barriers Removed */}
-              <div className="text-center">
-                <div className="w-16 h-16 bg-[#E74C3C]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle className="w-8 h-8 text-[#E74C3C]" />
-                </div>
-                <div className="text-3xl font-bold text-[#E74C3C] mb-2">{statistics.totalBarriers.toLocaleString()}+</div>
-                <div className="text-[#4A5568] text-sm">Barriers Removed</div>
-                <div className="text-xs text-[#4A5568] mt-1">Multiple barriers per person</div>
-              </div>
-
-              {/* Partner Referrals */}
-              <div className="text-center">
-                <div className="w-16 h-16 bg-[#E74C3C]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <Heart className="w-8 h-8 text-[#E74C3C]" />
-                </div>
-                <div className="text-3xl font-bold text-[#E74C3C] mb-2">{statistics.successfulReferrals.toLocaleString()}+</div>
-                <div className="text-[#4A5568] text-sm">Successful Referrals</div>
-                <div className="text-xs text-[#4A5568] mt-1">To partner organizations</div>
-              </div>
-
-              {/* Success Rate */}
-              <div className="text-center">
-                <div className="w-16 h-16 bg-[#E74C3C]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <Award className="w-8 h-8 text-[#E74C3C]" />
-                </div>
-                <div className="text-3xl font-bold text-[#E74C3C] mb-2">{statistics.successRate}%</div>
-                <div className="text-[#4A5568] text-sm">Success Rate</div>
-                <div className="text-xs text-[#4A5568] mt-1">Barriers successfully resolved</div>
-              </div>
-            </div>
-
-            {/* Breakdown by Barrier Type */}
-            <div className="mt-16">
-              <h3 className="text-2xl font-bold text-[#1A1A1A] mb-8 text-center">
-                Most Common Barriers Addressed
-              </h3>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {Object.entries(statistics.barrierTypes).map(([key, percentage]) => {
-                  const labels = {
-                    transportation: 'Transportation',
-                    housingUtilities: 'Housing & Utilities', 
-                    employmentIncome: 'Employment & Income',
-                    healthcareMedical: 'Healthcare & Medical',
-                    debtFinancial: 'Debt & Financial',
-                    familySupport: 'Family Support',
-                    recoveryAddiction: 'Recovery & Addiction',
-                    educationTraining: 'Education & Training'
-                  }
-                  return (
-                    <div key={key} className="bg-white rounded-lg p-4">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-[#1A1A1A] font-medium">{labels[key]}</span>
-                        <span className="text-[#E74C3C] font-semibold">{percentage}%</span>
-                      </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div className="bg-[#E74C3C] h-2 rounded-full" style={{width: `${percentage}%`}}></div>
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Partner Testimonials */}
-        <section className="py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl font-bold text-[#1A1A1A] mb-4">
-                What Our Partners Say
-              </h2>
-              <p className="text-xl text-[#4A5568] max-w-3xl mx-auto">
-                Partner organizations share how The Ladder improves outcomes for everyone
-              </p>
-            </div>
-
-            <div className="grid lg:grid-cols-2 gap-8">
-              {partnerTestimonials.map((partner, index) => (
-                <div key={index} className="bg-white rounded-xl p-8 border border-gray-200">
-                  <div className="flex items-start gap-4 mb-6">
-                    <Quote className="w-8 h-8 text-[#E74C3C] flex-shrink-0" />
-                    <div>
-                      <h3 className="text-xl font-semibold text-[#1A1A1A] mb-1">{partner.organization}</h3>
-                      <p className="text-sm text-[#4A5568]">{partner.program}</p>
-                    </div>
+              {[
+                { category: "Transportation", percentage: 28, description: "Vehicle repairs, rentals, purchases" },
+                { category: "Financial Assistance", percentage: 24, description: "Emergency funds, debt relief, bills" },
+                { category: "Emergency Housing", percentage: 18, description: "Rent assistance, deposits, utilities" },
+                { category: "Recovery Support", percentage: 12, description: "Rehabilitation, counseling, life coaching" },
+                { category: "Employment Support", percentage: 8, description: "Equipment, training, certifications" },
+                { category: "Crisis Support", percentage: 6, description: "Emergency intervention, multiple barriers" },
+                { category: "Home Repair", percentage: 3, description: "Safety improvements, essential repairs" },
+                { category: "Utility Assistance", percentage: 1, description: "Water, power, heating bills" }
+              ].map((item, index) => (
+                <div key={index} className="glass-card bg-white/60 backdrop-blur-xl border border-white/40 rounded-2xl p-6 shadow-xl hover:bg-white/80 transition-all duration-300">
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-[var(--ladder-blue)] mb-2">{item.percentage}%</div>
+                    <h3 className="font-semibold text-[var(--text-primary)] mb-2">{item.category}</h3>
+                    <p className="text-sm text-[var(--text-secondary)]">{item.description}</p>
                   </div>
-                  <blockquote className="text-[#4A5568] leading-relaxed mb-6">
-                    "{partner.testimonial}"
-                  </blockquote>
-                  <div className="text-sm">
-                    <p className="text-[#1A1A1A] font-medium">{partner.contactName}, {partner.title}</p>
-                    <p className="text-[#4A5568]">{partner.organization}</p>
+                  <div className="mt-4">
+                    <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="bg-[var(--ladder-red)] h-2 rounded-full transition-all duration-1000" style={{width: `${item.percentage}%`}}></div>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -300,14 +189,60 @@ export default function SuccessStoriesPage() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-16 bg-[#2C3E50]">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 p-8 lg:p-12">
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-                Your Success Story Starts Here
+        {/* Partner Impact */}
+        <section className="py-16 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-6">
+                Partnership Impact
               </h2>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
+                Our success comes from working alongside Birmingham's trusted nonprofit organizations
+              </p>
+            </div>
+
+            <div className="glass-card bg-white/70 backdrop-blur-xl border border-white/50 rounded-3xl p-8 lg:p-12 shadow-2xl">
+              <div className="grid lg:grid-cols-3 gap-8 items-center">
+                <div className="lg:col-span-2">
+                  <Quote className="w-12 h-12 text-[var(--ladder-red)] mb-6" />
+                  <blockquote className="text-xl text-[var(--text-secondary)] leading-relaxed mb-6 italic">
+                    "Grace Klein Community is thankful for our partnership with The Ladder. When one of our long-term volunteers found herself in a difficult financial situation after taking in extra people and facing personal illness, The Ladder assisted her with a water bill. The Ladder empowered our volunteer to continue living out Jesus' teachings in John 15:13, 'Greater love has no one than this: to lay down one's life for one's friends.'"
+                  </blockquote>
+                  <div className="text-[var(--text-primary)]">
+                    <p className="font-semibold">Jenny Waltman</p>
+                    <p className="text-[var(--text-secondary)]">Grace Klein Community</p>
+                  </div>
+                </div>
+                <div className="glass-card bg-white/60 backdrop-blur-xl border border-white/40 rounded-2xl p-6">
+                  <h3 className="font-bold text-[var(--text-primary)] mb-4">Partnership Benefits</h3>
+                  <div className="space-y-3">
+                    {[
+                      "Fill gaps in services",
+                      "Extend impact reach", 
+                      "Provide specialized help",
+                      "Maintain relationships",
+                      "Ensure accountability"
+                    ].map((benefit, index) => (
+                      <div key={index} className="flex items-center gap-3">
+                        <CheckCircle className="w-5 h-5 text-[var(--ladder-green)] flex-shrink-0" />
+                        <span className="text-[var(--text-secondary)]">{benefit}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Call to Action */}
+        <section className="py-16 bg-[var(--ladder-blue)]">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="glass-card bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 lg:p-12 shadow-2xl">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+                Ready to Write Your Success Story?
+              </h2>
+              <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
                 Every success story began with someone taking the first step to ask for help. 
                 What barriers are preventing your success? Let's work together to remove them.
               </p>
@@ -315,22 +250,22 @@ export default function SuccessStoriesPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <a 
                   href="/get-help"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-[#E74C3C] text-white font-bold rounded-lg hover:bg-[#C0392B] transition-all duration-300 text-lg"
+                  className="glass-button-accent inline-flex items-center justify-center px-8 py-4 bg-[var(--ladder-red)]/90 backdrop-blur-md text-white font-bold rounded-xl border border-white/30 hover:bg-[var(--ladder-red)] transition-all duration-300 text-lg"
                 >
                   <Heart className="w-5 h-5 mr-2" />
-                  Start Your Success Story
+                  Apply for Help
                 </a>
                 <a 
                   href="/donate"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/30 text-white font-medium rounded-lg hover:bg-white/20 transition-all duration-300 text-lg"
+                  className="glass-button-secondary inline-flex items-center justify-center px-8 py-4 bg-white/15 backdrop-blur-md border border-white/30 text-white font-semibold rounded-xl hover:bg-white/25 transition-all duration-300 text-lg"
                 >
                   <TrendingUp className="w-5 h-5 mr-2" />
-                  Help Create More Success Stories
+                  Support More Success Stories
                 </a>
               </div>
 
               <div className="text-sm text-white/80">
-                <strong className="text-white">Join our success stories.</strong> 
+                <strong className="text-white">Join our community of success stories.</strong> 
                 All services are free, confidential, and designed to create lasting change.
               </div>
             </div>
@@ -340,11 +275,11 @@ export default function SuccessStoriesPage() {
         {/* Privacy Notice */}
         <section className="py-8 bg-gray-50">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-white rounded-lg p-6 text-center">
-              <p className="text-sm text-[#4A5568]">
-                <strong className="text-[#1A1A1A]">Privacy Protection:</strong> All success stories are shared with explicit written consent. 
+            <div className="glass-card bg-white/80 backdrop-blur-xl border border-white/60 rounded-2xl p-6 text-center shadow-lg">
+              <p className="text-sm text-[var(--text-secondary)]">
+                <strong className="text-[var(--text-primary)]">Privacy Protection:</strong> All success stories are shared with explicit written consent. 
                 Names may be changed to protect privacy while maintaining the authenticity of each story. 
-                If you'd like to share your success story, <a href="/contact" className="text-[#E74C3C] hover:text-[#C0392B]">contact us</a>.
+                Photos are used with permission. If you'd like to share your success story, <a href="/contact" className="text-[var(--ladder-red)] hover:text-[var(--ladder-red)]/80 transition-colors">contact us</a>.
               </p>
             </div>
           </div>
