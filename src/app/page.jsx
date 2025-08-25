@@ -1,4 +1,4 @@
-import Navbar from '/src/components/sitewide-navbar'
+import GlassNavigation from '/src/components/GlassNavigation'
 import LadderHero from '/src/components/page-landing-hero-ladder'
 import HowWeHelpSection from '/src/components/how-we-help-content'
 import SuccessStories from '/src/components/success-stories-reviews'
@@ -71,8 +71,9 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col">
-      <Navbar />
+    <>
+      <GlassNavigation />
+      <main className="flex min-h-screen flex-col">
       
       {/* Hero Section */}
       <LadderHero />
@@ -86,33 +87,41 @@ export default function Home() {
       {/* Donation Section */}
       <DonationSection />
       
-      {/* Get Help Form Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+      {/* Get Help Form Section with Glass Morphism */}
+      <section className="py-24 bg-gradient-to-br from-[var(--ladder-blue)]/5 via-white to-[var(--ladder-green)]/5 relative overflow-hidden">
+        {/* Background glass elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 right-10 w-40 h-40 glass-card-blue rounded-full blur-2xl"></div>
+          <div className="absolute bottom-20 left-20 w-32 h-32 glass-card-green rounded-full blur-xl"></div>
+        </div>
+        
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="glass-card-strong p-8 lg:p-12 rounded-3xl shadow-glass-lg mb-12 text-center">
+            <h2 className="text-3xl sm:text-4xl font-bold font-heading text-[var(--text-primary)] mb-6">
               Need Help Overcoming a <span className="text-[var(--ladder-red)]">Barrier?</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-[var(--text-secondary)] max-w-2xl mx-auto mb-8">
               Apply for assistance or refer someone who needs help. We partner with nonprofits to provide individual barrier removal support.
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
                 href="/get-help" 
-                className="inline-flex items-center px-6 py-3 bg-[var(--ladder-red)] text-white font-semibold rounded-lg hover:bg-[var(--ladder-red)]/90 transition-colors"
+                className="glass-button-accent text-lg px-8 py-4 rounded-xl shadow-glass-md hover:shadow-glass-lg transform hover:scale-105 transition-all duration-300"
               >
                 Apply for Help
               </a>
               <a 
                 href="/donate" 
-                className="inline-flex items-center px-6 py-3 border border-[var(--ladder-gold)] text-[var(--ladder-gold)] font-semibold rounded-lg hover:bg-[var(--ladder-gold)] hover:text-white transition-colors"
+                className="glass-button-secondary text-lg px-8 py-4 rounded-xl shadow-glass-md hover:shadow-glass-lg transform hover:scale-105 transition-all duration-300"
               >
                 Donate Now
               </a>
             </div>
           </div>
           
-          <ContactForm />
+          <div className="glass-card p-8 rounded-3xl shadow-glass-md">
+            <ContactForm />
+          </div>
         </div>
       </section>
       
@@ -133,7 +142,8 @@ export default function Home() {
       
       {/* Footer */}
       <Footer />
-    </main>
+      </main>
+    </>
   )
 }
 

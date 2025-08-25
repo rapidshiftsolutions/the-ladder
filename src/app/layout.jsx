@@ -1,5 +1,5 @@
 // layout.jsx (Server Component)
-import '/src/styles/tailwind.css';
+import './globals.css';
 import Script from 'next/script';
 import DOMOptimizer from '/src/components/DOMOptimizer';
 import ErrorBoundary from '/src/components/ErrorBoundary';
