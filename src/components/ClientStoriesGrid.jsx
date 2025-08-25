@@ -15,7 +15,7 @@ export default function ClientStoriesGrid() {
   const categories = [...new Set(stories.map(story => story.category))]
 
   const filteredStories = useMemo(() => {
-    return stories.filter(story => {
+    const filtered = stories.filter(story => {
       const matchesCategory = selectedCategory === 'All' || story.category === selectedCategory
       const matchesSearch = !searchTerm || 
         story.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -26,6 +26,13 @@ export default function ClientStoriesGrid() {
         story.situation.toLowerCase().includes(searchTerm.toLowerCase())
       
       return matchesCategory && matchesSearch
+    })
+    
+    // Sort to prioritize stories with images first
+    return filtered.sort((a, b) => {
+      const aHasImage = a.image ? 1 : 0
+      const bHasImage = b.image ? 1 : 0
+      return bHasImage - aHasImage // Stories with images first
     })
   }, [stories, selectedCategory, searchTerm])
 
@@ -125,30 +132,30 @@ export default function ClientStoriesGrid() {
         </div>
       </div>
 
-      {/* iOS-style Full Stories - Single Column */}
-      <div className="space-y-12 mb-16">
+      {/* iOS-style Condensed Stories - Single Column */}
+      <div className="space-y-8 mb-16">
         {filteredStories.slice(0, visibleStories).map((story, index) => (
           <article 
             key={story.id} 
-            className="group transition-all duration-500 hover:scale-[1.01] overflow-hidden"
+            className="group transition-all duration-300 hover:scale-[1.01] overflow-hidden"
             style={{
               background: 'rgba(255, 255, 255, 0.7)',
               backdropFilter: 'blur(30px)',
               WebkitBackdropFilter: 'blur(30px)',
               border: '1px solid rgba(255, 255, 255, 0.18)',
-              borderRadius: '32px',
+              borderRadius: '24px',
               boxShadow: `
-                0 20px 60px rgba(0, 0, 0, 0.12),
+                0 8px 32px rgba(0, 0, 0, 0.12),
                 inset 0 1px 0 rgba(255, 255, 255, 0.3)
               `
             }}
           >
-            {/* Story Header with Image */}
-            <div className="grid lg:grid-cols-12 gap-8 p-8 lg:p-12">
-              {/* Story Image */}
-              <div className="lg:col-span-4">
+            {/* Condensed Story Layout */}
+            <div className="grid lg:grid-cols-3 gap-6 p-6">
+              {/* Story Image - Smaller */}
+              <div className="lg:col-span-1">
                 {story.image ? (
-                  <div className="relative aspect-[4/3] rounded-3xl overflow-hidden" style={{ border: '2px solid rgba(255, 255, 255, 0.6)' }}>
+                  <div className="relative aspect-square rounded-2xl overflow-hidden" style={{ border: '2px solid rgba(255, 255, 255, 0.6)' }}>
                     <Image 
                       src={`/TheLadder/photos/${story.image}`}
                       alt={`${story.name} - Success Story`}
@@ -156,13 +163,12 @@ export default function ClientStoriesGrid() {
                       className="object-cover"
                       sizes="(max-width: 1024px) 100vw, 33vw"
                       onError={(e) => {
-                        // Fallback to placeholder if image fails to load
                         e.target.style.display = 'none'
                         e.target.nextElementSibling.style.display = 'flex'
                       }}
                     />
                     <div 
-                      className="absolute inset-0 rounded-3xl hidden items-center justify-center flex-col"
+                      className="absolute inset-0 rounded-2xl hidden items-center justify-center flex-col"
                       style={{
                         background: 'rgba(0, 122, 255, 0.1)',
                         backdropFilter: 'blur(20px)',
@@ -170,13 +176,13 @@ export default function ClientStoriesGrid() {
                         border: '1px solid rgba(0, 122, 255, 0.2)'
                       }}
                     >
-                      <User className="w-16 h-16 mb-4" style={{ color: '#007AFF' }} />
-                      <p className="text-base font-medium" style={{ color: '#007AFF' }}>{story.name}</p>
+                      <User className="w-8 h-8 mb-2" style={{ color: '#007AFF' }} />
+                      <p className="text-sm font-medium" style={{ color: '#007AFF' }}>{story.name}</p>
                     </div>
                   </div>
                 ) : (
                   <div 
-                    className="aspect-[4/3] rounded-3xl flex items-center justify-center flex-col"
+                    className="aspect-square rounded-2xl flex items-center justify-center flex-col"
                     style={{
                       background: 'rgba(0, 122, 255, 0.1)',
                       backdropFilter: 'blur(20px)',
@@ -184,183 +190,107 @@ export default function ClientStoriesGrid() {
                       border: '1px solid rgba(0, 122, 255, 0.2)'
                     }}
                   >
-                    <User className="w-16 h-16 mb-4" style={{ color: '#007AFF' }} />
-                    <p className="text-base font-medium" style={{ color: '#007AFF' }}>{story.name}</p>
+                    <User className="w-8 h-8 mb-2" style={{ color: '#007AFF' }} />
+                    <p className="text-sm font-medium" style={{ color: '#007AFF' }}>{story.name}</p>
                   </div>
                 )}
               </div>
 
-              {/* Story Content */}
-              <div className="lg:col-span-8">
+              {/* Story Content - Condensed */}
+              <div className="lg:col-span-2 space-y-4">
                 {/* Header */}
-                <div className="flex items-start justify-between mb-8">
-                  <div>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div 
-                        className="px-4 py-2 rounded-2xl text-sm font-semibold"
-                        style={{
-                          background: 'rgba(52, 199, 89, 0.1)',
-                          color: '#34C759',
-                          border: '1px solid rgba(52, 199, 89, 0.2)'
-                        }}
-                      >
-                        {getCategoryIcon(story.category)} {story.category}
-                      </div>
-                      <div 
-                        className="px-3 py-1.5 rounded-2xl text-sm font-medium"
-                        style={{
-                          background: 'rgba(255, 255, 255, 0.5)',
-                          backdropFilter: 'blur(10px)',
-                          WebkitBackdropFilter: 'blur(10px)',
-                          color: '#86868b'
-                        }}
-                      >
-                        {story.timeframe}
-                      </div>
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <div 
+                      className="px-3 py-1 rounded-xl text-xs font-semibold"
+                      style={{
+                        background: 'rgba(52, 199, 89, 0.1)',
+                        color: '#34C759',
+                        border: '1px solid rgba(52, 199, 89, 0.2)'
+                      }}
+                    >
+                      {getCategoryIcon(story.category)} {story.category}
                     </div>
-                    <h2 className="text-3xl lg:text-4xl font-bold mb-2" style={{ color: '#1d1d1f' }}>
-                      {story.title || `${story.name}'s Success Story`}
-                    </h2>
-                    <div className="flex gap-1 mb-4">
+                    <div className="flex gap-0.5">
                       {[...Array(5)].map((_, i) => (
                         <Star 
                           key={i} 
-                          className={`w-5 h-5 ${i < story.rating ? 'fill-current text-yellow-500' : 'text-gray-300'}`}
+                          className={`w-3 h-3 ${i < story.rating ? 'fill-current text-yellow-500' : 'text-gray-300'}`}
                         />
                       ))}
                     </div>
                   </div>
+                  <h2 className="text-xl font-bold mb-2" style={{ color: '#1d1d1f' }}>
+                    {story.title || `${story.name}'s Story`}
+                  </h2>
                 </div>
 
-                {/* Situation */}
-                <div 
-                  className="p-6 rounded-3xl mb-8"
-                  style={{
-                    background: 'rgba(0, 122, 255, 0.05)',
-                    border: '1px solid rgba(0, 122, 255, 0.1)'
-                  }}
-                >
-                  <h3 className="text-lg font-bold mb-3" style={{ color: '#007AFF' }}>
-                    The Situation
-                  </h3>
-                  <p className="text-base leading-relaxed" style={{ color: '#4a5568' }}>
-                    {story.situation}
-                  </p>
-                </div>
-
-                {/* Full Quote */}
-                <div className="relative mb-8">
-                  <Quote className="w-12 h-12 absolute -top-3 -left-3 opacity-15" style={{ color: '#FF3B30' }} />
+                {/* Quote - Condensed */}
+                <div className="relative">
+                  <Quote className="w-6 h-6 absolute -top-1 -left-1 opacity-20" style={{ color: '#FF3B30' }} />
                   <blockquote 
-                    className="text-xl lg:text-2xl leading-relaxed pl-8 italic font-medium"
-                    style={{ color: '#1d1d1f' }}
+                    className="text-base leading-relaxed pl-5 italic"
+                    style={{ color: '#4a5568' }}
                   >
-                    "{story.quote}"
+                    "{story.quote.length > 200 ? `${story.quote.substring(0, 200)}...` : story.quote}"
                   </blockquote>
-                  <div className="mt-4 pl-8">
-                    <cite className="text-lg font-semibold not-italic" style={{ color: '#007AFF' }}>
-                      — {story.name}
-                    </cite>
+                  <cite className="text-sm font-semibold not-italic mt-2 block pl-5" style={{ color: '#007AFF' }}>
+                    — {story.name}
+                  </cite>
+                </div>
+
+                {/* Compact Barriers & Outcomes */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Barriers - Compact */}
+                  <div 
+                    className="p-4 rounded-2xl"
+                    style={{
+                      background: 'rgba(255, 59, 48, 0.05)',
+                      border: '1px solid rgba(255, 59, 48, 0.1)'
+                    }}
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <Target className="w-4 h-4" style={{ color: '#FF3B30' }} />
+                      <h3 className="text-sm font-bold" style={{ color: '#FF3B30' }}>
+                        Barriers
+                      </h3>
+                    </div>
+                    <p className="text-xs leading-relaxed" style={{ color: '#4a5568' }}>
+                      {story.barriers.slice(0, 2).join(', ')}{story.barriers.length > 2 ? '...' : ''}
+                    </p>
                   </div>
+
+                  {/* Outcomes - Compact */}
+                  <div 
+                    className="p-4 rounded-2xl"
+                    style={{
+                      background: 'rgba(52, 199, 89, 0.05)',
+                      border: '1px solid rgba(52, 199, 89, 0.1)'
+                    }}
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <CheckCircle className="w-4 h-4" style={{ color: '#34C759' }} />
+                      <h3 className="text-sm font-bold" style={{ color: '#34C759' }}>
+                        Success
+                      </h3>
+                    </div>
+                    <p className="text-xs leading-relaxed" style={{ color: '#4a5568' }}>
+                      {story.currentStatus || story.outcomes[0]}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Timeframe */}
+                <div className="flex items-center justify-between pt-2 border-t" style={{ borderColor: 'rgba(255, 255, 255, 0.3)' }}>
+                  <span className="text-xs" style={{ color: '#86868b' }}>
+                    <Clock className="w-3 h-3 inline mr-1" />
+                    {story.timeframe}
+                  </span>
+                  <span className="text-xs" style={{ color: '#86868b' }}>
+                    Birmingham, AL
+                  </span>
                 </div>
               </div>
-            </div>
-
-            {/* Barriers & Outcomes Section */}
-            <div 
-              className="p-8 lg:p-12"
-              style={{
-                background: 'rgba(255, 255, 255, 0.4)',
-                backdropFilter: 'blur(20px)',
-                WebkitBackdropFilter: 'blur(20px)',
-                borderTop: '1px solid rgba(255, 255, 255, 0.3)'
-              }}
-            >
-              <div className="grid lg:grid-cols-2 gap-8">
-                {/* Barriers */}
-                <div 
-                  className="p-6 rounded-3xl"
-                  style={{
-                    background: 'rgba(255, 59, 48, 0.05)',
-                    border: '1px solid rgba(255, 59, 48, 0.1)'
-                  }}
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <Target className="w-6 h-6" style={{ color: '#FF3B30' }} />
-                    <h3 className="text-xl font-bold" style={{ color: '#FF3B30' }}>
-                      Barriers Faced
-                    </h3>
-                  </div>
-                  <ul className="space-y-3">
-                    {story.barriers.map((barrier, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <div 
-                          className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
-                          style={{ background: '#FF3B30' }}
-                        />
-                        <span className="text-base leading-relaxed" style={{ color: '#4a5568' }}>
-                          {barrier}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Outcomes */}
-                <div 
-                  className="p-6 rounded-3xl"
-                  style={{
-                    background: 'rgba(52, 199, 89, 0.05)',
-                    border: '1px solid rgba(52, 199, 89, 0.1)'
-                  }}
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <Award className="w-6 h-6" style={{ color: '#34C759' }} />
-                    <h3 className="text-xl font-bold" style={{ color: '#34C759' }}>
-                      Outcomes Achieved
-                    </h3>
-                  </div>
-                  <ul className="space-y-3">
-                    {story.outcomes.map((outcome, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: '#34C759' }} />
-                        <span className="text-base leading-relaxed" style={{ color: '#4a5568' }}>
-                          {outcome}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              {/* Current Status */}
-              {story.currentStatus && (
-                <div 
-                  className="mt-8 p-6 rounded-3xl text-center"
-                  style={{
-                    background: 'rgba(0, 122, 255, 0.05)',
-                    border: '1px solid rgba(0, 122, 255, 0.1)'
-                  }}
-                >
-                  <Clock className="w-8 h-8 mx-auto mb-3" style={{ color: '#007AFF' }} />
-                  <h4 className="text-lg font-bold mb-2" style={{ color: '#007AFF' }}>
-                    Current Status
-                  </h4>
-                  <p className="text-base leading-relaxed" style={{ color: '#4a5568' }}>
-                    {story.currentStatus}
-                  </p>
-                </div>
-              )}
-
-              {/* Partner Organizations */}
-              {story.partnerOrganizations && story.partnerOrganizations.length > 0 && (
-                <div className="mt-6 text-center">
-                  <p className="text-sm" style={{ color: '#86868b' }}>
-                    <strong style={{ color: '#1d1d1f' }}>Partner Organizations:</strong>{' '}
-                    {story.partnerOrganizations.join(', ')}
-                  </p>
-                </div>
-              )}
             </div>
           </article>
         ))}
@@ -436,56 +366,6 @@ export default function ClientStoriesGrid() {
         </div>
       )}
 
-      {/* iOS-style Category Statistics - Mobile Hidden, Desktop Visible */}
-      <div className="hidden lg:block mt-20">
-        <div 
-          className="p-12 rounded-3xl"
-          style={{
-            background: 'rgba(255, 255, 255, 0.6)',
-            backdropFilter: 'blur(30px)',
-            WebkitBackdropFilter: 'blur(30px)',
-            border: '1px solid rgba(255, 255, 255, 0.18)',
-            boxShadow: `
-              0 8px 32px rgba(0, 0, 0, 0.12),
-              inset 0 1px 0 rgba(255, 255, 255, 0.3)
-            `
-          }}
-        >
-          <h3 className="text-3xl font-bold mb-10 text-center" style={{ color: '#1d1d1f' }}>
-            Stories by Category
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {categories.map(category => {
-              const count = stories.filter(story => story.category === category).length
-              const percentage = Math.round((count / stories.length) * 100)
-              return (
-                <div 
-                  key={category} 
-                  className="text-center p-6 rounded-3xl transition-all duration-300 hover:scale-105"
-                  style={{
-                    background: 'rgba(255, 255, 255, 0.5)',
-                    backdropFilter: 'blur(20px)',
-                    WebkitBackdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255, 255, 255, 0.3)',
-                    boxShadow: `
-                      0 4px 16px rgba(0, 0, 0, 0.08),
-                      inset 0 1px 0 rgba(255, 255, 255, 0.3)
-                    `
-                  }}
-                >
-                  <div className="text-3xl mb-3">{getCategoryIcon(category)}</div>
-                  <div className="text-2xl font-bold mb-2" style={{ color: '#007AFF' }}>{count}</div>
-                  <div className="text-sm font-semibold mb-1" style={{ color: '#1d1d1f' }}>
-                    {category}
-                  </div>
-                  <div className="text-xs" style={{ color: '#86868b' }}>{percentage}%</div>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </div>
-      
     </div>
   )
 }

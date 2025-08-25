@@ -1,10 +1,10 @@
-import GlassNavigation from '/src/components/GlassNavigation'
-import LadderHeroRedesigned from '/src/components/page-landing-hero-redesigned'
-import HowWeHelpRedesigned from '/src/components/how-we-help-redesigned'
-import SuccessStoriesRedesigned from '/src/components/success-stories-redesigned'
-import DonationSectionRedesigned from '/src/components/donation-section-redesigned'
-import ContactSectionRedesigned from '/src/components/contact-section-redesigned'
-import Footer from '/src/components/sitewide-footer'
+import GlassNavigation from '../components/GlassNavigation'
+import HeroCompact from '../components/hero-compact'
+import ProblemSolutionCompact from '../components/problem-solution-compact'
+import HowItWorksCompact from '../components/how-it-works-compact'
+import ImpactTrustCompact from '../components/impact-trust-compact'
+import FinalActionCompact from '../components/final-action-compact'
+import FooterCompact from '../components/footer-compact'
 
 export const metadata = {
   title: 'The Ladder | Birmingham Crisis Intervention & Barrier Assistance',
@@ -74,12 +74,12 @@ export default function Home() {
     <>
       <GlassNavigation />
       <main className="min-h-screen">
-        <LadderHeroRedesigned />
-        <HowWeHelpRedesigned />
-        <SuccessStoriesRedesigned />
-        <DonationSectionRedesigned />
-        <ContactSectionRedesigned />
-        <Footer />
+        <HeroCompact />
+        <ProblemSolutionCompact />
+        <HowItWorksCompact />
+        <ImpactTrustCompact />
+        <FinalActionCompact />
+        <FooterCompact />
       </main>
     </>
   )
