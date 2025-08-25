@@ -1,3 +1,70 @@
+/* Font Face Declarations */
+@font-face {
+  font-family: 'Host Grotesk';
+  src: url('/TheLadder/fonts/HostGrotesk-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Host Grotesk';
+  src: url('/TheLadder/fonts/HostGrotesk-Italic-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/TheLadder/fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/TheLadder/fonts/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* CSS Custom Properties for Font Families */
+:root {
+  --font-host-grotesk: 'Host Grotesk', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-inter: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* The Ladder Brand Colors - Based on nonprofit color psychology from CLAUDE.md */
+:root {
+  /* Primary Brand Colors */
+  --ladder-blue: #0066CC;        /* Trust, stability, professionalism - primary brand color */
+  --ladder-blue-light: #4A90E2;  /* Lighter blue for gradients and accents */
+  --ladder-green: #22A662;       /* Growth, progress, positive change - secondary color */
+  --ladder-gold: #FF8C00;        /* Hope, urgency, conversion - accent color */
+  --ladder-red: #DC2626;         /* Emergency, urgent help - CTA color */
+  --ladder-purple: #8B5CF6;      /* Community, support - supplementary */
+  --ladder-teal: #0D9488;        /* Wellness, balance - health/wellness */
+  
+  /* Supporting Palette */
+  --ladder-gray-warm: #6B7280;   /* Body text, supporting elements */
+  --ladder-gray-light: #F9FAFB;  /* Backgrounds, subtle sections */
+  --ladder-white: #FFFFFF;       /* Clean backgrounds, cards, contrast */
+  --ladder-success: #10B981;     /* Confirmations, achievements */
+  --ladder-alert: #EF4444;       /* Errors, urgent messaging (use sparingly) */
+  
+  /* Semantic Colors for Components */
+  --primary-500: var(--ladder-blue);
+  --primary-600: #0052A3;
+  --text-primary: var(--ladder-gray-warm);
+  --text-secondary: #9CA3AF;
+  --surface-900: #111827;
+  --surface-800: #1F2937;
+  --surface-600: #4B5563;
+}
+
 /* Add these styles to lock the navbar and location finder on mobile */
 @media (max-width: 1023px) {
   .locations-page {
@@ -31,4 +98,37 @@
 .hide-scrollbar {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
+}
+
+/* Font Application Rules */
+/* Apply Host Grotesk to all headings, buttons, and accent elements */
+h1, h2, h3, h4, h5, h6,
+button,
+.btn,
+[role="button"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+.font-heading,
+.font-accent,
+.font-button {
+  font-family: var(--font-host-grotesk);
+}
+
+/* Apply Inter to all other text elements */
+body,
+p,
+span,
+div,
+a,
+li,
+td,
+th,
+label,
+input:not([type="button"]):not([type="submit"]):not([type="reset"]),
+textarea,
+select,
+.font-sans,
+.font-inter {
+  font-family: var(--font-inter);
 }

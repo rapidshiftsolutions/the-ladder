@@ -1,90 +1,75 @@
-// Shared navigation data for OEM Radio Repair
+// Shared navigation data for The Ladder nonprofit
 // Used by both navbar and footer components
 
 export const NavItems = [
   {
-    name: "Shop by Vehicle",
+    name: "How We Help",
     sections: [
       {
-        heading: "Dodge",
+        heading: "Our Services",
         links: [
-          { name: "Charger (2011-2014)", href: "/repair/dodge/charger/2011-2014" },
-          { name: "Journey (2011-2019)", href: "/repair/dodge/journey/2011-2019" },
-          { name: "Challenger (2011-2020)", href: "/repair/dodge/challenger/2011-2020" },
-          { name: "Durango (2011-2021)", href: "/repair/dodge/durango/2011-2021" },
+          { name: "Crisis Intervention", href: "/how-we-help" },
+          { name: "Barrier Removal Process", href: "/how-we-help#process" },
+          { name: "Emergency Assistance", href: "/get-help" },
+          { name: "Individual Support", href: "/how-we-help#support" },
         ]
       },
       {
-        heading: "Chrysler",
+        heading: "Common Barriers",
         links: [
-          { name: "300 (2011-2014)", href: "/repair/chrysler/300/2011-2014" },
-          { name: "Pacifica (2017-2023)", href: "/repair/chrysler/pacifica/2017-2023" },
-          { name: "Voyager (2020-2023)", href: "/repair/chrysler/voyager/2020-2023" },
+          { name: "Housing & Shelter", href: "/barrier-removal-guide#housing" },
+          { name: "Employment & Income", href: "/barrier-removal-guide#employment" },
+          { name: "Financial Stability", href: "/barrier-removal-guide#financial" },
+          { name: "Health & Wellness", href: "/barrier-removal-guide#health" },
         ]
       },
       {
-        heading: "Jeep",
+        heading: "Success Stories",
         links: [
-          { name: "Wrangler JL (2018-2023)", href: "/repair/jeep/wrangler-jl/2018-2023" },
-          { name: "Grand Cherokee WK (2014-2022)", href: "/repair/jeep/grand-cherokee-wk/2014-2022" },
-          { name: "Compass (2017-2021)", href: "/repair/jeep/compass/2017-2021" },
-        ]
-      },
-      {
-        heading: "Cadillac",
-        links: [
-          { name: "CTS (2013-2019)", href: "/repair/cadillac/cts/2013-2019" },
-          { name: "ATS (2013-2019)", href: "/repair/cadillac/ats/2013-2019" },
-          { name: "Escalade (2015-2020)", href: "/repair/cadillac/escalade/2015-2020" },
-        ]
-      },
-      {
-        heading: "Ram",
-        links: [
-          { name: "1500 (2013-2018)", href: "/repair/ram/1500/2013-2018" },
-          { name: "2500/3500 HD (2013-2018)", href: "/repair/ram/2500-3500-hd/2013-2018" },
+          { name: "Read Impact Stories", href: "/success-stories" },
+          { name: "Barrier Removal Guide", href: "/barrier-removal-guide" },
+          { name: "Community Resources", href: "/birmingham-resources" },
         ]
       }
     ]
   },
   {
-    name: "Repair Services",
+    name: "Get Involved",
     sections: [
       {
-        heading: "Screen Repairs",
+        heading: "Support Our Mission",
         links: [
-          { name: "Digitizer Replacement - $400", href: "/services/digitizer-replacement" },
-          { name: "LCD Replacement - $550", href: "/services/lcd-replacement" },
-          { name: "Complete Screen Assembly", href: "/services/complete-screen" },
+          { name: "Donate Now", href: "/donate" },
+          { name: "Monthly Giving", href: "/monthly-giving" },
+          { name: "Volunteer Opportunities", href: "/volunteer" },
+          { name: "Corporate Partnerships", href: "/corporate-partnerships" },
         ]
       },
       {
-        heading: "Common Issues",
+        heading: "Partner With Us",
         links: [
-          { name: "Touchscreen Not Responding", href: "/services/touchscreen-repair" },
-          { name: "Screen Flickering/Black", href: "/services/display-repair" },
-          { name: "Cracked Screen Glass", href: "/services/glass-repair" },
-          { name: "Ghost Touch Problems", href: "/services/ghost-touch" },
+          { name: "Nonprofit Partners", href: "/partners" },
+          { name: "Refer Someone", href: "/get-help#refer" },
+          { name: "Board Service", href: "/board-governance" },
         ]
       },
       {
-        heading: "Service Process",
+        heading: "Stay Connected",
         links: [
-          { name: "Mail-In Service", href: "/services/mail-in-service" },
-          { name: "How It Works", href: "/how-it-works" },
-          { name: "Shipping Instructions", href: "/shipping-instructions" },
-          { name: "Warranty Coverage", href: "/warranty" },
+          { name: "Newsletter Signup", href: "/contact#newsletter" },
+          { name: "Annual Reports", href: "/annual-reports" },
+          { name: "Impact Updates", href: "/success-stories" },
         ]
       }
     ]
   },
   {
-    name: "Locations",
-    href: "/locations",
-  },
-  {
-    name: "About",
+    name: "About Us",
     href: "/about",
+  },
+  {
+    name: "Get Help",
+    href: "/get-help",
   },
   {
     name: "Contact",
@@ -95,40 +80,39 @@ export const NavItems = [
 // Simple navigation items for footer (no nested sections)
 export const FooterNavItems = [
   {
-    name: "Services",
+    name: "Our Services",
     links: [
-      { name: "Digitizer Replacement", href: "/services/digitizer-replacement" },
-      { name: "LCD Replacement", href: "/services/lcd-replacement" },
-      { name: "Mail-In Service", href: "/services/mail-in-service" },
-      { name: "Warranty Coverage", href: "/warranty" },
+      { name: "Crisis Intervention", href: "/how-we-help" },
+      { name: "Barrier Removal", href: "/barrier-removal-guide" },
+      { name: "Emergency Assistance", href: "/get-help" },
+      { name: "Community Resources", href: "/birmingham-resources" },
     ]
   },
   {
-    name: "Vehicles",
+    name: "Get Involved",
     links: [
-      { name: "Dodge Repairs", href: "/repair/dodge" },
-      { name: "Chrysler Repairs", href: "/repair/chrysler" },
-      { name: "Jeep Repairs", href: "/repair/jeep" },
-      { name: "Cadillac Repairs", href: "/repair/cadillac" },
-      { name: "Ram Repairs", href: "/repair/ram" },
+      { name: "Donate Now", href: "/donate" },
+      { name: "Monthly Giving", href: "/monthly-giving" },
+      { name: "Volunteer", href: "/volunteer" },
+      { name: "Corporate Partnerships", href: "/corporate-partnerships" },
     ]
   },
   {
-    name: "Support",
+    name: "About",
     links: [
-      { name: "How It Works", href: "/how-it-works" },
-      { name: "Shipping Instructions", href: "/shipping-instructions" },
-      { name: "FAQ", href: "/contact#faq" },
-      { name: "Contact", href: "/contact" },
+      { name: "Our Mission", href: "/about" },
+      { name: "Leadership Team", href: "/board-governance" },
+      { name: "Success Stories", href: "/success-stories" },
+      { name: "Partners", href: "/partners" },
     ]
   },
   {
-    name: "Company",
+    name: "Transparency",
     links: [
-      { name: "About Us", href: "/about" },
-      { name: "Service Locations", href: "/locations" },
+      { name: "Annual Reports", href: "/annual-reports" },
+      { name: "Financials", href: "/financials" },
       { name: "Privacy Policy", href: "/privacy" },
-      { name: "Terms of Service", href: "/terms" },
+      { name: "Terms of Service", href: "/terms-of-service" },
     ]
   }
 ];

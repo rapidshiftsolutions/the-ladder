@@ -160,14 +160,16 @@ const MobileNavbar = ({ isOpen, setIsOpen, navItems }) => {
           {/* Header */}
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center space-x-3">
-              <svg className="w-8 h-8 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
+              <div className="bg-[var(--ladder-blue)] rounded-lg p-2">
+                <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </div>
               <div>
-                <h2 className="text-lg font-anton font-black text-gray-900 uppercase tracking-wide">
-                  OEM Radio Repair
+                <h2 className="text-lg font-bold text-gray-900">
+                  The Ladder
                 </h2>
-                <p className="text-xs text-gray-500">Infotainment Specialists</p>
+                <p className="text-xs text-[var(--ladder-gold)] font-medium">Birmingham Nonprofit</p>
               </div>
             </div>
             <button
@@ -181,77 +183,82 @@ const MobileNavbar = ({ isOpen, setIsOpen, navItems }) => {
             </button>
           </div>
 
-          {/* Savings Banner */}
-          <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-4 mb-6 shadow-lg">
+          {/* Impact Banner */}
+          <div className="bg-gradient-to-r from-[var(--ladder-blue)] to-[var(--ladder-green)] rounded-xl p-4 mb-6 shadow-lg">
             <div className="text-white text-center">
-              <div className="text-2xl font-bold mb-1">SAVE 50%</div>
-              <div className="text-sm">vs. Dealer & Competitors</div>
-              <div className="flex justify-center gap-4 mt-3">
-                <div className="bg-white/20 rounded px-3 py-1">
-                  <div className="text-xs">Digitizer</div>
-                  <div className="font-bold">$400</div>
-                </div>
-                <div className="bg-white/20 rounded px-3 py-1">
-                  <div className="text-xs">LCD</div>
-                  <div className="font-bold">$550</div>
-                </div>
+              <div className="text-xl font-bold mb-1">Help Someone Today</div>
+              <div className="text-sm mb-3">Your support removes barriers to success</div>
+              <div className="flex justify-center gap-3">
+                <a href="/get-help" className="bg-white/20 rounded-lg px-3 py-2 hover:bg-white/30 transition-colors" onClick={() => setIsOpen(false)}>
+                  <div className="text-xs">Need Help?</div>
+                  <div className="font-bold text-sm">Apply Now</div>
+                </a>
+                <a href="/donate" className="bg-white/20 rounded-lg px-3 py-2 hover:bg-white/30 transition-colors" onClick={() => setIsOpen(false)}>
+                  <div className="text-xs">Support Us</div>
+                  <div className="font-bold text-sm">Donate</div>
+                </a>
               </div>
             </div>
           </div>
 
-          {/* Shop by Vehicle Make */}
+          {/* Ways We Help */}
           <div className="mb-6">
             <h3 className="text-sm font-bold text-gray-800 mb-3 uppercase tracking-wide flex items-center">
-              <svg className="w-4 h-4 mr-2 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              <svg className="w-4 h-4 mr-2 text-[var(--ladder-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
               </svg>
-              Shop by Vehicle Make
+              Ways We Help
             </h3>
             <div className="grid grid-cols-2 gap-2">
               {[
-                { name: 'Dodge', models: 'Charger, Journey, Challenger' },
-                { name: 'Chrysler', models: '300, Pacifica, Voyager' },
-                { name: 'Jeep', models: 'Wrangler, Grand Cherokee' },
-                { name: 'Ram', models: '1500, 2500/3500' },
-                { name: 'Cadillac', models: 'CTS, ATS, Escalade' }
-              ].map((make, index) => (
+                { name: 'Housing', description: 'Shelter & stability', href: '/barrier-removal-guide#housing' },
+                { name: 'Employment', description: 'Job & income support', href: '/barrier-removal-guide#employment' },
+                { name: 'Financial', description: 'Emergency assistance', href: '/barrier-removal-guide#financial' },
+                { name: 'Health', description: 'Wellness support', href: '/barrier-removal-guide#health' },
+                { name: 'Legal', description: 'Advocacy & guidance', href: '/barrier-removal-guide#legal' },
+                { name: 'Social', description: 'Community & family', href: '/barrier-removal-guide#social' }
+              ].map((area, index) => (
                 <a
                   key={index}
-                  href={`/repair/${make.name.toLowerCase()}`}
-                  className="bg-gray-50 hover:bg-primary-50 rounded-lg p-3 transition-colors group"
+                  href={area.href}
+                  className="bg-gray-50 hover:bg-[var(--ladder-blue)]/5 rounded-lg p-3 transition-colors group"
                   onClick={() => setIsOpen(false)}
                 >
-                  <div className="font-semibold text-gray-900 group-hover:text-primary-600">{make.name}</div>
-                  <div className="text-xs text-gray-500 mt-1">{make.models}</div>
+                  <div className="font-semibold text-gray-900 group-hover:text-[var(--ladder-blue)] text-sm">{area.name}</div>
+                  <div className="text-xs text-gray-500 mt-1">{area.description}</div>
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Quick Service Links */}
+          {/* Quick Action Links */}
           <div className="mb-6">
             <h3 className="text-sm font-bold text-gray-800 mb-3 uppercase tracking-wide flex items-center">
-              <svg className="w-4 h-4 mr-2 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <svg className="w-4 h-4 mr-2 text-[var(--ladder-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
-              Repair Services
+              Quick Actions
             </h3>
             <div className="grid grid-cols-1 gap-2">
               {[
-                { name: 'Digitizer Replacement', price: '$400', href: '/services/digitizer-replacement' },
-                { name: 'LCD Replacement', price: '$550', href: '/services/lcd-replacement' },
-                { name: 'Mail-In Service', price: 'Free Shipping', href: '/services/mail-in-service' },
-                { name: 'How It Works', price: '2-3 Days', href: '/how-it-works' }
-              ].map((service, index) => (
+                { name: 'Apply for Help', description: 'Get assistance today', href: '/get-help', color: 'text-[var(--ladder-red)]' },
+                { name: 'Donate Now', description: 'Support our mission', href: '/donate', color: 'text-[var(--ladder-gold)]' },
+                { name: 'Volunteer', description: 'Join our team', href: '/volunteer', color: 'text-[var(--ladder-green)]' },
+                { name: 'Monthly Giving', description: 'Sustained support', href: '/monthly-giving', color: 'text-[var(--ladder-blue)]' }
+              ].map((action, index) => (
                 <a
                   key={index}
-                  href={service.href}
-                  className="bg-gray-50 hover:bg-primary-50 rounded-lg p-3 transition-colors group flex justify-between items-center"
+                  href={action.href}
+                  className="bg-gray-50 hover:bg-gray-100 rounded-lg p-3 transition-colors group flex justify-between items-center"
                   onClick={() => setIsOpen(false)}
                 >
-                  <div className="font-medium text-gray-900 group-hover:text-primary-600">{service.name}</div>
-                  <div className="text-sm font-bold text-primary-600">{service.price}</div>
+                  <div>
+                    <div className={`font-medium group-hover:${action.color} text-gray-900`}>{action.name}</div>
+                    <div className="text-xs text-gray-500">{action.description}</div>
+                  </div>
+                  <svg className="w-4 h-4 text-gray-400 group-hover:text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
                 </a>
               ))}
             </div>
@@ -259,7 +266,7 @@ const MobileNavbar = ({ isOpen, setIsOpen, navItems }) => {
 
           {/* Main Navigation Links */}
           <nav className="space-y-3 mb-6" aria-label="Main navigation">
-            {safeNavItems.filter(item => item.href && item.name !== "Locations").map((item, index) => (
+            {safeNavItems.filter(item => item.href).map((item, index) => (
               <a
                 key={index}
                 href={item.href}
@@ -268,19 +275,18 @@ const MobileNavbar = ({ isOpen, setIsOpen, navItems }) => {
               >
                 <div className="flex items-center space-x-3">
                   <div className="w-8 h-8 bg-primary-100 rounded-lg flex items-center justify-center group-hover:bg-primary-200 transition-colors">
-                    {item.name === "Locations" && (
-                      <svg className="w-4 h-4 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                    )}
-                    {(item.name === "About" || item.name === "About Us") && (
-                      <svg className="w-4 h-4 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    {(item.name === "About Us" || item.name === "About") && (
+                      <svg className="w-4 h-4 text-[var(--ladder-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     )}
+                    {item.name === "Get Help" && (
+                      <svg className="w-4 h-4 text-[var(--ladder-red)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                      </svg>
+                    )}
                     {(item.name === "Contact" || item.name === "Contact Us") && (
-                      <svg className="w-4 h-4 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-4 h-4 text-[var(--ladder-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
                     )}
@@ -294,65 +300,65 @@ const MobileNavbar = ({ isOpen, setIsOpen, navItems }) => {
             ))}
           </nav>
 
-          {/* Quick Actions CTAs */}
+          {/* Primary CTAs */}
           <div className="grid grid-cols-2 gap-3 mb-6">
             <a
-              href="/contact"
-              className="flex flex-col items-center p-4 bg-primary-500 text-white rounded-xl hover:bg-primary-600 transition-colors shadow-lg"
+              href="/get-help"
+              className="flex flex-col items-center p-4 bg-[var(--ladder-red)] text-white rounded-xl hover:bg-[var(--ladder-red)]/90 transition-colors shadow-lg"
               onClick={() => setIsOpen(false)}
             >
               <svg className="w-6 h-6 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
               </svg>
-              <span className="text-sm font-bold">Contact Us</span>
-              <span className="text-xs opacity-90">Get Free Quote</span>
+              <span className="text-sm font-bold">Get Help</span>
+              <span className="text-xs opacity-90">Apply for Assistance</span>
             </a>
             <a
-              href="/contact"
-              className="flex flex-col items-center p-4 bg-green-500 text-white rounded-xl hover:bg-green-600 transition-colors shadow-lg"
+              href="/donate"
+              className="flex flex-col items-center p-4 bg-[var(--ladder-gold)] text-white rounded-xl hover:bg-[var(--ladder-gold)]/90 transition-colors shadow-lg"
               onClick={() => setIsOpen(false)}
             >
               <svg className="w-6 h-6 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.268-.268-1.707-.707a2.828 2.828 0 010-4l.879-.659C11.536 6.781 12.268 7 12 7s.464-.219.828-.366c1.172-.879 3.07-.879 4.242 0C18.243 7.513 18.243 8.937 17.071 9.816l-.879.659" />
               </svg>
-              <span className="text-sm font-bold">Free Quote</span>
-              <span className="text-xs opacity-90">Get Started</span>
+              <span className="text-sm font-bold">Donate</span>
+              <span className="text-xs opacity-90">Support Our Mission</span>
             </a>
           </div>
 
-          {/* Trust Badges */}
-          <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-4 mb-6">
+          {/* Impact Stats */}
+          <div className="bg-gradient-to-r from-[var(--ladder-blue)]/10 to-[var(--ladder-green)]/10 rounded-xl p-4 mb-6">
             <div className="grid grid-cols-3 gap-3 text-center">
               <div>
-                <div className="text-2xl font-bold text-primary-600">1yr</div>
-                <div className="text-xs text-gray-600">Warranty</div>
+                <div className="text-2xl font-bold text-[var(--ladder-blue)]">150+</div>
+                <div className="text-xs text-gray-600">People Helped</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-primary-600">2-3</div>
-                <div className="text-xs text-gray-600">Day Turnaround</div>
+                <div className="text-2xl font-bold text-[var(--ladder-green)]">87%</div>
+                <div className="text-xs text-gray-600">Success Rate</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-primary-600">Free</div>
-                <div className="text-xs text-gray-600">Shipping</div>
+                <div className="text-2xl font-bold text-[var(--ladder-gold)]">24hr</div>
+                <div className="text-xs text-gray-600">Response Time</div>
               </div>
             </div>
           </div>
 
-          {/* Service Process */}
-          <div className="bg-blue-50 rounded-xl p-4 mb-6">
+          {/* How We Help Process */}
+          <div className="bg-[var(--ladder-blue)]/5 rounded-xl p-4 mb-6">
             <h3 className="text-sm font-bold text-gray-800 mb-3 uppercase tracking-wide">
-              How It Works
+              How We Help
             </h3>
             <div className="space-y-2">
               {[
-                '1. Select Your Vehicle',
-                '2. Describe the Problem',
-                '3. Get Free Shipping Label',
-                '4. Mail Your Screen',
-                '5. We Fix & Return in 2-3 Days'
+                '1. Partner Refers Someone in Need',
+                '2. We Interview & Assess Barriers',
+                '3. Create Customized Support Plan',
+                '4. Remove Specific Roadblocks',
+                '5. Follow Up for Long-term Success'
               ].map((step, index) => (
                 <div key={index} className="flex items-center text-sm text-gray-700">
-                  <svg className="w-4 h-4 mr-2 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-4 h-4 mr-2 text-[var(--ladder-green)] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                   </svg>
                   {step}
@@ -361,32 +367,32 @@ const MobileNavbar = ({ isOpen, setIsOpen, navItems }) => {
             </div>
           </div>
 
-          {/* Contact & Business Info */}
-          <div className="bg-gray-800 text-white rounded-xl p-4">
+          {/* Organization Info */}
+          <div className="bg-[var(--ladder-blue)] text-white rounded-xl p-4">
             <div className="text-center mb-3">
-              <div className="text-xs uppercase tracking-wide opacity-75 mb-1">Family Owned Since 1985</div>
-              <div className="font-bold">Birmingham's Infotainment Experts</div>
+              <div className="text-xs uppercase tracking-wide opacity-75 mb-1">501(c)(3) Nonprofit • EIN: 47-2123160</div>
+              <div className="font-bold">Birmingham's Barrier Removal Experts</div>
             </div>
             <div className="space-y-2 text-sm">
-              <a href="/contact" className="flex items-center justify-center hover:text-primary-300 transition-colors">
+              <a href="/contact" className="flex items-center justify-center hover:text-[var(--ladder-gold)] transition-colors" onClick={() => setIsOpen(false)}>
                 <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8" />
                 </svg>
-                Contact Form
+                Contact Us
               </a>
-              <a href="mailto:info@oemradiorepair.com" className="flex items-center justify-center hover:text-primary-300 transition-colors">
+              <a href="mailto:info@the-ladder.org" className="flex items-center justify-center hover:text-[var(--ladder-gold)] transition-colors">
                 <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                info@oemradiorepair.com
+                info@the-ladder.org
               </a>
-              <a href="https://maps.google.com/?q=2413+1st+Ave+S+Birmingham+AL+35233" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center hover:text-primary-300 transition-colors">
+              <div className="flex items-center justify-center text-white/90">
                 <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                2413 1st Ave S, Birmingham, AL
-              </a>
+                Birmingham, Alabama
+              </div>
             </div>
           </div>
         </div>

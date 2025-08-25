@@ -174,7 +174,7 @@ DropdownMenu.displayName = "DropdownMenu";
 const NavLink = memo(({ item, isOpen, onClick, onMouseEnter }) => (
   <button
     className={`relative px-4 py-2.5 text-sm font-medium transition-all duration-200 whitespace-nowrap ${
-      isOpen ? "text-primary-500" : "text-text-primary hover:text-primary-500"
+      isOpen ? "text-primary-500" : "text-gray-700 hover:text-primary-500"
     }`}
     onMouseEnter={onMouseEnter}
     onClick={onClick}
@@ -292,8 +292,8 @@ const Navbar = () => {
   return (
     <header
       className={`sticky top-0 z-40 transition-all duration-300 ${
-        isScrolled ? "shadow-xl shadow-black/20 bg-surface-900/95" : "bg-surface-900/90"
-      } backdrop-blur-md border-b border-primary-500/30`}
+        isScrolled ? "shadow-xl shadow-black/20 bg-white/95" : "bg-white/90"
+      } backdrop-blur-md border-b border-gray-200/50`}
       ref={navRef}
     >
 
@@ -309,15 +309,14 @@ const Navbar = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <Image
-                    src="/OEMRadioRepair/logo-light.svg"
-                    alt="OEM Radio Repair Logo"
-                    width={200}
-                    height={60}
-                    className="h-7 md:h-10 w-auto"
-                    priority={true}
-                    loading="eager"
-                  />
+                  {/* The Ladder Logo */}
+                  <div className="flex items-center">
+                    <img 
+                      src="/TheLadder/logos/The Ladder - Logo.png" 
+                      alt="The Ladder - A Helping Hand To People Who Are Climbing Up"
+                      className="h-12 w-auto"
+                    />
+                  </div>
                 </motion.div>
               </FastLink>
             </div>
@@ -342,7 +341,7 @@ const Navbar = () => {
                         <div key={idx} className="relative flex items-center">
                           <Link
                             href={item.href}
-                            className="px-4 py-2.5 text-sm font-medium text-text-primary hover:text-primary-500 transition-all duration-200 whitespace-nowrap inline-flex items-center"
+                            className="px-4 py-2.5 text-sm font-medium text-gray-700 hover:text-primary-500 transition-all duration-200 whitespace-nowrap inline-flex items-center"
                           >
                             {item.name}
                           </Link>
@@ -378,9 +377,10 @@ const Navbar = () => {
             <div className="xl:hidden flex items-center">
               <div className="flex items-center space-x-4">
                 <a
-                  href="/contact"
-                  className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-500 text-white hover:bg-blue-600 transition-colors duration-300"
-                  aria-label="Contact Us"
+                  href="/get-help"
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-[var(--ladder-red)] text-white hover:bg-[var(--ladder-red)]/90 transition-colors duration-300"
+                  aria-label="Get Help"
+                  title="Apply for Assistance"
                 >
                   <svg
                     className="w-5 h-5"
@@ -392,15 +392,16 @@ const Navbar = () => {
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
                     />
                   </svg>
                 </a>
                 
                 <a
-                  href="/contact"
-                  className="flex items-center justify-center w-10 h-10 rounded-full bg-white text-primary-500 hover:bg-gray-50 transition-colors duration-300 border border-primary-500/20"
-                  aria-label="Contact us"
+                  href="/donate"
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-[var(--ladder-gold)] text-white hover:bg-[var(--ladder-gold)]/90 transition-colors duration-300"
+                  aria-label="Donate"
+                  title="Support Our Mission"
                 >
                   <svg
                     className="w-5 h-5"
@@ -412,14 +413,14 @@ const Navbar = () => {
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.268-.268-1.707-.707a2.828 2.828 0 010-4l.879-.659C11.536 6.781 12.268 7 12 7s.464-.219.828-.366c1.172-.879 3.07-.879 4.242 0C18.243 7.513 18.243 8.937 17.071 9.816l-.879.659"
                     />
                   </svg>
                 </a>
                 <motion.button
                   type="button"
-                  className={`inline-flex items-center justify-center p-2.5 rounded-md text-text-primary hover:bg-surface-800 transition-colors duration-300 ${
-                    mobileMenuOpen ? "bg-surface-800" : ""
+                  className={`inline-flex items-center justify-center p-2.5 rounded-md text-gray-700 hover:bg-gray-100 transition-colors duration-300 ${
+                    mobileMenuOpen ? "bg-gray-100" : ""
                   }`}
                   onClick={toggleMobileMenu}
                   aria-expanded={mobileMenuOpen}
@@ -471,15 +472,27 @@ const Navbar = () => {
                   transition={{ duration: 0.3, delay: 0.2 }}
                 >
                   <motion.a
-                    href="/contact"
-                    className="inline-flex items-center justify-center px-6 py-2.5 rounded-md text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 transition-all duration-300 whitespace-nowrap shadow-sm"
+                    href="/get-help"
+                    className="inline-flex items-center justify-center px-4 py-2.5 rounded-md text-sm font-medium text-white bg-[var(--ladder-red)] hover:bg-[var(--ladder-red)]/90 transition-all duration-300 whitespace-nowrap shadow-sm mr-3"
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                     </svg>
-                    Contact Us
+                    Get Help
+                  </motion.a>
+                  
+                  <motion.a
+                    href="/donate"
+                    className="inline-flex items-center justify-center px-6 py-2.5 rounded-md text-sm font-medium text-white bg-[var(--ladder-gold)] hover:bg-[var(--ladder-gold)]/90 transition-all duration-300 whitespace-nowrap shadow-sm"
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.268-.268-1.707-.707a2.828 2.828 0 010-4l.879-.659C11.536 6.781 12.268 7 12 7s.464-.219.828-.366c1.172-.879 3.07-.879 4.242 0C18.243 7.513 18.243 8.937 17.071 9.816l-.879.659" />
+                    </svg>
+                    Donate
                   </motion.a>
                 </motion.div>
               </>

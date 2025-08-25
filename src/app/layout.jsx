@@ -1,6 +1,5 @@
 // layout.jsx (Server Component)
 import '/src/styles/tailwind.css';
-import localFont from 'next/font/local';
 import Script from 'next/script';
 import DOMOptimizer from '/src/components/DOMOptimizer';
 import ErrorBoundary from '/src/components/ErrorBoundary';
@@ -9,58 +8,19 @@ import InstallPrompt from '/src/components/InstallPrompt';
 import PerformanceMonitor from '/src/components/PerformanceMonitor';
 
 
-// Load OEM Radio Repair fonts
-const inter = localFont({
-  src: [
-    {
-      path: '../../public/OEMRadioRepair/fonts/Inter-VariableFont_opsz,wght.ttf',
-      style: 'normal',
-    },
-    {
-      path: '../../public/OEMRadioRepair/fonts/Inter-Italic-VariableFont_opsz,wght.ttf',
-      style: 'italic',
-    },
-  ],
-  display: 'swap',
-  variable: '--font-inter',
-  preload: true,
-  fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-});
-
-const tiltWarp = localFont({
-  src: [
-    {
-      path: '../../public/OEMRadioRepair/fonts/TiltWarp-Regular-VariableFont_XROT,YROT.ttf',
-      style: 'normal',
-    },
-  ],
-  display: 'swap',
-  variable: '--font-tiltwarp',
-  preload: true,
-  fallback: ['Arial', 'sans-serif'],
-});
-
-// Use TiltWarp for headings and decorative text
-const headingFont = {
-  variable: '--font-heading',
-};
-
-// Keep legacy variables for compatibility
-const exo2 = tiltWarp; // Map old exo2 to TiltWarp
-const anton = tiltWarp; // Map old anton to TiltWarp
-const lacquer = tiltWarp; // Map old lacquer to TiltWarp
+// Use system fonts for The Ladder nonprofit
 
 export const metadata = {
   title: {
-    template: '%s | OEM Radio Repair',
-    default: 'OEM Radio Repair - Save 50% on Infotainment Screen Repair',
+    template: '%s | The Ladder',
+    default: 'The Ladder - Birmingham Nonprofit Removing Barriers to Success',
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://www.oemradiorepair.com'),
-  description: 'Professional infotainment repair: Digitizer replacement $400 (vs $799), LCD replacement $550 (vs $1199). Free shipping, 2-3 day turnaround, 1-year warranty. Dodge, Chrysler, Jeep, Cadillac specialists.',
-  keywords: ['infotainment repair', 'touchscreen repair', 'Uconnect repair', 'car screen repair', 'digitizer replacement', 'LCD replacement', 'Dodge infotainment', 'Chrysler infotainment', 'Jeep infotainment', 'Cadillac CUE repair'],
-  authors: [{ name: 'OEM Radio Repair', url: 'https://www.oemradiorepair.com' }],
-  creator: 'OEM Radio Repair',
-  publisher: 'OEM Radio Repair',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://the-ladder.org'),
+  description: 'The Ladder helps Birmingham residents overcome specific barriers preventing their success. 501(c)(3) nonprofit providing crisis intervention, emergency assistance, and individual support through community partnerships.',
+  keywords: ['Birmingham nonprofit', 'crisis intervention Alabama', 'emergency assistance Birmingham', 'barrier removal', 'individual support', 'community partnerships', 'nonprofit Birmingham AL', 'crisis help', 'emergency aid'],
+  authors: [{ name: 'The Ladder', url: 'https://the-ladder.org' }],
+  creator: 'The Ladder',
+  publisher: 'The Ladder',
   formatDetection: {
     email: false,
     address: false,
@@ -69,36 +29,36 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://www.oemradiorepair.com',
-    siteName: 'OEM Radio Repair',
-    title: 'OEM Radio Repair - Save 50% on Infotainment Screen Repair',
-    description: 'Professional infotainment repair: Digitizer $400, LCD $550. Free shipping, 2-3 day turnaround, 1-year warranty. Call (205) 522-1162',
+    url: 'https://the-ladder.org',
+    siteName: 'The Ladder',
+    title: 'The Ladder - Birmingham Nonprofit Removing Barriers to Success',
+    description: 'Birmingham 501(c)(3) helping individuals overcome barriers through crisis intervention and community partnerships. Apply for help or donate today.',
     images: [
       {
         url: '/meta.png',
         width: 1200,
         height: 630,
-        alt: 'OEM Radio Repair - Professional Infotainment Screen Repair Service',
+        alt: 'The Ladder - Birmingham Nonprofit Barrier Removal Organization',
         type: 'image/png',
       },
       {
         url: '/meta.png',
         width: 1200,
         height: 1200,
-        alt: 'OEM Radio Repair Square Logo',
+        alt: 'The Ladder Nonprofit Logo',
         type: 'image/png',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'OEM Radio Repair - Save 50% on Infotainment Repair',
-    description: 'Digitizer $400 | LCD $550 | Free Shipping | 2-3 Day Turnaround | 1-Year Warranty',
-    site: '@oemradiorepair',
-    creator: '@oemradiorepair',
+    title: 'The Ladder - Birmingham Nonprofit Removing Barriers',
+    description: 'Crisis Intervention | Emergency Assistance | Individual Support | Community Partnerships | 501(c)(3)',
+    site: '@theladder_bham',
+    creator: '@theladder_bham',
     images: {
       url: '/meta.png',
-      alt: 'OEM Radio Repair - Professional Infotainment Screen Repair',
+      alt: 'The Ladder - Birmingham Nonprofit Barrier Removal',
     },
   },
   verification: {
@@ -109,7 +69,7 @@ export const metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'OEM Radio Repair',
+    title: 'The Ladder',
     startupImage: [
       {
         url: '/meta.png',
@@ -131,13 +91,13 @@ export const metadata = {
       {
         rel: 'mask-icon',
         url: '/safari-pinned-tab.svg',
-        color: '#1890ff',
+        color: '#0066CC',
       },
     ],
   },
   manifest: '/site.webmanifest',
   alternates: {
-    canonical: 'https://www.oemradiorepair.com',
+    canonical: 'https://the-ladder.org',
   },
   robots: {
     index: true,
@@ -150,7 +110,7 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
-  category: 'automotive',
+  category: 'nonprofit',
 };
 
 // Add viewport export with themeColor
@@ -159,7 +119,7 @@ export const metadata = {
 export const revalidate = 60; // Revalidate once per minute at most
 
 export const viewport = {
-  themeColor: '#1890ff',
+  themeColor: '#0066CC',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
@@ -167,35 +127,35 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${tiltWarp.variable} ${exo2.variable} ${anton.variable} ${lacquer.variable}`}>
+    <html lang="en">
       <head>
         {/* Premium Sharing Meta Tags for Text/SMS/Social */}
         <meta property="og:rich_attachment" content="true" />
         <meta name="format-detection" content="telephone=yes" />
         
         {/* Apple-specific enhancements for iMessage */}
-        <meta name="apple-mobile-web-app-title" content="OEM Radio Repair" />
+        <meta name="apple-mobile-web-app-title" content="The Ladder" />
         <meta name="apple-touch-fullscreen" content="yes" />
         <link rel="apple-touch-startup-image" href="/meta.png" />
         
         {/* WhatsApp & Telegram specific */}
-        <meta property="og:image:secure_url" content="https://www.oemradiorepair.com/meta.png" />
+        <meta property="og:image:secure_url" content="https://the-ladder.org/meta.png" />
         <meta property="og:video" content="" />
         
         {/* LinkedIn specific */}
-        <meta name="linkedin:owner" content="OEM Radio Repair" />
+        <meta name="linkedin:owner" content="The Ladder" />
         
         {/* Pinterest Rich Pins */}
-        <meta property="article:author" content="OEM Radio Repair" />
+        <meta property="article:author" content="The Ladder" />
         
         {/* Facebook specific */}
         <meta property="fb:app_id" content="" />
-        <meta property="og:see_also" content="https://www.oemradiorepair.com/services" />
+        <meta property="og:see_also" content="https://the-ladder.org/how-we-help" />
         
         {/* Additional Twitter Tags */}
-        <meta name="twitter:app:name:iphone" content="OEM Radio Repair" />
-        <meta name="twitter:app:name:ipad" content="OEM Radio Repair" />
-        <meta name="twitter:app:name:googleplay" content="OEM Radio Repair" />
+        <meta name="twitter:app:name:iphone" content="The Ladder" />
+        <meta name="twitter:app:name:ipad" content="The Ladder" />
+        <meta name="twitter:app:name:googleplay" content="The Ladder" />
         
         {/* DNS prefetch for critical domains */}
         <link rel="dns-prefetch" href="https://www.facebook.com" />
@@ -214,14 +174,14 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
         
         {/* PWA meta tags */}
-        <meta name="theme-color" content="#1890ff" />
-        <meta name="msapplication-TileColor" content="#1890ff" />
+        <meta name="theme-color" content="#0066CC" />
+        <meta name="msapplication-TileColor" content="#0066CC" />
         <meta name="msapplication-TileImage" content="/meta.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="OEM Radio Repair" />
+        <meta name="apple-mobile-web-app-title" content="The Ladder" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="application-name" content="OEM Radio Repair" />
+        <meta name="application-name" content="The Ladder" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
         
         {/* Apple touch icon */}
@@ -230,46 +190,27 @@ export default function RootLayout({ children }) {
         {/* Web App Manifest */}
         <link rel="manifest" href="/site.webmanifest" />
         
-        {/* Structured Data for Auto Service Business */}
+        {/* Structured Data for Nonprofit Organization */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "AutoRepair",
-              "name": "OEM Radio Repair",
-              "alternateName": "OEM Radio Repair - Infotainment Specialists",
-              "description": "OEM Radio Repair is Birmingham, AL's premier infotainment repair specialist offering digitizer and LCD replacements for Dodge, Chrysler, Jeep, and Cadillac vehicles at 50% less than competitors. Expert mail-in service nationwide.",
-              "url": "https://oemradiorepair.com",
-              "logo": "https://oemradiorepair.com/OEMRadioRepair/logo-light.svg",
-              "image": "https://oemradiorepair.com/meta.png",
-              "telephone": "(205) 522-1162",
-              "email": "info@oemradiorepair.com",
+              "@type": "NGO",
+              "name": "The Ladder",
+              "alternateName": "The Ladder Birmingham",
+              "description": "The Ladder is a Birmingham, Alabama 501(c)(3) nonprofit organization that helps individuals overcome specific barriers preventing their success through crisis intervention, emergency assistance, and community partnerships.",
+              "url": "https://the-ladder.org",
+              "logo": "https://the-ladder.org/TheLadder/logos/The Ladder - Logo.png",
+              "image": "https://the-ladder.org/meta.png",
+              "email": "info@the-ladder.org",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "2413 1st Ave S",
                 "addressLocality": "Birmingham",
                 "addressRegion": "AL",
-                "postalCode": "35233",
                 "addressCountry": "US"
               },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": "33.5018",
-                "longitude": "-86.8024"
-              },
-              "openingHours": [
-                "Mo-Fr 08:00-18:00",
-                "Sa 08:00-17:00"
-              ],
-              "priceRange": "$",
-              "paymentAccepted": ["Cash", "Credit Card", "Debit Card"],
-              "currenciesAccepted": "USD",
               "areaServed": [
-                {
-                  "@type": "Country",
-                  "name": "United States"
-                },
                 {
                   "@type": "City",
                   "name": "Birmingham",
@@ -279,64 +220,63 @@ export default function RootLayout({ children }) {
                   }
                 }
               ],
-              "serviceType": [
-                "Infotainment System Repair",
-                "Digitizer Replacement",
-                "LCD Screen Replacement",
-                "Touchscreen Repair",
-                "Uconnect Repair",
-                "CUE System Repair",
-                "Vehicle Electronics Repair",
-                "Mail-in Repair Service",
-                "Automotive Display Repair"
+              "nonprofitStatus": "NonprofitType501c3",
+              "taxID": "47-2123160",
+              "foundingDate": "2021",
+              "knowsAbout": [
+                "Crisis Intervention",
+                "Barrier Removal",
+                "Emergency Assistance",
+                "Individual Support",
+                "Community Partnerships",
+                "Housing Support",
+                "Employment Assistance",
+                "Financial Stability",
+                "Health and Wellness Support"
               ],
               "hasOfferCatalog": {
                 "@type": "OfferCatalog",
-                "name": "Auto Services",
+                "name": "Nonprofit Services",
                 "itemListElement": [
                   {
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "Digitizer Replacement",
-                      "description": "Professional digitizer replacement for touchscreen responsiveness issues, cracked glass, and ghost touching problems"
-                    },
-                    "price": "400",
-                    "priceCurrency": "USD"
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "LCD Replacement",
-                      "description": "Expert LCD screen replacement for display issues, pixel damage, and backlight problems"
-                    },
-                    "price": "550",
-                    "priceCurrency": "USD"
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Mail-in Repair Service",
-                      "description": "Convenient nationwide mail-in service with free shipping both ways and 2-3 day turnaround"
+                      "name": "Crisis Intervention",
+                      "description": "Immediate support for individuals facing personal crises and barriers to success"
                     }
                   },
                   {
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "1-Year Warranty",
-                      "description": "Comprehensive 1-year warranty on all repairs with free re-service if issues arise"
+                      "name": "Barrier Removal Support",
+                      "description": "Targeted assistance to help individuals overcome specific obstacles preventing their progress"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Emergency Assistance",
+                      "description": "Immediate help with housing, employment, financial, health, and legal barriers"
+                    }
+                  },
+                  {
+                    "@type": "Offer",
+                    "itemOffered": {
+                      "@type": "Service",
+                      "name": "Community Partnerships",
+                      "description": "Collaborative approach working with other nonprofits to provide comprehensive support"
                     }
                   }
                 ]
               },
-              "founder": {
-                "@type": "Person",
-                "name": "Alex Harmon"
-              },
-              "sameAs": []
+              "slogan": "Helping people climb over life's barriers, one rung at a time",
+              "mission": "The Ladder helps individuals one by one climb over very specific, personal barriers that are otherwise keeping them from moving forward in life.",
+              "sameAs": [
+                "https://instagram.com/theladder_bham"
+              ]
             })
           }}
         />
@@ -346,7 +286,7 @@ export default function RootLayout({ children }) {
           /* Critical CSS for above-the-fold content */
           body {
             margin: 0;
-            background-color: #1a1a1a;
+            background-color: #1F2937;
             color: #f9fafb;
             font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
             line-height: 1.6;

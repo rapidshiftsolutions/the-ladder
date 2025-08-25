@@ -1,58 +1,60 @@
 import Navbar from '/src/components/sitewide-navbar'
-import LandingHero from '/src/components/page-landing-hero-oemradio'
-import ServicesContentSection from '/src/components/services-overview-content'
-import TestimonialsReviews from '/src/components/testimonials-reviews'
+import LadderHero from '/src/components/page-landing-hero-ladder'
+import HowWeHelpSection from '/src/components/how-we-help-content'
+import SuccessStories from '/src/components/success-stories-reviews'
+import DonationSection from '/src/components/donation-section'
 import ContactForm from '/src/components/ContactForm'
 import Footer from '/src/components/sitewide-footer'
 
 export const metadata = {
-  title: 'OEM Radio Repair - UConnect & Car Radio Repair Service | Save 50%',
-  description: 'Professional OEM radio repair service for Dodge, Chrysler, Jeep, Ford, GM, Toyota vehicles. UConnect radio repair, digitizer replacement $400, LCD $550. Mail-in service with free shipping. Get your free quote today.',
+  title: 'The Ladder | Birmingham Crisis Intervention & Barrier Assistance',
+  description: 'The Ladder helps Birmingham residents overcome life barriers through nonprofit partnerships. Emergency assistance & crisis intervention. Donate or apply for help today.',
   keywords: [
-    'oem radio repair',
-    'oem radio repair near me',
-    'uconnect radio repair',
-    'uconnect repair near me',
-    'dodge radio repair',
-    'ford oem radio repair',
-    'gm oem radio repair',
-    'toyota oem radio repair',
-    'oem car radio repair',
-    'oem factory radio repair',
-    'uconnect radio repair mail in service',
-    'dodge ram radio repair',
-    'dodge charger radio repair',
-    'dodge caravan radio repair',
-    'roberts oem radio repair',
-    'radio repair near me',
-    'oem car radio repair near me',
-    'uconnect radio issues',
-    'dodge radio not working'
+    'Birmingham Alabama nonprofit help',
+    'crisis intervention Birmingham',
+    'emergency financial assistance Birmingham',
+    'Birmingham barrier removal assistance',
+    'individual crisis intervention Birmingham',
+    'nonprofit partnership Birmingham AL',
+    'Birmingham nonprofit crisis services',
+    'emergency help Birmingham nonprofits',
+    'Birmingham community assistance',
+    'individual barrier assistance Alabama',
+    'crisis help Birmingham Alabama',
+    'Birmingham nonprofit partnerships',
+    'barrier removal Birmingham',
+    'The Ladder Birmingham',
+    'Birmingham charity',
+    'donate Birmingham Alabama',
+    'Birmingham nonprofits',
+    'emergency assistance Birmingham Alabama',
+    'missing rung help Birmingham',
+    'Birmingham crisis support'
   ],
   openGraph: {
-    title: 'OEM Radio Repair - UConnect & Car Radio Repair Service | Save 50%',
-    description: 'Professional OEM radio repair for Dodge, Ford, GM, Toyota. UConnect radio repair mail-in service. Digitizer $400, LCD $550. Free shipping, 1-year warranty nationwide.',
-    url: 'https://oemradiorepair.com',
+    title: 'The Ladder | Birmingham Crisis Intervention & Barrier Assistance',
+    description: 'The Ladder helps Birmingham residents overcome specific barriers preventing their success. Partner nonprofit providing emergency assistance and individual support. Donate or apply for help today.',
+    url: 'https://www.the-ladder.org',
     type: 'website',
     locale: 'en_US',
-    siteName: 'OEM Radio Repair',
+    siteName: 'The Ladder',
     images: [
       {
         url: '/meta.png',
         width: 1200,
         height: 630,
-        alt: 'OEM Radio Repair - Professional UConnect & Car Radio Repair Service'
+        alt: 'The Ladder - Birmingham Crisis Intervention & Barrier Assistance'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'OEM Radio Repair - UConnect & Car Radio Repair Service | Save 50%',
-    description: 'Professional OEM radio repair for Dodge, Ford, GM, Toyota. UConnect radio repair mail-in service. Free shipping nationwide.',
+    title: 'The Ladder | Birmingham Crisis Intervention & Barrier Assistance',
+    description: 'The Ladder helps Birmingham residents overcome specific barriers preventing their success. Emergency assistance & individual support in Birmingham, Alabama.',
     images: ['/meta.png']
   },
   alternates: {
-    canonical: 'https://oemradiorepair.com'
+    canonical: 'https://www.the-ladder.org'
   },
   robots: {
     index: true,
@@ -73,27 +75,59 @@ export default function Home() {
       <Navbar />
       
       {/* Hero Section */}
-      <LandingHero />
+      <LadderHero />
       
-      {/* Service Overview Section */}
-      <ServicesContentSection />
+      {/* How We Help Section */}
+      <HowWeHelpSection />
       
-      {/* Customer Testimonials & Reviews */}
-      <TestimonialsReviews />
+      {/* Success Stories & Impact */}
+      <SuccessStories />
       
-      {/* Contact Form Section */}
-      <section className="py-16 bg-gradient-to-b from-background-dark to-surface-900">
+      {/* Donation Section */}
+      <DonationSection />
+      
+      {/* Get Help Form Section */}
+      <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-tiltwarp font-bold text-text-primary mb-4">
-              Get Your Free <span className="text-primary-400">Repair Quote</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              Need Help Overcoming a <span className="text-[var(--ladder-red)]">Barrier?</span>
             </h2>
-            <p className="text-xl text-text-secondary max-w-2xl mx-auto">
-              Fill out the form below and we'll provide a detailed quote with pricing and timeline for your specific vehicle
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Apply for assistance or refer someone who needs help. We partner with nonprofits to provide individual barrier removal support.
             </p>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+              <a 
+                href="/get-help" 
+                className="inline-flex items-center px-6 py-3 bg-[var(--ladder-red)] text-white font-semibold rounded-lg hover:bg-[var(--ladder-red)]/90 transition-colors"
+              >
+                Apply for Help
+              </a>
+              <a 
+                href="/donate" 
+                className="inline-flex items-center px-6 py-3 border border-[var(--ladder-gold)] text-[var(--ladder-gold)] font-semibold rounded-lg hover:bg-[var(--ladder-gold)] hover:text-white transition-colors"
+              >
+                Donate Now
+              </a>
+            </div>
           </div>
           
           <ContactForm />
+        </div>
+      </section>
+      
+      {/* 501(c)(3) Status Display */}
+      <section className="py-8 bg-gray-50 border-t border-gray-200">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="text-sm text-gray-600 mb-2">
+              The Ladder is a 501(c)(3) tax-exempt organization
+            </p>
+            <p className="text-sm text-gray-600">
+              <strong>EIN:</strong> 47-2123160 | 
+              <strong> Tax-deductible donations</strong> to the extent allowed by law
+            </p>
+          </div>
         </div>
       </section>
       

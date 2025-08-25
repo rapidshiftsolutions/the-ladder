@@ -12,15 +12,23 @@ export default {
         'accent-gradient': 'linear-gradient(135deg, #003d00 0%, #00e600 50%, #008000 100%)',
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        heading: ['var(--font-tiltwarp)', 'Arial', 'sans-serif'],
-        accent: ['var(--font-tiltwarp)', 'Arial', 'sans-serif'],
-        inter: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        tiltwarp: ['var(--font-tiltwarp)', 'Arial', 'sans-serif'],
-        // Legacy font mappings for compatibility
-        exo2: ['var(--font-tiltwarp)', 'Arial', 'sans-serif'],
-        anton: ['var(--font-tiltwarp)', 'Arial', 'sans-serif'],
-        lacquer: ['var(--font-tiltwarp)', 'Arial', 'sans-serif'],
+        // Default sans-serif font - Inter for all body text
+        sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
+        
+        // Host Grotesk for headings, buttons, and accents
+        heading: ['var(--font-host-grotesk)', 'Host Grotesk', 'system-ui', 'sans-serif'],
+        accent: ['var(--font-host-grotesk)', 'Host Grotesk', 'system-ui', 'sans-serif'],
+        button: ['var(--font-host-grotesk)', 'Host Grotesk', 'system-ui', 'sans-serif'],
+        
+        // Specific font family references
+        inter: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
+        'host-grotesk': ['var(--font-host-grotesk)', 'Host Grotesk', 'system-ui', 'sans-serif'],
+        
+        // Legacy font mappings for compatibility - all mapped to Host Grotesk
+        exo2: ['var(--font-host-grotesk)', 'Host Grotesk', 'system-ui', 'sans-serif'],
+        anton: ['var(--font-host-grotesk)', 'Host Grotesk', 'system-ui', 'sans-serif'],
+        lacquer: ['var(--font-host-grotesk)', 'Host Grotesk', 'system-ui', 'sans-serif'],
+        tiltwarp: ['var(--font-host-grotesk)', 'Host Grotesk', 'system-ui', 'sans-serif'],
       },
       colors: {
         primary: {

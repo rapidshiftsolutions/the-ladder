@@ -1,32 +1,39 @@
 import Navbar from '/src/components/sitewide-navbar'
 import Footer from '/src/components/sitewide-footer'
-import TrustElements from '/src/components/TrustElements'
 import ContactForm from '/src/components/ContactForm.jsx'
 import RecaptchaDebugger from '/src/components/RecaptchaDebugger.jsx'
-import { Phone, Mail, MapPin, Clock, MessageCircle, Truck, Wrench } from 'lucide-react'
+import { Phone, Mail, MapPin, Clock, MessageCircle, Heart, HelpingHand } from 'lucide-react'
 
 export const metadata = {
-  title: 'Contact UConnect & OEM Radio Repair Service | (205) 522-1162',
-  description: 'Contact OEM Radio Repair for UConnect radio repair, Dodge radio repair, Ford, GM, Toyota radio service. Birmingham, AL location. Mail-in service nationwide. Call (205) 522-1162.',
+  title: 'Contact The Ladder | Birmingham Crisis Intervention & Assistance',
+  description: 'Contact The Ladder for crisis intervention, emergency assistance applications, and barrier removal support in Birmingham, Alabama. Apply for help or make referrals.',
   keywords: [
-    'oem radio repair phone number',
-    'uconnect customer service telephone number',
-    'uconnect customer service phone number',
-    'uconnect service number',
-    'dodge radio repair phone number',
-    'oem radio repair near me contact',
-    'radio repair near me phone',
-    'uconnect customer service hours',
-    'oem radio repair birmingham al',
-    'roberts oem radio repair contact',
-    '(205) 522-1162',
-    'info@oemradiorepair.com',
-    'uconnect customer service email'
+    'Birmingham Alabama nonprofit contact',
+    'crisis intervention Birmingham phone',
+    'emergency assistance Birmingham contact',
+    'The Ladder Birmingham phone number',
+    'Birmingham barrier assistance application',
+    'nonprofit help Birmingham AL contact',
+    'crisis support Birmingham Alabama',
+    'individual assistance Birmingham',
+    'emergency help Birmingham contact',
+    'Birmingham nonprofit crisis services',
+    'barrier removal assistance contact',
+    'The Ladder crisis intervention',
+    'Birmingham emergency assistance phone',
+    'nonprofit partnership Birmingham contact'
   ],
   openGraph: {
-    title: 'Contact UConnect & OEM Radio Repair Service | (205) 522-1162',
-    description: 'Professional OEM radio repair for Dodge, Ford, GM, Toyota. UConnect radio repair service. Birmingham, AL. Nationwide mail-in service.',
+    title: 'Contact The Ladder | Birmingham Crisis Intervention & Assistance',
+    description: 'Apply for crisis intervention and barrier removal assistance in Birmingham, Alabama. Contact The Ladder nonprofit for emergency help and support services.',
+    url: 'https://www.the-ladder.org/contact',
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'The Ladder'
   },
+  alternates: {
+    canonical: 'https://www.the-ladder.org/contact'
+  }
 }
 
 export default function ContactPage() {
@@ -41,18 +48,14 @@ export default function ContactPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-tiltwarp font-bold text-text-primary mb-6">
-                Contact <span className="text-primary-400">OEM Radio Repair</span>
+                Contact <span className="text-primary-400">The Ladder</span>
               </h1>
               <p className="text-xl sm:text-2xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
-                Ready to fix your infotainment system? Get expert repair services with our convenient 
-                mail-in process or contact us for questions about your vehicle's compatibility.
+                Need help overcoming a barrier? Apply for assistance, make a referral, or contact us 
+                about our crisis intervention and barrier removal services in Birmingham.
               </p>
             </div>
 
-            {/* Trust Elements */}
-            <div className="mb-16">
-              <TrustElements variant="badges" className="justify-center" />
-            </div>
           </div>
         </section>
 
@@ -65,11 +68,11 @@ export default function ContactPage() {
               <div className="space-y-8">
                 <div>
                   <h2 className="text-3xl font-tiltwarp font-bold text-text-primary mb-6">
-                    Get In Touch
+                    Get Help Today
                   </h2>
                   <p className="text-lg text-text-secondary mb-8">
-                    Our expert technicians are ready to help with your infotainment repair needs. 
-                    Choose the contact method that works best for you.
+                    Whether you need emergency assistance, want to make a referral, or have questions 
+                    about our services, we're here to help. Choose the contact method that works best for you.
                   </p>
                 </div>
 
@@ -84,36 +87,56 @@ export default function ContactPage() {
                     <div className="flex-1">
                       <h3 className="text-xl font-semibold text-text-primary mb-2">Email Us</h3>
                       <p className="text-text-secondary mb-3">
-                        Send us details about your repair needs or questions
+                        Send assistance applications, make referrals, or ask questions about our services
                       </p>
                       <a 
-                        href="mailto:info@oemradiorepair.com"
+                        href="mailto:help@the-ladder.org"
                         className="text-lg font-semibold text-primary-400 hover:text-primary-300 transition-colors"
                       >
-                        info@oemradiorepair.com
+                        help@the-ladder.org
                       </a>
                     </div>
                   </div>
 
-                  {/* Address */}
+                  {/* Crisis Hotline */}
+                  <div className="flex items-start gap-4 p-6 bg-surface-800 rounded-xl border border-primary-500/20">
+                    <div className="flex-shrink-0 w-12 h-12 bg-primary-500/20 rounded-lg flex items-center justify-center">
+                      <Phone className="w-6 h-6 text-primary-400" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-semibold text-text-primary mb-2">Crisis Support Line</h3>
+                      <p className="text-text-secondary mb-3">
+                        For immediate crisis intervention and emergency barrier assistance
+                      </p>
+                      <a 
+                        href="tel:+12055221162"
+                        className="text-lg font-semibold text-primary-400 hover:text-primary-300 transition-colors"
+                      >
+                        (205) 522-1162
+                      </a>
+                      <p className="text-sm text-text-secondary mt-2">
+                        Available during business hours - leave a message for after-hours response
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Mailing Address */}
                   <div className="flex items-start gap-4 p-6 bg-surface-800 rounded-xl border border-primary-500/20">
                     <div className="flex-shrink-0 w-12 h-12 bg-primary-500/20 rounded-lg flex items-center justify-center">
                       <MapPin className="w-6 h-6 text-primary-400" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-semibold text-text-primary mb-2">Visit Our Facility</h3>
+                      <h3 className="text-xl font-semibold text-text-primary mb-2">Mailing Address</h3>
                       <p className="text-text-secondary mb-3">
-                        Located in Birmingham, AL - mail-in service available nationwide
+                        Serving Birmingham and surrounding communities
                       </p>
                       <div className="space-y-1">
-                        <p className="text-text-primary font-medium">2413 1st Ave S</p>
+                        <p className="text-text-primary font-medium">The Ladder</p>
+                        <p className="text-text-primary font-medium">P.O. Box [TBD]</p>
                         <p className="text-text-primary font-medium">Birmingham, AL 35233</p>
-                        <a 
-                          href="https://maps.google.com/?q=2413+1st+Ave+S+Birmingham+AL+35233"
-                          className="inline-block text-primary-400 hover:text-primary-300 transition-colors mt-2"
-                        >
-                          Get Directions →
-                        </a>
+                        <p className="text-sm text-text-secondary mt-2">
+                          501(c)(3) Tax-Exempt Organization • EIN: 47-2123160
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -124,14 +147,17 @@ export default function ContactPage() {
                       <Clock className="w-6 h-6 text-primary-400" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-semibold text-text-primary mb-2">Business Hours</h3>
+                      <h3 className="text-xl font-semibold text-text-primary mb-2">Support Hours</h3>
                       <p className="text-text-secondary mb-3">
-                        We're available during these hours for phone support and consultation
+                        Available for crisis intervention, assistance applications, and general inquiries
                       </p>
                       <div className="space-y-1 text-text-primary">
-                        <p><span className="font-medium">Monday - Friday:</span> 8:00 AM - 6:00 PM</p>
-                        <p><span className="font-medium">Saturday:</span> 8:00 AM - 5:00 PM</p>
-                        <p><span className="font-medium">Sunday:</span> Closed</p>
+                        <p><span className="font-medium">Monday - Friday:</span> 9:00 AM - 5:00 PM</p>
+                        <p><span className="font-medium">Saturday:</span> By appointment</p>
+                        <p><span className="font-medium">Sunday:</span> Emergency referrals only</p>
+                        <p className="text-sm text-text-secondary mt-2">
+                          Crisis situations: Leave voicemail for priority response
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -142,11 +168,11 @@ export default function ContactPage() {
               <div id="contact-form" className="space-y-8">
                 <div>
                   <h2 className="text-3xl font-tiltwarp font-bold text-text-primary mb-6">
-                    Send Us a Message
+                    Apply for Assistance
                   </h2>
                   <p className="text-lg text-text-secondary mb-8">
-                    Fill out the form below and we'll get back to you within 24 hours with a detailed quote 
-                    and repair timeline for your specific vehicle.
+                    Complete the form below to apply for barrier removal assistance, make a referral, 
+                    or ask questions about our services. We'll respond within 24 hours.
                   </p>
                 </div>
 
@@ -162,10 +188,10 @@ export default function ContactPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-tiltwarp font-bold text-text-primary mb-4">
-                How Our Mail-In Service Works
+                How Our Assistance Process Works
               </h2>
               <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-                Simple, secure, and convenient repair process from anywhere in the United States
+                Simple, confidential process to connect individuals with the barrier removal help they need
               </p>
             </div>
 
@@ -175,31 +201,31 @@ export default function ContactPage() {
                 <div className="w-16 h-16 bg-primary-500 rounded-full flex items-center justify-center mx-auto mb-6">
                   <MessageCircle className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-text-primary mb-4">1. Contact Us</h3>
+                <h3 className="text-xl font-semibold text-text-primary mb-4">1. Reach Out</h3>
                 <p className="text-text-secondary">
-                  Call, email, or use our contact form to describe your infotainment issues and get a quote
+                  Contact us about your barrier, apply for assistance, or refer someone who needs help
                 </p>
               </div>
 
               {/* Step 2 */}
               <div className="text-center">
                 <div className="w-16 h-16 bg-primary-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Truck className="w-8 h-8 text-white" />
+                  <Heart className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-text-primary mb-4">2. Ship Your Unit</h3>
+                <h3 className="text-xl font-semibold text-text-primary mb-4">2. Assessment</h3>
                 <p className="text-text-secondary">
-                  We provide a prepaid shipping label - securely package and send your infotainment unit
+                  We work with you to understand your specific barrier and connect with partner organizations
                 </p>
               </div>
 
               {/* Step 3 */}
               <div className="text-center">
                 <div className="w-16 h-16 bg-primary-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Wrench className="w-8 h-8 text-white" />
+                  <HelpingHand className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-text-primary mb-4">3. Expert Repair</h3>
+                <h3 className="text-xl font-semibold text-text-primary mb-4">3. Support</h3>
                 <p className="text-text-secondary">
-                  Our technicians perform the repair with 1-year warranty and ship it back within 2-3 days
+                  Receive targeted assistance to remove your barrier and get back on track toward your goals
                 </p>
               </div>
             </div>
@@ -211,11 +237,11 @@ export default function ContactPage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="bg-primary-500/10 rounded-2xl border border-primary-500/20 p-8 lg:p-12">
               <h2 className="text-3xl sm:text-4xl font-tiltwarp font-bold text-text-primary mb-4">
-                Ready to Fix Your Infotainment System?
+                Ready to Overcome Your <span className="text-primary-400">Barrier?</span>
               </h2>
               <p className="text-xl text-text-secondary mb-8 max-w-2xl mx-auto">
-                Get professional repair service with our 1-year warranty, free shipping both ways, 
-                and save 50%+ compared to major competitors.
+                Get the individual assistance you need to remove barriers and achieve your goals. 
+                Our partner network is here to help Birmingham residents succeed.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -224,15 +250,23 @@ export default function ContactPage() {
                   className="inline-flex items-center justify-center px-8 py-4 bg-primary-500 text-black font-bold rounded-lg hover:bg-primary-600 transition-all duration-300 text-lg"
                 >
                   <MessageCircle className="w-5 h-5 mr-2" />
-                  Fill Out Form Below
+                  Apply for Help
                 </a>
                 <a 
-                  href="mailto:info@oemradiorepair.com"
+                  href="/donate"
                   className="inline-flex items-center justify-center px-8 py-4 bg-surface-800/50 backdrop-blur-sm border border-primary-500/30 text-text-primary font-medium rounded-lg hover:bg-surface-700/50 transition-all duration-300 text-lg"
                 >
-                  <Mail className="w-5 h-5 mr-2" />
-                  Email Us
+                  <Heart className="w-5 h-5 mr-2" />
+                  Make a Donation
                 </a>
+              </div>
+              
+              <div className="mt-8 p-4 bg-surface-800/30 rounded-lg border border-primary-500/10">
+                <p className="text-sm text-text-secondary text-center">
+                  <strong className="text-text-primary">Crisis Situation?</strong> Call our support line at 
+                  <a href="tel:+12055221162" className="text-primary-400 hover:text-primary-300 font-medium">(205) 522-1162</a> 
+                  for immediate assistance or leave a message for priority response.
+                </p>
               </div>
             </div>
           </div>

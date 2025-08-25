@@ -3,10 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Phone, Mail, MapPin, Shield, Clock, Truck } from 'lucide-react';
+import { Heart, Mail, MapPin, Users, Calendar, Award } from 'lucide-react';
 import { FooterNavItems } from '/src/data/navigation';
 
-const OEMRadioRepairFooter = () => {
+const TheLadderFooter = () => {
   const [currentYear, setCurrentYear] = useState('');
   const [mounted, setMounted] = useState(false);
   
@@ -17,7 +17,7 @@ const OEMRadioRepairFooter = () => {
   }, []);
 
   return (
-    <footer className="bg-surface-900/95 backdrop-blur-sm text-white relative overflow-hidden">
+    <footer className="bg-gray-50 text-gray-800 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -34,31 +34,37 @@ const OEMRadioRepairFooter = () => {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="mb-6">
-              <h3 className="text-2xl font-bold text-white mb-2">OEM Radio Repair</h3>
-              <p className="text-text-secondary text-sm mb-4">
-                Professional infotainment screen repair service. Family-owned business with decades of experience in the car audio industry.
+              <div className="mb-4">
+                <img 
+                  src="/TheLadder/logos/The Ladder - Logo.png" 
+                  alt="The Ladder - A Helping Hand To People Who Are Climbing Up"
+                  className="h-16 w-auto mb-2"
+                />
+              </div>
+              <p className="text-gray-600 text-sm mb-4">
+                Birmingham's 501(c)(3) nonprofit organization helping individuals overcome specific barriers preventing their success through crisis intervention and community partnerships.
               </p>
             </div>
 
             {/* Contact Info */}
             <div className="space-y-3 mb-6">
               <div className="flex items-center text-sm">
-                <Phone className="w-4 h-4 text-primary-500 mr-3 flex-shrink-0" />
-                <a href="/contact" className="text-text-secondary hover:text-primary-400 transition-colors">
-                  Contact Us
+                <Heart className="w-4 h-4 text-[var(--ladder-red)] mr-3 flex-shrink-0" />
+                <a href="/get-help" className="text-gray-600 hover:text-[var(--ladder-gold)] transition-colors">
+                  Apply for Help
                 </a>
               </div>
               <div className="flex items-center text-sm">
-                <Mail className="w-4 h-4 text-primary-500 mr-3 flex-shrink-0" />
-                <a href="mailto:info@oemradiorepair.com" className="text-text-secondary hover:text-primary-400 transition-colors">
-                  info@oemradiorepair.com
+                <Mail className="w-4 h-4 text-[var(--ladder-blue)] mr-3 flex-shrink-0" />
+                <a href="mailto:info@the-ladder.org" className="text-gray-600 hover:text-[var(--ladder-gold)] transition-colors">
+                  info@the-ladder.org
                 </a>
               </div>
               <div className="flex items-start text-sm">
-                <MapPin className="w-4 h-4 text-primary-500 mr-3 flex-shrink-0 mt-0.5" />
-                <div className="text-text-secondary">
-                  2413 1st Ave S<br />
-                  Birmingham, AL 35233
+                <MapPin className="w-4 h-4 text-[var(--ladder-green)] mr-3 flex-shrink-0 mt-0.5" />
+                <div className="text-gray-600">
+                  Serving Birmingham, Alabama<br />
+                  and surrounding communities
                 </div>
               </div>
             </div>
@@ -66,16 +72,16 @@ const OEMRadioRepairFooter = () => {
             {/* Trust Elements */}
             <div className="space-y-2">
               <div className="flex items-center text-sm">
-                <Shield className="w-4 h-4 text-green-500 mr-2" />
-                <span className="text-text-secondary">1 Year Warranty</span>
+                <Users className="w-4 h-4 text-[var(--ladder-green)] mr-2" />
+                <span className="text-gray-600">150+ People Helped</span>
               </div>
               <div className="flex items-center text-sm">
-                <Truck className="w-4 h-4 text-green-500 mr-2" />
-                <span className="text-text-secondary">Free 2-Way Shipping</span>
+                <Calendar className="w-4 h-4 text-[var(--ladder-blue)] mr-2" />
+                <span className="text-gray-600">24 Hour Response</span>
               </div>
               <div className="flex items-center text-sm">
-                <Clock className="w-4 h-4 text-green-500 mr-2" />
-                <span className="text-text-secondary">2-3 Day Turnaround</span>
+                <Award className="w-4 h-4 text-[var(--ladder-gold)] mr-2" />
+                <span className="text-gray-600">501(c)(3) Nonprofit</span>
               </div>
             </div>
           </div>
@@ -83,7 +89,7 @@ const OEMRadioRepairFooter = () => {
           {/* Navigation Links */}
           {FooterNavItems.map((section, index) => (
             <div key={index}>
-              <h3 className="text-sm font-bold tracking-wide text-white uppercase mb-4">
+              <h3 className="text-sm font-bold tracking-wide text-gray-900 uppercase mb-4">
                 {section.name}
               </h3>
               <ul className="space-y-2">
@@ -91,7 +97,7 @@ const OEMRadioRepairFooter = () => {
                   <li key={linkIndex}>
                     <Link 
                       href={link.href}
-                      className="text-text-secondary hover:text-primary-400 transition-colors text-sm"
+                      className="text-gray-600 hover:text-primary-600 transition-colors text-sm"
                     >
                       {link.name}
                     </Link>
@@ -102,19 +108,19 @@ const OEMRadioRepairFooter = () => {
           ))}
         </div>
 
-        {/* Service Area Banner */}
-        <div className="border-t border-surface-600 pt-8 mb-8">
-          <div className="bg-surface-800/50 rounded-lg p-6 text-center">
-            <h3 className="text-lg font-bold text-white mb-2">Nationwide Service</h3>
-            <p className="text-text-secondary text-sm mb-4">
-              We repair infotainment screens for customers across the United States with our convenient mail-in service.
+        {/* Mission Banner */}
+        <div className="border-t border-gray-300 pt-8 mb-8">
+          <div className="bg-white rounded-lg p-6 text-center shadow-sm">
+            <h3 className="text-lg font-bold text-gray-900 mb-2">Our Mission</h3>
+            <p className="text-gray-600 text-sm mb-4">
+              Helping individuals one by one climb over very specific, personal barriers that are otherwise keeping them from moving forward in life.
             </p>
-            <div className="flex flex-wrap justify-center gap-4 text-xs text-text-secondary">
-              <span>• Dodge</span>
-              <span>• Chrysler</span>
-              <span>• Jeep</span>
-              <span>• Cadillac</span>
-              <span>• Ram</span>
+            <div className="flex flex-wrap justify-center gap-4 text-xs text-gray-500">
+              <span>• Housing Support</span>
+              <span>• Employment Assistance</span>
+              <span>• Financial Stability</span>
+              <span>• Health & Wellness</span>
+              <span>• Crisis Intervention</span>
             </div>
           </div>
         </div>
@@ -122,29 +128,32 @@ const OEMRadioRepairFooter = () => {
       </div>
       
       {/* Legal footer */}
-      <div className="border-t border-surface-600">
+      <div className="border-t border-gray-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             {/* Copyright */}
             <div className="flex items-center flex-wrap justify-center md:justify-start space-x-4 mb-4 md:mb-0">
-              <span className="text-text-secondary text-sm">
-                &copy; {currentYear} OEM Radio Repair
+              <span className="text-gray-600 text-sm">
+                &copy; {currentYear} The Ladder
               </span>
-              <span className="text-text-secondary text-sm">
-                Founded by Alex Harmon
+              <span className="text-gray-600 text-sm">
+                501(c)(3) Nonprofit • EIN: 47-2123160
               </span>
-              <span className="text-text-secondary text-sm">
+              <span className="text-gray-600 text-sm">
                 Birmingham, AL
               </span>
             </div>
             
             {/* Legal Links */}
             <div className="flex space-x-6 text-sm">
-              <Link href="/privacy" className="text-text-secondary hover:text-primary-400 transition-colors">
+              <Link href="/privacy" className="text-gray-600 hover:text-primary-600 transition-colors">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="text-text-secondary hover:text-primary-400 transition-colors">
+              <Link href="/terms-of-service" className="text-gray-600 hover:text-primary-600 transition-colors">
                 Terms of Service
+              </Link>
+              <Link href="/accessibility" className="text-gray-600 hover:text-primary-600 transition-colors">
+                Accessibility
               </Link>
             </div>
           </div>
@@ -154,4 +163,4 @@ const OEMRadioRepairFooter = () => {
   );
 };
 
-export default OEMRadioRepairFooter;
+export default TheLadderFooter;
