@@ -40,6 +40,7 @@ export default function ContactForm({
       // Create form data for Netlify Forms submission
       const formBody = new URLSearchParams({
         'form-name': 'contact',
+        'bot-field': '', // Honeypot field
         ...formData,
       }).toString()
 
@@ -49,7 +50,8 @@ export default function ContactForm({
         body: formBody,
       })
 
-      if (response.ok) {
+      // Netlify Forms returns 200 on success, or redirects (301/302)
+      if (response.ok || response.redirected || response.status === 200 || response.status === 302) {
         setStatus('success')
         setFormData({
           name: '',
@@ -59,11 +61,19 @@ export default function ContactForm({
           message: '',
         })
       } else {
-        throw new Error('Form submission failed. Please try again.')
+        // Try to get error message from response
+        const errorText = await response.text().catch(() => '')
+        console.error('Form submission error:', {
+          status: response.status,
+          statusText: response.statusText,
+          error: errorText.substring(0, 200),
+        })
+        throw new Error(`Form submission failed (${response.status}). Please try again or contact us directly.`)
       }
     } catch (error) {
+      console.error('Form submission error:', error)
       setStatus('error')
-      setErrorMessage(error.message || 'Failed to send message. Please try again.')
+      setErrorMessage(error.message || 'Failed to send message. Please try again or contact us directly at info@the-ladder.org')
     }
   }
 
@@ -129,7 +139,14 @@ export default function ContactForm({
       </form>
 
       {/* JavaScript-rendered form with enhanced UX */}
-      <form onSubmit={handleSubmit} className={className}>
+      <form 
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        onSubmit={handleSubmit} 
+        className={className}
+      >
         {/* Honeypot field for spam prevention */}
         <p className="hidden">
           <label>
