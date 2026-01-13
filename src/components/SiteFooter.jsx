@@ -1,25 +1,29 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Heart, Mail, Phone, MapPin, Instagram, Facebook, Linkedin } from 'lucide-react'
+import { Heart, Mail, Phone, MapPin, Instagram, Facebook, Linkedin, Shield, Award, CheckCircle } from 'lucide-react'
 
 const footerLinks = {
   about: [
     { name: 'Our Mission', href: '/about' },
     { name: 'Leadership Team', href: '/leadership-team' },
+    { name: 'Board Governance', href: '/board-governance' },
     { name: 'Success Stories', href: '/success-stories' },
     { name: 'Annual Reports', href: '/annual-reports' },
+    { name: 'Financials', href: '/financials' },
   ],
   getInvolved: [
-    { name: 'Donate', href: '/donate' },
-    { name: 'Partner With Us', href: '/partners' },
+    { name: 'Donate Now', href: '/donate' },
+    { name: 'Monthly Giving', href: '/monthly-giving' },
+    { name: 'Corporate Partnerships', href: '/corporate-partnerships' },
+    { name: 'Volunteer', href: '/volunteer' },
     { name: 'Events', href: '/events' },
-    { name: 'Contact', href: '/contact' },
   ],
-  resources: [
+  getHelp: [
     { name: 'How We Help', href: '/how-we-help' },
+    { name: 'Apply for Assistance', href: '/get-help' },
     { name: 'Guest Portal', href: '/guest-portal' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Partner Agencies', href: '/partners' },
+    { name: 'Partner Organizations', href: '/partners' },
+    { name: 'Birmingham Resources', href: '/birmingham-resources' },
   ],
   legal: [
     { name: 'Privacy Policy', href: '/privacy' },
@@ -32,96 +36,135 @@ export default function SiteFooter() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-[var(--color-ladder-blue)] text-white">
-      {/* CTA Banner */}
-      <div className="bg-[var(--color-ladder-red)] py-8 sm:py-10">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-            Help Someone Climb Higher
-          </h2>
-          <p className="text-white/90 mb-6 max-w-2xl mx-auto">
-            Your donation removes real barriers for real people in Birmingham.
-            Every dollar makes a difference.
-          </p>
-          <Link
-            href="/donate"
-            className="inline-flex items-center gap-2 bg-white text-[var(--color-ladder-red)] px-6 py-3 rounded-lg font-semibold hover:bg-white/90 transition-colors"
-          >
-            <Heart className="w-5 h-5" />
-            Give Today
-          </Link>
-        </div>
-      </div>
-
-      {/* Main Footer */}
-      <div className="py-12 sm:py-16">
+    <footer className="bg-white border-t border-gray-200">
+      {/* CTA Section */}
+      <section className="bg-[var(--color-primary)] py-12 lg:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 lg:gap-12">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
+              Help Us Remove Barriers for Birmingham Residents
+            </h2>
+            <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+              Your generosity makes it possible for individuals to overcome obstacles 
+              and build better lives. Every contribution creates real, measurable impact.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/donate"
+                className="inline-flex items-center justify-center gap-2 bg-[var(--color-accent)] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[var(--color-accent-light)] transition-colors shadow-lg"
+              >
+                <Heart className="w-5 h-5" />
+                Make a Donation
+              </Link>
+              <Link
+                href="/monthly-giving"
+                className="inline-flex items-center justify-center gap-2 bg-white/10 text-white border-2 border-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/20 transition-colors"
+              >
+                Become a Monthly Donor
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Badges Section */}
+      <section className="bg-gray-50 py-8 border-b border-gray-200">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-12">
+            <div className="flex items-center gap-2 text-[var(--color-text-secondary)]">
+              <Shield className="w-5 h-5 text-[var(--color-primary)]" />
+              <span className="text-sm font-medium">501(c)(3) Tax Exempt</span>
+            </div>
+            <div className="flex items-center gap-2 text-[var(--color-text-secondary)]">
+              <Award className="w-5 h-5 text-[var(--color-primary)]" />
+              <span className="text-sm font-medium">Serving Birmingham Since 2021</span>
+            </div>
+            <div className="flex items-center gap-2 text-[var(--color-text-secondary)]">
+              <CheckCircle className="w-5 h-5 text-[var(--color-primary)]" />
+              <span className="text-sm font-medium">100% of Donations to Direct Services</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Footer Content */}
+      <div className="py-12 lg:py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-12">
             {/* Brand Column */}
-            <div className="col-span-2 md:col-span-4 lg:col-span-1">
+            <div className="col-span-2 md:col-span-3 lg:col-span-2">
               <Image
                 src="/TheLadder/logos/The Ladder - Logo.png"
                 alt="The Ladder"
-                width={140}
-                height={50}
-                className="h-10 w-auto brightness-0 invert mb-4"
+                width={160}
+                height={53}
+                className="h-12 w-auto mb-4"
               />
-              <p className="text-white/80 text-sm mb-4">
-                Helping Birmingham residents climb over life&apos;s barriers, one rung at a time.
+              <p className="text-[var(--color-text-secondary)] text-sm mb-6 max-w-sm">
+                The Ladder is a Birmingham, Alabama 501(c)(3) nonprofit organization 
+                dedicated to helping individuals overcome barriers to success through 
+                crisis intervention and community partnerships.
               </p>
               
               {/* Contact Info */}
-              <div className="space-y-2 text-sm text-white/80">
+              <div className="space-y-3 text-sm">
+                <a 
+                  href="tel:+12055221162" 
+                  className="flex items-center gap-3 text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors"
+                >
+                  <Phone className="w-4 h-4 text-[var(--color-primary)]" />
+                  (205) 522-1162
+                </a>
                 <a 
                   href="mailto:info@the-ladder.org" 
-                  className="flex items-center gap-2 hover:text-white transition-colors"
+                  className="flex items-center gap-3 text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors"
                 >
-                  <Mail className="w-4 h-4" />
+                  <Mail className="w-4 h-4 text-[var(--color-primary)]" />
                   info@the-ladder.org
                 </a>
-                <div className="flex items-start gap-2">
-                  <MapPin className="w-4 h-4 mt-0.5" />
-                  <span>Birmingham, AL</span>
+                <div className="flex items-start gap-3 text-[var(--color-text-secondary)]">
+                  <MapPin className="w-4 h-4 text-[var(--color-primary)] mt-0.5" />
+                  <span>Birmingham, Alabama</span>
                 </div>
               </div>
 
               {/* Social Links */}
-              <div className="flex gap-4 mt-4">
+              <div className="flex gap-4 mt-6">
                 <a
                   href="https://instagram.com/theladder_bham"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/80 hover:text-white transition-colors"
-                  aria-label="Instagram"
+                  className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-[var(--color-text-secondary)] hover:bg-[var(--color-primary)] hover:text-white transition-colors"
+                  aria-label="Follow us on Instagram"
                 >
                   <Instagram className="w-5 h-5" />
                 </a>
                 <a
                   href="#"
-                  className="text-white/80 hover:text-white transition-colors"
-                  aria-label="Facebook"
+                  className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-[var(--color-text-secondary)] hover:bg-[var(--color-primary)] hover:text-white transition-colors"
+                  aria-label="Follow us on Facebook"
                 >
                   <Facebook className="w-5 h-5" />
                 </a>
                 <a
                   href="#"
-                  className="text-white/80 hover:text-white transition-colors"
-                  aria-label="LinkedIn"
+                  className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-[var(--color-text-secondary)] hover:bg-[var(--color-primary)] hover:text-white transition-colors"
+                  aria-label="Connect on LinkedIn"
                 >
                   <Linkedin className="w-5 h-5" />
                 </a>
               </div>
             </div>
 
-            {/* About */}
+            {/* About Links */}
             <div>
-              <h3 className="font-semibold text-white mb-4">About</h3>
-              <ul className="space-y-2">
+              <h3 className="font-semibold text-[var(--color-text-primary)] mb-4">About Us</h3>
+              <ul className="space-y-3">
                 {footerLinks.about.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-sm text-white/80 hover:text-white transition-colors"
+                      className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors"
                     >
                       {link.name}
                     </Link>
@@ -130,15 +173,15 @@ export default function SiteFooter() {
               </ul>
             </div>
 
-            {/* Get Involved */}
+            {/* Get Involved Links */}
             <div>
-              <h3 className="font-semibold text-white mb-4">Get Involved</h3>
-              <ul className="space-y-2">
+              <h3 className="font-semibold text-[var(--color-text-primary)] mb-4">Get Involved</h3>
+              <ul className="space-y-3">
                 {footerLinks.getInvolved.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-sm text-white/80 hover:text-white transition-colors"
+                      className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors"
                     >
                       {link.name}
                     </Link>
@@ -147,15 +190,15 @@ export default function SiteFooter() {
               </ul>
             </div>
 
-            {/* Resources */}
+            {/* Get Help Links */}
             <div>
-              <h3 className="font-semibold text-white mb-4">Resources</h3>
-              <ul className="space-y-2">
-                {footerLinks.resources.map((link) => (
+              <h3 className="font-semibold text-[var(--color-text-primary)] mb-4">Get Help</h3>
+              <ul className="space-y-3">
+                {footerLinks.getHelp.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-sm text-white/80 hover:text-white transition-colors"
+                      className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors"
                     >
                       {link.name}
                     </Link>
@@ -164,38 +207,45 @@ export default function SiteFooter() {
               </ul>
             </div>
 
-            {/* Legal */}
+            {/* Legal Links */}
             <div>
-              <h3 className="font-semibold text-white mb-4">Legal</h3>
-              <ul className="space-y-2">
+              <h3 className="font-semibold text-[var(--color-text-primary)] mb-4">Legal</h3>
+              <ul className="space-y-3">
                 {footerLinks.legal.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-sm text-white/80 hover:text-white transition-colors"
+                      className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors"
                     >
                       {link.name}
                     </Link>
                   </li>
                 ))}
               </ul>
+              
+              {/* EIN Badge */}
+              <div className="mt-6 p-3 bg-gray-50 rounded-lg">
+                <p className="text-xs text-[var(--color-text-secondary)]">
+                  <strong className="text-[var(--color-text-primary)]">EIN:</strong> 47-2123160
+                </p>
+                <p className="text-xs text-[var(--color-text-secondary)] mt-1">
+                  Tax-deductible donations
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-white/20 py-6">
+      <div className="border-t border-gray-200 py-6 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-white/70">
-            <div className="text-center sm:text-left">
-              <p>© {currentYear} The Ladder. All rights reserved.</p>
-              <p className="mt-1">
-                501(c)(3) Nonprofit Organization • EIN: 47-2123160
-              </p>
-            </div>
-            <p className="text-center sm:text-right">
-              All donations are tax-deductible to the extent allowed by law.
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-[var(--color-text-secondary)]">
+            <p>
+              © {currentYear} The Ladder. All rights reserved.
+            </p>
+            <p className="text-center md:text-right">
+              All donations are tax-deductible to the fullest extent allowed by law.
             </p>
           </div>
         </div>

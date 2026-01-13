@@ -1,35 +1,23 @@
 import SiteHeader from '/src/components/SiteHeader'
 import SiteFooter from '/src/components/SiteFooter'
 import ContactForm from '/src/components/ContactForm.jsx'
-import RecaptchaDebugger from '/src/components/RecaptchaDebugger.jsx'
-import { Phone, Mail, MapPin, Clock, MessageCircle, Heart, HelpingHand } from 'lucide-react'
+import Link from 'next/link'
+import { Phone, Mail, MapPin, Clock, Heart, HelpingHand, ArrowRight, Building2 } from 'lucide-react'
 
 export const metadata = {
-  title: 'Contact The Ladder | Birmingham Crisis Intervention & Assistance',
-  description: 'Contact The Ladder for crisis intervention, emergency assistance applications, and barrier removal support in Birmingham, Alabama. Apply for help or make referrals.',
+  title: 'Contact Us | The Ladder Birmingham',
+  description: 'Contact The Ladder for crisis intervention, emergency assistance, or partnership inquiries. Serving Birmingham, Alabama with free, confidential support services.',
   keywords: [
     'Birmingham Alabama nonprofit contact',
     'crisis intervention Birmingham phone',
     'emergency assistance Birmingham contact',
-    'The Ladder Birmingham phone number',
-    'Birmingham barrier assistance application',
-    'nonprofit help Birmingham AL contact',
-    'crisis support Birmingham Alabama',
-    'individual assistance Birmingham',
-    'emergency help Birmingham contact',
-    'Birmingham nonprofit crisis services',
-    'barrier removal assistance contact',
-    'The Ladder crisis intervention',
-    'Birmingham emergency assistance phone',
-    'nonprofit partnership Birmingham contact'
+    'The Ladder Birmingham phone number'
   ],
   openGraph: {
-    title: 'Contact The Ladder | Birmingham Crisis Intervention & Assistance',
-    description: 'Apply for crisis intervention and barrier removal assistance in Birmingham, Alabama. Contact The Ladder nonprofit for emergency help and support services.',
+    title: 'Contact Us | The Ladder Birmingham',
+    description: 'Contact The Ladder nonprofit for crisis intervention and barrier removal assistance in Birmingham, Alabama.',
     url: 'https://www.the-ladder.org/contact',
-    type: 'website',
-    locale: 'en_US',
-    siteName: 'The Ladder'
+    type: 'website'
   },
   alternates: {
     canonical: 'https://www.the-ladder.org/contact'
@@ -38,243 +26,217 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="flex min-h-screen flex-col">
-      <RecaptchaDebugger />
+    <>
       <SiteHeader />
-      <div className="flex-1 bg-[var(--color-background)] pt-16 sm:pt-20">
+      <main id="main-content" className="min-h-screen bg-white">
         
         {/* Hero Section */}
-        <section className="relative py-16 lg:py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-tiltwarp font-bold text-text-primary mb-6">
-                Contact <span className="text-primary-400">The Ladder</span>
+        <section className="bg-[var(--color-primary)] py-16 lg:py-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto text-center">
+              <h1 
+                className="text-4xl lg:text-5xl font-bold text-white mb-6"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                Get in Touch
               </h1>
-              <p className="text-xl sm:text-2xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
-                Need help overcoming a barrier? Apply for assistance, make a referral, or contact us 
-                about our crisis intervention and barrier removal services in Birmingham.
+              <p className="text-xl text-white/90">
+                Whether you need help, want to partner with us, or have questions about 
+                our services, we&apos;re here to assist you.
               </p>
             </div>
-
           </div>
         </section>
 
-        {/* Contact Methods Grid */}
-        <section className="py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-12 mb-16">
-              
-              {/* Contact Information */}
-              <div className="space-y-8">
-                <div>
-                  <h2 className="text-3xl font-tiltwarp font-bold text-text-primary mb-6">
-                    Get Help Today
-                  </h2>
-                  <p className="text-lg text-text-secondary mb-8">
-                    Whether you need emergency assistance, want to make a referral, or have questions 
-                    about our services, we're here to help. Choose the contact method that works best for you.
-                  </p>
+        {/* Quick Contact Cards */}
+        <section className="bg-gray-50 border-b border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              <a 
+                href="tel:+12055221162"
+                className="flex items-center gap-4 p-4 bg-white rounded-lg border border-gray-200 hover:border-[var(--color-primary)] hover:shadow-md transition-all"
+              >
+                <div className="w-12 h-12 bg-[var(--color-primary)]/10 rounded-lg flex items-center justify-center">
+                  <Phone className="w-6 h-6 text-[var(--color-primary)]" />
                 </div>
-
-                {/* Contact Methods */}
-                <div className="space-y-6">
-
-                  {/* Email */}
-                  <div className="flex items-start gap-4 p-6 bg-surface-800 rounded-xl border border-primary-500/20">
-                    <div className="flex-shrink-0 w-12 h-12 bg-primary-500/20 rounded-lg flex items-center justify-center">
-                      <Mail className="w-6 h-6 text-primary-400" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-semibold text-text-primary mb-2">Email Us</h3>
-                      <p className="text-text-secondary mb-3">
-                        Send assistance applications, make referrals, or ask questions about our services
-                      </p>
-                      <a 
-                        href="mailto:help@the-ladder.org"
-                        className="text-lg font-semibold text-primary-400 hover:text-primary-300 transition-colors"
-                      >
-                        help@the-ladder.org
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* Crisis Hotline */}
-                  <div className="flex items-start gap-4 p-6 bg-surface-800 rounded-xl border border-primary-500/20">
-                    <div className="flex-shrink-0 w-12 h-12 bg-primary-500/20 rounded-lg flex items-center justify-center">
-                      <Phone className="w-6 h-6 text-primary-400" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-semibold text-text-primary mb-2">Crisis Support Line</h3>
-                      <p className="text-text-secondary mb-3">
-                        For immediate crisis intervention and emergency barrier assistance
-                      </p>
-                      <a 
-                        href="tel:+12055221162"
-                        className="text-lg font-semibold text-primary-400 hover:text-primary-300 transition-colors"
-                      >
-                        (205) 522-1162
-                      </a>
-                      <p className="text-sm text-text-secondary mt-2">
-                        Available during business hours - leave a message for after-hours response
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Mailing Address */}
-                  <div className="flex items-start gap-4 p-6 bg-surface-800 rounded-xl border border-primary-500/20">
-                    <div className="flex-shrink-0 w-12 h-12 bg-primary-500/20 rounded-lg flex items-center justify-center">
-                      <MapPin className="w-6 h-6 text-primary-400" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-semibold text-text-primary mb-2">Mailing Address</h3>
-                      <p className="text-text-secondary mb-3">
-                        Serving Birmingham and surrounding communities
-                      </p>
-                      <div className="space-y-1">
-                        <p className="text-text-primary font-medium">The Ladder</p>
-                        <p className="text-text-primary font-medium">P.O. Box [TBD]</p>
-                        <p className="text-text-primary font-medium">Birmingham, AL 35233</p>
-                        <p className="text-sm text-text-secondary mt-2">
-                          501(c)(3) Tax-Exempt Organization • EIN: 47-2123160
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Business Hours */}
-                  <div className="flex items-start gap-4 p-6 bg-surface-800 rounded-xl border border-primary-500/20">
-                    <div className="flex-shrink-0 w-12 h-12 bg-primary-500/20 rounded-lg flex items-center justify-center">
-                      <Clock className="w-6 h-6 text-primary-400" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-semibold text-text-primary mb-2">Support Hours</h3>
-                      <p className="text-text-secondary mb-3">
-                        Available for crisis intervention, assistance applications, and general inquiries
-                      </p>
-                      <div className="space-y-1 text-text-primary">
-                        <p><span className="font-medium">Monday - Friday:</span> 9:00 AM - 5:00 PM</p>
-                        <p><span className="font-medium">Saturday:</span> By appointment</p>
-                        <p><span className="font-medium">Sunday:</span> Emergency referrals only</p>
-                        <p className="text-sm text-text-secondary mt-2">
-                          Crisis situations: Leave voicemail for priority response
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                <div>
+                  <div className="font-semibold text-[var(--color-text-primary)]">(205) 522-1162</div>
+                  <div className="text-sm text-[var(--color-text-secondary)]">Call us directly</div>
+                </div>
+              </a>
+              
+              <a 
+                href="mailto:info@the-ladder.org"
+                className="flex items-center gap-4 p-4 bg-white rounded-lg border border-gray-200 hover:border-[var(--color-primary)] hover:shadow-md transition-all"
+              >
+                <div className="w-12 h-12 bg-[var(--color-primary)]/10 rounded-lg flex items-center justify-center">
+                  <Mail className="w-6 h-6 text-[var(--color-primary)]" />
+                </div>
+                <div>
+                  <div className="font-semibold text-[var(--color-text-primary)]">info@the-ladder.org</div>
+                  <div className="text-sm text-[var(--color-text-secondary)]">Email us</div>
+                </div>
+              </a>
+              
+              <div className="flex items-center gap-4 p-4 bg-white rounded-lg border border-gray-200">
+                <div className="w-12 h-12 bg-[var(--color-primary)]/10 rounded-lg flex items-center justify-center">
+                  <Clock className="w-6 h-6 text-[var(--color-primary)]" />
+                </div>
+                <div>
+                  <div className="font-semibold text-[var(--color-text-primary)]">Mon-Fri 9am-5pm</div>
+                  <div className="text-sm text-[var(--color-text-secondary)]">Business hours</div>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
 
-              {/* Contact Form Placeholder */}
-              <div id="contact-form" className="space-y-8">
-                <div>
-                  <h2 className="text-3xl font-tiltwarp font-bold text-text-primary mb-6">
-                    Apply for Assistance
-                  </h2>
-                  <p className="text-lg text-text-secondary mb-8">
-                    Complete the form below to apply for barrier removal assistance, make a referral, 
-                    or ask questions about our services. We'll respond within 24 hours.
-                  </p>
-                </div>
-
+        {/* Main Content */}
+        <section className="py-16 lg:py-24">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <div className="grid lg:grid-cols-5 gap-12">
+                
                 {/* Contact Form */}
-                <ContactForm />
+                <div className="lg:col-span-3">
+                  <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8">
+                    <h2 
+                      className="text-2xl font-bold text-[var(--color-text-primary)] mb-2"
+                      style={{ fontFamily: 'var(--font-heading)' }}
+                    >
+                      Send Us a Message
+                    </h2>
+                    <p className="text-[var(--color-text-secondary)] mb-8">
+                      Fill out the form below and we&apos;ll respond within 24 hours during business days.
+                    </p>
+                    
+                    <ContactForm />
+                  </div>
+                </div>
+
+                {/* Sidebar */}
+                <div className="lg:col-span-2 space-y-8">
+                  {/* Contact Reasons */}
+                  <div className="bg-gray-50 rounded-xl border border-gray-200 p-6">
+                    <h3 
+                      className="text-lg font-bold text-[var(--color-text-primary)] mb-4"
+                      style={{ fontFamily: 'var(--font-heading)' }}
+                    >
+                      How Can We Help?
+                    </h3>
+                    <div className="space-y-4">
+                      <Link 
+                        href="/get-help"
+                        className="flex items-center gap-3 p-3 bg-white rounded-lg border border-gray-200 hover:border-[var(--color-primary)] transition-colors group"
+                      >
+                        <HelpingHand className="w-5 h-5 text-[var(--color-primary)]" />
+                        <div className="flex-1">
+                          <div className="font-medium text-[var(--color-text-primary)]">Apply for Assistance</div>
+                          <div className="text-xs text-[var(--color-text-secondary)]">Need help with a barrier?</div>
+                        </div>
+                        <ArrowRight className="w-4 h-4 text-[var(--color-text-secondary)] group-hover:text-[var(--color-primary)]" />
+                      </Link>
+                      
+                      <Link 
+                        href="/donate"
+                        className="flex items-center gap-3 p-3 bg-white rounded-lg border border-gray-200 hover:border-[var(--color-primary)] transition-colors group"
+                      >
+                        <Heart className="w-5 h-5 text-[var(--color-accent)]" />
+                        <div className="flex-1">
+                          <div className="font-medium text-[var(--color-text-primary)]">Make a Donation</div>
+                          <div className="text-xs text-[var(--color-text-secondary)]">Support our mission</div>
+                        </div>
+                        <ArrowRight className="w-4 h-4 text-[var(--color-text-secondary)] group-hover:text-[var(--color-primary)]" />
+                      </Link>
+                      
+                      <Link 
+                        href="/partners"
+                        className="flex items-center gap-3 p-3 bg-white rounded-lg border border-gray-200 hover:border-[var(--color-primary)] transition-colors group"
+                      >
+                        <Building2 className="w-5 h-5 text-[var(--color-secondary)]" />
+                        <div className="flex-1">
+                          <div className="font-medium text-[var(--color-text-primary)]">Partner With Us</div>
+                          <div className="text-xs text-[var(--color-text-secondary)]">Nonprofit collaboration</div>
+                        </div>
+                        <ArrowRight className="w-4 h-4 text-[var(--color-text-secondary)] group-hover:text-[var(--color-primary)]" />
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* Organization Info */}
+                  <div className="bg-white rounded-xl border border-gray-200 p-6">
+                    <h3 
+                      className="text-lg font-bold text-[var(--color-text-primary)] mb-4"
+                      style={{ fontFamily: 'var(--font-heading)' }}
+                    >
+                      About The Ladder
+                    </h3>
+                    <div className="space-y-4 text-sm">
+                      <div className="flex items-start gap-3">
+                        <MapPin className="w-5 h-5 text-[var(--color-primary)] flex-shrink-0 mt-0.5" />
+                        <div>
+                          <div className="font-medium text-[var(--color-text-primary)]">Birmingham, Alabama</div>
+                          <div className="text-[var(--color-text-secondary)]">Serving the Birmingham metro area</div>
+                        </div>
+                      </div>
+                      
+                      <div className="p-3 bg-gray-50 rounded-lg">
+                        <div className="text-[var(--color-text-secondary)]">
+                          <strong className="text-[var(--color-text-primary)]">501(c)(3) Nonprofit</strong>
+                        </div>
+                        <div className="text-[var(--color-text-secondary)]">EIN: 47-2123160</div>
+                        <div className="text-[var(--color-text-secondary)]">Founded 2021</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Response Time */}
+                  <div className="bg-[var(--color-primary)]/5 rounded-xl border border-[var(--color-primary)]/20 p-6">
+                    <h3 
+                      className="text-lg font-bold text-[var(--color-text-primary)] mb-2"
+                      style={{ fontFamily: 'var(--font-heading)' }}
+                    >
+                      Response Time
+                    </h3>
+                    <p className="text-sm text-[var(--color-text-secondary)]">
+                      We respond to all inquiries within 24 hours during business days. 
+                      For urgent situations, please call our phone line directly.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Service Process Section */}
-        <section className="py-16 bg-surface-800/30">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-tiltwarp font-bold text-text-primary mb-4">
-                How Our Assistance Process Works
+        {/* Map / Location Section */}
+        <section className="py-12 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 
+                className="text-2xl font-bold text-[var(--color-text-primary)] mb-4"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                Serving Birmingham and Surrounding Communities
               </h2>
-              <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-                Simple, confidential process to connect individuals with the barrier removal help they need
+              <p className="text-[var(--color-text-secondary)] mb-6">
+                The Ladder provides barrier removal assistance to individuals throughout 
+                the Birmingham metropolitan area, working with partner organizations 
+                across Jefferson County and beyond.
               </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {/* Step 1 */}
-              <div className="text-center">
-                <div className="w-16 h-16 bg-primary-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <MessageCircle className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold text-text-primary mb-4">1. Reach Out</h3>
-                <p className="text-text-secondary">
-                  Contact us about your barrier, apply for assistance, or refer someone who needs help
-                </p>
-              </div>
-
-              {/* Step 2 */}
-              <div className="text-center">
-                <div className="w-16 h-16 bg-primary-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Heart className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold text-text-primary mb-4">2. Assessment</h3>
-                <p className="text-text-secondary">
-                  We work with you to understand your specific barrier and connect with partner organizations
-                </p>
-              </div>
-
-              {/* Step 3 */}
-              <div className="text-center">
-                <div className="w-16 h-16 bg-primary-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <HelpingHand className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold text-text-primary mb-4">3. Support</h3>
-                <p className="text-text-secondary">
-                  Receive targeted assistance to remove your barrier and get back on track toward your goals
-                </p>
-              </div>
+              <Link 
+                href="/birmingham-resources"
+                className="inline-flex items-center text-[var(--color-primary)] font-semibold hover:underline"
+              >
+                View Birmingham Area Resources
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Link>
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-16">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="bg-primary-500/10 rounded-2xl border border-primary-500/20 p-8 lg:p-12">
-              <h2 className="text-3xl sm:text-4xl font-tiltwarp font-bold text-text-primary mb-4">
-                Ready to Overcome Your <span className="text-primary-400">Barrier?</span>
-              </h2>
-              <p className="text-xl text-text-secondary mb-8 max-w-2xl mx-auto">
-                Get the individual assistance you need to remove barriers and achieve your goals. 
-                Our partner network is here to help Birmingham residents succeed.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
-                  href="#contact-form"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-primary-500 text-black font-bold rounded-lg hover:bg-primary-600 transition-all duration-300 text-lg"
-                >
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  Apply for Help
-                </a>
-                <a 
-                  href="/donate"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-surface-800/50 backdrop-blur-sm border border-primary-500/30 text-text-primary font-medium rounded-lg hover:bg-surface-700/50 transition-all duration-300 text-lg"
-                >
-                  <Heart className="w-5 h-5 mr-2" />
-                  Make a Donation
-                </a>
-              </div>
-              
-              <div className="mt-8 p-4 bg-surface-800/30 rounded-lg border border-primary-500/10">
-                <p className="text-sm text-text-secondary text-center">
-                  <strong className="text-text-primary">Crisis Situation?</strong> Call our support line at 
-                  <a href="tel:+12055221162" className="text-primary-400 hover:text-primary-300 font-medium">(205) 522-1162</a> 
-                  for immediate assistance or leave a message for priority response.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-      </div>
+      </main>
       <SiteFooter />
-    </main>
     </>
   )
 }

@@ -1,204 +1,230 @@
 import SiteHeader from '/src/components/SiteHeader'
 import SiteFooter from '/src/components/SiteFooter'
+import Link from 'next/link'
+import Image from 'next/image'
+import { ArrowRight, Shield, Heart, Users } from 'lucide-react'
 
 export const metadata = {
-  title: 'Leadership Team | The Ladder Birmingham Nonprofit',
-  description: 'Meet the dedicated board members and staff leading The Ladder nonprofit in Birmingham, Alabama. Our team is committed to helping community members overcome barriers.',
-  keywords: [
-    'The Ladder board members',
-    'Birmingham nonprofit leadership',
-    'The Ladder staff',
-    'nonprofit board Birmingham',
-    'community leaders Birmingham AL',
-  ],
+  title: 'Leadership Team | Board of Directors',
+  description: 'Meet The Ladder\'s leadership team and board of directors. Our leaders bring diverse experience and a shared commitment to helping individuals overcome barriers.',
   openGraph: {
-    title: 'Leadership Team | The Ladder',
-    description: 'Meet our dedicated board members and staff helping Birmingham residents overcome barriers.',
+    title: 'Leadership Team | The Ladder Birmingham',
+    description: 'Meet our board of directors and leadership team.',
     url: 'https://www.the-ladder.org/leadership-team',
-    type: 'website',
-  },
+    type: 'website'
+  }
 }
 
-// Placeholder team members - in production, fetch from Sanity
-const teamMembers = [
+const boardMembers = [
   {
-    name: 'Board Member Name',
-    title: 'Board President',
-    organization: 'Community Partner Organization',
-    bio: 'Dedicated community leader with years of experience in nonprofit management and a passion for helping others succeed.',
-    memberType: 'board',
+    name: 'Board Chairman',
+    role: 'Chairman of the Board',
+    organization: 'Blue Cross Blue Shield of Alabama',
+    bio: 'Healthcare industry executive with extensive nonprofit board experience. Passionate about community health and crisis intervention. Brings strategic leadership and healthcare industry connections to The Ladder.',
+    image: null
   },
   {
-    name: 'Board Member Name',
-    title: 'Vice President',
-    organization: 'Local Business',
-    bio: 'Business professional committed to giving back to the Birmingham community through strategic guidance and resources.',
-    memberType: 'board',
+    name: 'Board Treasurer',
+    role: 'Treasurer',
+    organization: 'Co-Owner, DDS Solutions',
+    bio: 'Business leader with expertise in operations and financial management. Committed to efficient resource allocation and sustainable organizational growth. Ensures fiscal responsibility and transparency.',
+    image: null
   },
   {
-    name: 'Board Member Name',
-    title: 'Treasurer',
-    organization: 'Financial Services Company',
-    bio: 'Financial expert ensuring The Ladder maintains fiscal responsibility and maximizes impact for every donated dollar.',
-    memberType: 'board',
-  },
-  {
-    name: 'Board Member Name',
-    title: 'Secretary',
-    organization: 'Healthcare Organization',
-    bio: 'Healthcare professional who understands the barriers individuals face and works to create pathways to success.',
-    memberType: 'board',
-  },
-  {
-    name: 'Board Member Name',
-    title: 'Board Member',
-    organization: 'Education Institution',
-    bio: 'Educator dedicated to breaking down educational barriers and creating opportunities for Birmingham residents.',
-    memberType: 'board',
-  },
-  {
-    name: 'Board Member Name',
-    title: 'Board Member',
-    organization: 'Community Organization',
-    bio: 'Longtime community advocate passionate about connecting people with resources they need to thrive.',
-    memberType: 'board',
-  },
+    name: 'Board Secretary',
+    role: 'Secretary',
+    organization: 'Community Volunteer & Mentor',
+    bio: 'Certified Peer Support Specialist with lived experience in recovery. Dedicated to helping others overcome personal barriers through mentorship and compassionate support.',
+    image: null
+  }
 ]
 
 export default function LeadershipTeamPage() {
-  const boardMembers = teamMembers.filter(m => m.memberType === 'board')
-  const staffMembers = teamMembers.filter(m => m.memberType === 'staff')
-
   return (
     <>
       <SiteHeader />
-      <main className="flex min-h-screen flex-col pt-16 sm:pt-20">
-
-      {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-b from-ladder-blue to-ladder-blue-light text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6 font-heading">
-            Our Leadership Team
-          </h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto">
-            Meet the dedicated individuals who guide The Ladder's mission to help Birmingham 
-            residents overcome barriers and achieve their goals.
-          </p>
-        </div>
-      </section>
-
-      {/* Board Members Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4 font-heading">Board of Directors</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Our volunteer board members bring diverse expertise and a shared commitment 
-              to serving our community.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {boardMembers.map((member, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow"
+      <main id="main-content" className="min-h-screen bg-white">
+        
+        {/* Hero Section */}
+        <section className="bg-[var(--color-primary)] py-16 lg:py-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto text-center">
+              <h1 
+                className="text-4xl lg:text-5xl font-bold text-white mb-6"
+                style={{ fontFamily: 'var(--font-heading)' }}
               >
-                {/* Photo Placeholder */}
-                <div className="aspect-square bg-gradient-to-br from-ladder-blue/10 to-ladder-green/10 flex items-center justify-center">
-                  <div className="w-24 h-24 rounded-full bg-ladder-blue/20 flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-ladder-blue/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
+                Our Leadership Team
+              </h1>
+              <p className="text-xl text-white/90">
+                Our board members bring diverse professional experience and personal 
+                commitment to helping individuals overcome barriers.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Leadership Philosophy */}
+        <section className="py-12 bg-gray-50 border-b border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-white rounded-xl p-8 border border-gray-200">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-[var(--color-primary)]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Heart className="w-6 h-6 text-[var(--color-primary)]" />
+                  </div>
+                  <div>
+                    <h2 
+                      className="text-xl font-bold text-[var(--color-text-primary)] mb-2"
+                      style={{ fontFamily: 'var(--font-heading)' }}
+                    >
+                      Leadership Built on Experience
+                    </h2>
+                    <p className="text-[var(--color-text-secondary)]">
+                      Our board members have personal experiences overcoming significant life obstacles, 
+                      including addiction recovery. They believe strongly in helping others overcome 
+                      roadblocks through immediate needs assistance, accountability, and mentorship.
+                    </p>
                   </div>
                 </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 font-heading">
-                    {member.name}
-                  </h3>
-                  <p className="text-ladder-blue font-medium">{member.title}</p>
-                  {member.organization && (
-                    <p className="text-sm text-gray-500 mt-1">{member.organization}</p>
-                  )}
-                  <p className="text-gray-600 mt-4 text-sm leading-relaxed">
-                    {member.bio}
-                  </p>
-                </div>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Staff Section (if any) */}
-      {staffMembers.length > 0 && (
-        <section className="py-16 bg-gray-50">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Board Members */}
+        <section className="py-16 lg:py-24 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4 font-heading">Our Staff</h2>
-              <p className="text-lg text-gray-600">
-                The team that works daily to remove barriers and create opportunities.
+              <h2 
+                className="text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] mb-4"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                Board of Directors
+              </h2>
+              <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+                Volunteer leadership dedicated to The Ladder&apos;s mission of removing 
+                barriers and transforming lives.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {staffMembers.map((member, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow"
+            <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
+              {boardMembers.map((member, index) => (
+                <div 
+                  key={index} 
+                  className="bg-gray-50 rounded-xl p-8 border border-gray-200 text-center"
                 >
-                  <div className="aspect-square bg-gradient-to-br from-ladder-green/10 to-ladder-gold/10 flex items-center justify-center">
-                    <div className="w-24 h-24 rounded-full bg-ladder-green/20 flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-ladder-green/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                    </div>
+                  {/* Avatar Placeholder */}
+                  <div className="w-24 h-24 bg-[var(--color-primary)]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span className="text-3xl font-bold text-[var(--color-primary)]">
+                      {member.role.split(' ').map(w => w[0]).join('')}
+                    </span>
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 font-heading">
-                      {member.name}
-                    </h3>
-                    <p className="text-ladder-green font-medium">{member.title}</p>
-                    <p className="text-gray-600 mt-4 text-sm leading-relaxed">
-                      {member.bio}
-                    </p>
-                  </div>
+                  
+                  <h3 
+                    className="text-xl font-bold text-[var(--color-text-primary)] mb-1"
+                    style={{ fontFamily: 'var(--font-heading)' }}
+                  >
+                    {member.name}
+                  </h3>
+                  <p className="text-[var(--color-primary)] font-medium mb-2">
+                    {member.role}
+                  </p>
+                  <p className="text-sm text-[var(--color-text-secondary)] mb-4">
+                    {member.organization}
+                  </p>
+                  <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
+                    {member.bio}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
         </section>
-      )}
 
-      {/* Join Us CTA */}
-      <section className="py-16 bg-ladder-blue text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4 font-heading">Join Our Mission</h2>
-          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Interested in serving on our board or volunteering your expertise? 
-            We're always looking for passionate community members to help us grow our impact.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/volunteer"
-              className="bg-white text-ladder-blue px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-            >
-              Volunteer With Us
-            </a>
-            <a
-              href="/contact"
-              className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors"
-            >
-              Contact Us
-            </a>
+        {/* Governance */}
+        <section className="py-16 lg:py-24 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 
+                  className="text-3xl font-bold text-[var(--color-text-primary)] mb-4"
+                  style={{ fontFamily: 'var(--font-heading)' }}
+                >
+                  Governance & Oversight
+                </h2>
+                <p className="text-lg text-[var(--color-text-secondary)]">
+                  Our board provides strategic direction and ensures accountability.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="bg-white rounded-xl p-6 border border-gray-200 text-center">
+                  <div className="w-12 h-12 bg-[var(--color-primary)]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <Shield className="w-6 h-6 text-[var(--color-primary)]" />
+                  </div>
+                  <h3 className="font-semibold text-[var(--color-text-primary)] mb-2">Fiscal Responsibility</h3>
+                  <p className="text-sm text-[var(--color-text-secondary)]">
+                    Regular financial oversight ensures donations are used effectively.
+                  </p>
+                </div>
+                
+                <div className="bg-white rounded-xl p-6 border border-gray-200 text-center">
+                  <div className="w-12 h-12 bg-[var(--color-primary)]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <Users className="w-6 h-6 text-[var(--color-primary)]" />
+                  </div>
+                  <h3 className="font-semibold text-[var(--color-text-primary)] mb-2">Quarterly Meetings</h3>
+                  <p className="text-sm text-[var(--color-text-secondary)]">
+                    Regular board meetings to review progress and set direction.
+                  </p>
+                </div>
+                
+                <div className="bg-white rounded-xl p-6 border border-gray-200 text-center">
+                  <div className="w-12 h-12 bg-[var(--color-primary)]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <Heart className="w-6 h-6 text-[var(--color-primary)]" />
+                  </div>
+                  <h3 className="font-semibold text-[var(--color-text-primary)] mb-2">Mission Focused</h3>
+                  <p className="text-sm text-[var(--color-text-secondary)]">
+                    All decisions guided by our commitment to removing barriers.
+                  </p>
+                </div>
+              </div>
+
+              <div className="text-center mt-8">
+                <Link href="/board-governance" className="btn btn-secondary">
+                  Learn More About Our Governance
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <SiteFooter />
+        {/* CTA */}
+        <section className="py-16 bg-[var(--color-primary)]">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 
+              className="text-3xl font-bold text-white mb-6"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              Join Our Mission
+            </h2>
+            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+              Whether through volunteering, donating, or partnering, you can help us 
+              remove barriers and transform lives in Birmingham.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/volunteer" className="btn btn-lg bg-white text-[var(--color-primary)] hover:bg-gray-100">
+                Volunteer With Us
+              </Link>
+              <Link href="/donate" className="btn btn-lg bg-[var(--color-accent)] text-white hover:bg-[var(--color-accent-light)]">
+                Support Our Mission
+              </Link>
+            </div>
+          </div>
+        </section>
+
       </main>
+      <SiteFooter />
     </>
   )
 }

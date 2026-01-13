@@ -3,16 +3,15 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Menu, X, Heart } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { Menu, X, Heart, Phone, ChevronDown } from 'lucide-react'
 
 const navigation = [
-  { name: 'About', href: '/about' },
+  { name: 'About Us', href: '/about' },
   { name: 'How We Help', href: '/how-we-help' },
   { name: 'Success Stories', href: '/success-stories' },
   { name: 'Leadership', href: '/leadership-team' },
-  { name: 'Events', href: '/events' },
   { name: 'Partners', href: '/partners' },
+  { name: 'Events', href: '/events' },
   { name: 'Contact', href: '/contact' },
 ]
 
@@ -22,140 +21,214 @@ export default function SiteHeader() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+      setScrolled(window.scrollY > 10)
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Close mobile menu on route change
+  // Close mobile menu on escape key
   useEffect(() => {
-    setMobileMenuOpen(false)
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        setMobileMenuOpen(false)
+      }
+    }
+    document.addEventListener('keydown', handleEscape)
+    return () => document.removeEventListener('keydown', handleEscape)
   }, [])
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileMenuOpen])
 
   return (
     <>
-      {/* Skip to main content link for accessibility */}
-      <a 
-        href="#main-content" 
-        className="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-[var(--color-ladder-blue)] focus:text-white focus:px-4 focus:py-2 focus:rounded-lg"
-      >
-        Skip to main content
-      </a>
-      
+      {/* Top Bar - Trust Signals */}
+      <div className="hidden md:block bg-[var(--color-primary)] text-white text-sm">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-10">
+            <div className="flex items-center gap-6">
+              <span className="flex items-center gap-2">
+                <Phone className="w-4 h-4" />
+                <a href="tel:+12055221162" className="hover:underline">
+                  (205) 522-1162
+                </a>
+              </span>
+              <span className="text-white/80">
+                501(c)(3) Nonprofit • EIN: 47-2123160
+              </span>
+            </div>
+            <div className="flex items-center gap-4">
+              <Link href="/get-help" className="hover:underline">
+                Need Help?
+              </Link>
+              <Link href="/guest-portal" className="hover:underline">
+                Guest Portal
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Header */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled 
-            ? 'bg-white shadow-md' 
-            : 'bg-white'
+        className={`sticky top-0 z-50 bg-white transition-shadow duration-200 ${
+          scrolled ? 'shadow-md' : 'shadow-sm'
         }`}
       >
         <nav className="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
-        <div className="flex h-16 sm:h-20 items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <Image
-              src="/TheLadder/logos/The Ladder - Logo.png"
-              alt="The Ladder"
-              width={150}
-              height={50}
-              className="h-10 sm:h-12 w-auto"
-              priority
-            />
-          </Link>
+          <div className="flex h-16 lg:h-20 items-center justify-between">
+            {/* Logo */}
+            <Link href="/" className="flex-shrink-0">
+              <Image
+                src="/TheLadder/logos/The Ladder - Logo.png"
+                alt="The Ladder - Birmingham Nonprofit"
+                width={160}
+                height={53}
+                className="h-10 lg:h-12 w-auto"
+                priority
+              />
+            </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex lg:items-center lg:gap-1">
-            {navigation.map((item) => (
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex lg:items-center lg:gap-1">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="px-3 xl:px-4 py-2 text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors rounded-md hover:bg-gray-50"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+
+            {/* Desktop CTAs */}
+            <div className="hidden lg:flex lg:items-center lg:gap-3">
               <Link
-                key={item.name}
-                href={item.href}
-                className="px-3 py-2 text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-ladder-blue)] transition-colors"
+                href="/get-help"
+                className="btn btn-secondary text-sm"
               >
-                {item.name}
+                Get Help
               </Link>
-            ))}
-          </div>
+              <Link
+                href="/donate"
+                className="btn btn-accent flex items-center gap-2 text-sm"
+              >
+                <Heart className="w-4 h-4" />
+                Donate Now
+              </Link>
+            </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden lg:flex lg:items-center lg:gap-4">
-            <Link
-              href="/guest-portal"
-              className="text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-ladder-blue)] transition-colors"
+            {/* Mobile Menu Button */}
+            <button
+              type="button"
+              className="lg:hidden p-2 -m-2 text-[var(--color-text-primary)] rounded-md hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
             >
-              Guest Portal
-            </Link>
-            <Link
-              href="/donate"
-              className="btn-accent flex items-center gap-2"
-            >
-              <Heart className="w-4 h-4" />
-              Donate
-            </Link>
+              {mobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            type="button"
-            className="lg:hidden p-3 -m-2 text-[var(--color-text-primary)] rounded-lg hover:bg-[var(--color-background)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-ladder-blue)]"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-menu"
-          >
-            {mobileMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
-          </button>
-        </div>
+        </nav>
 
         {/* Mobile Menu */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2 }}
-              className="lg:hidden overflow-hidden"
+        {mobileMenuOpen && (
+          <>
+            {/* Backdrop */}
+            <div 
+              className="lg:hidden fixed inset-0 bg-black/20 z-40"
+              onClick={() => setMobileMenuOpen(false)}
+              aria-hidden="true"
+            />
+            
+            {/* Menu Panel */}
+            <div
+              className="lg:hidden fixed inset-x-0 top-16 bottom-0 z-50 bg-white overflow-y-auto"
               id="mobile-menu"
+              role="dialog"
+              aria-modal="true"
             >
-              <div className="py-4 space-y-1 border-t border-[var(--color-border)]" role="menu">
+              <div className="px-4 py-6 space-y-1">
                 {navigation.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="block px-4 py-3 text-base font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-ladder-blue)] hover:bg-[var(--color-background)] rounded-lg transition-colors"
+                    className="block px-4 py-3 text-base font-medium text-[var(--color-text-primary)] hover:text-[var(--color-primary)] hover:bg-gray-50 rounded-lg transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}
                   </Link>
                 ))}
                 
-                <div className="pt-4 mt-4 border-t border-[var(--color-border)] space-y-2">
+                {/* Mobile Trust Bar */}
+                <div className="pt-4 mt-4 border-t border-gray-200">
+                  <div className="px-4 py-2 text-sm text-[var(--color-text-secondary)]">
+                    <p className="font-medium text-[var(--color-text-primary)]">
+                      501(c)(3) Nonprofit Organization
+                    </p>
+                    <p>EIN: 47-2123160</p>
+                  </div>
+                </div>
+                
+                {/* Mobile CTAs */}
+                <div className="pt-4 space-y-3">
                   <Link
                     href="/guest-portal"
-                    className="block px-4 py-3 text-base font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-ladder-blue)] hover:bg-[var(--color-background)] rounded-lg transition-colors"
+                    className="block px-4 py-3 text-base font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-gray-50 rounded-lg transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Guest Portal
                   </Link>
-                  <Link
-                    href="/donate"
-                    className="btn-accent w-full flex items-center justify-center gap-2"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    <Heart className="w-4 h-4" />
-                    Donate Now
-                  </Link>
+                  
+                  <div className="px-4 space-y-3">
+                    <Link
+                      href="/get-help"
+                      className="btn btn-secondary w-full justify-center"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Get Help
+                    </Link>
+                    <Link
+                      href="/donate"
+                      className="btn btn-accent w-full flex items-center justify-center gap-2"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <Heart className="w-4 h-4" />
+                      Donate Now
+                    </Link>
+                  </div>
+                  
+                  {/* Mobile Contact */}
+                  <div className="px-4 pt-4">
+                    <a 
+                      href="tel:+12055221162" 
+                      className="flex items-center gap-2 text-[var(--color-primary)] font-medium"
+                    >
+                      <Phone className="w-4 h-4" />
+                      (205) 522-1162
+                    </a>
+                  </div>
                 </div>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-        </nav>
+            </div>
+          </>
+        )}
       </header>
     </>
   )

@@ -7,33 +7,29 @@ import FinalActionCompact from '../components/final-action-compact'
 import SiteFooter from '../components/SiteFooter'
 
 export const metadata = {
-  title: 'The Ladder | Birmingham Crisis Intervention & Barrier Assistance',
-  description: 'The Ladder helps Birmingham residents overcome life barriers through nonprofit partnerships. Emergency assistance & crisis intervention. Donate or apply for help today.',
+  title: 'The Ladder | Birmingham Nonprofit Helping Individuals Overcome Barriers',
+  description: 'The Ladder is a Birmingham, Alabama 501(c)(3) nonprofit helping individuals overcome barriers to success through crisis intervention, emergency assistance, and community partnerships. Apply for help or donate today.',
   keywords: [
-    'Birmingham Alabama nonprofit help',
+    'Birmingham Alabama nonprofit',
     'crisis intervention Birmingham',
-    'emergency financial assistance Birmingham',
-    'Birmingham barrier removal assistance',
-    'individual crisis intervention Birmingham',
-    'nonprofit partnership Birmingham AL',
+    'emergency assistance Birmingham',
+    'Birmingham barrier removal',
+    'individual support Birmingham AL',
+    'nonprofit partnership Birmingham',
     'Birmingham nonprofit crisis services',
-    'emergency help Birmingham nonprofits',
+    'emergency help Birmingham',
     'Birmingham community assistance',
     'individual barrier assistance Alabama',
     'crisis help Birmingham Alabama',
     'Birmingham nonprofit partnerships',
-    'barrier removal Birmingham',
     'The Ladder Birmingham',
     'Birmingham charity',
     'donate Birmingham Alabama',
-    'Birmingham nonprofits',
-    'emergency assistance Birmingham Alabama',
-    'missing rung help Birmingham',
-    'Birmingham crisis support'
+    'Birmingham nonprofits'
   ],
   openGraph: {
-    title: 'The Ladder | Birmingham Crisis Intervention & Barrier Assistance',
-    description: 'The Ladder helps Birmingham residents overcome specific barriers preventing their success. Partner nonprofit providing emergency assistance and individual support. Donate or apply for help today.',
+    title: 'The Ladder | Birmingham Nonprofit Helping Individuals Overcome Barriers',
+    description: 'The Ladder is a Birmingham 501(c)(3) nonprofit helping individuals overcome specific barriers preventing their success. Crisis intervention and emergency assistance. Apply for help or donate today.',
     url: 'https://www.the-ladder.org',
     type: 'website',
     locale: 'en_US',
@@ -43,14 +39,14 @@ export const metadata = {
         url: '/meta.png',
         width: 1200,
         height: 630,
-        alt: 'The Ladder - Birmingham Crisis Intervention & Barrier Assistance'
+        alt: 'The Ladder - Birmingham Nonprofit Helping Individuals Overcome Barriers'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'The Ladder | Birmingham Crisis Intervention & Barrier Assistance',
-    description: 'The Ladder helps Birmingham residents overcome specific barriers preventing their success. Emergency assistance & individual support in Birmingham, Alabama.',
+    title: 'The Ladder | Birmingham Nonprofit Helping Individuals Overcome Barriers',
+    description: 'Birmingham 501(c)(3) helping individuals overcome barriers through crisis intervention and community partnerships.',
     images: ['/meta.png']
   },
   alternates: {
@@ -73,14 +69,14 @@ export default function Home() {
   return (
     <>
       <SiteHeader />
-      <main className="min-h-screen pt-16 sm:pt-20">
+      <main id="main-content" className="min-h-screen">
         <HeroCompact />
         <ProblemSolutionCompact />
         <HowItWorksCompact />
         <ImpactTrustCompact />
         <FinalActionCompact />
-        <SiteFooter />
       </main>
+      <SiteFooter />
     </>
   )
 }

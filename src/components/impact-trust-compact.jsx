@@ -1,273 +1,182 @@
 'use client'
 
-import { Users, CheckCircle, Clock, DollarSign, Award, Star, ArrowRight } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
+import { Users, CheckCircle, Clock, DollarSign, Award, Shield, Handshake, Star, ArrowRight } from 'lucide-react'
 
 export default function ImpactTrustCompact() {
-  const [isVisible, setIsVisible] = useState(false)
-  const [counters, setCounters] = useState({ people: 0, success: 0, response: 0, efficiency: 0 })
-  const sectionRef = useRef(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-          
-          // Animate counters
-          const targets = { people: 500, success: 95, response: 24, efficiency: 92 }
-          const duration = 2000
-          const steps = 60
-          const stepDuration = duration / steps
-          
-          let currentStep = 0
-          const timer = setInterval(() => {
-            currentStep++
-            const progress = currentStep / steps
-            
-            setCounters({
-              people: Math.floor(targets.people * progress),
-              success: Math.floor(targets.success * progress),
-              response: Math.floor(targets.response * progress),
-              efficiency: Math.floor(targets.efficiency * progress)
-            })
-            
-            if (currentStep >= steps) {
-              clearInterval(timer)
-              setCounters(targets)
-            }
-          }, stepDuration)
-        }
-      },
-      { threshold: 0.3 }
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
-
   const impactStats = [
     {
       icon: Users,
-      number: counters.people,
-      suffix: '+',
-      label: 'People Helped',
-      description: 'Individuals who overcame barriers with our assistance',
-      color: '#007AFF'
+      number: '500+',
+      label: 'Individuals Helped',
+      description: 'Birmingham residents who have overcome barriers with our support'
     },
     {
       icon: CheckCircle,
-      number: counters.success,
-      suffix: '%',
+      number: '95%',
       label: 'Success Rate',
-      description: 'Barriers successfully removed and lives transformed',
-      color: '#34C759'
+      description: 'Barriers successfully removed, enabling forward progress'
     },
     {
       icon: Clock,
-      number: counters.response,
-      suffix: 'hr',
+      number: '24hr',
       label: 'Response Time',
-      description: 'Average time from referral to initial contact',
-      color: '#FF9500'
+      description: 'Average time from initial contact to first response'
     },
     {
       icon: DollarSign,
-      number: counters.efficiency,
-      suffix: '%',
+      number: '100%',
       label: 'Direct Impact',
-      description: 'Of donations go directly to barrier removal',
-      color: '#FF3B30'
+      description: 'Of donations go directly to barrier removal assistance'
     }
   ]
 
   const trustElements = [
     {
+      icon: Shield,
+      title: '501(c)(3) Tax Exempt',
+      description: 'Registered nonprofit organization (EIN: 47-2123160). All donations are tax-deductible.'
+    },
+    {
       icon: Award,
-      title: '501(c)(3) Nonprofit',
-      description: 'Tax-exempt charitable organization (EIN: 47-2123160)'
+      title: 'Experienced Leadership',
+      description: 'Board members with extensive nonprofit, healthcare, and business experience.'
     },
     {
-      icon: Star,
-      title: 'Board Expertise',
-      description: 'Led by professionals with extensive nonprofit and business experience'
-    },
-    {
-      icon: CheckCircle,
-      title: 'Partner Network',
-      description: 'Trusted by Birmingham\'s leading nonprofit organizations'
+      icon: Handshake,
+      title: 'Trusted Partners',
+      description: 'Collaborated with by Birmingham\'s leading nonprofit organizations.'
     }
   ]
 
   return (
-    <section 
-      ref={sectionRef} 
-      className="relative py-12 sm:py-16 lg:py-20 overflow-hidden bg-[var(--color-background)]"
-    >
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
-        
+    <section className="py-16 lg:py-24 bg-gray-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className={`text-center mb-16 ${isVisible ? 'animate-in' : 'opacity-0'}`}>
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4" style={{ color: '#1a1a1a' }}>
-            Proven Impact, Trusted Results
+        <div className="text-center mb-12 lg:mb-16">
+          <h2 
+            className="text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] mb-4"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            Measurable Impact, Trusted Results
           </h2>
-          <p className="text-xl max-w-3xl mx-auto" style={{ color: '#4a5568' }}>
-            Numbers tell the story of lives changed and barriers overcome through collaborative community support
+          <p className="text-lg text-[var(--color-text-secondary)] max-w-3xl mx-auto">
+            Our outcomes speak for themselves. Every statistic represents a real person 
+            who overcame a barrier and moved forward in life.
           </p>
         </div>
 
         {/* Impact Statistics */}
-        <div className={`grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16 ${isVisible ? 'animate-up' : 'opacity-0'}`} style={{ animationDelay: '200ms' }}>
-          {impactStats.map((stat, index) => {
-            const colorMap = {
-              '#007AFF': 'var(--color-ladder-blue)',
-              '#34C759': 'var(--color-ladder-green)',
-              '#FF9500': 'var(--color-ladder-gold)',
-              '#FF3B30': 'var(--color-ladder-red)',
-            }
-            const brandColor = colorMap[stat.color] || stat.color
-            return (
-              <div
-                key={index}
-                className="card text-center p-6 transition-all duration-300 hover:scale-105"
-              >
-                {/* Icon */}
-                <div className={`w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4 bg-[${brandColor}]/10 border border-[${brandColor}]/20`}>
-                  <stat.icon className="w-8 h-8" style={{ color: brandColor }} />
-                </div>
-
-                {/* Number */}
-                <div className="mb-2">
-                  <span className="text-3xl sm:text-4xl font-bold" style={{ color: brandColor }}>
-                    {stat.number}{stat.suffix}
-                  </span>
-                </div>
-
-                {/* Label */}
-                <h3 className="text-base sm:text-lg font-bold mb-2 text-[var(--color-text-primary)]">
-                  {stat.label}
-                </h3>
-
-                {/* Description */}
-                <p className="text-xs sm:text-sm leading-relaxed text-[var(--color-text-secondary)]">
-                  {stat.description}
-                </p>
-              </div>
-            )
-          })}
-        </div>
-
-        {/* Trust Indicators */}
-        <div className={`grid lg:grid-cols-3 gap-8 mb-16 ${isVisible ? 'animate-up' : 'opacity-0'}`} style={{ animationDelay: '400ms' }}>
-          {trustElements.map((element, index) => (
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {impactStats.map((stat, index) => (
             <div
               key={index}
-              className="card text-center p-6"
+              className="bg-white rounded-xl p-6 text-center border border-gray-200 shadow-sm"
             >
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4 bg-[var(--color-ladder-blue)]/10 border border-[var(--color-ladder-blue)]/20">
-                <element.icon className="w-6 h-6 text-[var(--color-ladder-blue)]" />
+              {/* Icon */}
+              <div className="w-14 h-14 bg-[var(--color-primary)]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <stat.icon className="w-7 h-7 text-[var(--color-primary)]" />
               </div>
-              
-              <h3 className="text-base sm:text-lg font-bold mb-2 text-[var(--color-text-primary)]">
-                {element.title}
+
+              {/* Number */}
+              <div 
+                className="text-3xl lg:text-4xl font-bold text-[var(--color-primary)] mb-2"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                {stat.number}
+              </div>
+
+              {/* Label */}
+              <h3 className="text-base font-semibold text-[var(--color-text-primary)] mb-2">
+                {stat.label}
               </h3>
-              
-              <p className="text-sm text-[var(--color-text-secondary)]">
-                {element.description}
+
+              {/* Description */}
+              <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
+                {stat.description}
               </p>
             </div>
           ))}
         </div>
 
-        {/* Testimonial */}
-        <div className={`${isVisible ? 'animate-in-delayed' : 'opacity-0'}`}>
-          <div className="card relative p-6 sm:p-8 max-w-4xl mx-auto text-center">
-            <div className="mb-6">
-              <div className="flex justify-center gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-current text-[var(--color-ladder-gold)]" />
-                ))}
+        {/* Trust Indicators */}
+        <div className="bg-white rounded-xl border border-gray-200 p-8 lg:p-12 mb-16">
+          <div className="text-center mb-8">
+            <h3 
+              className="text-2xl font-bold text-[var(--color-text-primary)] mb-2"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              Why Trust The Ladder?
+            </h3>
+            <p className="text-[var(--color-text-secondary)]">
+              Transparency, accountability, and a commitment to our community.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {trustElements.map((element, index) => (
+              <div key={index} className="text-center">
+                <div className="w-14 h-14 bg-[var(--color-primary)]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <element.icon className="w-7 h-7 text-[var(--color-primary)]" />
+                </div>
+                <h4 className="text-lg font-semibold text-[var(--color-text-primary)] mb-2">
+                  {element.title}
+                </h4>
+                <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
+                  {element.description}
+                </p>
               </div>
-              
-              <blockquote className="text-lg sm:text-xl font-medium leading-relaxed mb-4 text-[var(--color-text-primary)]">
-                "The Ladder helped me when no other organization could. They paid for my car repair so I could keep my new job. 
-                Two years later, I own my home and volunteer to help others climb their ladders too."
-              </blockquote>
-              
-              <cite className="text-base sm:text-lg font-semibold text-[var(--color-ladder-blue)]">
-                — Sarah M., Birmingham Resident
+            ))}
+          </div>
+        </div>
+
+        {/* Testimonial */}
+        <div className="bg-white rounded-xl border border-gray-200 p-8 lg:p-12 max-w-4xl mx-auto">
+          <div className="flex justify-center gap-1 mb-6">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="w-5 h-5 fill-current text-amber-400" />
+            ))}
+          </div>
+          
+          <blockquote className="text-center mb-8">
+            <p 
+              className="text-xl lg:text-2xl text-[var(--color-text-primary)] leading-relaxed mb-6 italic"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              &quot;When I lost my car in an accident, I thought I would lose everything. 
+              The Ladder provided a rental car so I could keep working until I found a replacement. 
+              Today I have a new job I love and just moved into a beautiful new home. 
+              They gave me the support I needed exactly when I needed it.&quot;
+            </p>
+            <footer>
+              <cite className="not-italic">
+                <span className="block font-semibold text-[var(--color-text-primary)]">
+                  Maria T.
+                </span>
+                <span className="text-[var(--color-text-secondary)]">
+                  Birmingham Resident, Helped in 2023
+                </span>
               </cite>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-              <a
-                href="/success-stories"
-                className="btn-success group inline-flex items-center justify-center px-6 py-3"
-              >
-                Read More Stories
-                <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-              </a>
-              <a
-                href="/annual-reports"
-                className="btn-secondary group inline-flex items-center justify-center px-6 py-3"
-              >
-                View Impact Reports
-                <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-              </a>
-            </div>
+            </footer>
+          </blockquote>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/success-stories"
+              className="btn btn-primary"
+            >
+              Read More Stories
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Link>
+            <Link
+              href="/annual-reports"
+              className="btn btn-secondary"
+            >
+              View Our Reports
+            </Link>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes animate-in {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes animate-up {
-          from {
-            opacity: 0;
-            transform: translateY(30px) scale(0.95);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-          }
-        }
-
-        @keyframes animate-in-delayed {
-          from {
-            opacity: 0;
-            transform: translateY(40px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .animate-in {
-          animation: animate-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .animate-up {
-          animation: animate-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .animate-in-delayed {
-          animation: animate-in-delayed 1s cubic-bezier(0.16, 1, 0.3, 1) 600ms forwards;
-        }
-      `}</style>
     </section>
   )
 }
