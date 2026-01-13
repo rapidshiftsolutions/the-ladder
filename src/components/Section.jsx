@@ -49,7 +49,7 @@ export function SectionHeader({
       )}
       
       {description && (
-        <p className={`text-lg text-gray-600 ${centered ? 'max-w-4xl mx-auto' : ''} ${descriptionClassName}`}>
+        <p className={`text-lg text-gray-600 ${centered ? 'max-w-4xl mx-auto text-center' : ''} ${descriptionClassName}`}>
           {description}
         </p>
       )}

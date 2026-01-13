@@ -129,12 +129,12 @@ export default function PartnershipNetworkShowcase() {
           >
             Our Partnership Network
           </div>
-          <h2 className="text-5xl sm:text-6xl font-bold mb-6" style={{ color: '#1d1d1f' }}>
+          <h2 className="text-5xl sm:text-6xl font-bold mb-6 text-center" style={{ color: '#1d1d1f' }}>
             Trusted Birmingham
             <br />
             <span style={{ color: '#007AFF' }}>Nonprofit Partners</span>
           </h2>
-          <p className="text-xl leading-relaxed max-w-4xl mx-auto" style={{ color: '#86868b' }}>
+          <p className="text-xl leading-relaxed max-w-4xl mx-auto text-center" style={{ color: '#86868b' }}>
             We collaborate with Birmingham's most trusted nonprofit organizations to ensure no one falls through the cracks. 
             When they identify someone with a specific barrier outside their scope, we step in to help.
           </p>

@@ -62,11 +62,11 @@ export default function ContactSectionRedesigned() {
           <p className="text-sm uppercase tracking-wider text-[#2C3E50] font-semibold mb-3">
             Get In Touch
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A1A1A] mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A1A1A] mb-4 text-center">
             Ready to Make a
             <span className="block text-[#E74C3C] mt-2">Difference Together?</span>
           </h2>
-          <p className="text-base sm:text-lg text-[#4A5568] max-w-3xl mx-auto px-4">
+          <p className="text-base sm:text-lg text-[#4A5568] max-w-3xl mx-auto px-4 text-center">
             Whether you need help, want to donate, or are interested in partnering with us,
             we're here to connect and support our Birmingham community.
           </p>

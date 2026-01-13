@@ -64,7 +64,7 @@ export default function PageHero({
         </h1>
 
         {description && (
-          <p className={`text-lg sm:text-xl text-white/90 mb-8 ${centered ? 'max-w-2xl mx-auto' : 'max-w-2xl'}`}>
+          <p className={`text-lg sm:text-xl text-white/90 mb-8 ${centered ? 'max-w-2xl mx-auto text-center' : 'max-w-2xl'}`}>
             {description}
           </p>
         )}

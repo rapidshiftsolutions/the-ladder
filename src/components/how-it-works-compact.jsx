@@ -37,12 +37,12 @@ export default function HowItWorksCompact() {
         {/* Section Header */}
         <div className="text-center mb-12 lg:mb-16">
           <h2 
-            className="text-3xl lg:text-4xl font-bold text-white mb-4"
+            className="text-3xl lg:text-4xl font-bold text-white mb-4 text-center"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             How We Help: A Simple, Proven Process
           </h2>
-          <p className="text-lg text-white/80 max-w-3xl mx-auto">
+          <p className="text-lg text-white/80 max-w-3xl mx-auto text-center">
             From your first call to successful barrier removal, we guide you through 
             every step. Our process is designed to be straightforward and supportive.
           </p>

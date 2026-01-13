@@ -74,12 +74,12 @@ export default function HowWeHelpRedesigned() {
           <div className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6 bg-[var(--color-ladder-blue)]/10 border border-[var(--color-ladder-blue)]/20 text-[var(--color-ladder-blue)]">
             Our Process
           </div>
-          <h2 className="text-5xl sm:text-6xl font-bold mb-6" style={{ color: '#1d1d1f' }}>
+          <h2 className="text-5xl sm:text-6xl font-bold mb-6 text-center" style={{ color: '#1d1d1f' }}>
             How We Help People
             <br />
             <span style={{ color: '#007AFF' }}>Climb Over Barriers</span>
           </h2>
-          <p className="text-xl leading-relaxed max-w-3xl mx-auto" style={{ color: '#86868b' }}>
+          <p className="text-xl leading-relaxed max-w-3xl mx-auto text-center" style={{ color: '#86868b' }}>
             We focus on people over problems, addressing individual roadblocks 
             rather than specific issues. Each person has unique barriers preventing their progress.
           </p>

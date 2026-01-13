@@ -259,12 +259,12 @@ export default function DonatePage() {
                 <span className="text-sm font-medium">Recommended</span>
               </div>
               <h2 
-                className="text-3xl font-bold text-[var(--color-text-primary)] mb-4"
+                className="text-3xl font-bold text-[var(--color-text-primary)] mb-4 text-center"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 Become a Monthly Donor
               </h2>
-              <p className="text-lg text-[var(--color-text-secondary)] mb-8 max-w-2xl mx-auto">
+              <p className="text-lg text-[var(--color-text-secondary)] mb-8 max-w-2xl mx-auto text-center">
                 Monthly donors provide the stable, predictable support that allows us to respond 
                 immediately when someone needs help. Your recurring gift has 8x the lifetime 
                 impact of a one-time donation.

@@ -188,12 +188,12 @@ export default function CorporatePartnershipsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 
-                className="text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] mb-4"
+                className="text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] mb-4 text-center"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 Partnership Levels
               </h2>
-              <p className="text-lg text-[var(--color-text-secondary)] max-w-3xl mx-auto">
+              <p className="text-lg text-[var(--color-text-secondary)] max-w-3xl mx-auto text-center">
                 Choose the level that fits your company&apos;s giving goals.
               </p>
             </div>

@@ -40,12 +40,12 @@ export default function FinalActionCompact() {
         {/* Section Header */}
         <div className="text-center mb-12 lg:mb-16">
           <h2 
-            className="text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] mb-4"
+            className="text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] mb-4 text-center"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             Take the Next Step
           </h2>
-          <p className="text-lg text-[var(--color-text-secondary)] max-w-3xl mx-auto">
+          <p className="text-lg text-[var(--color-text-secondary)] max-w-3xl mx-auto text-center">
             Whether you need help, want to give, or represent a partner organization, 
             there&apos;s a meaningful way for you to be part of our mission.
           </p>
@@ -117,7 +117,7 @@ export default function FinalActionCompact() {
           >
             Have Questions? We&apos;re Here to Help
           </h3>
-          <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto text-center">
             Our team is available to answer your questions about our services, 
             donation process, or partnership opportunities.
           </p>
@@ -152,7 +152,7 @@ export default function FinalActionCompact() {
         {/* Mission Statement */}
         <div className="text-center mt-12">
           <p 
-            className="text-xl lg:text-2xl text-[var(--color-text-secondary)] italic max-w-3xl mx-auto"
+            className="text-xl lg:text-2xl text-[var(--color-text-secondary)] italic max-w-3xl mx-auto text-center"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             &quot;Every barrier can be overcome. Every person deserves the opportunity to succeed.&quot;

@@ -109,13 +109,13 @@ export default function FinalCtaSection() {
             <TrendingUp className="w-10 h-10 text-white" />
           </div>
           
-          <h2 className="text-5xl sm:text-6xl font-bold text-white mb-8 leading-tight">
+          <h2 className="text-5xl sm:text-6xl font-bold text-white mb-8 leading-tight text-center">
             Ready to Climb Over
             <br />
             <span style={{ color: '#34C759' }}>Life's Barriers?</span>
           </h2>
           
-          <p className="text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-12">
+          <p className="text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-12 text-center">
             Whether you need help, want to help others, or represent a nonprofit organization, 
             <strong className="text-white"> there's a place for you in our mission.</strong>
           </p>

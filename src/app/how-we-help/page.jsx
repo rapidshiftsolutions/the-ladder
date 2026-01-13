@@ -92,12 +92,12 @@ export default function HowWeHelpPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-center">
               <h1 
-                className="text-4xl lg:text-5xl font-bold text-white mb-6"
+                className="text-4xl lg:text-5xl font-bold text-white mb-6 text-center max-w-3xl mx-auto"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 How We Help You Overcome Barriers
               </h1>
-              <p className="text-xl text-white/90 mb-8">
+              <p className="text-xl text-white/90 mb-8 text-center">
                 Our proven process connects you with the right resources and provides 
                 personalized support to remove the specific obstacles in your path.
               </p>
@@ -126,12 +126,12 @@ export default function HowWeHelpPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 lg:mb-16">
               <h2 
-                className="text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] mb-4"
+                className="text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] mb-4 text-center"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 Our 4-Step Process
               </h2>
-              <p className="text-lg text-[var(--color-text-secondary)] max-w-3xl mx-auto">
+              <p className="text-lg text-[var(--color-text-secondary)] max-w-3xl mx-auto text-center">
                 Every situation is unique. Our process is designed to understand your 
                 specific needs and provide targeted support.
               </p>
@@ -177,12 +177,12 @@ export default function HowWeHelpPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 
-                className="text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] mb-4"
+                className="text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] mb-4 text-center"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 Barriers We Address
               </h2>
-              <p className="text-lg text-[var(--color-text-secondary)] max-w-3xl mx-auto">
+              <p className="text-lg text-[var(--color-text-secondary)] max-w-3xl mx-auto text-center">
                 We help with specific, individual obstacles that fall outside traditional 
                 nonprofit service categories.
               </p>

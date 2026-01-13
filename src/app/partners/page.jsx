@@ -243,12 +243,12 @@ export default async function PartnersPage() {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-12">
                 <h2 
-                  className="text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] mb-4"
+                  className="text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] mb-4 text-center"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
                   Our Partner Organizations
                 </h2>
-                <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+                <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto text-center">
                   Birmingham nonprofits and community resources we work with to serve individuals.
                 </p>
               </div>

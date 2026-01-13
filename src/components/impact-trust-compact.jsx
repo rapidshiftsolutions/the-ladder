@@ -55,12 +55,12 @@ export default function ImpactTrustCompact() {
         {/* Section Header */}
         <div className="text-center mb-12 lg:mb-16">
           <h2 
-            className="text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] mb-4"
+            className="text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] mb-4 text-center"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             Measurable Impact, Trusted Results
           </h2>
-          <p className="text-lg text-[var(--color-text-secondary)] max-w-3xl mx-auto">
+          <p className="text-lg text-[var(--color-text-secondary)] max-w-3xl mx-auto text-center">
             Our outcomes speak for themselves. Every statistic represents a real person 
             who overcame a barrier and moved forward in life.
           </p>

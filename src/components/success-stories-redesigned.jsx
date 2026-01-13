@@ -61,12 +61,12 @@ export default function SuccessStoriesRedesigned() {
           <div className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6 bg-[var(--color-ladder-green)]/10 border border-[var(--color-ladder-green)]/20 text-[var(--color-ladder-green)]">
             Real Impact Stories
           </div>
-          <h2 className="text-5xl sm:text-6xl font-bold mb-6" style={{ color: '#1d1d1f' }}>
+          <h2 className="text-5xl sm:text-6xl font-bold mb-6 text-center" style={{ color: '#1d1d1f' }}>
             Success Stories
             <br />
             <span style={{ color: '#34C759' }}>Barriers Removed, Lives Changed</span>
           </h2>
-          <p className="text-xl leading-relaxed max-w-3xl mx-auto" style={{ color: '#86868b' }}>
+          <p className="text-xl leading-relaxed max-w-3xl mx-auto text-center" style={{ color: '#86868b' }}>
             Every person we help has a unique story. These are just a few examples 
             of how removing specific barriers leads to lasting transformation.
           </p>

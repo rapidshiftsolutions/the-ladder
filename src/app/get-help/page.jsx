@@ -36,7 +36,7 @@ export default function GetHelpPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-center">
               <h1 
-                className="text-4xl lg:text-5xl font-bold text-white mb-6"
+                className="text-4xl lg:text-5xl font-bold text-white mb-6 text-center max-w-3xl mx-auto"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 Get the Help You Need
@@ -237,12 +237,12 @@ export default function GetHelpPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 
-                className="text-3xl font-bold text-[var(--color-text-primary)] mb-4"
+                className="text-3xl font-bold text-[var(--color-text-primary)] mb-4 text-center"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 What Happens After You Apply
               </h2>
-              <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+              <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto text-center">
                 Our simple process is designed to get you the help you need quickly.
               </p>
             </div>

@@ -49,13 +49,13 @@ export default function LadderHeroRedesigned() {
             🤝 We've all felt stuck before
           </div>
           
-          <p className="text-xl leading-relaxed max-w-4xl mx-auto text-white/90 mb-8">
+          <p className="text-xl leading-relaxed max-w-4xl mx-auto text-white/90 mb-8 text-center">
             Like you, we are troubled by people struggling in our community. We've all felt stuck in a bad situation 
             and just needed focused help and a different perspective to move forward. 
             <strong className="text-white"> Thank God, we were blessed to have the guidance and support to overcome.</strong>
           </p>
           
-          <p className="text-2xl font-bold text-white mb-4">
+          <p className="text-2xl font-bold text-white mb-4 text-center">
             Many people don't. That's where The Ladder comes in.
           </p>
         </div>
@@ -104,7 +104,7 @@ export default function LadderHeroRedesigned() {
                 <span className="text-4xl sm:text-6xl">The Ladder</span>
               </h1>
               
-              <p className="text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-10">
+              <p className="text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-10 text-center">
                 Because we help individuals <strong className="text-white">one by one</strong> climb over a very specific, 
                 personal barrier that is otherwise keeping them from moving forward in life.
               </p>
