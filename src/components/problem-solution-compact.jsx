@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import { AlertCircle, CheckCircle, ArrowRight, Users, Handshake, X, ArrowLeftRight } from 'lucide-react'
@@ -59,96 +59,39 @@ const iconVariants = {
   }
 }
 
-export default function ProblemSolutionCompact() {
+// Default content (used when CMS data is not available)
+const defaultContent = {
+  badge: 'The Missing Rung',
+  headline: "Bridging the Gap in Birmingham's Safety Net",
+  subheadline: "Birmingham has excellent nonprofit organizations, but sometimes individuals face barriers that don't fit neatly into any single organization's services. That's where The Ladder steps in.",
+  challengeItems: [
+    { service: "Housing program", gap: " can't help with car repairs needed for work" },
+    { service: "Job training", gap: " can't address childcare barriers during classes" },
+    { service: "Healthcare services", gap: " can't solve transportation to appointments" }
+  ],
+  solutionItems: [
+    { title: "Partner referrals:", description: " Nonprofits send us clients facing barriers outside their scope" },
+    { title: "Individual focus:", description: " We address your exact obstacle with personalized support" },
+    { title: "Quick response:", description: " 24-hour initial response, typically resolved within 30 days" }
+  ]
+}
+
+export default function ProblemSolutionCompact({ content: cmsContent = null }) {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
-  const headlineRef = useRef(null)
-  const paragraphRef = useRef(null)
-  const paragraphContainerRef = useRef(null)
-  const parentRef = useRef(null)
 
-  useEffect(() => {
-    // #region agent log
-    const logEntry = {
-      location: 'problem-solution-compact.jsx:useEffect-entry',
-      message: 'useEffect triggered',
-      data: { isInView, hasHeadline: !!headlineRef.current, hasParagraph: !!paragraphRef.current, hasParent: !!parentRef.current },
-      timestamp: Date.now(),
-      sessionId: 'debug-session',
-      runId: 'run1',
-      hypothesisId: 'A'
-    };
-    fetch('http://127.0.0.1:7244/ingest/76404e73-dfeb-47ef-ad67-3a2128b347cc',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(logEntry)}).catch(()=>{});
-    // #endregion
-
-    const checkAlignment = () => {
-      if (headlineRef.current && paragraphRef.current && paragraphContainerRef.current && parentRef.current) {
-        const headlineStyle = window.getComputedStyle(headlineRef.current);
-        const paragraphStyle = window.getComputedStyle(paragraphRef.current);
-        const containerStyle = window.getComputedStyle(paragraphContainerRef.current);
-        const parentStyle = window.getComputedStyle(parentRef.current);
-        const headlineRect = headlineRef.current.getBoundingClientRect();
-        const paragraphRect = paragraphRef.current.getBoundingClientRect();
-        const containerRect = paragraphContainerRef.current.getBoundingClientRect();
-        const parentRect = parentRef.current.getBoundingClientRect();
-        
-        // #region agent log
-        const logData = {
-          location: 'problem-solution-compact.jsx:useEffect-alignment-check',
-          message: 'Checking text alignment styles',
-          data: {
-            headlineComputed: headlineStyle.textAlign,
-            headlineClasses: headlineRef.current.className,
-            paragraphComputed: paragraphStyle.textAlign,
-            paragraphClasses: paragraphRef.current.className,
-            containerComputed: containerStyle.textAlign,
-            containerClasses: paragraphContainerRef.current.className,
-            containerMarginLeft: containerStyle.marginLeft,
-            containerMarginRight: containerStyle.marginRight,
-            parentComputed: parentStyle.textAlign,
-            parentClasses: parentRef.current.className,
-            headlineLeft: headlineRect.left,
-            headlineWidth: headlineRect.width,
-            headlineCenter: headlineRect.left + headlineRect.width / 2,
-            paragraphLeft: paragraphRect.left,
-            paragraphWidth: paragraphRect.width,
-            paragraphCenter: paragraphRect.left + paragraphRect.width / 2,
-            containerLeft: containerRect.left,
-            containerWidth: containerRect.width,
-            containerCenter: containerRect.left + containerRect.width / 2,
-            parentLeft: parentRect.left,
-            parentWidth: parentRect.width,
-            parentCenter: parentRect.left + parentRect.width / 2,
-            alignmentDiff: Math.abs((headlineRect.left + headlineRect.width / 2) - (containerRect.left + containerRect.width / 2))
-          },
-          timestamp: Date.now(),
-          sessionId: 'debug-session',
-          runId: 'post-fix',
-          hypothesisId: 'A'
-        };
-        fetch('http://127.0.0.1:7244/ingest/76404e73-dfeb-47ef-ad67-3a2128b347cc',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(logData)}).catch(()=>{});
-        // #endregion
-      } else {
-        // #region agent log
-        const logData = {
-          location: 'problem-solution-compact.jsx:useEffect-refs-missing',
-          message: 'Refs not available yet',
-          data: { hasHeadline: !!headlineRef.current, hasParagraph: !!paragraphRef.current, hasContainer: !!paragraphContainerRef.current, hasParent: !!parentRef.current },
-          timestamp: Date.now(),
-          sessionId: 'debug-session',
-          runId: 'post-fix',
-          hypothesisId: 'A'
-        };
-        fetch('http://127.0.0.1:7244/ingest/76404e73-dfeb-47ef-ad67-3a2128b347cc',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(logData)}).catch(()=>{});
-        // #endregion
-      }
-    };
-
-    // Check immediately and after a delay to catch when refs are ready
-    checkAlignment();
-    const timeout = setTimeout(checkAlignment, 1000);
-    return () => clearTimeout(timeout);
-  }, [isInView])
+  // Merge with defaults
+  const content = {
+    badge: cmsContent?.problemSectionBadge || defaultContent.badge,
+    headline: cmsContent?.problemSectionHeadline || defaultContent.headline,
+    subheadline: cmsContent?.problemSectionSubheadline || defaultContent.subheadline,
+    challengeItems: cmsContent?.challengeItems && cmsContent.challengeItems.length > 0 
+      ? cmsContent.challengeItems 
+      : defaultContent.challengeItems,
+    solutionItems: cmsContent?.solutionItems && cmsContent.solutionItems.length > 0
+      ? cmsContent.solutionItems
+      : defaultContent.solutionItems,
+  }
 
   return (
     <section ref={sectionRef} className="py-20 lg:py-32 bg-gradient-to-b from-white via-gray-50/50 to-white relative overflow-hidden">
@@ -161,7 +104,6 @@ export default function ProblemSolutionCompact() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <motion.div 
-          ref={parentRef}
           className="text-center mb-16 lg:mb-20"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -174,21 +116,21 @@ export default function ProblemSolutionCompact() {
             transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
           >
             <ArrowLeftRight className="w-5 h-5 text-[var(--color-primary)]" />
-            <span className="text-sm font-semibold text-[var(--color-primary)]">The Missing Rung</span>
+            <span className="text-sm font-semibold text-[var(--color-primary)]">{content.badge}</span>
           </motion.div>
           
           <h2 
-            ref={headlineRef}
             className="text-4xl lg:text-5xl xl:text-6xl font-bold text-[var(--color-text-primary)] mb-6 leading-tight text-center"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            Bridging the Gap in<br className="hidden sm:block" /> Birmingham&apos;s Safety Net
+            {content.headline.includes("Birmingham's") 
+              ? <>Bridging the Gap in<br className="hidden sm:block" /> Birmingham&apos;s Safety Net</>
+              : content.headline
+            }
           </h2>
-          <div ref={paragraphContainerRef} className="max-w-3xl mx-auto">
-            <p ref={paragraphRef} className="text-xl lg:text-2xl text-[var(--color-text-secondary)] leading-relaxed text-center">
-              Birmingham has excellent nonprofit organizations, but sometimes individuals 
-              face barriers that don&apos;t fit neatly into any single organization&apos;s services. 
-              That&apos;s where The Ladder steps in.
+          <div className="max-w-3xl mx-auto">
+            <p className="text-xl lg:text-2xl text-[var(--color-text-secondary)] leading-relaxed text-center">
+              {content.subheadline}
             </p>
           </div>
         </motion.div>
@@ -244,11 +186,7 @@ export default function ProblemSolutionCompact() {
                 className="space-y-5 mb-8"
                 variants={containerVariants}
               >
-                {[
-                  { strong: "Housing program", text: " can't help with car repairs needed for work" },
-                  { strong: "Job training", text: " can't address childcare barriers during classes" },
-                  { strong: "Healthcare services", text: " can't solve transportation to appointments" }
-                ].map((item, index) => (
+                {content.challengeItems.map((item, index) => (
                   <motion.li 
                     key={index}
                     className="flex items-start gap-4 group/item"
@@ -260,8 +198,8 @@ export default function ProblemSolutionCompact() {
                       whileHover={{ scale: 1.5 }}
                     />
                     <div className="flex-1">
-                      <strong className="text-[var(--color-text-primary)] font-semibold">{item.strong}</strong>
-                      <span className="text-[var(--color-text-secondary)]">{item.text}</span>
+                      <strong className="text-[var(--color-text-primary)] font-semibold">{item.service}</strong>
+                      <span className="text-[var(--color-text-secondary)]">{item.gap}</span>
                     </div>
                   </motion.li>
                 ))}
@@ -324,11 +262,7 @@ export default function ProblemSolutionCompact() {
                 className="space-y-5 mb-8"
                 variants={containerVariants}
               >
-                {[
-                  { strong: "Partner referrals:", text: " Nonprofits send us clients facing barriers outside their scope" },
-                  { strong: "Individual focus:", text: " We address your exact obstacle with personalized support" },
-                  { strong: "Quick response:", text: " 24-hour initial response, typically resolved within 30 days" }
-                ].map((item, index) => (
+                {content.solutionItems.map((item, index) => (
                   <motion.li 
                     key={index}
                     className="flex items-start gap-4 group/item"
@@ -342,8 +276,8 @@ export default function ProblemSolutionCompact() {
                       <CheckCircle className="w-6 h-6 text-[var(--color-secondary)] mt-0.5 flex-shrink-0" />
                     </motion.div>
                     <div className="flex-1">
-                      <strong className="text-[var(--color-text-primary)] font-semibold">{item.strong}</strong>
-                      <span className="text-[var(--color-text-secondary)]">{item.text}</span>
+                      <strong className="text-[var(--color-text-primary)] font-semibold">{item.title}</strong>
+                      <span className="text-[var(--color-text-secondary)]">{item.description}</span>
                     </div>
                   </motion.li>
                 ))}

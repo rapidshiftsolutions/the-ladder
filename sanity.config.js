@@ -148,7 +148,7 @@ const theLadderStructure = (S) => {
                   S.documentList()
                     .title('Events')
                     .filter('_type == "event"')
-                    .defaultOrdering([{field: 'date', direction: 'desc'}])
+                    .defaultOrdering([{field: 'eventDate', direction: 'desc'}])
                 ),
             ])
         ),

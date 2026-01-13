@@ -13,7 +13,10 @@
     "test:a11y": "playwright test tests/accessibility/",
     "test:seo": "playwright test tests/seo/",
     "test:perf": "playwright test tests/performance/",
-    "test:e2e": "playwright test tests/e2e/"
+    "test:e2e": "playwright test tests/e2e/",
+    "sanity:login": "npx sanity login",
+    "sanity:export-content": "node scripts/export-content.js > content-export.ndjson",
+    "sanity:import": "npx sanity dataset import content-export.ndjson production --replace"
   },
   "dependencies": {
     "@headlessui/react": "^2.1.1",

@@ -7,7 +7,7 @@
 @import "../styles/design-tokens.css";
 
 /* =============================================================================
-   GOOGLE FONTS - Merriweather (serif) + Source Sans 3 (sans-serif)
+   GOOGLE FONTS - Lora (serif) + Nunito Sans (sans-serif)
    ============================================================================= */
 
 /* Note: Fonts loaded via layout.jsx for optimal performance */
@@ -37,8 +37,8 @@
   --color-border: #E5E8E8;
   
   /* Typography */
-  --font-heading: 'Merriweather', Georgia, serif;
-  --font-body: 'Source Sans 3', system-ui, sans-serif;
+  --font-heading: 'Lora', Georgia, serif;
+  --font-body: 'Nunito Sans', system-ui, sans-serif;
   
   /* Spacing */
   --spacing-section: 5rem;
@@ -78,7 +78,7 @@ body {
    TYPOGRAPHY
    ============================================================================= */
 
-/* Headings - Merriweather Serif */
+/* Headings - Lora Serif */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: var(--font-bold);
