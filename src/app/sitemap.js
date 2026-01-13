@@ -1,167 +1,71 @@
-import cities from '/src/data/cities'
-import { vehicles } from '/src/data/vehicles'
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.the-ladder.org'
 
-// Split function to create multiple sitemaps
-function createSitemapChunks(urls, chunkSize = 10000) {
-  const chunks = []
-  for (let i = 0; i < urls.length; i += chunkSize) {
-    chunks.push(urls.slice(i, i + chunkSize))
-  }
-  return chunks
-}
-
-export default function sitemap() {
-  const baseUrl = 'https://oemradiorepair.com'
-  
-  // Static pages
+export default async function sitemap() {
+  // Static pages with their priorities
   const staticPages = [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/services`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/repair`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/locations`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/warranty`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/terms-of-service`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
+    { route: '', priority: 1.0, changeFrequency: 'weekly' },
+    { route: '/about', priority: 0.9, changeFrequency: 'monthly' },
+    { route: '/leadership-team', priority: 0.8, changeFrequency: 'monthly' },
+    { route: '/how-we-help', priority: 0.9, changeFrequency: 'monthly' },
+    { route: '/success-stories', priority: 0.9, changeFrequency: 'weekly' },
+    { route: '/donate', priority: 1.0, changeFrequency: 'monthly' },
+    { route: '/monthly-giving', priority: 0.8, changeFrequency: 'monthly' },
+    { route: '/partners', priority: 0.7, changeFrequency: 'monthly' },
+    { route: '/events', priority: 0.8, changeFrequency: 'weekly' },
+    { route: '/annual-reports', priority: 0.6, changeFrequency: 'yearly' },
+    { route: '/contact', priority: 0.7, changeFrequency: 'monthly' },
+    { route: '/get-help', priority: 0.9, changeFrequency: 'monthly' },
+    { route: '/volunteer', priority: 0.7, changeFrequency: 'monthly' },
+    { route: '/birmingham-resources', priority: 0.7, changeFrequency: 'monthly' },
+    { route: '/barrier-removal-guide', priority: 0.8, changeFrequency: 'monthly' },
+    { route: '/corporate-partnerships', priority: 0.6, changeFrequency: 'monthly' },
+    { route: '/financials', priority: 0.5, changeFrequency: 'yearly' },
+    { route: '/board-governance', priority: 0.5, changeFrequency: 'yearly' },
+    { route: '/privacy', priority: 0.3, changeFrequency: 'yearly' },
+    { route: '/terms', priority: 0.3, changeFrequency: 'yearly' },
+    { route: '/terms-of-service', priority: 0.3, changeFrequency: 'yearly' },
+    { route: '/accessibility', priority: 0.4, changeFrequency: 'yearly' },
   ]
 
-  // Service pages
-  const servicePages = [
-    'digitizer-replacement',
-    'lcd-replacement',
-    'complete-screen',
-    'mail-in-service',
-    'touchscreen-repair',
-    'display-repair',
-    'glass-repair',
-    'ghost-touch'
-  ].map(service => ({
-    url: `${baseUrl}/services/${service}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly',
-    priority: 0.8,
+  const now = new Date()
+
+  // Generate static page entries
+  const staticEntries = staticPages.map((page) => ({
+    url: `${baseUrl}${page.route}`,
+    lastModified: now,
+    changeFrequency: page.changeFrequency,
+    priority: page.priority,
   }))
 
-  // Vehicle pages
-  const vehiclePages = vehicles.map(vehicle => {
-    const make = vehicle.make.toLowerCase()
-    const model = vehicle.model.toLowerCase().replace(/\s+/g, '-')
-    const yearRange = vehicle.years.length > 1 
-      ? `${vehicle.years[0]}-${vehicle.years[vehicle.years.length - 1]}`
-      : vehicle.years[0]
-    
-    return {
-      url: `${baseUrl}/repair/${make}/${model}/${yearRange}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    }
-  })
+  // Dynamic pages from Sanity (if available)
+  // In production, uncomment and configure these queries
+  let dynamicEntries = []
 
-  // Vehicle make pages
-  const vehicleMakePages = [...new Set(vehicles.map(v => v.make.toLowerCase()))].map(make => ({
-    url: `${baseUrl}/repair/${make}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly',
-    priority: 0.7,
-  }))
+  try {
+    // Optionally fetch blog posts from Sanity
+    // const sanityClient = createClient({
+    //   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+    //   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
+    //   apiVersion: '2024-01-01',
+    //   useCdn: true,
+    // })
+    //
+    // const blogPosts = await sanityClient.fetch(`
+    //   *[_type == "blogPost" && defined(slug.current)] {
+    //     "slug": slug.current,
+    //     _updatedAt
+    //   }
+    // `)
+    //
+    // dynamicEntries = blogPosts.map((post) => ({
+    //   url: `${baseUrl}/blog/${post.slug}`,
+    //   lastModified: new Date(post._updatedAt),
+    //   changeFrequency: 'weekly',
+    //   priority: 0.7,
+    // }))
+  } catch (error) {
+    console.error('Error fetching dynamic sitemap entries:', error)
+  }
 
-  // State pages
-  const statePages = [...new Set(cities.map(c => c.state.toLowerCase()))].map(state => ({
-    url: `${baseUrl}/locations/state/${state}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly',
-    priority: 0.7,
-  }))
-
-  // Additional pages
-  const additionalPages = [
-    {
-      url: `${baseUrl}/how-it-works`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/shipping-instructions`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/faq`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    }
-  ]
-
-  // Priority cities (first 1000 most important cities)
-  const priorityCities = cities.slice(0, 1000).map(city => ({
-    url: `${baseUrl}/locations/${city.state.toLowerCase()}/${city.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly',
-    priority: 0.6,
-  }))
-
-  // Combine high-priority pages for main sitemap
-  const mainSitemapPages = [
-    ...staticPages,
-    ...servicePages,
-    ...vehiclePages,
-    ...vehicleMakePages,
-    ...statePages,
-    ...additionalPages,
-    ...priorityCities,
-  ]
-
-  // Return only the main sitemap with high-priority pages
-  // This keeps the main sitemap under Google's limits while maintaining SEO value
-  return mainSitemapPages
+  return [...staticEntries, ...dynamicEntries]
 }

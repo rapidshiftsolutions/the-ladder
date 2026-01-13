@@ -24,29 +24,20 @@
 
 [[plugins]]
   package = "netlify-plugin-cache-nextjs"
- 
-# Simplify WAF - make it more permissive for document access
-[[edge_functions]]
-  path = "/*"
-  function = "waf"
 
-# Only apply resource hints to HTML pages
-[[edge_functions]]
-  path = "/*.html"
-  function = "resource-hints"
-
-# File-specific headers
+# Security headers for all pages
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(self), interest-cohort=()"
-    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com https://www.googletagmanager.com https://www.google-analytics.com https://cdn.acsbapp.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://www.google.com https://www.google-analytics.com https://vitals.vercel-insights.com https://*.vercel-scripts.com; frame-src 'self' https://www.google.com; worker-src 'self' blob: https://www.google.com"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com https://www.googletagmanager.com https://www.google-analytics.com https://cdn.acsbapp.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob: https://cdn.sanity.io; connect-src 'self' https://www.google.com https://www.google-analytics.com https://vitals.vercel-insights.com https://*.vercel-scripts.com https://*.sanity.io https://*.api.sanity.io; frame-src 'self' https://www.google.com; worker-src 'self' blob: https://www.google.com"
 
-# Static assets
+# Static assets - 1 year cache
 [[headers]]
   for = "/_next/static/*"
   [headers.values]
@@ -57,19 +48,29 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Fonts
+# Fonts - 1 year cache
 [[headers]]
   for = "/fonts/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Images
+[[headers]]
+  for = "/*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.woff"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Images - 30 day cache
 [[headers]]
   for = "/images/*"
   [headers.values]
     Cache-Control = "public, max-age=2592000"
 
-# Documents like PDFs
+# Documents
 [[headers]]
   for = "/*.pdf"
   [headers.values]
@@ -77,34 +78,38 @@
     Content-Disposition = "inline"
     Cache-Control = "public, max-age=86400"
 
-# Videos
-[[headers]]
-  for = "/*.mp4"
-  [headers.values]
-    Content-Type = "video/mp4"
-    Accept-Ranges = "bytes"
-    Cache-Control = "public, max-age=86400"
-
-# Other document types
-[[headers]]
-  for = "/*.docx"
-  [headers.values]
-    Content-Type = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-    Content-Disposition = "attachment"
-    Cache-Control = "public, max-age=86400"
-
-# Redirects for cleaner URLs
+# Canonical domain redirect (www to non-www)
 [[redirects]]
-  from = "/documents/*"
-  to = "/:splat"
-  status = 200
-  force = false
-
-# Force HTTPS
-[[redirects]]
-  from = "http://*"
-  to = "https://:splat"
+  from = "https://www.the-ladder.org/*"
+  to = "https://the-ladder.org/:splat"
   status = 301
   force = true
 
-  
+# Force HTTPS
+[[redirects]]
+  from = "http://the-ladder.org/*"
+  to = "https://the-ladder.org/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.the-ladder.org/*"
+  to = "https://the-ladder.org/:splat"
+  status = 301
+  force = true
+
+# Legacy URL redirects (if any old URLs need to redirect)
+[[redirects]]
+  from = "/testimonies"
+  to = "/success-stories"
+  status = 301
+
+[[redirects]]
+  from = "/login"
+  to = "/guest-portal"
+  status = 301
+
+[[redirects]]
+  from = "/resources"
+  to = "/partners"
+  status = 301
