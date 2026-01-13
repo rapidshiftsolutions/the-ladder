@@ -1,5 +1,5 @@
-import GlassNavigation from '/src/components/GlassNavigation'
-import Footer from '/src/components/sitewide-footer'
+import SiteHeader from '/src/components/SiteHeader'
+import SiteFooter from '/src/components/SiteFooter'
 
 export const metadata = {
   title: 'Privacy Policy | The Ladder Birmingham Nonprofit',
@@ -28,9 +28,10 @@ export const metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="flex min-h-screen flex-col">
-      <GlassNavigation />
-      <div className="bg-gradient-to-b from-background-dark to-surface-900 min-h-screen py-16 lg:py-24">
+    <>
+      <SiteHeader />
+      <main className="flex min-h-screen flex-col pt-16 sm:pt-20">
+      <div className="bg-[var(--color-background)] min-h-screen py-12 sm:py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-surface-800/50 backdrop-blur-sm border border-primary-500/20 rounded-xl p-8 space-y-8">
             <h1 className="text-3xl sm:text-4xl font-tiltwarp font-bold text-text-primary mb-6">
@@ -326,7 +327,8 @@ export default function PrivacyPage() {
           </div>
         </div>
       </div>
-      <Footer />
-    </main>
+      <SiteFooter />
+      </main>
+    </>
   )
 }

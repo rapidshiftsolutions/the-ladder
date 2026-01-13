@@ -1,5 +1,5 @@
-import GlassNavigation from '/src/components/GlassNavigation'
-import Footer from '/src/components/sitewide-footer'
+import SiteHeader from '/src/components/SiteHeader'
+import SiteFooter from '/src/components/SiteFooter'
 
 export const metadata = {
   title: 'Leadership Team | The Ladder Birmingham Nonprofit',
@@ -70,8 +70,9 @@ export default function LeadershipTeamPage() {
   const staffMembers = teamMembers.filter(m => m.memberType === 'staff')
 
   return (
-    <main className="flex min-h-screen flex-col">
-      <GlassNavigation />
+    <>
+      <SiteHeader />
+      <main className="flex min-h-screen flex-col pt-16 sm:pt-20">
 
       {/* Hero Section */}
       <section className="py-16 bg-gradient-to-b from-ladder-blue to-ladder-blue-light text-white">
@@ -196,7 +197,8 @@ export default function LeadershipTeamPage() {
         </div>
       </section>
 
-      <Footer />
-    </main>
+      <SiteFooter />
+      </main>
+    </>
   )
 }

@@ -19,10 +19,10 @@ export default function Card({
   const baseClasses = 'rounded-lg transition-all duration-300'
   
   const variantClasses = {
-    default: 'bg-white p-6 hover:shadow-lg',
-    bordered: 'bg-white border border-gray-200 p-6 hover:border-[var(--ladder-blue)] hover:shadow-lg',
-    elevated: 'bg-white p-6 shadow-lg hover:shadow-xl transform hover:-translate-y-1',
-    minimal: 'bg-transparent p-4 hover:bg-gray-50'
+    default: 'card p-6',
+    bordered: 'card p-6 border border-[var(--color-border)]',
+    elevated: 'card p-6 shadow-[0_8px_24px_rgba(0,0,0,0.12)]',
+    minimal: 'bg-transparent p-4 hover:bg-[var(--color-background)]'
   }
 
   const cardClasses = `${baseClasses} ${variantClasses[variant]} ${className}`

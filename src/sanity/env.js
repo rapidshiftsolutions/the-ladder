@@ -1,5 +1,5 @@
 // Ensure these values are accessible in both development and production
-export const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'rwpb957l'
+export const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '9a1830p7'
 export const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
 export const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2021-06-07'
 
@@ -14,6 +14,6 @@ export const studioAllowedOrigins = [
   'http://127.0.0.1:3000',
   'http://127.0.0.1:3001',
   'http://127.0.0.1:3333',
-  'https://oemradiorepair.com',
-  'https://www.oemradiorepair.com'
+  'https://the-ladder.org',
+  'https://www.the-ladder.org'
 ]

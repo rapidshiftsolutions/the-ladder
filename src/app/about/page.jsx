@@ -1,5 +1,5 @@
-import GlassNavigation from '/src/components/GlassNavigation'
-import Footer from '/src/components/sitewide-footer'
+import SiteHeader from '/src/components/SiteHeader'
+import SiteFooter from '/src/components/SiteFooter'
 
 export const metadata = {
   title: 'About The Ladder | Birmingham Nonprofit Crisis Intervention & Barrier Assistance',
@@ -21,8 +21,9 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="flex min-h-screen flex-col">
-      <GlassNavigation />
+    <>
+      <SiteHeader />
+      <main className="flex min-h-screen flex-col pt-16 sm:pt-20">
       
       {/* Hero Section */}
       <section className="py-16 bg-gradient-to-b from-primary-50 to-white">
@@ -331,7 +332,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <Footer />
-    </main>
+      <SiteFooter />
+      </main>
+    </>
   )
 }

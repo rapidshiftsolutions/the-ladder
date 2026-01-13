@@ -40,11 +40,8 @@ export default function SuccessStoriesRedesigned() {
   return (
     <section 
       ref={sectionRef} 
-      className="relative py-32 overflow-hidden" 
+      className="relative py-12 sm:py-16 lg:py-20 overflow-hidden bg-[var(--color-background)]" 
       id="success-stories"
-      style={{
-        background: 'linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%)'
-      }}
     >
       {/* iOS-style ambient background */}
       <div className="absolute inset-0">
@@ -61,16 +58,7 @@ export default function SuccessStoriesRedesigned() {
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         {/* iOS-style header */}
         <div className={`text-center mb-20 ${isVisible ? 'animate-in' : 'opacity-0'}`}>
-          <div 
-            className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6"
-            style={{
-              background: 'rgba(52, 199, 89, 0.1)',
-              backdropFilter: 'blur(20px)',
-              WebkitBackdropFilter: 'blur(20px)',
-              color: '#34C759',
-              border: '1px solid rgba(52, 199, 89, 0.2)'
-            }}
-          >
+          <div className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6 bg-[var(--color-ladder-green)]/10 border border-[var(--color-ladder-green)]/20 text-[var(--color-ladder-green)]">
             Real Impact Stories
           </div>
           <h2 className="text-5xl sm:text-6xl font-bold mb-6" style={{ color: '#1d1d1f' }}>

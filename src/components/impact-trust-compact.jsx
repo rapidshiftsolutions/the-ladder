@@ -105,10 +105,7 @@ export default function ImpactTrustCompact() {
   return (
     <section 
       ref={sectionRef} 
-      className="relative py-20 overflow-hidden"
-      style={{
-        background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)'
-      }}
+      className="relative py-12 sm:py-16 lg:py-20 overflow-hidden bg-[var(--color-background)]"
     >
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         
@@ -124,45 +121,43 @@ export default function ImpactTrustCompact() {
 
         {/* Impact Statistics */}
         <div className={`grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16 ${isVisible ? 'animate-up' : 'opacity-0'}`} style={{ animationDelay: '200ms' }}>
-          {impactStats.map((stat, index) => (
-            <div
-              key={index}
-              className="text-center p-6 rounded-3xl transition-all duration-500 hover:scale-105"
-              style={{
-                background: 'white',
-                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
-                border: '1px solid rgba(255, 255, 255, 0.8)'
-              }}
-            >
-              {/* Icon */}
-              <div 
-                className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4"
-                style={{
-                  background: `${stat.color}10`,
-                  border: `1px solid ${stat.color}20`
-                }}
+          {impactStats.map((stat, index) => {
+            const colorMap = {
+              '#007AFF': 'var(--color-ladder-blue)',
+              '#34C759': 'var(--color-ladder-green)',
+              '#FF9500': 'var(--color-ladder-gold)',
+              '#FF3B30': 'var(--color-ladder-red)',
+            }
+            const brandColor = colorMap[stat.color] || stat.color
+            return (
+              <div
+                key={index}
+                className="card text-center p-6 transition-all duration-300 hover:scale-105"
               >
-                <stat.icon className="w-8 h-8" style={{ color: stat.color }} />
+                {/* Icon */}
+                <div className={`w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4 bg-[${brandColor}]/10 border border-[${brandColor}]/20`}>
+                  <stat.icon className="w-8 h-8" style={{ color: brandColor }} />
+                </div>
+
+                {/* Number */}
+                <div className="mb-2">
+                  <span className="text-3xl sm:text-4xl font-bold" style={{ color: brandColor }}>
+                    {stat.number}{stat.suffix}
+                  </span>
+                </div>
+
+                {/* Label */}
+                <h3 className="text-base sm:text-lg font-bold mb-2 text-[var(--color-text-primary)]">
+                  {stat.label}
+                </h3>
+
+                {/* Description */}
+                <p className="text-xs sm:text-sm leading-relaxed text-[var(--color-text-secondary)]">
+                  {stat.description}
+                </p>
               </div>
-
-              {/* Number */}
-              <div className="mb-2">
-                <span className="text-4xl font-bold" style={{ color: stat.color }}>
-                  {stat.number}{stat.suffix}
-                </span>
-              </div>
-
-              {/* Label */}
-              <h3 className="text-lg font-bold mb-2" style={{ color: '#1a1a1a' }}>
-                {stat.label}
-              </h3>
-
-              {/* Description */}
-              <p className="text-sm leading-relaxed" style={{ color: '#4a5568' }}>
-                {stat.description}
-              </p>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
         {/* Trust Indicators */}
@@ -170,27 +165,17 @@ export default function ImpactTrustCompact() {
           {trustElements.map((element, index) => (
             <div
               key={index}
-              className="text-center p-6 rounded-3xl"
-              style={{
-                background: 'rgba(0, 122, 255, 0.05)',
-                border: '1px solid rgba(0, 122, 255, 0.1)'
-              }}
+              className="card text-center p-6"
             >
-              <div 
-                className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4"
-                style={{
-                  background: 'rgba(0, 122, 255, 0.1)',
-                  border: '1px solid rgba(0, 122, 255, 0.2)'
-                }}
-              >
-                <element.icon className="w-6 h-6" style={{ color: '#007AFF' }} />
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4 bg-[var(--color-ladder-blue)]/10 border border-[var(--color-ladder-blue)]/20">
+                <element.icon className="w-6 h-6 text-[var(--color-ladder-blue)]" />
               </div>
               
-              <h3 className="text-lg font-bold mb-2" style={{ color: '#1a1a1a' }}>
+              <h3 className="text-base sm:text-lg font-bold mb-2 text-[var(--color-text-primary)]">
                 {element.title}
               </h3>
               
-              <p className="text-sm" style={{ color: '#4a5568' }}>
+              <p className="text-sm text-[var(--color-text-secondary)]">
                 {element.description}
               </p>
             </div>
@@ -199,29 +184,20 @@ export default function ImpactTrustCompact() {
 
         {/* Testimonial */}
         <div className={`${isVisible ? 'animate-in-delayed' : 'opacity-0'}`}>
-          <div 
-            className="relative p-8 rounded-3xl max-w-4xl mx-auto text-center"
-            style={{
-              background: 'linear-gradient(135deg, rgba(52, 199, 89, 0.1), rgba(0, 122, 255, 0.1))',
-              backdropFilter: 'blur(20px)',
-              WebkitBackdropFilter: 'blur(20px)',
-              border: '1px solid rgba(255, 255, 255, 0.3)',
-              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)'
-            }}
-          >
+          <div className="card relative p-6 sm:p-8 max-w-4xl mx-auto text-center">
             <div className="mb-6">
               <div className="flex justify-center gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-current" style={{ color: '#FFD700' }} />
+                  <Star key={i} className="w-5 h-5 fill-current text-[var(--color-ladder-gold)]" />
                 ))}
               </div>
               
-              <blockquote className="text-xl font-medium leading-relaxed mb-4" style={{ color: '#1a1a1a' }}>
+              <blockquote className="text-lg sm:text-xl font-medium leading-relaxed mb-4 text-[var(--color-text-primary)]">
                 "The Ladder helped me when no other organization could. They paid for my car repair so I could keep my new job. 
                 Two years later, I own my home and volunteer to help others climb their ladders too."
               </blockquote>
               
-              <cite className="text-lg font-semibold" style={{ color: '#007AFF' }}>
+              <cite className="text-base sm:text-lg font-semibold text-[var(--color-ladder-blue)]">
                 — Sarah M., Birmingham Resident
               </cite>
             </div>
@@ -229,23 +205,14 @@ export default function ImpactTrustCompact() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
               <a
                 href="/success-stories"
-                className="group inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105"
-                style={{
-                  background: '#34C759',
-                  color: 'white'
-                }}
+                className="btn-success group inline-flex items-center justify-center px-6 py-3"
               >
                 Read More Stories
                 <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
               </a>
               <a
                 href="/annual-reports"
-                className="group inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105"
-                style={{
-                  background: 'rgba(52, 199, 89, 0.1)',
-                  color: '#34C759',
-                  border: '1px solid rgba(52, 199, 89, 0.2)'
-                }}
+                className="btn-secondary group inline-flex items-center justify-center px-6 py-3"
               >
                 View Impact Reports
                 <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />

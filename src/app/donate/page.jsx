@@ -1,5 +1,5 @@
-import GlassNavigation from '/src/components/GlassNavigation'
-import Footer from '/src/components/sitewide-footer'
+import SiteHeader from '/src/components/SiteHeader'
+import SiteFooter from '/src/components/SiteFooter'
 
 export const metadata = {
   title: 'Donate to Birmingham Crisis Assistance | The Ladder Nonprofit',
@@ -26,8 +26,9 @@ export const metadata = {
 
 export default function DonatePage() {
   return (
-    <main className="flex min-h-screen flex-col">
-      <GlassNavigation />
+    <>
+      <SiteHeader />
+      <main className="flex min-h-screen flex-col pt-16 sm:pt-20">
       
       {/* Header Section */}
       <section className="py-16 bg-gradient-to-b from-primary-50 to-white">
@@ -323,7 +324,8 @@ export default function DonatePage() {
         </div>
       </section>
 
-      <Footer />
-    </main>
+      <SiteFooter />
+      </main>
+    </>
   )
 }

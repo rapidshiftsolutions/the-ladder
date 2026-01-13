@@ -1,5 +1,5 @@
-import GlassNavigation from '/src/components/GlassNavigation'
-import Footer from '/src/components/sitewide-footer'
+import SiteHeader from '/src/components/SiteHeader'
+import SiteFooter from '/src/components/SiteFooter'
 import Link from 'next/link'
 
 export const metadata = {
@@ -47,8 +47,9 @@ const blogPosts = [
 
 export default function BlogPage() {
   return (
-    <main className="flex min-h-screen flex-col">
-      <GlassNavigation />
+    <>
+      <SiteHeader />
+      <main className="flex min-h-screen flex-col pt-16 sm:pt-20">
 
       {/* Hero Section */}
       <section className="py-16 bg-gradient-to-b from-ladder-blue to-ladder-blue-light text-white">
@@ -137,7 +138,8 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <Footer />
-    </main>
+      <SiteFooter />
+      </main>
+    </>
   )
 }

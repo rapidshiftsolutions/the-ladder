@@ -34,7 +34,7 @@ export default function TermsOfServicePage() {
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="glass-card bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 shadow-2xl">
+            <div className="card bg-white/90 p-8">
               <Scale className="h-16 w-16 mx-auto mb-6 text-white" />
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Terms of Service

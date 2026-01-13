@@ -54,10 +54,7 @@ export default function HowWeHelpRedesigned() {
   return (
     <section 
       ref={sectionRef} 
-      className="relative py-32 overflow-hidden"
-      style={{
-        background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)'
-      }}
+      className="relative py-12 sm:py-16 lg:py-20 overflow-hidden bg-[var(--color-background)]"
     >
       {/* iOS-style ambient background */}
       <div className="absolute inset-0">
@@ -74,16 +71,7 @@ export default function HowWeHelpRedesigned() {
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         {/* iOS-style header */}
         <div className={`text-center mb-20 ${isVisible ? 'animate-in' : 'opacity-0'}`}>
-          <div 
-            className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6"
-            style={{
-              background: 'rgba(0, 122, 255, 0.1)',
-              backdropFilter: 'blur(20px)',
-              WebkitBackdropFilter: 'blur(20px)',
-              color: '#007AFF',
-              border: '1px solid rgba(0, 122, 255, 0.2)'
-            }}
-          >
+          <div className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6 bg-[var(--color-ladder-blue)]/10 border border-[var(--color-ladder-blue)]/20 text-[var(--color-ladder-blue)]">
             Our Process
           </div>
           <h2 className="text-5xl sm:text-6xl font-bold mb-6" style={{ color: '#1d1d1f' }}>

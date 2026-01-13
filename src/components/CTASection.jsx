@@ -47,7 +47,7 @@ export default function CTASection({
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href={primaryCta.href}
-            className={`btn btn-lg ${v.primaryBtn} inline-flex items-center justify-center gap-2`}
+            className={`${v.primaryBtn} inline-flex items-center justify-center gap-2 rounded-lg font-semibold px-6 py-3 min-h-[44px] transition-all`}
           >
             <Heart className="w-5 h-5" />
             {primaryCta.text}
@@ -55,7 +55,7 @@ export default function CTASection({
           {secondaryCta && (
             <Link
               href={secondaryCta.href}
-              className={`btn btn-lg ${v.secondaryBtn} inline-flex items-center justify-center gap-2`}
+              className={`${v.secondaryBtn} inline-flex items-center justify-center gap-2 rounded-lg font-semibold px-6 py-3 min-h-[44px] transition-all`}
             >
               {secondaryCta.text}
               <ArrowRight className="w-5 h-5" />

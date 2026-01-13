@@ -65,15 +65,15 @@ export default function DonationSectionRedesigned() {
 
             {/* Impact Stats */}
             <div className="grid grid-cols-2 gap-4 mb-8">
-              <div className="glass-card bg-white/60 backdrop-blur-xl border border-white/40 rounded-2xl p-4 shadow-xl hover:bg-white/70 transition-all duration-300">
-                <DollarSign className="w-8 h-8 text-[#2C3E50] mb-2" />
-                <div className="text-2xl font-bold text-[#1A1A1A]">100%</div>
-                <div className="text-sm text-[#4A5568]">Goes to direct assistance</div>
+              <div className="card p-4">
+                <DollarSign className="w-8 h-8 text-[var(--color-ladder-blue)] mb-2" />
+                <div className="text-2xl font-bold text-[var(--color-text-primary)]">100%</div>
+                <div className="text-sm text-[var(--color-text-secondary)]">Goes to direct assistance</div>
               </div>
-              <div className="glass-card bg-white/60 backdrop-blur-xl border border-white/40 rounded-2xl p-4 shadow-xl hover:bg-white/70 transition-all duration-300">
-                <TrendingUp className="w-8 h-8 text-[#E74C3C] mb-2" />
-                <div className="text-2xl font-bold text-[#1A1A1A]">87%</div>
-                <div className="text-sm text-[#4A5568]">Success rate</div>
+              <div className="card p-4">
+                <TrendingUp className="w-8 h-8 text-[var(--color-ladder-red)] mb-2" />
+                <div className="text-2xl font-bold text-[var(--color-text-primary)]">87%</div>
+                <div className="text-sm text-[var(--color-text-secondary)]">Success rate</div>
               </div>
             </div>
 
@@ -92,7 +92,7 @@ export default function DonationSectionRedesigned() {
 
           {/* Right Column - Donation Form */}
           <div className={`${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
-            <div className="glass-card bg-white/70 backdrop-blur-xl border border-white/50 rounded-3xl p-6 sm:p-8 shadow-2xl">
+            <div className="card p-6 sm:p-8">
               <h3 className="text-xl font-bold text-[#1A1A1A] mb-6">Choose Your Impact</h3>
 
               {/* Amount Selection */}

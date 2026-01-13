@@ -76,7 +76,7 @@ export default function ContactForm({
         </p>
         <button
           onClick={() => setStatus('idle')}
-          className="btn btn-outline"
+          className="btn-secondary"
         >
           Send Another Message
         </button>
@@ -191,7 +191,7 @@ export default function ContactForm({
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="btn btn-primary w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
+        className="btn-primary w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {status === 'loading' ? (
           <>
@@ -207,7 +207,7 @@ export default function ContactForm({
       </button>
 
       {/* Privacy Note */}
-      <p className="mt-4 text-xs text-[var(--color-text-muted)]">
+      <p className="mt-4 text-xs text-[var(--color-text-secondary)]">
         Your information is kept confidential and will only be used to respond to your inquiry.
         View our <a href="/privacy" className="underline hover:text-[var(--color-ladder-blue)]">Privacy Policy</a>.
       </p>

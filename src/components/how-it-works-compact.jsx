@@ -67,10 +67,7 @@ export default function HowItWorksCompact() {
   return (
     <section 
       ref={sectionRef} 
-      className="relative py-20 overflow-hidden"
-      style={{
-        background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)'
-      }}
+      className="relative py-12 sm:py-16 lg:py-20 overflow-hidden bg-gradient-to-br from-[var(--color-ladder-blue)] to-[var(--color-ladder-blue-light)]"
     >
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         
@@ -90,69 +87,49 @@ export default function HowItWorksCompact() {
             <div key={index} className="text-center">
               {/* Step Card */}
               <div 
-                className={`relative p-6 rounded-3xl mb-4 transition-all duration-1000 ${
-                  activeStep >= index ? 'scale-105' : 'scale-100'
+                className={`card relative p-6 mb-4 transition-all duration-300 ${
+                  activeStep >= index ? 'shadow-lg scale-105' : ''
                 }`}
-                style={{
-                  background: activeStep >= index 
-                    ? 'rgba(255, 255, 255, 0.1)' 
-                    : 'rgba(255, 255, 255, 0.05)',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)',
-                  border: `1px solid ${activeStep >= index ? 'rgba(255, 255, 255, 0.2)' : 'rgba(255, 255, 255, 0.1)'}`,
-                  boxShadow: activeStep >= index 
-                    ? `0 20px 40px rgba(0, 0, 0, 0.3)` 
-                    : `0 8px 20px rgba(0, 0, 0, 0.2)`
-                }}
               >
                 {/* Step Number */}
                 <div 
-                  className={`w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold text-white mb-4 mx-auto transition-all duration-500`}
-                  style={{
-                    background: activeStep >= index 
-                      ? `linear-gradient(135deg, ${step.color}, ${step.color}dd)` 
-                      : 'rgba(255, 255, 255, 0.1)',
-                    boxShadow: activeStep >= index 
-                      ? `0 8px 20px ${step.color}40` 
-                      : '0 4px 12px rgba(0, 0, 0, 0.2)'
-                  }}
+                  className={`w-12 h-12 rounded-lg flex items-center justify-center text-xl font-bold mb-4 mx-auto transition-all duration-300 ${
+                    activeStep >= index 
+                      ? 'bg-[var(--color-ladder-blue)] text-white shadow-md' 
+                      : 'bg-white/20 text-white/60'
+                  }`}
                 >
                   {step.number}
                 </div>
 
                 {/* Icon */}
                 <div 
-                  className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-all duration-500`}
-                  style={{
-                    background: activeStep >= index 
-                      ? `${step.color}15` 
-                      : 'rgba(255, 255, 255, 0.05)',
-                    border: `1px solid ${activeStep >= index ? `${step.color}30` : 'rgba(255, 255, 255, 0.1)'}`
-                  }}
+                  className={`w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4 transition-all duration-300 ${
+                    activeStep >= index 
+                      ? 'bg-white/20 border-2 border-white/30' 
+                      : 'bg-white/10 border border-white/20'
+                  }`}
                 >
                   <step.icon 
-                    className="w-8 h-8 transition-all duration-500" 
-                    style={{ 
-                      color: activeStep >= index ? step.color : 'rgba(255, 255, 255, 0.4)' 
-                    }} 
+                    className={`w-8 h-8 transition-all duration-300 ${
+                      activeStep >= index ? 'text-white' : 'text-white/60'
+                    }`}
                   />
                 </div>
 
                 {/* Content */}
                 <h3 
-                  className={`text-xl font-bold mb-3 transition-all duration-500`}
-                  style={{ 
-                    color: activeStep >= index ? 'white' : 'rgba(255, 255, 255, 0.6)' 
-                  }}
+                  className={`text-lg sm:text-xl font-bold mb-3 transition-all duration-300 ${
+                    activeStep >= index ? 'text-white' : 'text-white/70'
+                  }`}
                 >
                   {step.title}
                 </h3>
                 
                 <p 
-                  className={`text-sm leading-relaxed transition-all duration-500`}
-                  style={{ 
-                    color: activeStep >= index ? 'rgba(255, 255, 255, 0.8)' : 'rgba(255, 255, 255, 0.4)' 
-                  }}
+                  className={`text-sm leading-relaxed transition-all duration-300 ${
+                    activeStep >= index ? 'text-white/90' : 'text-white/50'
+                  }`}
                 >
                   {step.description}
                 </p>
@@ -176,37 +153,28 @@ export default function HowItWorksCompact() {
 
         {/* Success Example */}
         <div className={`${isVisible ? 'animate-in-delayed' : 'opacity-0'}`}>
-          <div 
-            className="relative p-8 rounded-3xl max-w-4xl mx-auto text-center"
-            style={{
-              background: 'rgba(52, 199, 89, 0.1)',
-              backdropFilter: 'blur(30px)',
-              WebkitBackdropFilter: 'blur(30px)',
-              border: '1px solid rgba(52, 199, 89, 0.2)',
-              boxShadow: '0 20px 40px rgba(52, 199, 89, 0.1)'
-            }}
-          >
-            <h4 className="text-2xl font-bold text-white mb-4">
+          <div className="card relative p-6 sm:p-8 max-w-4xl mx-auto text-center bg-white/90">
+            <h4 className="text-xl sm:text-2xl font-bold text-[var(--color-text-primary)] mb-4">
               Real Example: Sarah's Story
             </h4>
-            <p className="text-lg text-white/90 mb-6 leading-relaxed">
+            <p className="text-base sm:text-lg text-[var(--color-text-secondary)] mb-6 leading-relaxed">
               A housing nonprofit referred Sarah, who couldn't start her new job because her car needed $800 in repairs. 
               Traditional programs couldn't help with car issues, but The Ladder covered the repair cost. 
-              <strong className="text-white"> Sarah kept her job, moved to stable housing, and now mentors others.</strong>
+              <strong className="text-[var(--color-text-primary)]"> Sarah kept her job, moved to stable housing, and now mentors others.</strong>
             </p>
             
             <div className="grid grid-cols-3 gap-4 max-w-md mx-auto">
               <div className="text-center">
-                <div className="text-2xl font-bold text-white">$800</div>
-                <div className="text-sm text-white/70">Investment</div>
+                <div className="text-xl sm:text-2xl font-bold text-[var(--color-ladder-blue)]">$800</div>
+                <div className="text-xs sm:text-sm text-[var(--color-text-secondary)]">Investment</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-white">48hr</div>
-                <div className="text-sm text-white/70">Resolution</div>
+                <div className="text-xl sm:text-2xl font-bold text-[var(--color-ladder-blue)]">48hr</div>
+                <div className="text-xs sm:text-sm text-[var(--color-text-secondary)]">Resolution</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-white">2yr+</div>
-                <div className="text-sm text-white/70">Stable Job</div>
+                <div className="text-xl sm:text-2xl font-bold text-[var(--color-ladder-blue)]">2yr+</div>
+                <div className="text-xs sm:text-sm text-[var(--color-text-secondary)]">Stable Job</div>
               </div>
             </div>
           </div>

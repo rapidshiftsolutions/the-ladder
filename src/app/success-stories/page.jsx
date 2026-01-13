@@ -1,5 +1,5 @@
-import GlassNavigation from '/src/components/GlassNavigation'
-import Footer from '/src/components/sitewide-footer'
+import SiteHeader from '/src/components/SiteHeader'
+import SiteFooter from '/src/components/SiteFooter'
 import { Heart, Star, CheckCircle, ArrowRight, Users, TrendingUp, Award, Quote, Filter, Search, Calendar, MapPin, UserCheck, Clock, Sparkles, Target } from 'lucide-react'
 import ClientStoriesGrid from '/src/components/ClientStoriesGrid'
 
@@ -69,8 +69,8 @@ export default function SuccessStoriesPage() {
 
   return (
     <>
-      <GlassNavigation />
-      <main className="min-h-screen">
+      <SiteHeader />
+      <main className="min-h-screen pt-16 sm:pt-20">
         
         {/* iOS-style Hero Section */}
         <section 
@@ -549,7 +549,7 @@ export default function SuccessStoriesPage() {
         </section>
 
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   )
 }

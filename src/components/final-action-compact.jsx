@@ -60,22 +60,8 @@ export default function FinalActionCompact() {
   return (
     <section 
       ref={sectionRef} 
-      className="relative py-20 overflow-hidden"
-      style={{
-        background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)'
-      }}
+      className="relative py-12 sm:py-16 lg:py-20 overflow-hidden bg-[var(--color-ladder-red)]"
     >
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div 
-          className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full opacity-10 blur-3xl"
-          style={{ background: 'radial-gradient(circle, #34C759, transparent)' }}
-        />
-        <div 
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full opacity-10 blur-3xl"
-          style={{ background: 'radial-gradient(circle, #007AFF, transparent)' }}
-        />
-      </div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         
@@ -97,44 +83,38 @@ export default function FinalActionCompact() {
               key={index}
               className="relative group"
             >
-              <div 
-                className="p-8 rounded-3xl h-full transition-all duration-500 hover:scale-105"
-                style={{
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  backdropFilter: 'blur(30px)',
-                  WebkitBackdropFilter: 'blur(30px)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)'
-                }}
-              >
+              <div className="card p-6 sm:p-8 h-full transition-all duration-300 hover:scale-105 bg-white">
                 {/* Icon */}
-                <div 
-                  className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6"
-                  style={{
-                    background: action.bgColor,
-                    border: `1px solid ${action.color}30`
-                  }}
-                >
-                  <action.icon className="w-8 h-8" style={{ color: action.color }} />
+                <div className={`w-16 h-16 rounded-xl flex items-center justify-center mb-6 ${
+                  action.color === '#FF3B30' ? 'bg-[var(--color-ladder-red)]/10 border border-[var(--color-ladder-red)]/20' :
+                  action.color === '#34C759' ? 'bg-[var(--color-ladder-green)]/10 border border-[var(--color-ladder-green)]/20' :
+                  'bg-[var(--color-ladder-blue)]/10 border border-[var(--color-ladder-blue)]/20'
+                }`}>
+                  <action.icon className={`w-8 h-8 ${
+                    action.color === '#FF3B30' ? 'text-[var(--color-ladder-red)]' :
+                    action.color === '#34C759' ? 'text-[var(--color-ladder-green)]' :
+                    'text-[var(--color-ladder-blue)]'
+                  }`} />
                 </div>
 
                 {/* Content */}
-                <h3 className="text-2xl font-bold text-white mb-4">
+                <h3 className="text-xl sm:text-2xl font-bold text-[var(--color-text-primary)] mb-4">
                   {action.title}
                 </h3>
                 
-                <p className="text-white/80 mb-6 leading-relaxed">
+                <p className="text-[var(--color-text-secondary)] mb-6 leading-relaxed">
                   {action.description}
                 </p>
 
                 {/* Details */}
                 <ul className="space-y-2 mb-8">
                   {action.details.map((detail, detailIndex) => (
-                    <li key={detailIndex} className="flex items-center text-sm text-white/70">
-                      <div 
-                        className="w-1.5 h-1.5 rounded-full mr-3 flex-shrink-0"
-                        style={{ background: action.color }}
-                      />
+                    <li key={detailIndex} className="flex items-center text-sm text-[var(--color-text-secondary)]">
+                      <div className={`w-1.5 h-1.5 rounded-full mr-3 flex-shrink-0 ${
+                        action.color === '#FF3B30' ? 'bg-[var(--color-ladder-red)]' :
+                        action.color === '#34C759' ? 'bg-[var(--color-ladder-green)]' :
+                        'bg-[var(--color-ladder-blue)]'
+                      }`} />
                       {detail}
                     </li>
                   ))}
@@ -143,12 +123,11 @@ export default function FinalActionCompact() {
                 {/* CTA Button */}
                 <a
                   href={action.href}
-                  className="group/btn inline-flex items-center justify-center w-full px-6 py-4 rounded-2xl font-bold transition-all duration-300 hover:scale-105"
-                  style={{
-                    background: action.color,
-                    color: 'white',
-                    boxShadow: `0 8px 32px ${action.color}40`
-                  }}
+                  className={`group/btn inline-flex items-center justify-center w-full px-6 py-4 rounded-lg font-bold transition-all duration-300 ${
+                    action.color === '#FF3B30' ? 'btn-accent' :
+                    action.color === '#34C759' ? 'btn-success' :
+                    'btn-primary'
+                  }`}
                 >
                   {action.cta}
                   <ArrowRight className="w-5 h-5 ml-3 transition-transform group-hover/btn:translate-x-1" />
@@ -160,46 +139,37 @@ export default function FinalActionCompact() {
 
         {/* Contact Information */}
         <div className={`${isVisible ? 'animate-in-delayed' : 'opacity-0'}`}>
-          <div 
-            className="relative p-8 rounded-3xl max-w-4xl mx-auto text-center"
-            style={{
-              background: 'rgba(255, 255, 255, 0.05)',
-              backdropFilter: 'blur(30px)',
-              WebkitBackdropFilter: 'blur(30px)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.2)'
-            }}
-          >
-            <h4 className="text-2xl font-bold text-white mb-6">
+          <div className="card relative p-6 sm:p-8 max-w-4xl mx-auto text-center bg-white/90">
+            <h4 className="text-xl sm:text-2xl font-bold text-[var(--color-text-primary)] mb-6">
               The Ladder • Birmingham, Alabama
             </h4>
             
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
               <div className="flex items-center justify-center gap-3">
-                <Mail className="w-5 h-5 text-white/70" />
+                <Mail className="w-5 h-5 text-[var(--color-text-secondary)]" />
                 <a 
                   href="mailto:info@the-ladder.org" 
-                  className="text-white/90 hover:text-white transition-colors"
+                  className="text-[var(--color-ladder-blue)] hover:text-[var(--color-ladder-blue-dark)] transition-colors"
                 >
                   info@the-ladder.org
                 </a>
               </div>
               
               <div className="flex items-center justify-center gap-3">
-                <MapPin className="w-5 h-5 text-white/70" />
-                <span className="text-white/90">Birmingham, AL</span>
+                <MapPin className="w-5 h-5 text-[var(--color-text-secondary)]" />
+                <span className="text-[var(--color-text-primary)]">Birmingham, AL</span>
               </div>
               
               <div className="flex items-center justify-center gap-3">
-                <Building2 className="w-5 h-5 text-white/70" />
-                <span className="text-white/90">501(c)(3) Nonprofit</span>
+                <Building2 className="w-5 h-5 text-[var(--color-text-secondary)]" />
+                <span className="text-[var(--color-text-primary)]">501(c)(3) Nonprofit</span>
               </div>
             </div>
 
-            <div className="text-white/70 text-sm leading-relaxed">
+            <div className="text-[var(--color-text-secondary)] text-sm leading-relaxed">
               <p className="mb-2">
-                <strong className="text-white">EIN:</strong> 47-2123160 • 
-                <strong className="text-white"> Founded:</strong> 2021
+                <strong className="text-[var(--color-text-primary)]">EIN:</strong> 47-2123160 • 
+                <strong className="text-[var(--color-text-primary)]"> Founded:</strong> 2021
               </p>
               <p>
                 Helping individuals one by one climb over very specific, personal barriers 
@@ -210,14 +180,14 @@ export default function FinalActionCompact() {
         </div>
 
         {/* Final Message */}
-        <div className={`text-center mt-16 ${isVisible ? 'animate-in-delayed' : 'opacity-0'}`} style={{ animationDelay: '400ms' }}>
-          <p className="text-2xl font-bold text-white mb-4">
+        <div className={`text-center mt-12 sm:mt-16 ${isVisible ? 'animate-in-delayed' : 'opacity-0'}`} style={{ animationDelay: '400ms' }}>
+          <p className="text-xl sm:text-2xl font-bold text-white mb-4">
             Every barrier can be overcome.
           </p>
-          <p className="text-xl text-white/80">
+          <p className="text-lg sm:text-xl text-white/90">
             Every person deserves the chance to succeed.
           </p>
-          <p className="text-lg text-white/60 mt-4">
+          <p className="text-base sm:text-lg text-white/70 mt-4">
             Let's climb higher, together.
           </p>
         </div>

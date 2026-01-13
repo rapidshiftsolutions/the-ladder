@@ -25,6 +25,7 @@ import { annualReportType } from './annualReportType'
 import { siteSettingsType } from './siteSettingsType'
 import { donationSettingsType } from './donationSettingsType'
 import { guestPortalSettingsType } from './guestPortalSettingsType'
+import { seoSettingsType } from './seoSettingsType'
 
 export const schema = {
   types: [
@@ -42,6 +43,7 @@ export const schema = {
     siteSettingsType,
     donationSettingsType,
     guestPortalSettingsType,
+    seoSettingsType,
     
     // Legacy types
     postType,

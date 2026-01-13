@@ -1,13 +1,14 @@
 import React from 'react';
-import GlassNavigation from '/src/components/GlassNavigation';
-import Footer from '@/components/sitewide-footer';
+import SiteHeader from '/src/components/SiteHeader';
+import SiteFooter from '@/components/SiteFooter';
 import Link from 'next/link';
 import { Heart, Home, HelpingHand, Phone } from 'lucide-react';
 
 export default function NotFound() {
   return (
-    <div className="bg-white min-h-screen">
-      <GlassNavigation />
+    <>
+      <SiteHeader />
+      <div className="bg-white min-h-screen pt-16 sm:pt-20">
       <main className="relative">
         <div className="flex flex-col items-center justify-center min-h-[60vh] py-16 px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
@@ -58,7 +59,8 @@ export default function NotFound() {
           </div>
         </div>
       </main>
-      <Footer />
+      <SiteFooter />
     </div>
+    </>
   );
 }

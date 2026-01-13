@@ -1,5 +1,5 @@
 export default function robots() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.the-ladder.org'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://the-ladder.org'
 
   return {
     rules: [
@@ -8,8 +8,7 @@ export default function robots() {
         allow: '/',
         disallow: [
           '/api/',
-          '/guest-portal/dashboard',
-          '/guest-portal/resources',
+          '/guest-portal/',
           '/studio/',
         ],
       },

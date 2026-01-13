@@ -283,14 +283,16 @@ export default function RootLayout({ children }) {
         
         {/* Critical CSS for Core Web Vitals optimization */}
         <style dangerouslySetInnerHTML={{ __html: `
-          /* Critical CSS for above-the-fold content */
+          /* Critical CSS for above-the-fold content - Warm Nonprofit Aesthetic */
           body {
             margin: 0;
-            background-color: #1F2937;
-            color: #f9fafb;
-            font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+            background-color: #FAFBFC;
+            color: #1F2937;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
           }
           
           /* Prevent layout shift */
@@ -323,6 +325,11 @@ export default function RootLayout({ children }) {
             }
           }
           
+          /* Minimum touch target for accessibility */
+          a, button, [role="button"], input, select, textarea {
+            min-height: 44px;
+          }
+          
           /* Font display optimization */
           @font-face {
             font-family: 'Inter';
@@ -330,13 +337,26 @@ export default function RootLayout({ children }) {
           }
           
           @font-face {
-            font-family: 'TiltWarp';
+            font-family: 'Host Grotesk';
             font-display: swap;
+          }
+          
+          /* Screen reader only utility */
+          .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
           }
         `}} />
 
       </head>
-      <body className="text-light-950 antialiased">
+      <body className="bg-[var(--color-background)] text-[var(--color-text-primary)] antialiased">
         <ErrorBoundary>
           <DOMOptimizer>
             

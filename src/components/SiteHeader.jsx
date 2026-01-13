@@ -34,14 +34,23 @@ export default function SiteHeader() {
   }, [])
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-white/95 shadow-md backdrop-blur-sm' 
-          : 'bg-white'
-      }`}
-    >
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <>
+      {/* Skip to main content link for accessibility */}
+      <a 
+        href="#main-content" 
+        className="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-[var(--color-ladder-blue)] focus:text-white focus:px-4 focus:py-2 focus:rounded-lg"
+      >
+        Skip to main content
+      </a>
+      
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled 
+            ? 'bg-white shadow-md' 
+            : 'bg-white'
+        }`}
+      >
+        <nav className="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
         <div className="flex h-16 sm:h-20 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
@@ -78,7 +87,7 @@ export default function SiteHeader() {
             </Link>
             <Link
               href="/donate"
-              className="btn btn-accent flex items-center gap-2"
+              className="btn-accent flex items-center gap-2"
             >
               <Heart className="w-4 h-4" />
               Donate
@@ -88,9 +97,11 @@ export default function SiteHeader() {
           {/* Mobile Menu Button */}
           <button
             type="button"
-            className="lg:hidden p-2 -m-2 text-[var(--color-text-primary)]"
+            className="lg:hidden p-3 -m-2 text-[var(--color-text-primary)] rounded-lg hover:bg-[var(--color-background)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-ladder-blue)]"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             {mobileMenuOpen ? (
               <X className="h-6 w-6" />
@@ -109,13 +120,14 @@ export default function SiteHeader() {
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
               className="lg:hidden overflow-hidden"
+              id="mobile-menu"
             >
-              <div className="py-4 space-y-1 border-t border-[var(--color-border)]">
+              <div className="py-4 space-y-1 border-t border-[var(--color-border)]" role="menu">
                 {navigation.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="block px-4 py-3 text-base font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-ladder-blue)] hover:bg-[var(--color-surface-hover)] rounded-lg transition-colors"
+                    className="block px-4 py-3 text-base font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-ladder-blue)] hover:bg-[var(--color-background)] rounded-lg transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}
@@ -125,14 +137,14 @@ export default function SiteHeader() {
                 <div className="pt-4 mt-4 border-t border-[var(--color-border)] space-y-2">
                   <Link
                     href="/guest-portal"
-                    className="block px-4 py-3 text-base font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-ladder-blue)] hover:bg-[var(--color-surface-hover)] rounded-lg transition-colors"
+                    className="block px-4 py-3 text-base font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-ladder-blue)] hover:bg-[var(--color-background)] rounded-lg transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Guest Portal
                   </Link>
                   <Link
                     href="/donate"
-                    className="btn btn-accent w-full flex items-center justify-center gap-2"
+                    className="btn-accent w-full flex items-center justify-center gap-2"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     <Heart className="w-4 h-4" />
@@ -143,7 +155,8 @@ export default function SiteHeader() {
             </motion.div>
           )}
         </AnimatePresence>
-      </nav>
-    </header>
+        </nav>
+      </header>
+    </>
   )
 }

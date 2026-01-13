@@ -74,7 +74,7 @@ export default function PageHero({
             {cta && (
               <Link
                 href={cta.href}
-                className="btn btn-lg bg-white text-[var(--color-ladder-blue)] hover:bg-white/90"
+                className="btn-primary bg-white text-[var(--color-ladder-blue)] hover:bg-white/90"
               >
                 {cta.text}
               </Link>
@@ -82,7 +82,7 @@ export default function PageHero({
             {secondaryCta && (
               <Link
                 href={secondaryCta.href}
-                className="btn btn-lg border-2 border-white text-white hover:bg-white/10"
+                className="btn-secondary border-2 border-white text-white hover:bg-white/10"
               >
                 {secondaryCta.text}
               </Link>

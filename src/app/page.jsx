@@ -1,10 +1,10 @@
-import GlassNavigation from '../components/GlassNavigation'
+import SiteHeader from '../components/SiteHeader'
 import HeroCompact from '../components/hero-compact'
 import ProblemSolutionCompact from '../components/problem-solution-compact'
 import HowItWorksCompact from '../components/how-it-works-compact'
 import ImpactTrustCompact from '../components/impact-trust-compact'
 import FinalActionCompact from '../components/final-action-compact'
-import FooterCompact from '../components/footer-compact'
+import SiteFooter from '../components/SiteFooter'
 
 export const metadata = {
   title: 'The Ladder | Birmingham Crisis Intervention & Barrier Assistance',
@@ -72,14 +72,14 @@ export const metadata = {
 export default function Home() {
   return (
     <>
-      <GlassNavigation />
-      <main className="min-h-screen">
+      <SiteHeader />
+      <main className="min-h-screen pt-16 sm:pt-20">
         <HeroCompact />
         <ProblemSolutionCompact />
         <HowItWorksCompact />
         <ImpactTrustCompact />
         <FinalActionCompact />
-        <FooterCompact />
+        <SiteFooter />
       </main>
     </>
   )

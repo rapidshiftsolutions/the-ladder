@@ -1,5 +1,5 @@
-import GlassNavigation from '/src/components/GlassNavigation'
-import Footer from '/src/components/sitewide-footer'
+import SiteHeader from '/src/components/SiteHeader'
+import SiteFooter from '/src/components/SiteFooter'
 import ContactForm from '/src/components/ContactForm.jsx'
 import RecaptchaDebugger from '/src/components/RecaptchaDebugger.jsx'
 import { Phone, Mail, MapPin, Clock, MessageCircle, Heart, HelpingHand } from 'lucide-react'
@@ -40,8 +40,8 @@ export default function ContactPage() {
   return (
     <main className="flex min-h-screen flex-col">
       <RecaptchaDebugger />
-      <GlassNavigation />
-      <div className="flex-1 bg-gradient-to-b from-background-dark to-surface-900">
+      <SiteHeader />
+      <div className="flex-1 bg-[var(--color-background)] pt-16 sm:pt-20">
         
         {/* Hero Section */}
         <section className="relative py-16 lg:py-20">
@@ -273,7 +273,8 @@ export default function ContactPage() {
         </section>
 
       </div>
-      <Footer />
+      <SiteFooter />
     </main>
+    </>
   )
 }

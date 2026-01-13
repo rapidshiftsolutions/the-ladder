@@ -80,10 +80,10 @@ export default function ContactSectionRedesigned() {
               className={`group ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="glass-card bg-white/70 backdrop-blur-xl border border-white/50 rounded-2xl p-6 shadow-xl hover:bg-white/80 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 text-center h-full">
+              <div className="card p-6 text-center h-full">
                 <div 
-                  className="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4 transition-all duration-300 group-hover:scale-110 glass-card bg-white/60 backdrop-blur-md border border-white/40"
-                  style={{ backgroundColor: `${method.color}15` }}
+                  className="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4 transition-all duration-300 group-hover:scale-110"
+                  style={{ backgroundColor: `${method.color}15`, border: `1px solid ${method.color}20` }}
                 >
                   <method.icon className="w-7 h-7" style={{ color: method.color }} />
                 </div>

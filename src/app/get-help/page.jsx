@@ -1,5 +1,5 @@
-import GlassNavigation from '/src/components/GlassNavigation'
-import Footer from '/src/components/sitewide-footer'
+import SiteHeader from '/src/components/SiteHeader'
+import SiteFooter from '/src/components/SiteFooter'
 import ContactForm from '/src/components/ContactForm'
 import { Phone, Mail, Heart, HelpingHand, Clock, Shield, Users, CheckCircle } from 'lucide-react'
 
@@ -37,9 +37,10 @@ export const metadata = {
 
 export default function GetHelpPage() {
   return (
-    <main className="flex min-h-screen flex-col">
-      <GlassNavigation />
-      <div className="flex-1 bg-gradient-to-b from-background-dark to-surface-900">
+    <>
+      <SiteHeader />
+      <main className="flex min-h-screen flex-col pt-16 sm:pt-20">
+      <div className="flex-1 bg-[var(--color-background)]">
         
         {/* Hero Section */}
         <section className="relative py-16 lg:py-20">
@@ -419,7 +420,8 @@ export default function GetHelpPage() {
         </section>
 
       </div>
-      <Footer />
-    </main>
+      <SiteFooter />
+      </main>
+    </>
   )
 }

@@ -128,6 +128,13 @@ const theLadderStructure = (S) => {
                     .schemaType('guestPortalSettings')
                     .documentId('guestPortalSettings')
                 ),
+              S.listItem()
+                .title('SEO Settings')
+                .child(
+                  S.document()
+                    .schemaType('seoSettings')
+                    .documentId('seoSettings')
+                ),
             ])
         ),
       
