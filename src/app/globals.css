@@ -1645,3 +1645,53 @@ a, button, [role="button"], input, select, textarea {
     background: var(--color-gray-200);
   }
 }
+
+/* =============================================================================
+   MOBILE OVERFLOW FIXES
+   ============================================================================= */
+
+/* Prevent horizontal overflow on mobile from decorative elements */
+@media (max-width: 768px) {
+  /* Hide decorative elements that extend beyond viewport on mobile */
+  section {
+    overflow-x: hidden;
+  }
+  
+  /* Hide large decorative circles on mobile */
+  .w-96,
+  .w-80,
+  [class*="w-96"],
+  [class*="w-80"] {
+    &.absolute {
+      display: none;
+    }
+  }
+}
+
+/* Ensure body doesn't have horizontal scroll */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* =============================================================================
+   MOBILE TOUCH TARGET IMPROVEMENTS
+   ============================================================================= */
+
+/* Ensure all interactive elements have minimum touch target on mobile */
+@media (max-width: 768px) {
+  /* Footer links and small links */
+  footer a:not(.btn),
+  nav a:not(.btn) {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  /* Ensure buttons have adequate size */
+  button:not([class*="w-"]):not([class*="h-"]),
+  [role="button"]:not([class*="w-"]):not([class*="h-"]) {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}

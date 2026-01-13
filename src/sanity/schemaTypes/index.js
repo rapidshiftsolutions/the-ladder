@@ -25,7 +25,6 @@ import { annualReportType } from './annualReportType'
 
 // The Ladder nonprofit schemas - Homepage & Pages
 import { homepageContentType } from './homepageContentType'
-import { processStepType } from './processStepType'
 import { faqType } from './faqType'
 import { impactExampleType } from './impactExampleType'
 
@@ -51,7 +50,6 @@ export const schema = {
     
     // The Ladder nonprofit schemas - Homepage & Pages
     homepageContentType,
-    processStepType,
     faqType,
     impactExampleType,
     

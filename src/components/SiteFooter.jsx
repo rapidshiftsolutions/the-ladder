@@ -199,12 +199,12 @@ export default function SiteFooter({ siteSettings = {} }) {
             {/* About Links */}
             <div>
               <h3 className="font-semibold text-[var(--color-text-primary)] mb-4">About Us</h3>
-              <ul className="space-y-3">
+              <ul className="space-y-1">
                 {footerLinks.about.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors"
+                      className="block py-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors min-h-[44px] flex items-center"
                     >
                       {link.name}
                     </Link>
@@ -216,12 +216,12 @@ export default function SiteFooter({ siteSettings = {} }) {
             {/* Get Involved Links */}
             <div>
               <h3 className="font-semibold text-[var(--color-text-primary)] mb-4">Get Involved</h3>
-              <ul className="space-y-3">
+              <ul className="space-y-1">
                 {footerLinks.getInvolved.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors"
+                      className="block py-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors min-h-[44px] flex items-center"
                     >
                       {link.name}
                     </Link>
@@ -233,12 +233,12 @@ export default function SiteFooter({ siteSettings = {} }) {
             {/* Get Help Links */}
             <div>
               <h3 className="font-semibold text-[var(--color-text-primary)] mb-4">Get Help</h3>
-              <ul className="space-y-3">
+              <ul className="space-y-1">
                 {footerLinks.getHelp.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors"
+                      className="block py-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors min-h-[44px] flex items-center"
                     >
                       {link.name}
                     </Link>
@@ -250,12 +250,12 @@ export default function SiteFooter({ siteSettings = {} }) {
             {/* Legal Links */}
             <div>
               <h3 className="font-semibold text-[var(--color-text-primary)] mb-4">Legal</h3>
-              <ul className="space-y-3">
+              <ul className="space-y-1">
                 {footerLinks.legal.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors"
+                      className="block py-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors min-h-[44px] flex items-center"
                     >
                       {link.name}
                     </Link>

@@ -1,14 +1,13 @@
 import SiteHeader from '../components/SiteHeader'
 import HeroCompact from '../components/hero-compact'
 import ProblemSolutionCompact from '../components/problem-solution-compact'
-import HowItWorksCompact from '../components/how-it-works-compact'
-import ImpactTrustCompact from '../components/impact-trust-compact'
+import HowItWorksRedesigned from '../components/how-it-works-redesigned'
+import ImpactTrustRedesigned from '../components/impact-trust-redesigned'
 import FinalActionCompact from '../components/final-action-compact'
 import SiteFooter from '../components/SiteFooter'
 import { client } from '@/sanity/lib/client'
 import { homepageContentQuery, heroSectionQuery } from '@/sanity/queries/homepageQuery'
 import { siteSettingsQuery, impactStatsQuery } from '@/sanity/queries/siteSettingsQuery'
-import { allProcessStepsQuery } from '@/sanity/queries/processStepsQuery'
 
 export const metadata = {
   title: 'The Ladder | Birmingham Nonprofit Helping Individuals Overcome Barriers',
@@ -75,29 +74,26 @@ export const revalidate = 3600
 // Fetch all homepage data
 async function getHomepageData() {
   try {
-    const [homepageContent, siteSettings, processSteps] = await Promise.all([
+    const [homepageContent, siteSettings] = await Promise.all([
       client.fetch(homepageContentQuery),
       client.fetch(siteSettingsQuery),
-      client.fetch(allProcessStepsQuery),
     ])
     
     return {
       homepageContent: homepageContent || null,
       siteSettings: siteSettings || null,
-      processSteps: processSteps || [],
     }
   } catch (error) {
     console.error('Error fetching homepage data:', error)
     return {
       homepageContent: null,
       siteSettings: null,
-      processSteps: [],
     }
   }
 }
 
 export default async function Home() {
-  const { homepageContent, siteSettings, processSteps } = await getHomepageData()
+  const { homepageContent, siteSettings } = await getHomepageData()
   
   // Extract impact stats from site settings
   const impactStats = siteSettings?.impactStats || null
@@ -114,16 +110,8 @@ export default async function Home() {
         <ProblemSolutionCompact 
           content={homepageContent}
         />
-        <HowItWorksCompact 
-          processSteps={processSteps}
-          testimonial={homepageContent}
-          siteSettings={siteSettings}
-        />
-        <ImpactTrustCompact 
-          impactStats={impactStats}
-          testimonial={homepageContent}
-          siteSettings={siteSettings}
-        />
+        <HowItWorksRedesigned />
+        <ImpactTrustRedesigned />
         <FinalActionCompact 
           content={homepageContent}
           impactStats={impactStats}
