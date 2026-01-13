@@ -1,0 +1,497 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e5]:
+    - generic [ref=e6]:
+      - link "(205) 522-1162" [ref=e7] [cursor=pointer]:
+        - /url: tel:+12055221162
+        - img [ref=e8]
+        - text: (205) 522-1162
+      - link "info@the-ladder.org" [ref=e10] [cursor=pointer]:
+        - /url: mailto:info@the-ladder.org
+        - img [ref=e11]
+        - text: info@the-ladder.org
+    - generic [ref=e14]:
+      - generic [ref=e15]:
+        - img [ref=e16]
+        - text: 501(c)(3) Tax Exempt
+      - generic [ref=e18]: "|"
+      - generic [ref=e19]: "EIN: 82-0737087"
+      - generic [ref=e20]: "|"
+      - generic [ref=e21]: Serving Birmingham Since 2021
+  - banner [ref=e22]:
+    - navigation "Main navigation" [ref=e23]:
+      - generic [ref=e24]:
+        - link "The Ladder - Birmingham Nonprofit" [ref=e25] [cursor=pointer]:
+          - /url: /
+          - img "The Ladder - Birmingham Nonprofit" [ref=e26]
+        - generic [ref=e27]:
+          - button "About" [ref=e29]:
+            - text: About
+            - img [ref=e30]
+          - link "How We Help" [ref=e32] [cursor=pointer]:
+            - /url: /how-we-help
+          - link "Get Help" [ref=e33] [cursor=pointer]:
+            - /url: /get-help
+          - button "Get Involved" [ref=e35]:
+            - text: Get Involved
+            - img [ref=e36]
+          - link "Partners" [ref=e38] [cursor=pointer]:
+            - /url: /partners
+          - link "Events" [ref=e39] [cursor=pointer]:
+            - /url: /events
+          - link "Contact" [ref=e40] [cursor=pointer]:
+            - /url: /contact
+        - link "Donate Now" [ref=e42] [cursor=pointer]:
+          - /url: /donate
+          - img [ref=e43]
+          - text: Donate Now
+  - main [ref=e45]:
+    - generic [ref=e46]:
+      - generic [ref=e47]:
+        - img "Jamil - a success story from The Ladder" [ref=e49]
+        - generic [ref=e52]:
+          - generic [ref=e53]:
+            - img [ref=e54]
+            - generic [ref=e56]: 501(c)(3) Nonprofit • Serving Birmingham Since 2021
+          - heading "Helping Individuals Overcome Barriers to Success" [level=1] [ref=e57]
+          - paragraph [ref=e58]: When life's obstacles stand in your way, The Ladder partners with you to find solutions. We provide personalized crisis intervention and connect you with the resources you need.
+          - generic [ref=e59]:
+            - link "Get Help Today" [ref=e60] [cursor=pointer]:
+              - /url: /get-help
+              - text: Get Help Today
+              - img [ref=e61]
+            - link "Make a Donation" [ref=e63] [cursor=pointer]:
+              - /url: /donate
+              - img [ref=e64]
+              - text: Make a Donation
+          - generic [ref=e66]:
+            - link "(205) 522-1162" [ref=e67] [cursor=pointer]:
+              - /url: tel:+12055221162
+              - img [ref=e68]
+              - text: (205) 522-1162
+            - generic [ref=e70]: "|"
+            - generic [ref=e71]: All services are free and confidential
+      - generic [ref=e74]:
+        - generic [ref=e75]:
+          - generic [ref=e76]: 500+
+          - generic [ref=e77]: Individuals Helped
+        - generic [ref=e78]:
+          - generic [ref=e79]: 95%
+          - generic [ref=e80]: Success Rate
+        - generic [ref=e81]:
+          - generic [ref=e82]: 24hr
+          - generic [ref=e83]: Response Time
+        - generic [ref=e84]:
+          - generic [ref=e85]: 100%
+          - generic [ref=e86]: Confidential
+    - generic [ref=e88]:
+      - generic [ref=e89]:
+        - generic:
+          - img
+          - generic: The Missing Rung
+        - heading "Bridging the Gap in Birmingham's Safety Net" [level=2] [ref=e90]:
+          - text: Bridging the Gap in
+          - text: Birmingham's Safety Net
+        - paragraph [ref=e92]: Birmingham has excellent nonprofit organizations, but sometimes individuals face barriers that don't fit neatly into any single organization's services. That's where The Ladder steps in.
+      - generic [ref=e93]:
+        - generic [ref=e97]:
+          - generic:
+            - generic:
+              - img
+            - heading "The Challenge" [level=3]
+          - paragraph [ref=e98]: Individuals often face specific obstacles that fall outside traditional nonprofit service boundaries, leaving them stuck despite seeking help.
+          - list [ref=e99]:
+            - listitem [ref=e100]:
+              - generic [ref=e102]:
+                - strong [ref=e103]: Housing program
+                - text: can't help with car repairs needed for work
+            - listitem [ref=e104]:
+              - generic [ref=e106]:
+                - strong [ref=e107]: Job training
+                - text: can't address childcare barriers during classes
+            - listitem [ref=e108]:
+              - generic [ref=e110]:
+                - strong [ref=e111]: Healthcare services
+                - text: can't solve transportation to appointments
+          - paragraph [ref=e113]:
+            - img [ref=e114]
+            - text: "Result: Individual barriers block entire progress toward stability"
+        - generic [ref=e120]:
+          - generic:
+            - generic:
+              - img
+            - heading "Our Approach" [level=3]
+          - paragraph [ref=e121]: The Ladder works alongside existing nonprofits to address the specific, individual obstacles that are preventing someone from moving forward.
+          - list [ref=e122]:
+            - listitem [ref=e123]:
+              - img [ref=e125]
+              - generic [ref=e128]:
+                - strong [ref=e129]: "Partner referrals:"
+                - text: Nonprofits send us clients facing barriers outside their scope
+            - listitem [ref=e130]:
+              - img [ref=e132]
+              - generic [ref=e135]:
+                - strong [ref=e136]: "Individual focus:"
+                - text: We address your exact obstacle with personalized support
+            - listitem [ref=e137]:
+              - img [ref=e139]
+              - generic [ref=e142]:
+                - strong [ref=e143]: "Quick response:"
+                - text: 24-hour initial response, typically resolved within 30 days
+          - paragraph [ref=e145]:
+            - img [ref=e146]
+            - text: "Result: Barriers removed, lives transformed, progress achieved"
+      - generic [ref=e151]:
+        - generic:
+          - generic:
+            - img
+          - generic:
+            - img
+        - heading "We're Partners, Not Competitors" [level=3] [ref=e152]
+        - paragraph [ref=e154]: Birmingham's nonprofits do exceptional work in their areas of expertise. The Ladder exists to complement their services by handling the unique, individual barriers that don't fit traditional program categories.
+        - generic [ref=e155]:
+          - link "Learn How We Help" [ref=e157] [cursor=pointer]:
+            - /url: /how-we-help
+            - text: Learn How We Help
+            - img [ref=e158]
+          - link "View Our Partners" [ref=e161] [cursor=pointer]:
+            - /url: /partners
+    - generic [ref=e163]:
+      - generic [ref=e164]:
+        - generic:
+          - img
+          - generic: Our Process
+        - 'heading "How We Help: A Simple, Proven Process" [level=2] [ref=e165]'
+        - paragraph [ref=e167]: From your first call to successful barrier removal, we guide you through every step. Our process is designed to be straightforward and supportive.
+      - generic [ref=e168]:
+        - generic [ref=e174]:
+          - generic: "1"
+          - img [ref=e176]
+          - heading "Contact Us" [level=3] [ref=e178]
+          - paragraph [ref=e179]: Reach out by phone, email, or through our website. We respond to all inquiries within 24 hours.
+        - generic [ref=e185]:
+          - generic: "2"
+          - img [ref=e187]
+          - heading "Personal Assessment" [level=3] [ref=e192]
+          - paragraph [ref=e193]: We schedule a confidential conversation to understand your specific situation and barriers.
+        - generic [ref=e199]:
+          - generic: "3"
+          - img [ref=e201]
+          - heading "Create a Plan" [level=3] [ref=e204]
+          - paragraph [ref=e205]: We develop a personalized action plan and connect you with appropriate resources.
+        - generic [ref=e210]:
+          - generic: "4"
+          - img [ref=e212]
+          - heading "Remove the Barrier" [level=3] [ref=e215]
+          - paragraph [ref=e216]: We provide direct assistance and follow up to ensure lasting success.
+      - generic [ref=e220]:
+        - generic [ref=e221]:
+          - generic:
+            - img
+            - text: Success Story
+          - heading "From Barrier to Breakthrough" [level=3] [ref=e222]
+          - paragraph [ref=e223]: "\"A local housing nonprofit referred Sarah to us. She had secured a new job, but her car needed $800 in repairs she couldn't afford. Without transportation, she would lose the job before starting. We covered the repair cost within 48 hours. Today, Sarah has held that job for over two years and recently moved into permanent housing.\""
+          - link "Read More Success Stories" [ref=e225] [cursor=pointer]:
+            - /url: /success-stories
+            - text: Read More Success Stories
+            - img [ref=e226]
+        - generic:
+          - generic:
+            - generic:
+              - generic: $800
+              - generic: Investment
+            - generic:
+              - generic: 48hr
+              - generic: Resolution
+            - generic:
+              - generic: 2yr+
+              - generic: Stable Job
+      - generic [ref=e228]:
+        - paragraph [ref=e229]: Ready to take the first step? We're here to help.
+        - generic [ref=e230]:
+          - link "Apply for Help" [ref=e232] [cursor=pointer]:
+            - /url: /get-help
+            - text: Apply for Help
+            - img [ref=e233]
+          - link "Call (205) 522-1162" [ref=e236] [cursor=pointer]:
+            - /url: tel:+12055221162
+            - img [ref=e237]
+            - text: Call (205) 522-1162
+    - generic [ref=e240]:
+      - generic [ref=e241]:
+        - generic:
+          - img
+          - generic: Our Impact
+        - heading "Measurable Impact, Trusted Results" [level=2] [ref=e242]
+        - paragraph [ref=e244]: Our outcomes speak for themselves. Every statistic represents a real person who overcame a barrier and moved forward in life.
+      - generic [ref=e245]:
+        - generic [ref=e249]:
+          - generic:
+            - img
+          - generic [ref=e250]: 500+
+          - heading "Individuals Helped" [level=3] [ref=e251]
+          - paragraph [ref=e252]: Birmingham residents who have overcome barriers with our support
+        - generic [ref=e256]:
+          - generic:
+            - img
+          - generic [ref=e257]: 95%
+          - heading "Success Rate" [level=3] [ref=e258]
+          - paragraph [ref=e259]: Barriers successfully removed, enabling forward progress
+        - generic [ref=e263]:
+          - generic:
+            - img
+          - generic [ref=e264]: 24hr
+          - heading "Response Time" [level=3] [ref=e265]
+          - paragraph [ref=e266]: Average time from initial contact to first response
+        - generic [ref=e270]:
+          - generic:
+            - img
+          - generic [ref=e271]: 100%
+          - heading "Direct Impact" [level=3] [ref=e272]
+          - paragraph [ref=e273]: Of donations go directly to barrier removal assistance
+      - generic [ref=e276]:
+        - generic [ref=e277]:
+          - heading "Why Trust The Ladder?" [level=3] [ref=e278]
+          - paragraph [ref=e279]: Transparency, accountability, and a commitment to our community.
+        - generic [ref=e280]:
+          - generic [ref=e281]:
+            - generic:
+              - img
+            - heading "501(c)(3) Tax Exempt" [level=4] [ref=e282]
+            - paragraph [ref=e283]: "Registered nonprofit organization (EIN: 82-0737087). All donations are tax-deductible."
+          - generic [ref=e284]:
+            - generic:
+              - img
+            - heading "Experienced Leadership" [level=4] [ref=e285]
+            - paragraph [ref=e286]: Board members with extensive nonprofit, healthcare, and business experience.
+          - generic [ref=e287]:
+            - generic:
+              - img
+            - heading "Trusted Partners" [level=4] [ref=e288]
+            - paragraph [ref=e289]: Collaborated with by Birmingham's leading nonprofit organizations.
+      - generic [ref=e292]:
+        - generic:
+          - generic:
+            - img
+          - generic:
+            - img
+          - generic:
+            - img
+          - generic:
+            - img
+          - generic:
+            - img
+        - blockquote [ref=e293]:
+          - paragraph [ref=e294]: "\"When I lost my car in an accident, I thought I would lose everything. The Ladder provided a rental car so I could keep working until I found a replacement. Today I have a new job I love and just moved into a beautiful new home. They gave me the support I needed exactly when I needed it.\""
+          - generic [ref=e296]:
+            - generic [ref=e297]: Maria T.
+            - text: Birmingham Resident, Helped in 2023
+        - generic [ref=e298]:
+          - link "Read More Stories" [ref=e300] [cursor=pointer]:
+            - /url: /success-stories
+            - text: Read More Stories
+            - img [ref=e301]
+          - link "View Our Reports" [ref=e304] [cursor=pointer]:
+            - /url: /annual-reports
+    - generic [ref=e306]:
+      - generic [ref=e307]:
+        - generic:
+          - img
+          - generic: Get Involved
+        - heading "Take the Next Step" [level=2] [ref=e308]
+        - paragraph [ref=e310]: Whether you need help, want to give, or represent a partner organization, there's a meaningful way for you to be part of our mission.
+      - generic [ref=e311]:
+        - generic [ref=e315]:
+          - generic:
+            - img
+          - heading "Need Assistance?" [level=3] [ref=e316]
+          - paragraph [ref=e317]: Facing a barrier that's preventing your progress? We offer free, confidential support.
+          - list [ref=e318]:
+            - listitem [ref=e319]:
+              - generic [ref=e321]: 24-hour response time
+            - listitem [ref=e322]:
+              - generic [ref=e324]: Completely confidential
+            - listitem [ref=e325]:
+              - generic [ref=e327]: No cost to you
+          - link "Apply for Help" [ref=e329] [cursor=pointer]:
+            - /url: /get-help
+            - text: Apply for Help
+            - img [ref=e330]
+        - generic [ref=e335]:
+          - generic:
+            - img
+          - heading "Support Our Mission" [level=3] [ref=e336]
+          - paragraph [ref=e337]: Your donation directly helps individuals overcome barriers and achieve stability.
+          - list [ref=e338]:
+            - listitem [ref=e339]:
+              - generic [ref=e341]: 100% tax-deductible
+            - listitem [ref=e342]:
+              - generic [ref=e344]: Funds direct assistance
+            - listitem [ref=e345]:
+              - generic [ref=e347]: Create immediate impact
+          - link "Make a Donation" [ref=e349] [cursor=pointer]:
+            - /url: /donate
+            - text: Make a Donation
+            - img [ref=e350]
+        - generic [ref=e355]:
+          - generic:
+            - img
+          - heading "Partner Organizations" [level=3] [ref=e356]
+          - paragraph [ref=e357]: Refer clients with barriers outside your scope. Together, we can fill the gaps.
+          - list [ref=e358]:
+            - listitem [ref=e359]:
+              - generic [ref=e361]: Collaborative approach
+            - listitem [ref=e362]:
+              - generic [ref=e364]: Warm referral process
+            - listitem [ref=e365]:
+              - generic [ref=e367]: Shared success tracking
+          - link "Partner with Us" [ref=e369] [cursor=pointer]:
+            - /url: /partners
+            - text: Partner with Us
+            - img [ref=e370]
+      - generic [ref=e376]:
+        - heading "Have Questions? We're Here to Help" [level=3] [ref=e377]
+        - paragraph [ref=e378]: Our team is available to answer your questions about our services, donation process, or partnership opportunities.
+        - generic [ref=e379]:
+          - link "(205) 522-1162" [ref=e380] [cursor=pointer]:
+            - /url: tel:+12055221162
+            - img [ref=e382]
+            - generic [ref=e384]: (205) 522-1162
+          - link "info@the-ladder.org" [ref=e385] [cursor=pointer]:
+            - /url: mailto:info@the-ladder.org
+            - img [ref=e387]
+            - generic [ref=e390]: info@the-ladder.org
+        - generic [ref=e391]:
+          - paragraph [ref=e392]: The Ladder • Birmingham, Alabama
+          - paragraph [ref=e393]: "501(c)(3) Nonprofit Organization • EIN: 82-0737087"
+      - paragraph [ref=e396]: "\"Every barrier can be overcome. Every person deserves the opportunity to succeed.\""
+  - contentinfo [ref=e397]:
+    - generic [ref=e400]:
+      - heading "Help Us Remove Barriers for Birmingham Residents" [level=2] [ref=e401]
+      - paragraph [ref=e402]: Your generosity makes it possible for individuals to overcome obstacles and build better lives. Every contribution creates real, measurable impact.
+      - generic [ref=e403]:
+        - link "Make a Donation" [ref=e404] [cursor=pointer]:
+          - /url: /donate
+          - img [ref=e405]
+          - text: Make a Donation
+        - link "Become a Monthly Donor" [ref=e407] [cursor=pointer]:
+          - /url: /monthly-giving
+    - generic [ref=e410]:
+      - generic [ref=e411]:
+        - img [ref=e412]
+        - generic [ref=e414]: 501(c)(3) Tax Exempt
+      - generic [ref=e415]:
+        - img [ref=e416]
+        - generic [ref=e419]: Serving Birmingham Since 2021
+      - generic [ref=e420]:
+        - img [ref=e421]
+        - generic [ref=e424]: 100% of Donations to Direct Services
+    - generic [ref=e427]:
+      - generic [ref=e428]:
+        - img "The Ladder"
+        - paragraph [ref=e429]: The Ladder is a Birmingham, Alabama 501(c)(3) nonprofit organization dedicated to helping individuals overcome barriers to success through crisis intervention and community partnerships.
+        - generic [ref=e430]:
+          - link "(205) 522-1162" [ref=e431] [cursor=pointer]:
+            - /url: tel:+12055221162
+            - img [ref=e432]
+            - text: (205) 522-1162
+          - link "info@the-ladder.org" [ref=e434] [cursor=pointer]:
+            - /url: mailto:info@the-ladder.org
+            - img [ref=e435]
+            - text: info@the-ladder.org
+          - generic [ref=e438]:
+            - img [ref=e439]
+            - generic [ref=e442]: Birmingham, Alabama
+        - generic [ref=e443]:
+          - link "Follow us on Instagram" [ref=e444] [cursor=pointer]:
+            - /url: https://instagram.com/theladder_bham
+            - img [ref=e445]
+          - link "Follow us on Facebook" [ref=e448] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e449]
+          - link "Connect on LinkedIn" [ref=e451] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e452]
+      - generic [ref=e456]:
+        - heading "About Us" [level=3] [ref=e457]
+        - list [ref=e458]:
+          - listitem [ref=e459]:
+            - link "Our Mission" [ref=e460] [cursor=pointer]:
+              - /url: /about
+          - listitem [ref=e461]:
+            - link "Leadership Team" [ref=e462] [cursor=pointer]:
+              - /url: /leadership-team
+          - listitem [ref=e463]:
+            - link "Board Governance" [ref=e464] [cursor=pointer]:
+              - /url: /board-governance
+          - listitem [ref=e465]:
+            - link "Success Stories" [ref=e466] [cursor=pointer]:
+              - /url: /success-stories
+          - listitem [ref=e467]:
+            - link "Annual Reports" [ref=e468] [cursor=pointer]:
+              - /url: /annual-reports
+          - listitem [ref=e469]:
+            - link "Financials" [ref=e470] [cursor=pointer]:
+              - /url: /financials
+      - generic [ref=e471]:
+        - heading "Get Involved" [level=3] [ref=e472]
+        - list [ref=e473]:
+          - listitem [ref=e474]:
+            - link "Donate Now" [ref=e475] [cursor=pointer]:
+              - /url: /donate
+          - listitem [ref=e476]:
+            - link "Monthly Giving" [ref=e477] [cursor=pointer]:
+              - /url: /monthly-giving
+          - listitem [ref=e478]:
+            - link "Corporate Partnerships" [ref=e479] [cursor=pointer]:
+              - /url: /corporate-partnerships
+          - listitem [ref=e480]:
+            - link "Volunteer" [ref=e481] [cursor=pointer]:
+              - /url: /volunteer
+          - listitem [ref=e482]:
+            - link "Events" [ref=e483] [cursor=pointer]:
+              - /url: /events
+      - generic [ref=e484]:
+        - heading "Get Help" [level=3] [ref=e485]
+        - list [ref=e486]:
+          - listitem [ref=e487]:
+            - link "How We Help" [ref=e488] [cursor=pointer]:
+              - /url: /how-we-help
+          - listitem [ref=e489]:
+            - link "Apply for Assistance" [ref=e490] [cursor=pointer]:
+              - /url: /get-help
+          - listitem [ref=e491]:
+            - link "Guest Portal" [ref=e492] [cursor=pointer]:
+              - /url: /guest-portal
+          - listitem [ref=e493]:
+            - link "Partner Organizations" [ref=e494] [cursor=pointer]:
+              - /url: /partners
+          - listitem [ref=e495]:
+            - link "Birmingham Resources" [ref=e496] [cursor=pointer]:
+              - /url: /birmingham-resources
+      - generic [ref=e497]:
+        - heading "Legal" [level=3] [ref=e498]
+        - list [ref=e499]:
+          - listitem [ref=e500]:
+            - link "Privacy Policy" [ref=e501] [cursor=pointer]:
+              - /url: /privacy
+          - listitem [ref=e502]:
+            - link "Terms of Service" [ref=e503] [cursor=pointer]:
+              - /url: /terms
+          - listitem [ref=e504]:
+            - link "Accessibility" [ref=e505] [cursor=pointer]:
+              - /url: /accessibility
+        - generic [ref=e506]:
+          - paragraph [ref=e507]:
+            - strong [ref=e508]: "EIN:"
+            - text: 82-0737087
+          - paragraph [ref=e509]: Tax-deductible donations
+    - generic [ref=e512]:
+      - paragraph [ref=e513]: © 2026 The Ladder. All rights reserved.
+      - paragraph [ref=e514]: All donations are tax-deductible to the fullest extent allowed by law.
+  - alert [ref=e515]
+```

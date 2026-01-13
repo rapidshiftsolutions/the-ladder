@@ -86,17 +86,22 @@ export default function HowWeHelpRedesigned() {
           </div>
         </motion.div>
 
-        {/* iOS-style process cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
+        {/* Process cards */}
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
           {steps.map((step, index) => (
-            <div
+            <motion.div
               key={index}
-              className={`group relative ${isVisible ? 'animate-up' : 'opacity-0'}`}
-              style={{ animationDelay: `${index * 150}ms` }}
+              className="group relative"
+              variants={cardVariants}
             >
-              {/* iOS glass card */}
-              <div 
-                className="relative p-8 rounded-3xl transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2"
+              {/* Glass card */}
+              <motion.div 
+                className="relative p-8 rounded-3xl overflow-hidden"
                 style={{
                   background: 'rgba(255, 255, 255, 0.7)',
                   backdropFilter: 'blur(30px)',
@@ -107,59 +112,92 @@ export default function HowWeHelpRedesigned() {
                     inset 0 1px 0 rgba(255, 255, 255, 0.3)
                   `
                 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ duration: 0.3 }}
               >
-                {/* Step number */}
+                {/* Animated background gradient */}
                 <div 
-                  className="absolute -top-4 -right-4 w-12 h-12 rounded-2xl flex items-center justify-center text-white font-bold text-lg transition-transform duration-300 group-hover:scale-110"
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    background: `linear-gradient(135deg, ${step.accent}05, ${step.accent}10)`
+                  }}
+                />
+                
+                {/* Decorative corner accent */}
+                <div 
+                  className="absolute top-0 right-0 w-32 h-32 rounded-bl-full blur-2xl opacity-20"
+                  style={{ background: step.accent }}
+                />
+
+                {/* Step number */}
+                <motion.div 
+                  className="absolute -top-4 -right-4 w-14 h-14 rounded-2xl flex items-center justify-center text-white font-bold text-lg shadow-lg z-10"
                   style={{
                     background: `linear-gradient(135deg, ${step.accent}, ${step.accent}dd)`,
                     boxShadow: `0 4px 20px ${step.accent}40`
                   }}
+                  variants={badgeVariants}
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
                 >
                   {index + 1}
-                </div>
+                </motion.div>
 
                 {/* Icon container */}
-                <div 
-                  className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110"
+                <motion.div 
+                  className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 relative z-10"
                   style={{
                     background: `${step.accent}10`,
                     border: `1px solid ${step.accent}20`
                   }}
+                  variants={iconVariants}
+                  whileHover={{ scale: 1.1, rotate: [0, -5, 5, -5, 0] }}
+                  transition={{ duration: 0.5 }}
                 >
                   <step.icon 
                     className="w-8 h-8" 
                     style={{ color: step.accent }}
                   />
-                </div>
+                </motion.div>
 
                 {/* Content */}
-                <h3 className="text-xl font-bold mb-3" style={{ color: '#1d1d1f' }}>
+                <h3 
+                  className="text-xl lg:text-2xl font-bold mb-4 relative z-10" 
+                  style={{ color: '#1d1d1f', fontFamily: 'var(--font-heading)' }}
+                >
                   {step.title}
                 </h3>
-                <p className="leading-relaxed" style={{ color: '#86868b' }}>
+                <p className="text-base leading-relaxed relative z-10" style={{ color: '#86868b' }}>
                   {step.description}
                 </p>
 
-                {/* iOS-style subtle indicator */}
-                <div 
-                  className="absolute bottom-6 left-8 w-8 h-1 rounded-full transition-all duration-300 group-hover:w-12"
+                {/* Subtle indicator */}
+                <motion.div 
+                  className="absolute bottom-6 left-8 h-1 rounded-full z-10"
                   style={{ background: step.accent }}
+                  initial={{ width: '32px' }}
+                  whileHover={{ width: '48px' }}
+                  transition={{ duration: 0.3 }}
                 />
-              </div>
+              </motion.div>
 
               {/* Connection line */}
               {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-px bg-gradient-to-r from-gray-300 to-transparent" />
+                <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-px bg-gradient-to-r from-gray-300 to-transparent z-0" />
               )}
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* iOS-style mission card */}
-        <div className={`relative ${isVisible ? 'animate-in-delayed' : 'opacity-0'}`}>
+        {/* Mission card */}
+        <motion.div 
+          className="relative"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.4, duration: 0.6 }}
+        >
           <div 
-            className="relative p-12 rounded-3xl text-center overflow-hidden"
+            className="relative p-12 lg:p-16 rounded-3xl text-center overflow-hidden"
             style={{
               background: 'linear-gradient(135deg, rgba(0, 122, 255, 0.9), rgba(0, 122, 255, 0.8))',
               backdropFilter: 'blur(40px)',
@@ -185,18 +223,21 @@ export default function HowWeHelpRedesigned() {
 
             <div className="relative z-10">
               {/* Quote icon */}
-              <div 
+              <motion.div 
                 className="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-8"
                 style={{
                   background: 'rgba(255, 255, 255, 0.2)',
                   backdropFilter: 'blur(20px)'
                 }}
+                initial={{ scale: 0, rotate: -180 }}
+                animate={isInView ? { scale: 1, rotate: 0 } : {}}
+                transition={{ delay: 0.6, type: "spring", stiffness: 200 }}
               >
                 <Heart className="w-8 h-8 text-white" />
-              </div>
+              </motion.div>
 
               {/* Quote */}
-              <blockquote className="text-3xl sm:text-4xl font-bold text-white mb-12 leading-tight">
+              <blockquote className="text-3xl lg:text-4xl font-bold text-white mb-12 leading-tight" style={{ fontFamily: 'var(--font-heading)' }}>
                 "We focus on{' '}
                 <span 
                   className="px-3 py-1 rounded-xl"
@@ -207,11 +248,16 @@ export default function HowWeHelpRedesigned() {
                 , helping individuals one by one climb over very specific barriers."
               </blockquote>
 
-              {/* iOS-style buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
+              {/* Buttons */}
+              <motion.div 
+                className="flex flex-col sm:flex-row gap-4 justify-center"
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ delay: 0.8 }}
+              >
+                <motion.a
                   href="/how-we-help"
-                  className="group inline-flex items-center justify-center px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:scale-105"
+                  className="group inline-flex items-center justify-center px-8 py-4 rounded-2xl font-semibold"
                   style={{
                     background: 'rgba(255, 255, 255, 0.9)',
                     backdropFilter: 'blur(20px)',
@@ -219,79 +265,31 @@ export default function HowWeHelpRedesigned() {
                     border: '1px solid rgba(255, 255, 255, 0.2)',
                     boxShadow: '0 4px 20px rgba(255, 255, 255, 0.3)'
                   }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   Learn More About Our Services
                   <ArrowRight className="w-5 h-5 ml-3 transition-transform group-hover:translate-x-1" />
-                </a>
-                <a
+                </motion.a>
+                <motion.a
                   href="/partners"
-                  className="group inline-flex items-center justify-center px-8 py-4 rounded-2xl font-semibold text-white transition-all duration-300 hover:scale-105"
+                  className="group inline-flex items-center justify-center px-8 py-4 rounded-2xl font-semibold text-white"
                   style={{
                     background: 'rgba(255, 255, 255, 0.2)',
                     backdropFilter: 'blur(20px)',
                     border: '1px solid rgba(255, 255, 255, 0.3)',
                   }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   Partner Organizations
                   <ArrowRight className="w-5 h-5 ml-3 transition-transform group-hover:translate-x-1" />
-                </a>
-              </div>
+                </motion.a>
+              </motion.div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-
-      <style jsx>{`
-        @keyframes animate-in {
-          from {
-            opacity: 0;
-            transform: translateY(24px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes animate-up {
-          from {
-            opacity: 0;
-            transform: translateY(32px) scale(0.95);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-          }
-        }
-
-        @keyframes animate-in-delayed {
-          from {
-            opacity: 0;
-            transform: translateY(40px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .animate-in {
-          animation: animate-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .animate-up {
-          animation: animate-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .animate-in-delayed {
-          animation: animate-in-delayed 1s cubic-bezier(0.16, 1, 0.3, 1) 600ms forwards;
-        }
-
-        /* iOS system font stack */
-        * {
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-        }
-      `}</style>
     </section>
   )
 }
