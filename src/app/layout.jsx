@@ -110,6 +110,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={fontVariables}>
       <head>
+        {/* Character encoding - must be in first 1024 bytes */}
+        <meta charSet="utf-8" />
+        
         {/* Preload LCP image for faster Largest Contentful Paint */}
         <link 
           rel="preload" 
