@@ -5,6 +5,10 @@ import HowItWorksCompact from '../components/how-it-works-compact'
 import ImpactTrustCompact from '../components/impact-trust-compact'
 import FinalActionCompact from '../components/final-action-compact'
 import SiteFooter from '../components/SiteFooter'
+import { client } from '@/sanity/lib/client'
+import { homepageContentQuery, heroSectionQuery } from '@/sanity/queries/homepageQuery'
+import { siteSettingsQuery, impactStatsQuery } from '@/sanity/queries/siteSettingsQuery'
+import { allProcessStepsQuery } from '@/sanity/queries/processStepsQuery'
 
 export const metadata = {
   title: 'The Ladder | Birmingham Nonprofit Helping Individuals Overcome Barriers',
@@ -65,18 +69,68 @@ export const metadata = {
   }
 }
 
-export default function Home() {
+// Revalidate every hour
+export const revalidate = 3600
+
+// Fetch all homepage data
+async function getHomepageData() {
+  try {
+    const [homepageContent, siteSettings, processSteps] = await Promise.all([
+      client.fetch(homepageContentQuery),
+      client.fetch(siteSettingsQuery),
+      client.fetch(allProcessStepsQuery),
+    ])
+    
+    return {
+      homepageContent: homepageContent || null,
+      siteSettings: siteSettings || null,
+      processSteps: processSteps || [],
+    }
+  } catch (error) {
+    console.error('Error fetching homepage data:', error)
+    return {
+      homepageContent: null,
+      siteSettings: null,
+      processSteps: [],
+    }
+  }
+}
+
+export default async function Home() {
+  const { homepageContent, siteSettings, processSteps } = await getHomepageData()
+  
+  // Extract impact stats from site settings
+  const impactStats = siteSettings?.impactStats || null
+
   return (
     <>
       <SiteHeader />
       <main id="main-content" className="min-h-screen">
-        <HeroCompact />
-        <ProblemSolutionCompact />
-        <HowItWorksCompact />
-        <ImpactTrustCompact />
-        <FinalActionCompact />
+        <HeroCompact 
+          content={homepageContent}
+          stats={impactStats}
+          siteSettings={siteSettings}
+        />
+        <ProblemSolutionCompact 
+          content={homepageContent}
+        />
+        <HowItWorksCompact 
+          processSteps={processSteps}
+          testimonial={homepageContent}
+          siteSettings={siteSettings}
+        />
+        <ImpactTrustCompact 
+          impactStats={impactStats}
+          testimonial={homepageContent}
+          siteSettings={siteSettings}
+        />
+        <FinalActionCompact 
+          content={homepageContent}
+          impactStats={impactStats}
+          siteSettings={siteSettings}
+        />
       </main>
-      <SiteFooter />
+      <SiteFooter siteSettings={siteSettings} />
     </>
   )
 }

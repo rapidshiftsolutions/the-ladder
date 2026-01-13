@@ -71,8 +71,8 @@
      ========================================================================= */
   
   /* Font Families */
-  --font-heading: 'Merriweather', Georgia, 'Times New Roman', serif;
-  --font-body: 'Source Sans 3', 'Source Sans Pro', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Lora', Georgia, 'Times New Roman', serif;
+  --font-body: 'Nunito Sans', system-ui, -apple-system, sans-serif;
   --font-mono: 'SF Mono', Monaco, 'Cascadia Code', monospace;
   
   /* Font Sizes - 1.25 ratio scale */

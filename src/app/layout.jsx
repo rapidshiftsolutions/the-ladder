@@ -7,7 +7,7 @@ import ServiceWorkerRegistration from '/src/components/ServiceWorkerRegistration
 import InstallPrompt from '/src/components/InstallPrompt';
 import PerformanceMonitor from '/src/components/PerformanceMonitor';
 
-// Institutional Trust Design - Merriweather + Source Sans 3
+// Friendly & Approachable Design - Lora + Nunito Sans
 
 export const metadata = {
   title: {
@@ -110,13 +110,29 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* Google Fonts - Merriweather + Source Sans 3 */}
+        {/* Preload LCP image for faster Largest Contentful Paint */}
+        <link 
+          rel="preload" 
+          as="image" 
+          href="/TheLadder/photos/Jamil.jpg"
+          fetchPriority="high"
+        />
+        
+        {/* Google Fonts - Lora + Nunito Sans */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link 
-          href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" 
-          rel="stylesheet" 
+          href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" 
+          rel="stylesheet"
+          media="print"
+          onLoad="this.media='all'"
         />
+        <noscript>
+          <link 
+            href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" 
+            rel="stylesheet" 
+          />
+        </noscript>
         
         {/* Premium Sharing Meta Tags */}
         <meta property="og:rich_attachment" content="true" />
@@ -231,7 +247,7 @@ export default function RootLayout({ children }) {
             margin: 0;
             background-color: #FFFFFF;
             color: #1C2833;
-            font-family: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+            font-family: 'Nunito Sans', system-ui, -apple-system, sans-serif;
             line-height: 1.625;
             overflow-x: hidden;
             font-size: 16px;
@@ -240,7 +256,7 @@ export default function RootLayout({ children }) {
           }
           
           h1, h2, h3, h4, h5, h6 {
-            font-family: 'Merriweather', Georgia, serif;
+            font-family: 'Lora', Georgia, serif;
             font-weight: 700;
             line-height: 1.25;
             color: #1C2833;

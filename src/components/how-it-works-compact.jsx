@@ -3,7 +3,7 @@
 import { useRef } from 'react'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
-import { Building2, Users, FileText, CheckCircle, ArrowRight, Phone } from 'lucide-react'
+import { Building2, Users, FileText, CheckCircle, ArrowRight, Phone, MessageSquare, ClipboardCheck, Handshake, Target, Calendar, Heart } from 'lucide-react'
 import { 
   containerVariants, 
   cardVariants, 
@@ -12,35 +12,95 @@ import {
   fadeInUpVariants
 } from '@/utils/animations'
 
-export default function HowItWorksCompact() {
+// Icon mapping for CMS icon names
+const iconMap = {
+  Phone: Phone,
+  Users: Users,
+  FileText: FileText,
+  CheckCircle: CheckCircle,
+  MessageSquare: MessageSquare,
+  ClipboardCheck: ClipboardCheck,
+  Handshake: Handshake,
+  Target: Target,
+  Calendar: Calendar,
+  Heart: Heart,
+  Building2: Building2,
+}
+
+// Default steps (used when CMS data is not available)
+const defaultSteps = [
+  {
+    stepNumber: 1,
+    icon: Phone,
+    title: "Contact Us",
+    description: "Reach out by phone, email, or through our website. We respond to all inquiries within 24 hours."
+  },
+  {
+    stepNumber: 2,
+    icon: Users,
+    title: "Personal Assessment",
+    description: "We schedule a confidential conversation to understand your specific situation and barriers."
+  },
+  {
+    stepNumber: 3,
+    icon: FileText,
+    title: "Create a Plan",
+    description: "We develop a personalized action plan and connect you with appropriate resources."
+  },
+  {
+    stepNumber: 4,
+    icon: CheckCircle,
+    title: "Remove the Barrier",
+    description: "We provide direct assistance and follow up to ensure lasting success."
+  }
+]
+
+// Default featured testimonial
+const defaultTestimonial = {
+  badge: 'Success Story',
+  headline: 'From Barrier to Breakthrough',
+  quote: '"A local housing nonprofit referred Sarah to us. She had secured a new job, but her car needed $800 in repairs she couldn\'t afford. Without transportation, she would lose the job before starting. We covered the repair cost within 48 hours. Today, Sarah has held that job for over two years and recently moved into permanent housing."',
+  stats: [
+    { value: '$800', label: 'Investment' },
+    { value: '48hr', label: 'Resolution' },
+    { value: '2yr+', label: 'Stable Job' }
+  ]
+}
+
+export default function HowItWorksCompact({ 
+  processSteps: cmsSteps = null,
+  testimonial: cmsTestimonial = null,
+  siteSettings = {}
+}) {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
-  const steps = [
-    {
-      number: 1,
-      icon: Phone,
-      title: "Contact Us",
-      description: "Reach out by phone, email, or through our website. We respond to all inquiries within 24 hours."
-    },
-    {
-      number: 2,
-      icon: Users,
-      title: "Personal Assessment",
-      description: "We schedule a confidential conversation to understand your specific situation and barriers."
-    },
-    {
-      number: 3,
-      icon: FileText,
-      title: "Create a Plan",
-      description: "We develop a personalized action plan and connect you with appropriate resources."
-    },
-    {
-      number: 4,
-      icon: CheckCircle,
-      title: "Remove the Barrier",
-      description: "We provide direct assistance and follow up to ensure lasting success."
-    }
-  ]
+  
+  // Build steps from CMS data or use defaults
+  const steps = cmsSteps && cmsSteps.length > 0 
+    ? cmsSteps.map(step => ({
+        number: step.stepNumber,
+        icon: iconMap[step.iconName] || CheckCircle,
+        title: step.title,
+        description: step.description
+      }))
+    : defaultSteps.map(step => ({
+        number: step.stepNumber,
+        icon: step.icon,
+        title: step.title,
+        description: step.description
+      }))
+
+  // Use CMS testimonial or default
+  const testimonial = cmsTestimonial ? {
+    badge: cmsTestimonial.featuredTestimonialBadge || defaultTestimonial.badge,
+    headline: cmsTestimonial.featuredTestimonialHeadline || defaultTestimonial.headline,
+    quote: cmsTestimonial.featuredTestimonialQuote || defaultTestimonial.quote,
+    stats: cmsTestimonial.featuredTestimonialStats && cmsTestimonial.featuredTestimonialStats.length > 0
+      ? cmsTestimonial.featuredTestimonialStats
+      : defaultTestimonial.stats
+  } : defaultTestimonial
+
+  const phone = siteSettings?.phone || '(205) 522-1162'
 
   return (
     <section 
@@ -172,20 +232,16 @@ export default function HowItWorksCompact() {
                   transition={{ delay: 0.6, type: "spring", stiffness: 200 }}
                 >
                   <CheckCircle className="w-4 h-4" />
-                  Success Story
+                  {testimonial.badge}
                 </motion.div>
                 <h3 
                   className="text-3xl font-bold text-[var(--color-text-primary)] mb-6"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
-                  From Barrier to Breakthrough
+                  {testimonial.headline}
                 </h3>
                 <p className="text-[var(--color-text-secondary)] text-lg leading-relaxed mb-8">
-                  &quot;A local housing nonprofit referred Sarah to us. She had secured a new job, 
-                  but her car needed $800 in repairs she couldn&apos;t afford. Without transportation, 
-                  she would lose the job before starting. We covered the repair cost within 48 hours. 
-                  Today, Sarah has held that job for over two years and recently moved into 
-                  permanent housing.&quot;
+                  {testimonial.quote}
                 </p>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Link
@@ -205,11 +261,7 @@ export default function HowItWorksCompact() {
                 transition={{ delay: 0.8, type: "spring", stiffness: 200 }}
               >
                 <div className="grid grid-cols-3 gap-4 text-center">
-                  {[
-                    { value: '$800', label: 'Investment' },
-                    { value: '48hr', label: 'Resolution' },
-                    { value: '2yr+', label: 'Stable Job' }
-                  ].map((stat, index) => (
+                  {testimonial.stats.map((stat, index) => (
                     <motion.div 
                       key={index}
                       className="bg-white/20 backdrop-filter backdrop-blur-lg rounded-xl p-6 border border-white/20"
@@ -253,11 +305,11 @@ export default function HowItWorksCompact() {
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <a
-                href="tel:+12055221162"
+                href={`tel:${phone.replace(/[^0-9+]/g, '')}`}
                 className="btn btn-lg bg-white/20 backdrop-filter backdrop-blur-lg text-white border-2 border-white/30 hover:bg-white/30 inline-flex items-center justify-center px-8 py-4"
               >
                 <Phone className="w-5 h-5 mr-2" />
-                Call (205) 522-1162
+                Call {phone}
               </a>
             </motion.div>
           </div>

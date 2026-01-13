@@ -2,6 +2,23 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
+import {
+  StarIcon,
+  UsersIcon,
+  CogIcon,
+  DocumentTextIcon,
+  CalendarIcon,
+  ChartUpwardIcon,
+  HomeIcon,
+  HelpCircleIcon,
+  CreditCardIcon,
+  BlockContentIcon,
+  RocketIcon,
+  LinkIcon,
+  EarthGlobeIcon,
+  LockIcon,
+  WarningOutlineIcon,
+} from '@sanity/icons'
 
 // Import environment variables
 import {apiVersion, dataset, projectId, studioAllowedOrigins} from './src/sanity/env.js'
@@ -20,21 +37,22 @@ const TheLadderLogo = () => {
       <div style={{
         width: '32px',
         height: '32px',
-        background: '#2C3E50',
+        background: 'linear-gradient(135deg, #2C3E50 0%, #34495E 100%)',
         color: '#FFFFFF',
-        borderRadius: '6px',
+        borderRadius: '8px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         fontWeight: 'bold',
-        fontSize: '14px'
+        fontSize: '14px',
+        boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
       }}>
         TL
       </div>
       <span style={{ 
         color: '#2C3E50',
-        fontSize: '18px',
-        fontWeight: 'bold'
+        fontSize: '16px',
+        fontWeight: '600'
       }}>
         The Ladder CMS
       </span>
@@ -45,116 +63,226 @@ const TheLadderLogo = () => {
 // Structure definition for The Ladder nonprofit content
 const theLadderStructure = (S) => {
   return S.list()
-    .title('Content')
+    .title('The Ladder')
     .items([
-      // Content Section
+      // ==========================================
+      // CONTENT SECTION - Stories, People, Partners
+      // ==========================================
       S.listItem()
-        .title('Success Stories')
+        .title('Content')
+        .icon(BlockContentIcon)
         .child(
-          S.documentList()
-            .title('Success Stories')
-            .filter('_type == "successStory"')
-            .defaultOrdering([{field: 'order', direction: 'asc'}, {field: 'featured', direction: 'desc'}])
+          S.list()
+            .title('Content')
+            .items([
+              S.listItem()
+                .title('Success Stories')
+                .icon(StarIcon)
+                .schemaType('successStory')
+                .child(
+                  S.documentList()
+                    .title('Success Stories')
+                    .filter('_type == "successStory"')
+                    .defaultOrdering([{field: 'featured', direction: 'desc'}, {field: 'order', direction: 'asc'}])
+                    .menuItems([
+                      S.orderingMenuItem({title: 'Featured First', by: [{field: 'featured', direction: 'desc'}]}),
+                      S.orderingMenuItem({title: 'Display Order', by: [{field: 'order', direction: 'asc'}]}),
+                      S.orderingMenuItem({title: 'Newest First', by: [{field: 'publishedAt', direction: 'desc'}]}),
+                    ])
+                ),
+              S.listItem()
+                .title('Team Members')
+                .icon(UsersIcon)
+                .schemaType('teamMember')
+                .child(
+                  S.documentList()
+                    .title('Team Members')
+                    .filter('_type == "teamMember"')
+                    .defaultOrdering([{field: 'memberType', direction: 'asc'}, {field: 'order', direction: 'asc'}])
+                    .menuItems([
+                      S.orderingMenuItem({title: 'By Type & Order', by: [{field: 'memberType', direction: 'asc'}, {field: 'order', direction: 'asc'}]}),
+                      S.orderingMenuItem({title: 'Name (A-Z)', by: [{field: 'name', direction: 'asc'}]}),
+                    ])
+                ),
+              S.listItem()
+                .title('Partner Organizations')
+                .icon(LinkIcon)
+                .schemaType('partnerOrganization')
+                .child(
+                  S.documentList()
+                    .title('Partner Organizations')
+                    .filter('_type == "partnerOrganization"')
+                    .defaultOrdering([{field: 'featured', direction: 'desc'}, {field: 'category', direction: 'asc'}, {field: 'order', direction: 'asc'}])
+                    .menuItems([
+                      S.orderingMenuItem({title: 'Featured First', by: [{field: 'featured', direction: 'desc'}]}),
+                      S.orderingMenuItem({title: 'By Category', by: [{field: 'category', direction: 'asc'}]}),
+                      S.orderingMenuItem({title: 'Name (A-Z)', by: [{field: 'name', direction: 'asc'}]}),
+                    ])
+                ),
+              S.divider(),
+              S.listItem()
+                .title('Blog Posts')
+                .icon(DocumentTextIcon)
+                .schemaType('blogPost')
+                .child(
+                  S.documentList()
+                    .title('Blog Posts')
+                    .filter('_type == "blogPost"')
+                    .defaultOrdering([{field: 'publishedAt', direction: 'desc'}])
+                ),
+              S.listItem()
+                .title('Annual Reports')
+                .icon(ChartUpwardIcon)
+                .schemaType('annualReport')
+                .child(
+                  S.documentList()
+                    .title('Annual Reports')
+                    .filter('_type == "annualReport"')
+                    .defaultOrdering([{field: 'year', direction: 'desc'}])
+                ),
+              S.listItem()
+                .title('Events')
+                .icon(CalendarIcon)
+                .schemaType('event')
+                .child(
+                  S.documentList()
+                    .title('Events')
+                    .filter('_type == "event"')
+                    .defaultOrdering([{field: 'date', direction: 'desc'}])
+                ),
+            ])
         ),
-      S.listItem()
-        .title('Team Members')
-        .child(
-          S.documentList()
-            .title('Team Members')
-            .filter('_type == "teamMember"')
-            .defaultOrdering([{field: 'order', direction: 'asc'}])
-        ),
-      S.listItem()
-        .title('Partner Organizations')
-        .child(
-          S.documentList()
-            .title('Partner Organizations')
-            .filter('_type == "partnerOrganization"')
-            .defaultOrdering([{field: 'featured', direction: 'desc'}, {field: 'order', direction: 'asc'}])
-        ),
-      S.listItem()
-        .title('Events')
-        .child(
-          S.documentList()
-            .title('Events')
-            .filter('_type == "event"')
-            .defaultOrdering([{field: 'date', direction: 'desc'}])
-        ),
-      S.listItem()
-        .title('Blog Posts')
-        .child(
-          S.documentList()
-            .title('Blog Posts')
-            .filter('_type == "blogPost"')
-            .defaultOrdering([{field: 'publishedAt', direction: 'desc'}])
-        ),
-      S.listItem()
-        .title('Annual Reports')
-        .child(
-          S.documentList()
-            .title('Annual Reports')
-            .filter('_type == "annualReport"')
-            .defaultOrdering([{field: 'year', direction: 'desc'}])
-        ),
-      
-      // Divider
+
       S.divider(),
       
-      // Settings Section
+      // ==========================================
+      // HOMEPAGE & PAGES - Page-specific content
+      // ==========================================
+      S.listItem()
+        .title('Homepage & Pages')
+        .icon(HomeIcon)
+        .child(
+          S.list()
+            .title('Homepage & Pages')
+            .items([
+              S.listItem()
+                .title('Homepage Content')
+                .icon(HomeIcon)
+                .child(
+                  S.document()
+                    .schemaType('homepageContent')
+                    .documentId('homepageContent')
+                    .title('Homepage Content')
+                ),
+              S.listItem()
+                .title('Process Steps')
+                .icon(RocketIcon)
+                .schemaType('processStep')
+                .child(
+                  S.documentList()
+                    .title('Process Steps ("How It Works")')
+                    .filter('_type == "processStep"')
+                    .defaultOrdering([{field: 'stepNumber', direction: 'asc'}])
+                ),
+              S.listItem()
+                .title('FAQs')
+                .icon(HelpCircleIcon)
+                .schemaType('faq')
+                .child(
+                  S.documentList()
+                    .title('Frequently Asked Questions')
+                    .filter('_type == "faq"')
+                    .defaultOrdering([{field: 'category', direction: 'asc'}, {field: 'order', direction: 'asc'}])
+                    .menuItems([
+                      S.orderingMenuItem({title: 'By Category', by: [{field: 'category', direction: 'asc'}, {field: 'order', direction: 'asc'}]}),
+                      S.orderingMenuItem({title: 'Display Order', by: [{field: 'order', direction: 'asc'}]}),
+                    ])
+                ),
+              S.listItem()
+                .title('Donation Impact Examples')
+                .icon(CreditCardIcon)
+                .schemaType('impactExample')
+                .child(
+                  S.documentList()
+                    .title('Donation Impact Examples')
+                    .filter('_type == "impactExample"')
+                    .defaultOrdering([{field: 'amount', direction: 'asc'}])
+                ),
+            ])
+        ),
+      
+      S.divider(),
+      
+      // ==========================================
+      // SETTINGS - Global site configuration
+      // ==========================================
       S.listItem()
         .title('Settings')
+        .icon(CogIcon)
         .child(
           S.list()
             .title('Settings')
             .items([
               S.listItem()
                 .title('Site Settings')
+                .icon(CogIcon)
                 .child(
                   S.document()
                     .schemaType('siteSettings')
                     .documentId('siteSettings')
+                    .title('Site Settings')
                 ),
               S.listItem()
                 .title('Donation Settings')
+                .icon(CreditCardIcon)
                 .child(
                   S.document()
                     .schemaType('donationSettings')
                     .documentId('donationSettings')
-                ),
-              S.listItem()
-                .title('Guest Portal Settings')
-                .child(
-                  S.document()
-                    .schemaType('guestPortalSettings')
-                    .documentId('guestPortalSettings')
+                    .title('Donation Settings')
                 ),
               S.listItem()
                 .title('SEO Settings')
+                .icon(EarthGlobeIcon)
                 .child(
                   S.document()
                     .schemaType('seoSettings')
                     .documentId('seoSettings')
+                    .title('SEO Settings')
+                ),
+              S.listItem()
+                .title('Guest Portal Settings')
+                .icon(LockIcon)
+                .child(
+                  S.document()
+                    .schemaType('guestPortalSettings')
+                    .documentId('guestPortalSettings')
+                    .title('Guest Portal Settings')
                 ),
             ])
         ),
       
-      // Legacy content (can be removed after migration)
       S.divider(),
+      
+      // ==========================================
+      // LEGACY CONTENT - Old schemas (hidden by default)
+      // ==========================================
       S.listItem()
         .title('Legacy Content')
+        .icon(WarningOutlineIcon)
         .child(
           S.list()
-            .title('Legacy Content')
+            .title('Legacy Content (Can Be Removed)')
             .items([
               S.listItem()
-                .title('Posts')
+                .title('Posts (Legacy)')
                 .child(
                   S.documentList()
                     .title('Posts')
                     .filter('_type == "post"')
                 ),
               S.listItem()
-                .title('Testimonials')
+                .title('Testimonials (Legacy)')
                 .child(
                   S.documentList()
                     .title('Testimonials')

@@ -1,7 +1,7 @@
 // OEM Radio Repair Service Worker - Improved Caching Strategy
 // Version will be updated automatically on deployment
-const CACHE_VERSION = 'v2025.08.22.132805';
-const BUILD_TIMESTAMP = 1755869285527;
+const CACHE_VERSION = 'v2026.01.12.lighthouse-fix';
+const BUILD_TIMESTAMP = Date.now();
 
 // Cache names with version
 const CACHE_NAME = `oem-radio-${CACHE_VERSION}`;
@@ -45,7 +45,10 @@ const NEVER_CACHE = [
   'chrome-extension://',
   'moz-extension://',
   'safari-extension://',
-  'hot-update'
+  'hot-update',
+  // Skip RSC (React Server Components) requests to avoid prefetch errors
+  '.rsc',
+  '?_rsc='
 ];
 
 // Helper to check if request should be cached
@@ -163,6 +166,14 @@ self.addEventListener('fetch', (event) => {
   
   // Skip non-http(s) requests
   if (!url.protocol.startsWith('http')) {
+    return;
+  }
+  
+  // Skip RSC (React Server Components) requests - let browser handle these directly
+  // to prevent prefetch errors in Lighthouse
+  if (request.headers.get('RSC') || 
+      request.headers.get('Next-Router-Prefetch') ||
+      url.searchParams.has('_rsc')) {
     return;
   }
   

@@ -1,22 +1,59 @@
-'use client'
-
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, Heart, Phone, Shield, Users, Clock } from 'lucide-react'
+import { ArrowRight, Heart, Phone, Shield } from 'lucide-react'
 
-export default function HeroCompact() {
+// Default values (used when CMS data is not available)
+const defaultContent = {
+  heroHeadline: 'Helping Individuals Overcome',
+  heroHeadlineAccent: 'Barriers to Success',
+  heroSubheadline: "When life's obstacles stand in your way, The Ladder partners with you to find solutions. We provide personalized crisis intervention and connect you with the resources you need.",
+  heroPrimaryCta: 'Get Help Today',
+  heroPrimaryCtaLink: '/get-help',
+  heroSecondaryCta: 'Make a Donation',
+  heroSecondaryCtaLink: '/donate',
+  heroQuickContact: 'All services are free and confidential',
+  trustBadgeText: '501(c)(3) Nonprofit • Serving Birmingham Since 2021',
+}
+
+const defaultStats = {
+  individualsHelped: '500+',
+  individualsHelpedLabel: 'Individuals Helped',
+  successRate: '95%',
+  successRateLabel: 'Success Rate',
+  responseTime: '24hr',
+  responseTimeLabel: 'Response Time',
+  directImpact: '100%',
+  directImpactLabel: 'Confidential',
+}
+
+export default function HeroCompact({ 
+  content = {}, 
+  stats = {},
+  siteSettings = {} 
+}) {
+  // Merge with defaults
+  const heroContent = { ...defaultContent, ...content }
+  const impactStats = { ...defaultStats, ...stats }
+  const phone = siteSettings?.phone || '(205) 522-1162'
+  
+  // Get hero image URL or use default
+  const heroImageUrl = heroContent.heroImage?.asset?.url || '/TheLadder/photos/Jamil.jpg'
+  const heroImageAlt = heroContent.heroImage?.alt || 'Jamil - a success story from The Ladder'
+
   return (
     <section className="relative bg-white">
-      {/* Hero Content */}
-      <div className="relative">
+      {/* Hero Content - min-height prevents CLS during image load */}
+      <div className="relative min-h-[500px] sm:min-h-[550px] lg:min-h-[600px]">
         {/* Background Image with Overlay */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 overflow-hidden">
           <Image
-            src="/TheLadder/photos/Jamil.jpg"
-            alt="Jamil - a success story from The Ladder"
+            src={heroImageUrl}
+            alt={heroImageAlt}
             fill
             className="object-cover"
             priority
+            sizes="100vw"
+            quality={85}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary)]/95 via-[var(--color-primary)]/85 to-[var(--color-primary)]/75" />
         </div>
@@ -28,7 +65,7 @@ export default function HeroCompact() {
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
               <Shield className="w-4 h-4 text-white" />
               <span className="text-sm font-medium text-white">
-                501(c)(3) Nonprofit • Serving Birmingham Since 2021
+                {heroContent.trustBadgeText}
               </span>
             </div>
 
@@ -37,46 +74,44 @@ export default function HeroCompact() {
               className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-              Helping Individuals Overcome{' '}
-              <span className="text-[var(--color-accent-light)]">Barriers to Success</span>
+              {heroContent.heroHeadline}{' '}
+              <span className="text-[var(--color-accent-light)]">{heroContent.heroHeadlineAccent}</span>
             </h1>
 
             {/* Subheadline */}
             <p className="text-base sm:text-lg lg:text-xl text-white/90 mb-8 leading-relaxed max-w-xl">
-              When life&apos;s obstacles stand in your way, The Ladder partners with you 
-              to find solutions. We provide personalized crisis intervention and 
-              connect you with the resources you need.
+              {heroContent.heroSubheadline}
             </p>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8">
               <Link
-                href="/get-help"
+                href={heroContent.heroPrimaryCtaLink}
                 className="btn btn-lg bg-white text-[var(--color-primary)] hover:bg-gray-100 font-semibold inline-flex items-center justify-center"
               >
-                Get Help Today
+                {heroContent.heroPrimaryCta}
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
               <Link
-                href="/donate"
+                href={heroContent.heroSecondaryCtaLink}
                 className="btn btn-lg bg-[var(--color-accent)] text-white hover:bg-[var(--color-accent-light)] font-semibold inline-flex items-center justify-center gap-2"
               >
                 <Heart className="w-5 h-5" />
-                Make a Donation
+                {heroContent.heroSecondaryCta}
               </Link>
             </div>
 
             {/* Quick Contact */}
             <div className="flex flex-wrap items-center gap-3 sm:gap-5 text-sm">
               <a 
-                href="tel:+12055221162" 
+                href={`tel:${phone.replace(/[^0-9+]/g, '')}`}
                 className="flex items-center gap-2 text-white hover:text-white/90 transition-colors"
               >
                 <Phone className="w-4 h-4" />
-                (205) 522-1162
+                {phone}
               </a>
               <span className="text-white/40">|</span>
-              <span className="text-white/80">All services are free and confidential</span>
+              <span className="text-white/80">{heroContent.heroQuickContact}</span>
             </div>
           </div>
         </div>
@@ -91,10 +126,10 @@ export default function HeroCompact() {
                 className="text-3xl lg:text-4xl font-bold text-[var(--color-primary)] mb-1"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                500+
+                {impactStats.individualsHelped}
               </div>
               <div className="text-sm text-[var(--color-text-secondary)]">
-                Individuals Helped
+                {impactStats.individualsHelpedLabel}
               </div>
             </div>
             <div className="text-center">
@@ -102,10 +137,10 @@ export default function HeroCompact() {
                 className="text-3xl lg:text-4xl font-bold text-[var(--color-primary)] mb-1"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                95%
+                {impactStats.successRate}
               </div>
               <div className="text-sm text-[var(--color-text-secondary)]">
-                Success Rate
+                {impactStats.successRateLabel}
               </div>
             </div>
             <div className="text-center">
@@ -113,10 +148,10 @@ export default function HeroCompact() {
                 className="text-3xl lg:text-4xl font-bold text-[var(--color-primary)] mb-1"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                24hr
+                {impactStats.responseTime}
               </div>
               <div className="text-sm text-[var(--color-text-secondary)]">
-                Response Time
+                {impactStats.responseTimeLabel}
               </div>
             </div>
             <div className="text-center">
@@ -124,10 +159,10 @@ export default function HeroCompact() {
                 className="text-3xl lg:text-4xl font-bold text-[var(--color-primary)] mb-1"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                100%
+                {impactStats.directImpact}
               </div>
               <div className="text-sm text-[var(--color-text-secondary)]">
-                Confidential
+                {impactStats.directImpactLabel}
               </div>
             </div>
           </div>

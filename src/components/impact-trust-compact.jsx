@@ -12,41 +12,103 @@ import {
   headerVariants 
 } from '@/utils/animations'
 
-export default function ImpactTrustCompact() {
+// Default impact stats (used when CMS data is not available)
+const defaultImpactStats = [
+  {
+    icon: Users,
+    number: '500+',
+    label: 'Individuals Helped',
+    description: 'Birmingham residents who have overcome barriers with our support'
+  },
+  {
+    icon: CheckCircle,
+    number: '95%',
+    label: 'Success Rate',
+    description: 'Barriers successfully removed, enabling forward progress'
+  },
+  {
+    icon: Clock,
+    number: '24hr',
+    label: 'Response Time',
+    description: 'Average time from initial contact to first response'
+  },
+  {
+    icon: DollarSign,
+    number: '100%',
+    label: 'Direct Impact',
+    description: 'Of donations go directly to barrier removal assistance'
+  }
+]
+
+// Default trust elements
+const defaultTrustElements = [
+  {
+    icon: Shield,
+    title: '501(c)(3) Tax Exempt',
+    description: 'Registered nonprofit organization (EIN: 82-0737087). All donations are tax-deductible.'
+  },
+  {
+    icon: Award,
+    title: 'Experienced Leadership',
+    description: 'Board members with extensive nonprofit, healthcare, and business experience.'
+  },
+  {
+    icon: Handshake,
+    title: 'Trusted Partners',
+    description: 'Collaborated with by Birmingham\'s leading nonprofit organizations.'
+  }
+]
+
+// Default testimonial
+const defaultTestimonial = {
+  quote: '"When I lost my car in an accident, I thought I would lose everything. The Ladder provided a rental car so I could keep working until I found a replacement. Today I have a new job I love and just moved into a beautiful new home. They gave me the support I needed exactly when I needed it."',
+  name: 'Maria T.',
+  context: 'Birmingham Resident, Helped in 2023'
+}
+
+export default function ImpactTrustCompact({ 
+  impactStats: cmsStats = null,
+  testimonial: cmsTestimonial = null,
+  siteSettings = {}
+}) {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
-  const impactStats = [
+
+  // Build impact stats from CMS data or use defaults
+  const impactStats = cmsStats ? [
     {
       icon: Users,
-      number: '500+',
-      label: 'Individuals Helped',
+      number: cmsStats.individualsHelped || '500+',
+      label: cmsStats.individualsHelpedLabel || 'Individuals Helped',
       description: 'Birmingham residents who have overcome barriers with our support'
     },
     {
       icon: CheckCircle,
-      number: '95%',
-      label: 'Success Rate',
+      number: cmsStats.successRate || '95%',
+      label: cmsStats.successRateLabel || 'Success Rate',
       description: 'Barriers successfully removed, enabling forward progress'
     },
     {
       icon: Clock,
-      number: '24hr',
-      label: 'Response Time',
+      number: cmsStats.responseTime || '24hr',
+      label: cmsStats.responseTimeLabel || 'Response Time',
       description: 'Average time from initial contact to first response'
     },
     {
       icon: DollarSign,
-      number: '100%',
-      label: 'Direct Impact',
+      number: cmsStats.directImpact || '100%',
+      label: cmsStats.directImpactLabel || 'Direct Impact',
       description: 'Of donations go directly to barrier removal assistance'
     }
-  ]
+  ] : defaultImpactStats
 
+  // Build trust elements with EIN from site settings
+  const ein = siteSettings?.ein || '82-0737087'
   const trustElements = [
     {
       icon: Shield,
       title: '501(c)(3) Tax Exempt',
-      description: 'Registered nonprofit organization (EIN: 82-0737087). All donations are tax-deductible.'
+      description: `Registered nonprofit organization (EIN: ${ein}). All donations are tax-deductible.`
     },
     {
       icon: Award,
@@ -59,6 +121,13 @@ export default function ImpactTrustCompact() {
       description: 'Collaborated with by Birmingham\'s leading nonprofit organizations.'
     }
   ]
+
+  // Use CMS testimonial or default
+  const testimonial = cmsTestimonial ? {
+    quote: cmsTestimonial.impactTestimonialQuote || defaultTestimonial.quote,
+    name: cmsTestimonial.impactTestimonialName || defaultTestimonial.name,
+    context: cmsTestimonial.impactTestimonialContext || defaultTestimonial.context
+  } : defaultTestimonial
 
   return (
     <section 
@@ -250,18 +319,15 @@ export default function ImpactTrustCompact() {
                 className="text-xl lg:text-2xl text-[var(--color-text-primary)] leading-relaxed mb-8 italic"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                &quot;When I lost my car in an accident, I thought I would lose everything. 
-                The Ladder provided a rental car so I could keep working until I found a replacement. 
-                Today I have a new job I love and just moved into a beautiful new home. 
-                They gave me the support I needed exactly when I needed it.&quot;
+                {testimonial.quote}
               </p>
               <footer>
                 <cite className="not-italic">
                   <span className="block font-bold text-lg text-[var(--color-text-primary)]">
-                    Maria T.
+                    {testimonial.name}
                   </span>
                   <span className="text-[var(--color-text-secondary)]">
-                    Birmingham Resident, Helped in 2023
+                    {testimonial.context}
                   </span>
                 </cite>
               </footer>

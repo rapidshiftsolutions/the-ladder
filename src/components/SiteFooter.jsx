@@ -32,8 +32,38 @@ const footerLinks = {
   ],
 }
 
-export default function SiteFooter() {
+// Default values (used when CMS data is not available)
+const defaultSettings = {
+  orgName: 'The Ladder',
+  phone: '(205) 522-1162',
+  email: 'info@the-ladder.org',
+  address: {
+    city: 'Birmingham',
+    state: 'AL',
+  },
+  ein: '82-0737087',
+  foundedYear: 2021,
+  socialLinks: {
+    instagram: 'https://instagram.com/theladder_bham',
+    facebook: '#',
+    linkedin: '#',
+  },
+}
+
+export default function SiteFooter({ siteSettings = {} }) {
   const currentYear = new Date().getFullYear()
+  
+  // Merge with defaults
+  const settings = {
+    ...defaultSettings,
+    ...siteSettings,
+    address: { ...defaultSettings.address, ...siteSettings?.address },
+    socialLinks: { ...defaultSettings.socialLinks, ...siteSettings?.socialLinks },
+  }
+
+  const fullAddress = settings.address.street 
+    ? `${settings.address.street}, ${settings.address.city}, ${settings.address.state} ${settings.address.zip || ''}`
+    : `${settings.address.city}, ${settings.address.state}`
 
   return (
     <footer className="bg-white border-t border-gray-200">
@@ -77,7 +107,7 @@ export default function SiteFooter() {
             </div>
             <div className="flex items-center gap-2 text-[var(--color-text-secondary)]">
               <Award className="w-5 h-5 text-[var(--color-primary)]" />
-              <span className="text-sm font-medium">Serving Birmingham Since 2021</span>
+              <span className="text-sm font-medium">Serving Birmingham Since {settings.foundedYear}</span>
             </div>
             <div className="flex items-center gap-2 text-[var(--color-text-secondary)]">
               <CheckCircle className="w-5 h-5 text-[var(--color-primary)]" />
@@ -95,13 +125,13 @@ export default function SiteFooter() {
             <div className="col-span-2 md:col-span-3 lg:col-span-2">
               <Image
                 src="/TheLadder/logos/The Ladder - Logo.png"
-                alt="The Ladder"
+                alt={settings.orgName}
                 width={160}
                 height={53}
                 className="h-12 w-auto mb-4"
               />
               <p className="text-[var(--color-text-secondary)] text-sm mb-6 max-w-sm">
-                The Ladder is a Birmingham, Alabama 501(c)(3) nonprofit organization 
+                {settings.orgName} is a Birmingham, Alabama 501(c)(3) nonprofit organization 
                 dedicated to helping individuals overcome barriers to success through 
                 crisis intervention and community partnerships.
               </p>
@@ -109,50 +139,60 @@ export default function SiteFooter() {
               {/* Contact Info */}
               <div className="space-y-3 text-sm">
                 <a 
-                  href="tel:+12055221162" 
+                  href={`tel:${settings.phone.replace(/[^0-9+]/g, '')}`}
                   className="flex items-center gap-3 text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors"
                 >
                   <Phone className="w-4 h-4 text-[var(--color-primary)]" />
-                  (205) 522-1162
+                  {settings.phone}
                 </a>
                 <a 
-                  href="mailto:info@the-ladder.org" 
+                  href={`mailto:${settings.email}`}
                   className="flex items-center gap-3 text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors"
                 >
                   <Mail className="w-4 h-4 text-[var(--color-primary)]" />
-                  info@the-ladder.org
+                  {settings.email}
                 </a>
                 <div className="flex items-start gap-3 text-[var(--color-text-secondary)]">
                   <MapPin className="w-4 h-4 text-[var(--color-primary)] mt-0.5" />
-                  <span>Birmingham, Alabama</span>
+                  <span>{fullAddress}</span>
                 </div>
               </div>
 
               {/* Social Links */}
               <div className="flex gap-4 mt-6">
-                <a
-                  href="https://instagram.com/theladder_bham"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-[var(--color-text-secondary)] hover:bg-[var(--color-primary)] hover:text-white transition-colors"
-                  aria-label="Follow us on Instagram"
-                >
-                  <Instagram className="w-5 h-5" />
-                </a>
-                <a
-                  href="#"
-                  className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-[var(--color-text-secondary)] hover:bg-[var(--color-primary)] hover:text-white transition-colors"
-                  aria-label="Follow us on Facebook"
-                >
-                  <Facebook className="w-5 h-5" />
-                </a>
-                <a
-                  href="#"
-                  className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-[var(--color-text-secondary)] hover:bg-[var(--color-primary)] hover:text-white transition-colors"
-                  aria-label="Connect on LinkedIn"
-                >
-                  <Linkedin className="w-5 h-5" />
-                </a>
+                {settings.socialLinks.instagram && (
+                  <a
+                    href={settings.socialLinks.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-[var(--color-text-secondary)] hover:bg-[var(--color-primary)] hover:text-white transition-colors"
+                    aria-label="Follow us on Instagram"
+                  >
+                    <Instagram className="w-5 h-5" />
+                  </a>
+                )}
+                {settings.socialLinks.facebook && settings.socialLinks.facebook !== '#' && (
+                  <a
+                    href={settings.socialLinks.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-[var(--color-text-secondary)] hover:bg-[var(--color-primary)] hover:text-white transition-colors"
+                    aria-label="Follow us on Facebook"
+                  >
+                    <Facebook className="w-5 h-5" />
+                  </a>
+                )}
+                {settings.socialLinks.linkedin && settings.socialLinks.linkedin !== '#' && (
+                  <a
+                    href={settings.socialLinks.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-[var(--color-text-secondary)] hover:bg-[var(--color-primary)] hover:text-white transition-colors"
+                    aria-label="Connect on LinkedIn"
+                  >
+                    <Linkedin className="w-5 h-5" />
+                  </a>
+                )}
               </div>
             </div>
 
@@ -226,7 +266,7 @@ export default function SiteFooter() {
               {/* EIN Badge */}
               <div className="mt-6 p-3 bg-gray-50 rounded-lg">
                 <p className="text-xs text-[var(--color-text-secondary)]">
-                  <strong className="text-[var(--color-text-primary)]">EIN:</strong> 82-0737087
+                  <strong className="text-[var(--color-text-primary)]">EIN:</strong> {settings.ein}
                 </p>
                 <p className="text-xs text-[var(--color-text-secondary)] mt-1">
                   Tax-deductible donations
@@ -242,7 +282,7 @@ export default function SiteFooter() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-[var(--color-text-secondary)]">
             <p>
-              © {currentYear} The Ladder. All rights reserved.
+              © {currentYear} {settings.orgName}. All rights reserved.
             </p>
             <p className="text-center md:text-right">
               All donations are tax-deductible to the fullest extent allowed by law.
