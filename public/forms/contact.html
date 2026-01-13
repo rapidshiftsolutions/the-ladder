@@ -1,0 +1,57 @@
+<!--
+  Static HTML form for Netlify Forms detection.
+  
+  This file allows Netlify to detect form fields during build time.
+  The actual form submission is handled by the React component.
+  
+  @see https://docs.netlify.com/manage/forms/setup/#work-with-javascript-rendered-forms
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Form - The Ladder Birmingham</title>
+</head>
+<body>
+  <form 
+    name="contact" 
+    method="POST" 
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+    action="/contact?success=true"
+  >
+    <!-- Honeypot field for spam prevention -->
+    <p hidden>
+      <label>Don't fill this out: <input name="bot-field" /></label>
+    </p>
+    
+    <p>
+      <label>Full Name: <input type="text" name="name" required /></label>
+    </p>
+    <p>
+      <label>Email Address: <input type="email" name="email" required /></label>
+    </p>
+    <p>
+      <label>Phone Number: <input type="tel" name="phone" /></label>
+    </p>
+    <p>
+      <label>Subject: 
+        <select name="subject" required>
+          <option value="general">General Inquiry</option>
+          <option value="help">I Need Help / Request Assistance</option>
+          <option value="volunteer">Volunteer Opportunities</option>
+          <option value="partnership">Partnership / Corporate Giving</option>
+          <option value="media">Media Inquiry</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+    </p>
+    <p>
+      <label>Message: <textarea name="message" required></textarea></label>
+    </p>
+    <p>
+      <button type="submit">Send Message</button>
+    </p>
+  </form>
+</body>
+</html>

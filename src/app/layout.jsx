@@ -1,13 +1,13 @@
 // layout.jsx (Server Component)
 import './globals.css';
-import Script from 'next/script';
 import DOMOptimizer from '/src/components/DOMOptimizer';
 import ErrorBoundary from '/src/components/ErrorBoundary';
-import ServiceWorkerRegistration from '/src/components/ServiceWorkerRegistration';
-import InstallPrompt from '/src/components/InstallPrompt';
-import PerformanceMonitor from '/src/components/PerformanceMonitor';
+import AppLoadingProvider from '/src/components/AppLoadingProvider';
+import DeferredComponents from '/src/components/DeferredComponents';
+import { fontVariables } from '/src/lib/fonts';
 
 // Friendly & Approachable Design - Lora + Nunito Sans
+// Fonts are now self-hosted via next/font for optimal performance
 
 export const metadata = {
   title: {
@@ -108,7 +108,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={fontVariables}>
       <head>
         {/* Preload LCP image for faster Largest Contentful Paint */}
         <link 
@@ -117,22 +117,6 @@ export default function RootLayout({ children }) {
           href="/TheLadder/photos/Jamil.jpg"
           fetchPriority="high"
         />
-        
-        {/* Google Fonts - Lora + Nunito Sans */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link 
-          href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" 
-          rel="stylesheet"
-          media="print"
-          onLoad="this.media='all'"
-        />
-        <noscript>
-          <link 
-            href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" 
-            rel="stylesheet" 
-          />
-        </noscript>
         
         {/* Premium Sharing Meta Tags */}
         <meta property="og:rich_attachment" content="true" />
@@ -144,12 +128,8 @@ export default function RootLayout({ children }) {
         
         {/* Social sharing images */}
         <meta property="og:image:secure_url" content="https://the-ladder.org/meta.png" />
-        
-        {/* DNS prefetch for critical domains */}
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
 
-        {/* Resource hints */}
+        {/* Resource hints for Sanity CDN */}
         <link rel="dns-prefetch" href="https://cdn.sanity.io" />
         <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
         
@@ -240,14 +220,14 @@ export default function RootLayout({ children }) {
           }}
         />
         
-        {/* Critical CSS */}
+        {/* Critical CSS - Uses CSS variables from next/font */}
         <style dangerouslySetInnerHTML={{ __html: `
           /* Critical CSS for above-the-fold content */
           body {
             margin: 0;
             background-color: #FFFFFF;
             color: #1C2833;
-            font-family: 'Nunito Sans', system-ui, -apple-system, sans-serif;
+            font-family: var(--font-body), 'Nunito Sans', system-ui, -apple-system, sans-serif;
             line-height: 1.625;
             overflow-x: hidden;
             font-size: 16px;
@@ -256,7 +236,7 @@ export default function RootLayout({ children }) {
           }
           
           h1, h2, h3, h4, h5, h6 {
-            font-family: 'Lora', Georgia, serif;
+            font-family: var(--font-heading), 'Lora', Georgia, serif;
             font-weight: 700;
             line-height: 1.25;
             color: #1C2833;
@@ -300,19 +280,15 @@ export default function RootLayout({ children }) {
         </a>
         
         <ErrorBoundary>
-          <DOMOptimizer>
-            {children}
-          </DOMOptimizer>
+          <AppLoadingProvider minLoadTime={600}>
+            <DOMOptimizer>
+              {children}
+            </DOMOptimizer>
+          </AppLoadingProvider>
         </ErrorBoundary>
         
-        {/* Register service worker for PWA functionality */}
-        <ServiceWorkerRegistration />
-        
-        {/* PWA Install Prompt */}
-        <InstallPrompt />
-        
-        {/* Performance Monitoring */}
-        <PerformanceMonitor />
+        {/* Deferred non-critical components (PWA, analytics, etc.) */}
+        <DeferredComponents />
       </body>
     </html>
   );

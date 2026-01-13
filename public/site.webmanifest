@@ -3,41 +3,34 @@
   "short_name": "The Ladder",
   "description": "Helping people climb over life's barriers, one rung at a time. Birmingham nonprofit providing crisis intervention and individual barrier assistance.",
   "start_url": "/",
+  "id": "/",
   "display": "standalone",
-  "background_color": "#F9FAFB",
-  "theme_color": "#0066CC",
+  "orientation": "portrait-primary",
+  "background_color": "#FFFFFF",
+  "theme_color": "#1B4F72",
   "categories": ["nonprofit", "charity", "community", "social"],
-  "share_target": {
-    "action": "/share",
-    "method": "POST",
-    "enctype": "multipart/form-data",
-    "params": {
-      "title": "title",
-      "text": "text",
-      "url": "url"
-    }
-  },
+  "prefer_related_applications": false,
   "shortcuts": [
     {
       "name": "Donate Now",
       "short_name": "Donate",
       "description": "Make a donation to help Birmingham residents overcome barriers",
-      "url": "/donate-now",
-      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+      "url": "/donate",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
-      "name": "Apply for Help",
-      "short_name": "Apply",
+      "name": "Get Help",
+      "short_name": "Help",
       "description": "Apply for assistance with life barriers",
-      "url": "/contact",
-      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+      "url": "/get-help",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
       "name": "Success Stories",
       "short_name": "Stories",
       "description": "Read testimonials from people we've helped",
-      "url": "/testimonies",
-      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+      "url": "/success-stories",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192", "type": "image/png" }]
     }
   ],
   "icons": [
@@ -68,9 +61,27 @@
     {
       "src": "/apple-touch-icon.png",
       "sizes": "180x180",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop-screenshot.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "The Ladder Homepage - Desktop"
+    },
+    {
+      "src": "/screenshots/mobile-screenshot.png",
+      "sizes": "375x812",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "The Ladder Homepage - Mobile"
     }
   ],
   "lang": "en-US",
+  "dir": "ltr",
   "scope": "/"
 }

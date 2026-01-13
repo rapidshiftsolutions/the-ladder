@@ -80,10 +80,10 @@ export default function InstallPrompt() {
           
           <div className="flex-1 min-w-0">
             <h3 className="text-white font-inter font-bold text-sm mb-1">
-              Install OEM Radio Repair
+              Install The Ladder
             </h3>
             <p className="text-gray-300 text-xs font-inter leading-relaxed mb-3">
-              Add our app to your home screen for quick access to services, parts, and appointment booking!
+              Add our app to your home screen for quick access to donate, get help, or learn about our mission!
             </p>
             
             <div className="flex gap-2">

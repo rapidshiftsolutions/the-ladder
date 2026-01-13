@@ -2,6 +2,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight, Heart, Phone, Shield } from 'lucide-react'
 
+// Blur placeholder for the hero image (base64 encoded tiny version)
+// This prevents layout shift and shows a preview while the full image loads
+const heroBlurDataURL = 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9PjsBCgsLDg0OHBAQHDsoIig7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O//AABEIAAoACgMBEQACEQEDEQH/xAAVAAEBAAAAAAAAAAAAAAAAAAAAB//EAB0QAAICAgMBAAAAAAAAAAAAAAECAAMEBREhMUH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AqwBdkZN9lti2V0moKi8Q/9k='
+
 // Default values (used when CMS data is not available)
 const defaultContent = {
   heroHeadline: 'Helping Individuals Overcome',
@@ -44,7 +48,7 @@ export default function HeroCompact({
     <section className="relative bg-white">
       {/* Hero Content - min-height prevents CLS during image load */}
       <div className="relative min-h-[500px] sm:min-h-[550px] lg:min-h-[600px]">
-        {/* Background Image with Overlay */}
+        {/* Background Image with Overlay - Optimized for LCP */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <Image
             src={heroImageUrl}
@@ -52,8 +56,11 @@ export default function HeroCompact({
             fill
             className="object-cover"
             priority
+            fetchPriority="high"
             sizes="100vw"
-            quality={85}
+            quality={80}
+            placeholder="blur"
+            blurDataURL={heroBlurDataURL}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary)]/95 via-[var(--color-primary)]/85 to-[var(--color-primary)]/75" />
         </div>
@@ -62,29 +69,26 @@ export default function HeroCompact({
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
           <div className="max-w-2xl">
             {/* Trust Badge */}
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
+            <div className="hero-animate hero-animate--badge inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
               <Shield className="w-4 h-4 text-white" />
               <span className="text-sm font-medium text-white">
                 {heroContent.trustBadgeText}
               </span>
             </div>
 
-            {/* Main Headline */}
-            <h1 
-              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight"
-              style={{ fontFamily: 'var(--font-heading)' }}
-            >
-              {heroContent.heroHeadline}{' '}
-              <span className="text-[var(--color-accent-light)]">{heroContent.heroHeadlineAccent}</span>
+            {/* Main Headline - Fluid typography to ensure max 2 lines */}
+            <h1 className="hero-headline font-bold text-white mb-6">
+              <span className="hero-headline__line1">{heroContent.heroHeadline}</span>
+              <span className="hero-headline__line2 text-[var(--color-accent-light)]">{heroContent.heroHeadlineAccent}</span>
             </h1>
 
             {/* Subheadline */}
-            <p className="text-base sm:text-lg lg:text-xl text-white/90 mb-8 leading-relaxed max-w-xl">
+            <p className="hero-animate hero-animate--subheadline text-base sm:text-lg lg:text-xl text-white/90 mb-8 leading-relaxed max-w-xl">
               {heroContent.heroSubheadline}
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8">
+            <div className="hero-animate hero-animate--ctas flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8">
               <Link
                 href={heroContent.heroPrimaryCtaLink}
                 className="btn btn-lg bg-white text-[var(--color-primary)] hover:bg-gray-100 font-semibold inline-flex items-center justify-center"
@@ -102,7 +106,7 @@ export default function HeroCompact({
             </div>
 
             {/* Quick Contact */}
-            <div className="flex flex-wrap items-center gap-3 sm:gap-5 text-sm">
+            <div className="hero-animate hero-animate--contact flex flex-wrap items-center gap-3 sm:gap-5 text-sm">
               <a 
                 href={`tel:${phone.replace(/[^0-9+]/g, '')}`}
                 className="flex items-center gap-2 text-white hover:text-white/90 transition-colors"
