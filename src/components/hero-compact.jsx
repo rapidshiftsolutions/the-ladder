@@ -22,8 +22,8 @@ export default function HeroCompact() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
-          <div className="max-w-2xl text-center sm:text-left">
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+          <div className="max-w-2xl">
             {/* Trust Badge */}
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
               <Shield className="w-4 h-4 text-white" />
@@ -34,23 +34,22 @@ export default function HeroCompact() {
 
             {/* Main Headline */}
             <h1 
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-              Helping Individuals<br className="hidden sm:block" />
-              Overcome <span className="text-[var(--color-accent-light)]">Barriers<br className="hidden sm:block" />
-              to Success</span>
+              Helping Individuals Overcome{' '}
+              <span className="text-[var(--color-accent-light)]">Barriers to Success</span>
             </h1>
 
             {/* Subheadline */}
-            <p className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-8 leading-relaxed">
+            <p className="text-base sm:text-lg lg:text-xl text-white/90 mb-8 leading-relaxed max-w-xl">
               When life&apos;s obstacles stand in your way, The Ladder partners with you 
               to find solutions. We provide personalized crisis intervention and 
               connect you with the resources you need.
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-10">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8">
               <Link
                 href="/get-help"
                 className="btn btn-lg bg-white text-[var(--color-primary)] hover:bg-gray-100 font-semibold inline-flex items-center justify-center"
@@ -68,16 +67,16 @@ export default function HeroCompact() {
             </div>
 
             {/* Quick Contact */}
-            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-white/80 text-sm">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-5 text-sm">
               <a 
                 href="tel:+12055221162" 
-                className="flex items-center gap-2 hover:text-white transition-colors"
+                className="flex items-center gap-2 text-white hover:text-white/90 transition-colors"
               >
                 <Phone className="w-4 h-4" />
                 (205) 522-1162
               </a>
-              <span className="hidden sm:block text-white/40">|</span>
-              <span>All services are free and confidential</span>
+              <span className="text-white/40">|</span>
+              <span className="text-white/80">All services are free and confidential</span>
             </div>
           </div>
         </div>

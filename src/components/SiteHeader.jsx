@@ -78,7 +78,7 @@ function NavDropdown({ item, isActive }) {
       
       {/* Dropdown Menu */}
       <div 
-        className={`absolute left-0 top-full pt-2 transition-all duration-200 ${
+        className={`absolute left-0 top-full pt-2 z-[10000] transition-all duration-200 ${
           isOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
         }`}
       >
@@ -221,26 +221,27 @@ export default function SiteHeader() {
 
       {/* Main Header */}
       <header
-        className={`sticky top-0 z-50 bg-white transition-all duration-300 ${
+        className={`sticky top-0 z-[9999] bg-white transition-all duration-300 ${
           scrolled ? 'shadow-md' : 'shadow-sm'
         }`}
       >
-        <nav className="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
-          <div className="flex h-18 lg:h-[72px] items-center justify-between">
+        <nav className="container mx-auto px-4 sm:px-6 lg:px-8 overflow-visible" aria-label="Main navigation">
+          <div className="flex h-16 lg:h-20 items-center justify-between overflow-visible">
             {/* Logo */}
-            <Link href="/" className="flex-shrink-0 relative z-10 py-3">
+            <Link href="/" className="flex-shrink-0 relative z-10 flex items-center h-full py-2 px-1 overflow-hidden">
               <Image
                 src="/TheLadder/logos/The Ladder - Logo.png"
                 alt="The Ladder - Birmingham Nonprofit"
-                width={150}
-                height={50}
-                className="h-9 lg:h-11 w-auto"
+                width={80}
+                height={27}
+                className="max-h-full w-auto object-contain"
+                style={{ maxHeight: 'calc(100% - 1rem)' }}
                 priority
               />
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex lg:items-center lg:gap-1">
+            <div className="hidden lg:flex lg:items-center lg:gap-1 relative z-[100]">
               {navigation.map((item) => (
                 item.children ? (
                   <NavDropdown 
