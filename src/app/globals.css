@@ -140,10 +140,20 @@ h6 {
 p {
   margin: 0 0 var(--space-4);
   line-height: var(--leading-relaxed);
+  text-indent: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 p:last-child {
   margin-bottom: 0;
+}
+
+/* Fix for text blocks under subheadings - ensure proper centering */
+/* This fixes offset issues with larger text blocks that have max-width constraints */
+p.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Links */

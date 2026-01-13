@@ -51,9 +51,17 @@ export function SectionHeader({
         {title}
       </h2>
       {description && (
-        <p className={`mt-4 text-lg text-[var(--color-text-secondary)] ${centered ? 'max-w-2xl mx-auto text-center' : 'max-w-2xl'}`}>
-          {description}
-        </p>
+        centered ? (
+          <div className="max-w-2xl mx-auto">
+            <p className="mt-4 text-lg text-[var(--color-text-secondary)] text-center">
+              {description}
+            </p>
+          </div>
+        ) : (
+          <p className="mt-4 text-lg text-[var(--color-text-secondary)] max-w-2xl">
+            {description}
+          </p>
+        )
       )}
     </div>
   )

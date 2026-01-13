@@ -66,10 +66,12 @@ export default function SuccessStoriesRedesigned() {
             <br />
             <span style={{ color: '#34C759' }}>Barriers Removed, Lives Changed</span>
           </h2>
-          <p className="text-xl leading-relaxed max-w-3xl mx-auto text-center" style={{ color: '#86868b' }}>
-            Every person we help has a unique story. These are just a few examples 
-            of how removing specific barriers leads to lasting transformation.
-          </p>
+          <div className="max-w-3xl mx-auto">
+            <p className="text-xl leading-relaxed text-center" style={{ color: '#86868b' }}>
+              Every person we help has a unique story. These are just a few examples 
+              of how removing specific barriers leads to lasting transformation.
+            </p>
+          </div>
         </div>
 
         {/* iOS-style impact stats */}

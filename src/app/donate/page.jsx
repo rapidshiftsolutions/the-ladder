@@ -1,7 +1,10 @@
 import SiteHeader from '/src/components/SiteHeader'
 import SiteFooter from '/src/components/SiteFooter'
 import Link from 'next/link'
-import { Heart, Shield, CheckCircle, Users, Clock, ArrowRight, Lock, CreditCard } from 'lucide-react'
+import { Heart, Shield, CheckCircle, ArrowRight, Lock } from 'lucide-react'
+import { sanityFetch } from '@/sanity/lib/live'
+import { donationSettingsQuery } from '@/sanity/queries/donationSettingsQuery'
+import DonateClient from './DonateClient'
 
 export const metadata = {
   title: 'Donate | Support Birmingham Residents in Need',
@@ -25,7 +28,16 @@ export const metadata = {
   }
 }
 
-export default function DonatePage() {
+export default async function DonatePage() {
+  // Fetch donation settings from Sanity
+  let settings = null
+  try {
+    const result = await sanityFetch({ query: donationSettingsQuery })
+    settings = result?.data
+  } catch (error) {
+    console.error('Error fetching donation settings:', error)
+  }
+
   return (
     <>
       <SiteHeader />
@@ -74,120 +86,7 @@ export default function DonatePage() {
         <section className="py-12 lg:py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
-                {/* Donation Form Header */}
-                <div className="bg-gray-50 border-b border-gray-200 px-8 py-6">
-                  <h2 
-                    className="text-2xl font-bold text-[var(--color-text-primary)] text-center"
-                    style={{ fontFamily: 'var(--font-heading)' }}
-                  >
-                    Make Your Donation
-                  </h2>
-                </div>
-                
-                <div className="p-8">
-                  {/* Giving Type Toggle */}
-                  <div className="flex justify-center mb-8">
-                    <div className="inline-flex bg-gray-100 p-1 rounded-lg">
-                      <button className="px-6 py-3 rounded-md bg-white shadow-sm text-[var(--color-primary)] font-semibold transition-colors">
-                        One-Time Gift
-                      </button>
-                      <button className="px-6 py-3 rounded-md text-[var(--color-text-secondary)] font-medium hover:text-[var(--color-text-primary)] transition-colors">
-                        Monthly Giving
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Suggested Amounts */}
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                    {[25, 50, 100, 250].map((amount) => (
-                      <button 
-                        key={amount}
-                        className={`p-4 border-2 rounded-lg font-bold text-xl transition-colors ${
-                          amount === 50 
-                            ? 'border-[var(--color-primary)] bg-[var(--color-primary)]/5 text-[var(--color-primary)]' 
-                            : 'border-gray-200 text-[var(--color-text-primary)] hover:border-[var(--color-primary)]'
-                        }`}
-                      >
-                        ${amount}
-                      </button>
-                    ))}
-                  </div>
-
-                  {/* Custom Amount */}
-                  <div className="mb-8">
-                    <label htmlFor="custom-amount" className="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
-                      Or enter a custom amount
-                    </label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <span className="text-[var(--color-text-secondary)] text-lg">$</span>
-                      </div>
-                      <input
-                        type="number"
-                        id="custom-amount"
-                        className="block w-full pl-8 pr-4 py-4 border border-gray-200 rounded-lg text-xl focus:ring-2 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)] transition-colors"
-                        placeholder="0.00"
-                        min="1"
-                        step="1"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Consent Checkboxes */}
-                  <div className="space-y-4 mb-8 p-4 bg-gray-50 rounded-lg">
-                    <div className="flex items-start">
-                      <input
-                        id="gdpr-consent"
-                        name="gdpr-consent"
-                        type="checkbox"
-                        required
-                        className="mt-1 h-5 w-5 text-[var(--color-primary)] focus:ring-[var(--color-primary)] border-gray-300 rounded cursor-pointer"
-                      />
-                      <label htmlFor="gdpr-consent" className="ml-3 text-sm text-[var(--color-text-secondary)]">
-                        I consent to The Ladder storing and processing my personal data for donation processing. 
-                        <Link href="/privacy" className="text-[var(--color-primary)] hover:underline ml-1">
-                          View Privacy Policy
-                        </Link>
-                      </label>
-                    </div>
-                    <div className="flex items-start">
-                      <input
-                        id="email-updates"
-                        name="email-updates"
-                        type="checkbox"
-                        className="mt-1 h-5 w-5 text-[var(--color-primary)] focus:ring-[var(--color-primary)] border-gray-300 rounded cursor-pointer"
-                      />
-                      <label htmlFor="email-updates" className="ml-3 text-sm text-[var(--color-text-secondary)]">
-                        I would like to receive updates about The Ladder&apos;s impact (you can unsubscribe at any time)
-                      </label>
-                    </div>
-                  </div>
-
-                  {/* Payment Buttons */}
-                  <div className="space-y-3">
-                    <button className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-[var(--color-accent)] text-white font-semibold rounded-lg hover:bg-[var(--color-accent-light)] transition-colors text-lg">
-                      <CreditCard className="w-5 h-5" />
-                      Donate with Card
-                    </button>
-                    
-                    <div className="grid grid-cols-2 gap-3">
-                      <button className="flex items-center justify-center gap-2 px-4 py-3 border border-gray-200 rounded-lg bg-white text-[var(--color-text-primary)] font-medium hover:bg-gray-50 transition-colors">
-                        PayPal
-                      </button>
-                      <button className="flex items-center justify-center gap-2 px-4 py-3 border border-gray-200 rounded-lg bg-white text-[var(--color-text-primary)] font-medium hover:bg-gray-50 transition-colors">
-                        Venmo
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Security Notice */}
-                  <div className="mt-6 flex items-center justify-center gap-2 text-sm text-[var(--color-text-secondary)]">
-                    <Lock className="w-4 h-4" />
-                    <span>Secure, encrypted payment processing</span>
-                  </div>
-                </div>
-              </div>
+              <DonateClient settings={settings} />
             </div>
           </div>
         </section>
@@ -264,11 +163,13 @@ export default function DonatePage() {
               >
                 Become a Monthly Donor
               </h2>
-              <p className="text-lg text-[var(--color-text-secondary)] mb-8 max-w-2xl mx-auto text-center">
-                Monthly donors provide the stable, predictable support that allows us to respond 
-                immediately when someone needs help. Your recurring gift has 8x the lifetime 
-                impact of a one-time donation.
-              </p>
+              <div className="max-w-2xl mx-auto">
+                <p className="text-lg text-[var(--color-text-secondary)] mb-8 text-center">
+                  Monthly donors provide the stable, predictable support that allows us to respond 
+                  immediately when someone needs help. Your recurring gift has 8x the lifetime 
+                  impact of a one-time donation.
+                </p>
+              </div>
               
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <div className="p-6 bg-white rounded-xl border border-gray-200">

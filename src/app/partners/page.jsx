@@ -248,9 +248,11 @@ export default async function PartnersPage() {
                 >
                   Our Partner Organizations
                 </h2>
-                <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto text-center">
-                  Birmingham nonprofits and community resources we work with to serve individuals.
-                </p>
+                <div className="max-w-2xl mx-auto">
+                  <p className="text-lg text-[var(--color-text-secondary)] text-center">
+                    Birmingham nonprofits and community resources we work with to serve individuals.
+                  </p>
+                </div>
               </div>
 
               <div className="max-w-5xl mx-auto space-y-12">

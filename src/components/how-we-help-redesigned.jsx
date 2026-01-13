@@ -1,28 +1,19 @@
 'use client'
 
 import { Users, Target, Heart, Handshake, ArrowRight } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { 
+  containerVariants, 
+  cardVariants, 
+  iconVariants, 
+  headerVariants,
+  badgeVariants
+} from '@/utils/animations'
 
 export default function HowWeHelpRedesigned() {
-  const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.1 }
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
 
   const steps = [
     {
@@ -54,36 +45,46 @@ export default function HowWeHelpRedesigned() {
   return (
     <section 
       ref={sectionRef} 
-      className="relative py-12 sm:py-16 lg:py-20 overflow-hidden bg-[var(--color-background)]"
+      className="relative py-20 lg:py-32 overflow-hidden bg-gradient-to-b from-white via-gray-50/50 to-white"
     >
-      {/* iOS-style ambient background */}
-      <div className="absolute inset-0">
-        <div 
-          className="absolute top-20 left-1/4 w-80 h-80 rounded-full opacity-30 blur-3xl"
-          style={{ background: 'radial-gradient(circle, #007AFF15, transparent)' }}
-        />
-        <div 
-          className="absolute bottom-20 right-1/4 w-64 h-64 rounded-full opacity-20 blur-3xl"
-          style={{ background: 'radial-gradient(circle, #FF3B3015, transparent)' }}
-        />
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-1/4 w-80 h-80 rounded-full bg-[var(--color-primary)]/10 blur-3xl" />
+        <div className="absolute bottom-20 right-1/4 w-96 h-96 rounded-full bg-[var(--color-secondary)]/10 blur-3xl" />
       </div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        {/* iOS-style header */}
-        <div className={`text-center mb-20 ${isVisible ? 'animate-in' : 'opacity-0'}`}>
-          <div className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6 bg-[var(--color-ladder-blue)]/10 border border-[var(--color-ladder-blue)]/20 text-[var(--color-ladder-blue)]">
-            Our Process
-          </div>
-          <h2 className="text-5xl sm:text-6xl font-bold mb-6 text-center" style={{ color: '#1d1d1f' }}>
+        {/* Section Header */}
+        <motion.div 
+          className="text-center mb-16 lg:mb-20"
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={headerVariants}
+        >
+          <motion.div
+            className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-[var(--color-primary)]/10 rounded-full"
+            initial={{ scale: 0 }}
+            animate={isInView ? { scale: 1 } : {}}
+            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+          >
+            <Target className="w-5 h-5 text-[var(--color-primary)]" />
+            <span className="text-sm font-semibold text-[var(--color-primary)]">Our Process</span>
+          </motion.div>
+          <h2 
+            className="text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight text-center" 
+            style={{ color: '#1d1d1f', fontFamily: 'var(--font-heading)' }}
+          >
             How We Help People
             <br />
             <span style={{ color: '#007AFF' }}>Climb Over Barriers</span>
           </h2>
-          <p className="text-xl leading-relaxed max-w-3xl mx-auto text-center" style={{ color: '#86868b' }}>
-            We focus on people over problems, addressing individual roadblocks 
-            rather than specific issues. Each person has unique barriers preventing their progress.
-          </p>
-        </div>
+          <div className="max-w-3xl mx-auto">
+            <p className="text-xl lg:text-2xl leading-relaxed text-center" style={{ color: '#86868b' }}>
+              We focus on people over problems, addressing individual roadblocks 
+              rather than specific issues. Each person has unique barriers preventing their progress.
+            </p>
+          </div>
+        </motion.div>
 
         {/* iOS-style process cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">

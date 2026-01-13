@@ -145,9 +145,11 @@ export default function MonthlyGivingPage() {
               >
                 Choose Your Impact Level
               </h2>
-              <p className="text-lg text-[var(--color-text-secondary)] max-w-3xl mx-auto text-center">
-                Every level makes a meaningful difference. Select the amount that works for you.
-              </p>
+              <div className="max-w-3xl mx-auto">
+                <p className="text-lg text-[var(--color-text-secondary)] text-center">
+                  Every level makes a meaningful difference. Select the amount that works for you.
+                </p>
+              </div>
             </div>
 
             <div className="max-w-5xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-6">

@@ -72,10 +72,12 @@ export default function BoardGovernancePage() {
               >
                 Governance Principles
               </h2>
-              <p className="text-lg text-[var(--color-text-secondary)] max-w-3xl mx-auto text-center">
-                The Ladder operates under clear governance principles that ensure 
-                accountability to our donors, partners, and the community we serve.
-              </p>
+              <div className="max-w-3xl mx-auto">
+                <p className="text-lg text-[var(--color-text-secondary)] text-center">
+                  The Ladder operates under clear governance principles that ensure 
+                  accountability to our donors, partners, and the community we serve.
+                </p>
+              </div>
             </div>
 
             <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">

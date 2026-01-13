@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import { AlertCircle, CheckCircle, ArrowRight, Users, Handshake, X, ArrowLeftRight } from 'lucide-react'
@@ -62,6 +62,93 @@ const iconVariants = {
 export default function ProblemSolutionCompact() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
+  const headlineRef = useRef(null)
+  const paragraphRef = useRef(null)
+  const paragraphContainerRef = useRef(null)
+  const parentRef = useRef(null)
+
+  useEffect(() => {
+    // #region agent log
+    const logEntry = {
+      location: 'problem-solution-compact.jsx:useEffect-entry',
+      message: 'useEffect triggered',
+      data: { isInView, hasHeadline: !!headlineRef.current, hasParagraph: !!paragraphRef.current, hasParent: !!parentRef.current },
+      timestamp: Date.now(),
+      sessionId: 'debug-session',
+      runId: 'run1',
+      hypothesisId: 'A'
+    };
+    fetch('http://127.0.0.1:7244/ingest/76404e73-dfeb-47ef-ad67-3a2128b347cc',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(logEntry)}).catch(()=>{});
+    // #endregion
+
+    const checkAlignment = () => {
+      if (headlineRef.current && paragraphRef.current && paragraphContainerRef.current && parentRef.current) {
+        const headlineStyle = window.getComputedStyle(headlineRef.current);
+        const paragraphStyle = window.getComputedStyle(paragraphRef.current);
+        const containerStyle = window.getComputedStyle(paragraphContainerRef.current);
+        const parentStyle = window.getComputedStyle(parentRef.current);
+        const headlineRect = headlineRef.current.getBoundingClientRect();
+        const paragraphRect = paragraphRef.current.getBoundingClientRect();
+        const containerRect = paragraphContainerRef.current.getBoundingClientRect();
+        const parentRect = parentRef.current.getBoundingClientRect();
+        
+        // #region agent log
+        const logData = {
+          location: 'problem-solution-compact.jsx:useEffect-alignment-check',
+          message: 'Checking text alignment styles',
+          data: {
+            headlineComputed: headlineStyle.textAlign,
+            headlineClasses: headlineRef.current.className,
+            paragraphComputed: paragraphStyle.textAlign,
+            paragraphClasses: paragraphRef.current.className,
+            containerComputed: containerStyle.textAlign,
+            containerClasses: paragraphContainerRef.current.className,
+            containerMarginLeft: containerStyle.marginLeft,
+            containerMarginRight: containerStyle.marginRight,
+            parentComputed: parentStyle.textAlign,
+            parentClasses: parentRef.current.className,
+            headlineLeft: headlineRect.left,
+            headlineWidth: headlineRect.width,
+            headlineCenter: headlineRect.left + headlineRect.width / 2,
+            paragraphLeft: paragraphRect.left,
+            paragraphWidth: paragraphRect.width,
+            paragraphCenter: paragraphRect.left + paragraphRect.width / 2,
+            containerLeft: containerRect.left,
+            containerWidth: containerRect.width,
+            containerCenter: containerRect.left + containerRect.width / 2,
+            parentLeft: parentRect.left,
+            parentWidth: parentRect.width,
+            parentCenter: parentRect.left + parentRect.width / 2,
+            alignmentDiff: Math.abs((headlineRect.left + headlineRect.width / 2) - (containerRect.left + containerRect.width / 2))
+          },
+          timestamp: Date.now(),
+          sessionId: 'debug-session',
+          runId: 'post-fix',
+          hypothesisId: 'A'
+        };
+        fetch('http://127.0.0.1:7244/ingest/76404e73-dfeb-47ef-ad67-3a2128b347cc',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(logData)}).catch(()=>{});
+        // #endregion
+      } else {
+        // #region agent log
+        const logData = {
+          location: 'problem-solution-compact.jsx:useEffect-refs-missing',
+          message: 'Refs not available yet',
+          data: { hasHeadline: !!headlineRef.current, hasParagraph: !!paragraphRef.current, hasContainer: !!paragraphContainerRef.current, hasParent: !!parentRef.current },
+          timestamp: Date.now(),
+          sessionId: 'debug-session',
+          runId: 'post-fix',
+          hypothesisId: 'A'
+        };
+        fetch('http://127.0.0.1:7244/ingest/76404e73-dfeb-47ef-ad67-3a2128b347cc',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(logData)}).catch(()=>{});
+        // #endregion
+      }
+    };
+
+    // Check immediately and after a delay to catch when refs are ready
+    checkAlignment();
+    const timeout = setTimeout(checkAlignment, 1000);
+    return () => clearTimeout(timeout);
+  }, [isInView])
 
   return (
     <section ref={sectionRef} className="py-20 lg:py-32 bg-gradient-to-b from-white via-gray-50/50 to-white relative overflow-hidden">
@@ -74,6 +161,7 @@ export default function ProblemSolutionCompact() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <motion.div 
+          ref={parentRef}
           className="text-center mb-16 lg:mb-20"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -90,16 +178,19 @@ export default function ProblemSolutionCompact() {
           </motion.div>
           
           <h2 
+            ref={headlineRef}
             className="text-4xl lg:text-5xl xl:text-6xl font-bold text-[var(--color-text-primary)] mb-6 leading-tight text-center"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             Bridging the Gap in<br className="hidden sm:block" /> Birmingham&apos;s Safety Net
           </h2>
-          <p className="text-xl lg:text-2xl text-[var(--color-text-secondary)] max-w-3xl mx-auto leading-relaxed text-center">
-            Birmingham has excellent nonprofit organizations, but sometimes individuals 
-            face barriers that don&apos;t fit neatly into any single organization&apos;s services. 
-            That&apos;s where The Ladder steps in.
-          </p>
+          <div ref={paragraphContainerRef} className="max-w-3xl mx-auto">
+            <p ref={paragraphRef} className="text-xl lg:text-2xl text-[var(--color-text-secondary)] leading-relaxed text-center">
+              Birmingham has excellent nonprofit organizations, but sometimes individuals 
+              face barriers that don&apos;t fit neatly into any single organization&apos;s services. 
+              That&apos;s where The Ladder steps in.
+            </p>
+          </div>
         </motion.div>
 
         {/* Problem / Solution Grid */}
@@ -311,11 +402,13 @@ export default function ProblemSolutionCompact() {
             >
               We&apos;re Partners, Not Competitors
             </h3>
-            <p className="text-xl text-[var(--color-text-secondary)] max-w-3xl mx-auto mb-10 leading-relaxed text-center">
-              Birmingham&apos;s nonprofits do exceptional work in their areas of expertise. 
-              The Ladder exists to complement their services by handling the unique, 
-              individual barriers that don&apos;t fit traditional program categories.
-            </p>
+            <div className="max-w-3xl mx-auto">
+              <p className="text-xl text-[var(--color-text-secondary)] mb-10 leading-relaxed text-center">
+                Birmingham&apos;s nonprofits do exceptional work in their areas of expertise. 
+                The Ladder exists to complement their services by handling the unique, 
+                individual barriers that don&apos;t fit traditional program categories.
+              </p>
+            </div>
             
             <motion.div 
               className="flex flex-col sm:flex-row gap-4 justify-center"

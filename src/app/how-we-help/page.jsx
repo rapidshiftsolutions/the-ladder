@@ -131,10 +131,12 @@ export default function HowWeHelpPage() {
               >
                 Our 4-Step Process
               </h2>
-              <p className="text-lg text-[var(--color-text-secondary)] max-w-3xl mx-auto text-center">
-                Every situation is unique. Our process is designed to understand your 
-                specific needs and provide targeted support.
-              </p>
+              <div className="max-w-3xl mx-auto">
+                <p className="text-lg text-[var(--color-text-secondary)] text-center">
+                  Every situation is unique. Our process is designed to understand your 
+                  specific needs and provide targeted support.
+                </p>
+              </div>
             </div>
 
             <div className="max-w-5xl mx-auto">
@@ -182,10 +184,12 @@ export default function HowWeHelpPage() {
               >
                 Barriers We Address
               </h2>
-              <p className="text-lg text-[var(--color-text-secondary)] max-w-3xl mx-auto text-center">
-                We help with specific, individual obstacles that fall outside traditional 
-                nonprofit service categories.
-              </p>
+              <div className="max-w-3xl mx-auto">
+                <p className="text-lg text-[var(--color-text-secondary)] text-center">
+                  We help with specific, individual obstacles that fall outside traditional 
+                  nonprofit service categories.
+                </p>
+              </div>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">

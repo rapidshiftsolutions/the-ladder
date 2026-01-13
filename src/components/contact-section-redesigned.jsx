@@ -66,10 +66,12 @@ export default function ContactSectionRedesigned() {
             Ready to Make a
             <span className="block text-[#E74C3C] mt-2">Difference Together?</span>
           </h2>
-          <p className="text-base sm:text-lg text-[#4A5568] max-w-3xl mx-auto px-4 text-center">
-            Whether you need help, want to donate, or are interested in partnering with us,
-            we're here to connect and support our Birmingham community.
-          </p>
+          <div className="max-w-3xl mx-auto px-4">
+            <p className="text-base sm:text-lg text-[#4A5568] text-center">
+              Whether you need help, want to donate, or are interested in partnering with us,
+              we're here to connect and support our Birmingham community.
+            </p>
+          </div>
         </div>
 
         {/* Contact Methods */}

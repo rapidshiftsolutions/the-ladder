@@ -142,9 +142,11 @@ export default function VolunteerPage() {
               >
                 Volunteer Opportunities
               </h2>
-              <p className="text-lg text-[var(--color-text-secondary)] max-w-3xl mx-auto text-center">
-                Find the right fit for your skills and availability.
-              </p>
+              <div className="max-w-3xl mx-auto">
+                <p className="text-lg text-[var(--color-text-secondary)] text-center">
+                  Find the right fit for your skills and availability.
+                </p>
+              </div>
             </div>
 
             <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">

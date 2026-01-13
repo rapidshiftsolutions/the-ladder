@@ -115,10 +115,12 @@ export default function FinalCtaSection() {
             <span style={{ color: '#34C759' }}>Life's Barriers?</span>
           </h2>
           
-          <p className="text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-12 text-center">
-            Whether you need help, want to help others, or represent a nonprofit organization, 
-            <strong className="text-white"> there's a place for you in our mission.</strong>
-          </p>
+          <div className="max-w-4xl mx-auto">
+            <p className="text-2xl text-white/90 leading-relaxed mb-12 text-center">
+              Whether you need help, want to help others, or represent a nonprofit organization, 
+              <strong className="text-white"> there's a place for you in our mission.</strong>
+            </p>
+          </div>
         </div>
 
         {/* Action Options Grid */}

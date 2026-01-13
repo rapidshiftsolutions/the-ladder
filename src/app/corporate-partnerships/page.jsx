@@ -193,9 +193,11 @@ export default function CorporatePartnershipsPage() {
               >
                 Partnership Levels
               </h2>
-              <p className="text-lg text-[var(--color-text-secondary)] max-w-3xl mx-auto text-center">
-                Choose the level that fits your company&apos;s giving goals.
-              </p>
+              <div className="max-w-3xl mx-auto">
+                <p className="text-lg text-[var(--color-text-secondary)] text-center">
+                  Choose the level that fits your company&apos;s giving goals.
+                </p>
+              </div>
             </div>
 
             <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">

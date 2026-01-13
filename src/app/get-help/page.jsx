@@ -242,9 +242,11 @@ export default function GetHelpPage() {
               >
                 What Happens After You Apply
               </h2>
-              <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto text-center">
-                Our simple process is designed to get you the help you need quickly.
-              </p>
+              <div className="max-w-2xl mx-auto">
+                <p className="text-lg text-[var(--color-text-secondary)] text-center">
+                  Our simple process is designed to get you the help you need quickly.
+                </p>
+              </div>
             </div>
 
             <div className="max-w-4xl mx-auto">
