@@ -1,5 +1,3 @@
-import { NextResponse } from 'next/server'
-
 export function middleware(request) {
   const { pathname } = request.nextUrl
   
@@ -11,14 +9,12 @@ export function middleware(request) {
     const sessionCookie = request.cookies.get('guest_portal_session')
     
     if (!sessionCookie || !sessionCookie.value) {
-      // Redirect to login if no session
-      const loginUrl = new URL('/guest-portal', request.url)
-      return NextResponse.redirect(loginUrl)
+      // Redirect to login if no session - use URL rewrite
+      const url = request.nextUrl.clone()
+      url.pathname = '/guest-portal'
+      return Response.redirect(url)
     }
   }
-  
-  // Allow all other requests
-  return NextResponse.next()
 }
 
 export const config = {
