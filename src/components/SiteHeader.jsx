@@ -1,23 +1,149 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Menu, X, Heart, Phone, ChevronDown } from 'lucide-react'
+import { Menu, X, Heart, Phone, ChevronDown, Mail, Shield } from 'lucide-react'
 
+// Navigation structure with dropdowns
 const navigation = [
-  { name: 'About Us', href: '/about' },
+  { 
+    name: 'About', 
+    href: '/about',
+    children: [
+      { name: 'About Us', href: '/about' },
+      { name: 'Leadership Team', href: '/leadership-team' },
+      { name: 'Board Governance', href: '/board-governance' },
+      { name: 'Success Stories', href: '/success-stories' },
+    ]
+  },
   { name: 'How We Help', href: '/how-we-help' },
-  { name: 'Success Stories', href: '/success-stories' },
-  { name: 'Leadership', href: '/leadership-team' },
+  { name: 'Get Help', href: '/get-help' },
+  { 
+    name: 'Get Involved', 
+    href: '/donate',
+    children: [
+      { name: 'Donate', href: '/donate' },
+      { name: 'Monthly Giving', href: '/monthly-giving' },
+      { name: 'Volunteer', href: '/volunteer' },
+      { name: 'Corporate Partnerships', href: '/corporate-partnerships' },
+    ]
+  },
   { name: 'Partners', href: '/partners' },
   { name: 'Events', href: '/events' },
   { name: 'Contact', href: '/contact' },
 ]
 
+// Dropdown component for desktop
+function NavDropdown({ item, isActive }) {
+  const [isOpen, setIsOpen] = useState(false)
+  const dropdownRef = useRef(null)
+  const timeoutRef = useRef(null)
+
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    setIsOpen(true)
+  }
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => setIsOpen(false), 150)
+  }
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    }
+  }, [])
+
+  return (
+    <div 
+      className="relative"
+      ref={dropdownRef}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <button
+        className={`flex items-center gap-1 px-3 xl:px-4 h-10 text-sm font-medium transition-colors rounded-md leading-none ${
+          isActive 
+            ? 'text-[var(--color-primary)] bg-[var(--color-primary)]/5' 
+            : 'text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-gray-50'
+        }`}
+        aria-expanded={isOpen}
+        aria-haspopup="true"
+      >
+        {item.name}
+        <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+      
+      {/* Dropdown Menu */}
+      <div 
+        className={`absolute left-0 top-full pt-2 transition-all duration-200 ${
+          isOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
+        }`}
+      >
+        <div className="bg-white rounded-lg shadow-lg border border-gray-200 py-2 min-w-[200px]">
+          {item.children.map((child) => (
+            <Link
+              key={child.href}
+              href={child.href}
+              className="block px-4 py-2.5 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-gray-50 transition-colors"
+            >
+              {child.name}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// Mobile dropdown component
+function MobileNavDropdown({ item, onClose }) {
+  const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
+  const isActive = item.children?.some(child => pathname === child.href) || pathname === item.href
+
+  return (
+    <div>
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className={`w-full flex items-center justify-between px-4 py-3 text-base font-medium rounded-lg transition-colors ${
+          isActive 
+            ? 'text-[var(--color-primary)] bg-[var(--color-primary)]/5' 
+            : 'text-[var(--color-text-primary)] hover:text-[var(--color-primary)] hover:bg-gray-50'
+        }`}
+      >
+        {item.name}
+        <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+      
+      <div className={`overflow-hidden transition-all duration-200 ${isOpen ? 'max-h-96' : 'max-h-0'}`}>
+        <div className="pl-4 py-1 space-y-1">
+          {item.children.map((child) => (
+            <Link
+              key={child.href}
+              href={child.href}
+              onClick={onClose}
+              className={`block px-4 py-2.5 text-sm rounded-lg transition-colors ${
+                pathname === child.href
+                  ? 'text-[var(--color-primary)] bg-[var(--color-primary)]/5 font-medium'
+                  : 'text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-gray-50'
+              }`}
+            >
+              {child.name}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,30 +176,44 @@ export default function SiteHeader() {
     }
   }, [mobileMenuOpen])
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileMenuOpen(false)
+  }, [pathname])
+
+  // Check if a nav item is active
+  const isNavActive = (item) => {
+    if (item.children) {
+      return item.children.some(child => pathname === child.href)
+    }
+    return pathname === item.href
+  }
+
   return (
     <>
       {/* Top Bar - Trust Signals */}
       <div className="hidden md:block bg-[var(--color-primary)] text-white text-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-10">
-            <div className="flex items-center gap-6">
-              <span className="flex items-center gap-2">
-                <Phone className="w-4 h-4" />
-                <a href="tel:+12055221162" className="hover:underline">
-                  (205) 522-1162
-                </a>
-              </span>
-              <span className="text-white/80">
-                501(c)(3) Nonprofit • EIN: 47-2123160
-              </span>
+          <div className="flex items-center justify-between h-9">
+            <div className="flex items-center gap-5">
+              <a href="tel:+12055221162" className="flex items-center gap-1.5 hover:text-white/80 transition-colors">
+                <Phone className="w-3.5 h-3.5" />
+                (205) 522-1162
+              </a>
+              <a href="mailto:info@the-ladder.org" className="flex items-center gap-1.5 hover:text-white/80 transition-colors">
+                <Mail className="w-3.5 h-3.5" />
+                info@the-ladder.org
+              </a>
             </div>
-            <div className="flex items-center gap-4">
-              <Link href="/get-help" className="hover:underline">
-                Need Help?
-              </Link>
-              <Link href="/guest-portal" className="hover:underline">
-                Guest Portal
-              </Link>
+            <div className="flex items-center gap-4 text-white/90">
+              <span className="flex items-center gap-1.5">
+                <Shield className="w-3.5 h-3.5" />
+                501(c)(3) Tax Exempt
+              </span>
+              <span className="text-white/40">|</span>
+              <span>EIN: 82-0737087</span>
+              <span className="text-white/40">|</span>
+              <span>Serving Birmingham Since 2021</span>
             </div>
           </div>
         </div>
@@ -81,20 +221,20 @@ export default function SiteHeader() {
 
       {/* Main Header */}
       <header
-        className={`sticky top-0 z-50 bg-white transition-shadow duration-200 ${
+        className={`sticky top-0 z-50 bg-white transition-all duration-300 ${
           scrolled ? 'shadow-md' : 'shadow-sm'
         }`}
       >
         <nav className="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
-          <div className="flex h-16 lg:h-20 items-center justify-between">
+          <div className="flex h-18 lg:h-[72px] items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex-shrink-0">
+            <Link href="/" className="flex-shrink-0 relative z-10 py-3">
               <Image
                 src="/TheLadder/logos/The Ladder - Logo.png"
                 alt="The Ladder - Birmingham Nonprofit"
-                width={160}
-                height={53}
-                className="h-10 lg:h-12 w-auto"
+                width={150}
+                height={50}
+                className="h-9 lg:h-11 w-auto"
                 priority
               />
             </Link>
@@ -102,24 +242,30 @@ export default function SiteHeader() {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex lg:items-center lg:gap-1">
               {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="px-3 xl:px-4 py-2 text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors rounded-md hover:bg-gray-50"
-                >
-                  {item.name}
-                </Link>
+                item.children ? (
+                  <NavDropdown 
+                    key={item.name} 
+                    item={item} 
+                    isActive={isNavActive(item)}
+                  />
+                ) : (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={`flex items-center px-3 xl:px-4 h-10 text-sm font-medium transition-colors rounded-md leading-none ${
+                      isNavActive(item)
+                        ? 'text-[var(--color-primary)] bg-[var(--color-primary)]/5'
+                        : 'text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-gray-50'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                )
               ))}
             </div>
 
-            {/* Desktop CTAs */}
+            {/* Desktop CTA */}
             <div className="hidden lg:flex lg:items-center lg:gap-3">
-              <Link
-                href="/get-help"
-                className="btn btn-secondary text-sm"
-              >
-                Get Help
-              </Link>
               <Link
                 href="/donate"
                 className="btn btn-accent flex items-center gap-2 text-sm"
@@ -132,12 +278,13 @@ export default function SiteHeader() {
             {/* Mobile Menu Button */}
             <button
               type="button"
-              className="lg:hidden p-2 -m-2 text-[var(--color-text-primary)] rounded-md hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
+              className="lg:hidden relative z-10 p-2 -m-2 text-[var(--color-text-primary)] rounded-md hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-menu"
             >
+              <span className="sr-only">{mobileMenuOpen ? 'Close menu' : 'Open menu'}</span>
               {mobileMenuOpen ? (
                 <X className="h-6 w-6" />
               ) : (
@@ -148,87 +295,105 @@ export default function SiteHeader() {
         </nav>
 
         {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <>
-            {/* Backdrop */}
-            <div 
-              className="lg:hidden fixed inset-0 bg-black/20 z-40"
-              onClick={() => setMobileMenuOpen(false)}
-              aria-hidden="true"
-            />
-            
-            {/* Menu Panel */}
-            <div
-              className="lg:hidden fixed inset-x-0 top-16 bottom-0 z-50 bg-white overflow-y-auto"
-              id="mobile-menu"
-              role="dialog"
-              aria-modal="true"
-            >
-              <div className="px-4 py-6 space-y-1">
-                {navigation.map((item) => (
+        <div
+          className={`lg:hidden fixed inset-0 z-40 transition-opacity duration-300 ${
+            mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`}
+        >
+          {/* Backdrop */}
+          <div 
+            className={`absolute inset-0 bg-black/20 transition-opacity duration-300 ${
+              mobileMenuOpen ? 'opacity-100' : 'opacity-0'
+            }`}
+            onClick={() => setMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
+          
+          {/* Menu Panel */}
+          <div
+            className={`absolute inset-x-0 top-16 bottom-0 bg-white overflow-y-auto transform transition-transform duration-300 ease-out ${
+              mobileMenuOpen ? 'translate-y-0' : '-translate-y-4'
+            }`}
+            id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+          >
+            <div className="px-4 py-6 space-y-1">
+              {navigation.map((item) => (
+                item.children ? (
+                  <MobileNavDropdown 
+                    key={item.name} 
+                    item={item} 
+                    onClose={() => setMobileMenuOpen(false)}
+                  />
+                ) : (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="block px-4 py-3 text-base font-medium text-[var(--color-text-primary)] hover:text-[var(--color-primary)] hover:bg-gray-50 rounded-lg transition-colors"
+                    className={`block px-4 py-3 text-base font-medium rounded-lg transition-colors ${
+                      pathname === item.href
+                        ? 'text-[var(--color-primary)] bg-[var(--color-primary)]/5'
+                        : 'text-[var(--color-text-primary)] hover:text-[var(--color-primary)] hover:bg-gray-50'
+                    }`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}
                   </Link>
-                ))}
-                
-                {/* Mobile Trust Bar */}
-                <div className="pt-4 mt-4 border-t border-gray-200">
-                  <div className="px-4 py-2 text-sm text-[var(--color-text-secondary)]">
-                    <p className="font-medium text-[var(--color-text-primary)]">
-                      501(c)(3) Nonprofit Organization
-                    </p>
-                    <p>EIN: 47-2123160</p>
-                  </div>
+                )
+              ))}
+              
+              {/* Mobile Trust Bar */}
+              <div className="pt-6 mt-4 border-t border-gray-200">
+                <div className="px-4 py-2 text-sm text-[var(--color-text-secondary)]">
+                  <p className="font-semibold text-[var(--color-text-primary)]">
+                    501(c)(3) Nonprofit Organization
+                  </p>
+                  <p className="mt-1">EIN: 82-0737087</p>
                 </div>
+              </div>
+              
+              {/* Mobile CTAs */}
+              <div className="pt-4 space-y-3">
+                <Link
+                  href="/guest-portal"
+                  className="block px-4 py-3 text-base font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-gray-50 rounded-lg transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Guest Portal
+                </Link>
                 
-                {/* Mobile CTAs */}
-                <div className="pt-4 space-y-3">
+                <div className="px-4 pt-2">
                   <Link
-                    href="/guest-portal"
-                    className="block px-4 py-3 text-base font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-gray-50 rounded-lg transition-colors"
+                    href="/donate"
+                    className="btn btn-accent w-full flex items-center justify-center gap-2"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Guest Portal
+                    <Heart className="w-4 h-4" />
+                    Donate Now
                   </Link>
-                  
-                  <div className="px-4 space-y-3">
-                    <Link
-                      href="/get-help"
-                      className="btn btn-secondary w-full justify-center"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Get Help
-                    </Link>
-                    <Link
-                      href="/donate"
-                      className="btn btn-accent w-full flex items-center justify-center gap-2"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      <Heart className="w-4 h-4" />
-                      Donate Now
-                    </Link>
-                  </div>
-                  
-                  {/* Mobile Contact */}
-                  <div className="px-4 pt-4">
-                    <a 
-                      href="tel:+12055221162" 
-                      className="flex items-center gap-2 text-[var(--color-primary)] font-medium"
-                    >
-                      <Phone className="w-4 h-4" />
-                      (205) 522-1162
-                    </a>
-                  </div>
+                </div>
+                
+                {/* Mobile Contact */}
+                <div className="px-4 pt-4 space-y-3">
+                  <a 
+                    href="tel:+12055221162" 
+                    className="flex items-center gap-2 text-[var(--color-primary)] font-medium"
+                  >
+                    <Phone className="w-4 h-4" />
+                    (205) 522-1162
+                  </a>
+                  <a 
+                    href="mailto:info@the-ladder.org" 
+                    className="flex items-center gap-2 text-[var(--color-primary)] font-medium"
+                  >
+                    <Mail className="w-4 h-4" />
+                    info@the-ladder.org
+                  </a>
                 </div>
               </div>
             </div>
-          </>
-        )}
+          </div>
+        </div>
       </header>
     </>
   )

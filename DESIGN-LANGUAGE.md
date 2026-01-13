@@ -1,211 +1,245 @@
-# English Mountain Raceway - Official Design Language Guide
+# The Ladder - Institutional Trust Design System
 
 ## Design Philosophy
-**"Premium Performance Racing Heritage"** - Inspired by Ferrari and McLaren's luxury automotive aesthetic, combined with hardcore dragstrip authenticity. Every element conveys precision engineering, racing excellence, and professional motorsport credibility.
+
+The Ladder uses an **Institutional Trust** design system inspired by established nonprofits like the Red Cross and United Way. This approach emphasizes credibility, professionalism, and accessibility while maintaining warmth and approachability.
+
+## Core Principles
+
+1. **Credibility First** - Trust signals prominently displayed
+2. **Clean & Professional** - No flashy effects or distracting animations
+3. **Accessible** - WCAG AA compliant, keyboard navigable
+4. **Donor-Centric** - Copy positions donors as heroes
+5. **Impact-Focused** - Show measurable results
 
 ---
 
-## Color System
+## Color Palette
 
-### Primary Racing Palette
-- **Primary Green**: `#22c55e` - Energy, speed, track status
-- **Accent Blue**: `#3b82f6` - Technology and performance  
-- **Secondary Purple**: `#a855f7` - Premium excitement
-- **Background Black**: `#000000` - Maximum contrast racing feel
+### Primary Colors
 
-### Usage Guidelines
-- **Primary Green**: Track status, main CTAs, racing credentials
-- **Accent Blue**: Technical specs, performance data, interactive elements
-- **Secondary Purple**: Special events, premium features, racing classes
-- **Black/Gray**: Backgrounds, text hierarchy, card systems
+| Color | Hex | CSS Variable | Usage |
+|-------|-----|--------------|-------|
+| Primary Blue | `#1B4F72` | `--color-primary` | Headers, CTAs, trust |
+| Primary Light | `#2874A6` | `--color-primary-light` | Hover states |
+| Primary Dark | `#154360` | `--color-primary-dark` | Active states |
+
+### Secondary Colors
+
+| Color | Hex | CSS Variable | Usage |
+|-------|-----|--------------|-------|
+| Teal Green | `#148F77` | `--color-secondary` | Success, growth |
+| Light Teal | `#1ABC9C` | `--color-secondary-light` | Accents |
+
+### Accent Colors (Conversion)
+
+| Color | Hex | CSS Variable | Usage |
+|-------|-----|--------------|-------|
+| Warm Orange | `#E67E22` | `--color-accent` | Donate buttons, CTAs |
+| Light Orange | `#F39C12` | `--color-accent-light` | Hover states |
+
+### Neutral Colors
+
+| Color | Hex | CSS Variable | Usage |
+|-------|-----|--------------|-------|
+| Off White | `#FDFEFE` | `--color-off-white` | Backgrounds |
+| Light Gray | `#F8F9FA` | `--color-gray-50` | Section backgrounds |
+| Border | `#E5E8E8` | `--color-border` | Card borders |
+| Text Primary | `#1C2833` | `--color-text-primary` | Headings |
+| Text Secondary | `#566573` | `--color-text-secondary` | Body text |
 
 ---
 
-## Typography System
+## Typography
 
-### Font Stack
+### Font Families
+
 ```css
---font-display: 'Anton', Impact, 'Arial Black', sans-serif;
---font-body: 'Inter', system-ui, sans-serif;
+--font-heading: 'Merriweather', Georgia, serif;
+--font-body: 'Source Sans 3', system-ui, sans-serif;
 ```
 
-### Racing Typography Hierarchy
-- **Hero Headlines**: Anton, font-black, tracking-wide, text-4xl to text-7xl
-- **Section Headlines**: Anton, font-black, tracking-wide, text-3xl to text-6xl  
-- **Body Text**: Inter, font-medium, text-base to text-xl
-- **Racing Stats**: Anton, font-black, text-4xl to text-5xl
+### Headings (Merriweather)
+
+- **H1**: 48-60px, Bold (700), line-height 1.25
+- **H2**: 36-48px, Bold (700), line-height 1.25
+- **H3**: 24-30px, Bold (700), line-height 1.25
+- **H4**: 20px, Semibold (600), line-height 1.25
+
+### Body Text (Source Sans 3)
+
+- **Large**: 18px, Regular (400), line-height 1.625
+- **Base**: 16px, Regular (400), line-height 1.625
+- **Small**: 14px, Regular (400), line-height 1.5
 
 ---
 
-## Layout System
+## Spacing
 
-### Mobile-First Grid Strategy
-- **Mobile**: Single column, full-width stacking
-- **Desktop**: Two-column asymmetrical grid (60/40 split)
-- **Container**: max-w-7xl with responsive padding px-4 sm:px-6 lg:px-8
+Based on 8px grid:
 
-### Spacing Scale (8px Base Grid)
-- **Sections**: py-12 sm:py-16 lg:py-20
-- **Component gaps**: gap-6 sm:gap-8 lg:gap-12
-- **Card padding**: p-6 sm:p-8 lg:p-10
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--space-2` | 8px | Inline spacing |
+| `--space-4` | 16px | Component padding |
+| `--space-6` | 24px | Card padding |
+| `--space-8` | 32px | Section spacing |
+| `--space-16` | 64px | Large spacing |
+| `--section-padding-y` | 80px | Section vertical |
+| `--section-padding-y-mobile` | 48px | Mobile sections |
 
 ---
 
-## Component Patterns
+## Components
 
-### Glass Morphism Cards
-```css
-.racing-glass-card {
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(16px);
-  border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
+### Buttons
+
+```jsx
+// Primary Button (Trust Blue)
+<button className="btn btn-primary">Action</button>
+
+// Secondary Button (Outlined)
+<button className="btn btn-secondary">Secondary</button>
+
+// Accent Button (Donation CTA - Orange)
+<button className="btn btn-accent">Donate Now</button>
+
+// Large Button
+<button className="btn btn-lg btn-primary">Large Action</button>
 ```
 
-### Button System
-- **Primary CTA**: bg-primary-600, shadow-lg shadow-primary-600/30
-- **Secondary**: border-2 border-gray-600, hover:bg-white/5
-- **Touch Targets**: min-h-[44px] py-3 px-6
+### Cards
 
-### Status Indicators
-- **Animated pulse**: bg-primary-400 with pulse animation
-- **Glass morphism background**: bg-black/60 backdrop-blur-sm
-- **Monospace labels**: font-mono tracking-wider uppercase
+```jsx
+// Default Card
+<div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+  Content
+</div>
+
+// Accent Card (left border)
+<div className="bg-white border-l-4 border-l-[var(--color-primary)] border border-gray-200 p-6">
+  Content
+</div>
+```
+
+### Trust Signals
+
+Always visible on key pages:
+
+```jsx
+<div className="trust-bar">
+  <span>501(c)(3) Tax Exempt</span>
+  <span>EIN: 82-0737087</span>
+  <span>Serving Birmingham Since 2021</span>
+</div>
+```
 
 ---
 
-## Animation Standards
+## Page Structure
 
-### Framer Motion Variants
-```javascript
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut", 
-      staggerChildren: 0.2
-    }
+### Hero Sections
+
+- Background: `bg-[var(--color-primary)]`
+- Text: White with `text-white/90` for body
+- Include trust badge when relevant
+- Clear CTA buttons
+
+### Section Backgrounds
+
+Alternate between:
+- `bg-white` - Primary content
+- `bg-gray-50` - Secondary content
+- `bg-[var(--color-primary)]` - CTA sections
+
+### Stats Display
+
+```jsx
+<div className="text-center">
+  <div className="text-4xl font-bold text-[var(--color-primary)]" style={{ fontFamily: 'var(--font-heading)' }}>
+    500+
+  </div>
+  <div className="text-sm text-[var(--color-text-secondary)]">
+    Individuals Helped
+  </div>
+</div>
+```
+
+---
+
+## Copy Guidelines
+
+### Voice
+
+- **Professional** but warm
+- **Confident** but humble
+- **Direct** and clear
+
+### Donor-Centric Language
+
+| Instead of | Use |
+|------------|-----|
+| "We need donations" | "You can make a difference" |
+| "The Ladder does..." | "Your support enables..." |
+| "Donate money" | "Support our mission" |
+
+### Key Phrases
+
+- "Helping individuals overcome barriers"
+- "Your generosity creates real change"
+- "100% to direct services"
+- "Free and confidential support"
+
+---
+
+## Accessibility
+
+### Required Features
+
+- Skip navigation link
+- ARIA labels on interactive elements
+- Focus indicators: `outline: 3px solid rgba(27, 79, 114, 0.5)`
+- Color contrast minimum 4.5:1
+- Touch targets minimum 44px
+
+### Reduced Motion
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" }
-  }
-}
 ```
 
-### Interaction Patterns
-- **Hover Effects**: scale(1.05), y: -4px
-- **Button Animations**: scale(1.02) on hover, scale(0.98) on tap
-- **Transition Timing**: 300ms ease-out for interactions
+---
+
+## File Structure
+
+```
+src/
+├── app/
+│   ├── globals.css          # Global styles
+│   ├── layout.jsx           # Root layout with fonts
+│   └── [pages]/page.jsx     # Individual pages
+├── components/
+│   ├── SiteHeader.jsx       # Navigation
+│   ├── SiteFooter.jsx       # Footer with trust signals
+│   └── Card.jsx             # Card components
+└── styles/
+    └── design-tokens.css    # CSS custom properties
+```
 
 ---
 
-## Racing-Specific Elements
+## Trust Indicators Checklist
 
-### Track Status Display
-- **Active Indicator**: Pulsing green dot with "Facility Active" label
-- **Typography**: font-mono uppercase tracking-widest
-- **Background**: Glass morphism with primary border
+Every key page should include:
 
-### Racing Statistics
-- **Large Numbers**: Anton font, text-4xl to text-5xl
-- **Color Coding**: Primary for track specs, accent for sanctioning, secondary for schedule
-- **Layout**: Horizontal flex layout with consistent spacing
-
-### Event Information Cards
-- **Two-column layout**: Event details + pricing/location
-- **Glass morphism styling**: Backdrop blur with subtle borders
-- **Racing typography**: Anton for headlines, Inter for details
-
----
-
-## Responsive Design Patterns
-
-### Breakpoint Strategy
-- **Mobile**: 320px+ (base styles)
-- **Tablet**: 640px+ (sm:)
-- **Desktop**: 1024px+ (lg:)
-- **Large**: 1280px+ (xl:)
-
-### Mobile Optimizations
-- **Full-width CTAs**: w-full sm:w-auto
-- **Stacked layouts**: flex-col sm:flex-row
-- **Condensed spacing**: gap-4 sm:gap-6 lg:gap-8
-- **Touch-friendly targets**: Minimum 44px height/width
-
----
-
-## Brand Element Usage
-
-### Logo Implementation
-- **Hero Logo**: max-w-2xl (desktop), max-w-lg (mobile)
-- **Navigation Logo**: h-8 md:h-10
-- **Proper alt text**: "English Mountain Raceway"
-
-### Racing Stripe Dividers
-- **Height**: h-32 with gradient background
-- **Stripes**: 2px accent-600 + 1px white
-- **Animation**: scaleX from 0 to 1 with stagger
-
-### Video Backgrounds
-- **Fallback images**: Always provide static fallback
-- **Autoplay**: muted, loop, playsInline
-- **Controls**: Elegant mute toggle with backdrop blur
-
----
-
-## Accessibility Standards
-
-### Racing-Optimized Accessibility
-- **High Contrast**: 4.5:1 minimum for outdoor viewing
-- **Touch Targets**: 44px minimum for gloved hands
-- **Motion Respect**: prefers-reduced-motion support
-- **Focus States**: 3px solid primary-500 outline
-
-### Content Hierarchy
-1. **Hero Level**: Track status, main headline, primary CTA
-2. **Section Level**: Racing experiences, track features, events  
-3. **Supporting Level**: Technical specs, contact info
-4. **Utility Level**: Social links, legal text
-
----
-
-## Performance Guidelines
-
-### Image Optimization
-- **Format**: WebP with fallbacks
-- **Sizing**: Responsive with proper sizes attribute
-- **Priority**: Above-fold images get priority loading
-- **Alt Text**: Descriptive for racing context
-
-### Animation Performance  
-- **GPU Acceleration**: Use transform and opacity only
-- **Reduced Motion**: Respect user preferences
-- **Stagger Timing**: 0.2s delays for smooth reveals
-
----
-
-## Implementation Checklist
-
-- [ ] Mobile-first responsive design
-- [ ] High contrast for outdoor conditions
-- [ ] Touch-optimized interface (44px+ targets)
-- [ ] Racing typography hierarchy maintained
-- [ ] Glass morphism effects properly implemented
-- [ ] Animation timing follows 0.6s standard
-- [ ] Video backgrounds with fallbacks
-- [ ] Accessibility standards met (4.5:1 contrast)
-- [ ] Performance optimized (WebP images, GPU animations)
-- [ ] Brand consistency (logo usage, racing stripes)
-
----
-
-This design language ensures consistent implementation of English Mountain Raceway's premium racing aesthetic across all components and future development.
+- [ ] 501(c)(3) status mention
+- [ ] EIN: 82-0737087
+- [ ] "Founded 2021" or "Serving Since 2021"
+- [ ] "Free and confidential" for service pages
+- [ ] "100% to direct services" for donation pages
+- [ ] Security badges near payment forms

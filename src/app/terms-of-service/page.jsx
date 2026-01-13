@@ -82,7 +82,7 @@ export default function TermsOfServicePage() {
               </h2>
               <div className="glass-card bg-white/50 backdrop-blur-xl border border-white/30 rounded-xl p-6 shadow-lg">
                 <ul className="space-y-3 text-gray-700">
-                  <li><strong>"Organization"</strong> refers to The Ladder, a 501(c)(3) nonprofit organization (EIN: 47-2123160) based in Birmingham, Alabama.</li>
+                  <li><strong>"Organization"</strong> refers to The Ladder, a 501(c)(3) nonprofit organization (EIN: 82-0737087) based in Birmingham, Alabama.</li>
                   <li><strong>"Website"</strong> refers to https://the-ladder.org and all associated subdomains and pages.</li>
                   <li><strong>"Services"</strong> refers to all programs, resources, and assistance provided by The Ladder.</li>
                   <li><strong>"User"</strong> refers to any individual accessing or using the Website or Services.</li>
@@ -318,7 +318,7 @@ export default function TermsOfServicePage() {
           "publisher": {
             "@type": "NonProfit",
             "name": "The Ladder",
-            "taxID": "47-2123160",
+            "taxID": "82-0737087",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "2413 1st Ave S", 

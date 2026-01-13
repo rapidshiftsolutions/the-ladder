@@ -35,7 +35,7 @@ export default function ImpactTrustCompact() {
     {
       icon: Shield,
       title: '501(c)(3) Tax Exempt',
-      description: 'Registered nonprofit organization (EIN: 47-2123160). All donations are tax-deductible.'
+      description: 'Registered nonprofit organization (EIN: 82-0737087). All donations are tax-deductible.'
     },
     {
       icon: Award,

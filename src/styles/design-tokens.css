@@ -18,10 +18,10 @@
   --color-secondary-light: #1ABC9C;   /* Light teal for accents */
   --color-secondary-dark: #117A65;    /* Dark teal for contrast */
   
-  /* Accent Colors - Conversion Optimized */
-  --color-accent: #E67E22;            /* Warm orange - CTAs, donations */
-  --color-accent-light: #F39C12;      /* Light orange for hover */
-  --color-accent-dark: #D35400;       /* Dark orange for active */
+  /* Accent Colors - Matching Logo Red */
+  --color-accent: #C0392B;            /* Deep red matching logo - CTAs, donations */
+  --color-accent-light: #E74C3C;      /* Lighter red for hover */
+  --color-accent-dark: #922B21;       /* Darker red for active */
   
   /* Neutral Colors */
   --color-white: #FFFFFF;

@@ -254,7 +254,7 @@ const TheLadderFooter = () => {
                   &copy; {currentYear} The Ladder
                 </span>
                 <span className="text-base" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
-                  501(c)(3) Nonprofit • EIN: 47-2123160
+                  501(c)(3) Nonprofit • EIN: 82-0737087
                 </span>
                 <span className="text-base" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
                   Birmingham, Alabama

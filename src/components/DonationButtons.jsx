@@ -248,7 +248,7 @@ export default function DonationButtons({
       <div className="mt-6 pt-6 border-t border-[var(--color-border)]">
         <div className="trust-badge mx-auto w-fit">
           <Heart className="w-4 h-4" />
-          <span>501(c)(3) Tax-Deductible • EIN: 47-2123160</span>
+          <span>501(c)(3) Tax-Deductible • EIN: 82-0737087</span>
         </div>
       </div>
     </div>

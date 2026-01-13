@@ -12,8 +12,8 @@ export default function HeroCompact() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/TheLadder/photos/LadderImage.jpg"
-            alt="Community members supporting each other"
+            src="/TheLadder/photos/Jamil.jpg"
+            alt="Jamil - a success story from The Ladder"
             fill
             className="object-cover"
             priority
@@ -22,8 +22,8 @@ export default function HeroCompact() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-          <div className="max-w-3xl">
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+          <div className="max-w-2xl text-center sm:text-left">
             {/* Trust Badge */}
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
               <Shield className="w-4 h-4 text-white" />
@@ -37,29 +37,30 @@ export default function HeroCompact() {
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
-              Helping Individuals Overcome{' '}
-              <span className="text-[var(--color-accent-light)]">Barriers to Success</span>
+              Helping Individuals<br className="hidden sm:block" />
+              Overcome <span className="text-[var(--color-accent-light)]">Barriers<br className="hidden sm:block" />
+              to Success</span>
             </h1>
 
             {/* Subheadline */}
-            <p className="text-xl lg:text-2xl text-white/90 mb-8 leading-relaxed max-w-2xl">
+            <p className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-8 leading-relaxed">
               When life&apos;s obstacles stand in your way, The Ladder partners with you 
               to find solutions. We provide personalized crisis intervention and 
               connect you with the resources you need.
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 mb-10">
               <Link
                 href="/get-help"
-                className="btn btn-lg bg-white text-[var(--color-primary)] hover:bg-gray-100 font-semibold"
+                className="btn btn-lg bg-white text-[var(--color-primary)] hover:bg-gray-100 font-semibold inline-flex items-center justify-center"
               >
                 Get Help Today
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
               <Link
                 href="/donate"
-                className="btn btn-lg bg-[var(--color-accent)] text-white hover:bg-[var(--color-accent-light)] font-semibold flex items-center gap-2"
+                className="btn btn-lg bg-[var(--color-accent)] text-white hover:bg-[var(--color-accent-light)] font-semibold inline-flex items-center justify-center gap-2"
               >
                 <Heart className="w-5 h-5" />
                 Make a Donation
@@ -67,7 +68,7 @@ export default function HeroCompact() {
             </div>
 
             {/* Quick Contact */}
-            <div className="flex items-center gap-6 text-white/80 text-sm">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-white/80 text-sm">
               <a 
                 href="tel:+12055221162" 
                 className="flex items-center gap-2 hover:text-white transition-colors"
@@ -75,7 +76,7 @@ export default function HeroCompact() {
                 <Phone className="w-4 h-4" />
                 (205) 522-1162
               </a>
-              <span className="text-white/40">|</span>
+              <span className="hidden sm:block text-white/40">|</span>
               <span>All services are free and confidential</span>
             </div>
           </div>

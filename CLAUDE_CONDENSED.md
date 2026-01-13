@@ -5,11 +5,11 @@
 **USP**: "Missing rung" assistance - help when no one else can
 **Primary CTA**: Donate (Orange #FF6B35) | Apply for Help | Partner With Us
 **Key Pages**: Homepage, Donate, Testimonies, Leadership, Resources, Contact
-**Trust Elements**: 501(c)(3) EIN 47-2123160, SSL, Partner logos, Success stories
+**Trust Elements**: 501(c)(3) EIN 82-0737087, SSL, Partner logos, Success stories
 **Mobile**: 64% traffic - ALWAYS mobile-first, 16px min font, 44px touch targets
 
 ## Core Identity
-- **501(c)(3)** nonprofit, Birmingham AL, Founded 2021, EIN: 47-2123160
+- **501(c)(3)** nonprofit, Birmingham AL, Founded 2021, EIN: 82-0737087
 - **Mission**: Help individuals climb over specific personal barriers preventing life progress
 - **Model**: Partner with nonprofits to fill service gaps they can't address
 - **Tagline**: "Helping people climb over life's barriers, one rung at a time"
@@ -126,7 +126,7 @@ CTA: 16px semibold
   "@type": "NGO",
   "name": "The Ladder",
   "nonprofitStatus": "NonprofitType501c3",
-  "taxID": "47-2123160",
+  "taxID": "82-0737087",
   "areaServed": {"@type": "City", "name": "Birmingham"}
 }
 ```

@@ -103,7 +103,7 @@ const FooterCompact = () => {
             </h4>
             <div className="space-y-2 mb-4">
               <p className="text-sm text-white/70">501(c)(3) Nonprofit</p>
-              <p className="text-sm text-white/70">EIN: 47-2123160</p>
+              <p className="text-sm text-white/70">EIN: 82-0737087</p>
               <p className="text-sm text-white/70">Founded: 2021</p>
             </div>
             

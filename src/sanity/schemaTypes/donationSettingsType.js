@@ -51,7 +51,7 @@ export const donationSettingsType = defineType({
       title: 'Tax Deductibility Notice',
       type: 'text',
       rows: 2,
-      initialValue: 'The Ladder is a 501(c)(3) nonprofit organization (EIN: 47-2123160). All donations are tax-deductible to the extent allowed by law.',
+      initialValue: 'The Ladder is a 501(c)(3) nonprofit organization (EIN: 82-0737087). All donations are tax-deductible to the extent allowed by law.',
     }),
   ],
   preview: {

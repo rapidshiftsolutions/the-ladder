@@ -48,7 +48,7 @@ export const siteSettingsType = defineType({
       name: 'ein',
       title: 'EIN (Tax ID)',
       type: 'string',
-      initialValue: '47-2123160',
+      initialValue: '82-0737087',
     }),
     defineField({
       name: 'socialLinks',

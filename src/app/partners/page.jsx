@@ -1,7 +1,10 @@
 import SiteHeader from '/src/components/SiteHeader'
 import SiteFooter from '/src/components/SiteFooter'
 import Link from 'next/link'
-import { Handshake, CheckCircle, ArrowRight, Building2, Users, Heart } from 'lucide-react'
+import Image from 'next/image'
+import { Handshake, CheckCircle, ArrowRight, Building2, Users, Heart, Phone, ExternalLink } from 'lucide-react'
+import { client } from '@/sanity/lib/client'
+import { allPartnerOrganizationsQuery } from '@/sanity/queries/partnerOrganizationsQuery'
 
 export const metadata = {
   title: 'Partner Organizations | Nonprofit Collaboration',
@@ -14,7 +17,47 @@ export const metadata = {
   }
 }
 
-export default function PartnersPage() {
+// Revalidate every hour
+export const revalidate = 3600
+
+// Category display labels
+const categoryLabels = {
+  housing: 'Housing',
+  employment: 'Employment',
+  healthcare: 'Healthcare',
+  legal: 'Legal Services',
+  food: 'Food/Clothing',
+  education: 'Education',
+  financial: 'Financial Services',
+  transportation: 'Transportation',
+  government: 'Government Agency',
+  faith: 'Faith-Based',
+  other: 'Other'
+}
+
+async function getPartnerOrganizations() {
+  try {
+    const partners = await client.fetch(allPartnerOrganizationsQuery)
+    return partners || []
+  } catch (error) {
+    console.error('Error fetching partner organizations:', error)
+    return []
+  }
+}
+
+export default async function PartnersPage() {
+  const partners = await getPartnerOrganizations()
+  
+  // Group partners by category
+  const partnersByCategory = partners.reduce((acc, partner) => {
+    const category = partner.category || 'other'
+    if (!acc[category]) acc[category] = []
+    acc[category].push(partner)
+    return acc
+  }, {})
+
+  const featuredPartners = partners.filter(p => p.featured)
+
   return (
     <>
       <SiteHeader />
@@ -37,6 +80,41 @@ export default function PartnersPage() {
             </div>
           </div>
         </section>
+
+        {/* Featured Partners */}
+        {featuredPartners.length > 0 && (
+          <section className="py-12 bg-gray-50 border-b border-gray-200">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-8">
+                <h2 className="text-lg font-semibold text-[var(--color-text-secondary)]">
+                  Featured Partners
+                </h2>
+              </div>
+              <div className="flex flex-wrap justify-center gap-8 lg:gap-12 max-w-4xl mx-auto">
+                {featuredPartners.map((partner) => (
+                  <div key={partner._id} className="text-center">
+                    {partner.logo?.asset?.url ? (
+                      <div className="w-20 h-20 rounded-lg overflow-hidden mx-auto mb-2 bg-white p-2 border border-gray-200">
+                        <Image
+                          src={partner.logo.asset.url}
+                          alt={partner.name}
+                          width={64}
+                          height={64}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                    ) : (
+                      <div className="w-20 h-20 bg-[var(--color-primary)]/10 rounded-lg flex items-center justify-center mx-auto mb-2">
+                        <Building2 className="w-8 h-8 text-[var(--color-primary)]" />
+                      </div>
+                    )}
+                    <p className="text-sm font-medium text-[var(--color-text-primary)]">{partner.name}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Partnership Model */}
         <section className="py-16 lg:py-24 bg-white">
@@ -159,8 +237,99 @@ export default function PartnersPage() {
           </div>
         </section>
 
+        {/* Partner Organizations Directory */}
+        {partners.length > 0 && (
+          <section className="py-16 lg:py-24 bg-gray-50">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-12">
+                <h2 
+                  className="text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] mb-4"
+                  style={{ fontFamily: 'var(--font-heading)' }}
+                >
+                  Our Partner Organizations
+                </h2>
+                <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+                  Birmingham nonprofits and community resources we work with to serve individuals.
+                </p>
+              </div>
+
+              <div className="max-w-5xl mx-auto space-y-12">
+                {Object.entries(partnersByCategory).map(([category, categoryPartners]) => (
+                  <div key={category}>
+                    <h3 
+                      className="text-xl font-bold text-[var(--color-text-primary)] mb-6 flex items-center gap-2"
+                      style={{ fontFamily: 'var(--font-heading)' }}
+                    >
+                      <span className="w-8 h-0.5 bg-[var(--color-primary)]" />
+                      {categoryLabels[category] || category}
+                    </h3>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      {categoryPartners.map((partner) => (
+                        <div 
+                          key={partner._id}
+                          className="bg-white rounded-xl p-6 border border-gray-200"
+                        >
+                          <div className="flex items-start gap-4">
+                            {partner.logo?.asset?.url ? (
+                              <div className="w-14 h-14 rounded-lg overflow-hidden bg-gray-50 p-2 border border-gray-100 flex-shrink-0">
+                                <Image
+                                  src={partner.logo.asset.url}
+                                  alt={partner.name}
+                                  width={48}
+                                  height={48}
+                                  className="w-full h-full object-contain"
+                                />
+                              </div>
+                            ) : (
+                              <div className="w-14 h-14 bg-[var(--color-primary)]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <Building2 className="w-7 h-7 text-[var(--color-primary)]" />
+                              </div>
+                            )}
+                            <div className="flex-1 min-w-0">
+                              <h4 className="font-semibold text-[var(--color-text-primary)] mb-1">
+                                {partner.name}
+                              </h4>
+                              {partner.description && (
+                                <p className="text-sm text-[var(--color-text-secondary)] mb-3 line-clamp-2">
+                                  {partner.description}
+                                </p>
+                              )}
+                              <div className="flex flex-wrap gap-3 text-sm">
+                                {partner.phone && (
+                                  <a 
+                                    href={`tel:${partner.phone.replace(/[^0-9]/g, '')}`}
+                                    className="flex items-center gap-1 text-[var(--color-primary)] hover:underline"
+                                  >
+                                    <Phone className="w-4 h-4" />
+                                    {partner.phone}
+                                  </a>
+                                )}
+                                {partner.website && (
+                                  <a 
+                                    href={partner.website}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-1 text-[var(--color-primary)] hover:underline"
+                                  >
+                                    <ExternalLink className="w-4 h-4" />
+                                    Website
+                                  </a>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* Benefits */}
-        <section className="py-16 lg:py-24 bg-gray-50">
+        <section className="py-16 lg:py-24 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 
@@ -172,7 +341,7 @@ export default function PartnersPage() {
             </div>
 
             <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-xl p-8 border border-gray-200 text-center">
+              <div className="bg-gray-50 rounded-xl p-8 border border-gray-200 text-center">
                 <div className="w-14 h-14 bg-[var(--color-primary)]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
                   <Users className="w-7 h-7 text-[var(--color-primary)]" />
                 </div>
@@ -184,7 +353,7 @@ export default function PartnersPage() {
                 </p>
               </div>
               
-              <div className="bg-white rounded-xl p-8 border border-gray-200 text-center">
+              <div className="bg-gray-50 rounded-xl p-8 border border-gray-200 text-center">
                 <div className="w-14 h-14 bg-[var(--color-primary)]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
                   <Building2 className="w-7 h-7 text-[var(--color-primary)]" />
                 </div>
@@ -196,7 +365,7 @@ export default function PartnersPage() {
                 </p>
               </div>
               
-              <div className="bg-white rounded-xl p-8 border border-gray-200 text-center">
+              <div className="bg-gray-50 rounded-xl p-8 border border-gray-200 text-center">
                 <div className="w-14 h-14 bg-[var(--color-primary)]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
                   <Handshake className="w-7 h-7 text-[var(--color-primary)]" />
                 </div>

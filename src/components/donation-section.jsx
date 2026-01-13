@@ -88,7 +88,7 @@ export default function DonationSection() {
         {/* Tax deductible notice */}
         <div className="mt-8 pt-6 border-t border-white/20">
           <p className="text-white/90 text-sm">
-            <strong>The Ladder is a 501(c)(3) tax-exempt organization (EIN: 47-2123160)</strong><br />
+            <strong>The Ladder is a 501(c)(3) tax-exempt organization (EIN: 82-0737087)</strong><br />
             Your donation is tax-deductible to the extent allowed by law
           </p>
         </div>

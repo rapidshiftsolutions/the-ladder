@@ -50,7 +50,7 @@ export default function BoardGovernancePage() {
                   </div>
                   <div>
                     <div className="text-sm text-[var(--color-text-secondary)] mb-1">EIN</div>
-                    <div className="font-semibold text-[var(--color-text-primary)]">47-2123160</div>
+                    <div className="font-semibold text-[var(--color-text-primary)]">82-0737087</div>
                   </div>
                   <div>
                     <div className="text-sm text-[var(--color-text-secondary)] mb-1">Founded</div>

@@ -1,163 +1,246 @@
-import SiteHeader from '@/components/SiteHeader'
-import SiteFooter from '@/components/SiteFooter'
-import PageHero from '@/components/PageHero'
-import SectionWrapper, { SectionHeader } from '@/components/SectionWrapper'
-import EventCard from '@/components/EventCard'
-import CTASection from '@/components/CTASection'
-import { Calendar } from 'lucide-react'
+import SiteHeader from '/src/components/SiteHeader'
+import SiteFooter from '/src/components/SiteFooter'
+import Link from 'next/link'
+import Image from 'next/image'
+import { Calendar, MapPin, Clock, ArrowRight, Heart, Users, ExternalLink } from 'lucide-react'
+import { getUpcomingEvents } from '@/sanity/eventQueries'
 
 export const metadata = {
-  title: 'Events',
-  description: 'Join The Ladder at upcoming fundraisers, volunteer events, and community gatherings in Birmingham.',
+  title: 'Events | Community Gatherings',
+  description: 'Join The Ladder at community events, fundraisers, and volunteer opportunities in Birmingham. Stay connected with our mission.',
+  openGraph: {
+    title: 'Events | The Ladder Birmingham',
+    description: 'Find upcoming events and get involved with The Ladder.',
+    url: 'https://www.the-ladder.org/events',
+    type: 'website'
+  }
 }
 
-// Placeholder events - will be replaced by Sanity data
-const events = [
-  {
-    title: 'Annual Fundraising Gala',
-    slug: 'annual-gala-2026',
-    eventType: 'fundraiser',
-    eventDate: '2026-04-15T18:00:00',
-    location: {
-      name: 'Birmingham Museum of Art',
-      address: '2000 Reverend Abraham Woods Jr. Blvd, Birmingham, AL 35203',
-      isVirtual: false,
-    },
-    description: 'Join us for an elegant evening celebrating our impact in Birmingham. Dinner, live auction, and inspiring stories from those we\'ve helped.',
-    registrationUrl: 'https://eventbrite.com/example',
-    cost: '$100/person, $750/table',
-    status: 'upcoming',
-    featured: true,
-  },
-  {
-    title: 'Spring Volunteer Day',
-    slug: 'spring-volunteer-day',
-    eventType: 'volunteer',
-    eventDate: '2026-03-22T09:00:00',
-    location: {
-      name: 'Community Center',
-      address: 'Birmingham, AL',
-      isVirtual: false,
-    },
-    description: 'Help us organize donation drives and prepare care packages for families in need. All ages welcome!',
-    cost: 'Free',
-    status: 'upcoming',
-  },
-  {
-    title: 'Barrier Awareness Workshop',
-    slug: 'barrier-awareness-workshop',
-    eventType: 'training',
-    eventDate: '2026-02-28T12:00:00',
-    location: {
-      isVirtual: true,
-      virtualLink: 'https://zoom.us/example',
-    },
-    description: 'Learn about the types of barriers Birmingham residents face and how organizations can help. Perfect for social workers and nonprofit partners.',
-    cost: 'Free',
-    status: 'upcoming',
-  },
-]
+// Revalidate every hour
+export const revalidate = 3600
 
-export default function EventsPage() {
-  const upcomingEvents = events.filter(e => e.status === 'upcoming')
-  const pastEvents = events.filter(e => e.status === 'completed')
+async function getEvents() {
+  try {
+    const events = await getUpcomingEvents(10)
+    return events || []
+  } catch (error) {
+    console.error('Error fetching events:', error)
+    return []
+  }
+}
+
+function formatEventDate(dateString) {
+  const date = new Date(dateString)
+  return date.toLocaleDateString('en-US', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  })
+}
+
+export default async function EventsPage() {
+  const events = await getEvents()
+  const hasEvents = events && events.length > 0
 
   return (
     <>
       <SiteHeader />
-      
-      <main id="main-content">
-        <PageHero
-          subtitle="Events"
-          title="Join Us"
-          description="Connect with The Ladder at our fundraisers, volunteer events, and community gatherings. Together, we can remove more barriers."
-          size="small"
-        />
-
-        {/* Upcoming Events */}
-        <SectionWrapper background="light" padding="large">
-          <SectionHeader
-            subtitle="What's Coming"
-            title="Upcoming Events"
-          />
-
-          {upcomingEvents.length > 0 ? (
-            <div className="space-y-6 max-w-4xl mx-auto">
-              {upcomingEvents.map((event, index) => (
-                <EventCard
-                  key={index}
-                  title={event.title}
-                  slug={event.slug}
-                  eventType={event.eventType}
-                  eventDate={event.eventDate}
-                  endDate={event.endDate}
-                  location={event.location}
-                  description={event.description}
-                  image={event.image}
-                  registrationUrl={event.registrationUrl}
-                  cost={event.cost}
-                  status={event.status}
-                  featured={event.featured}
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12">
-              <Calendar className="w-12 h-12 text-[var(--color-text-muted)] mx-auto mb-4" />
-              <p className="text-[var(--color-text-secondary)]">
-                No upcoming events at the moment. Check back soon!
+      <main id="main-content" className="min-h-screen bg-white">
+        
+        {/* Hero Section */}
+        <section className="bg-[var(--color-primary)] py-16 lg:py-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto text-center">
+              <h1 
+                className="text-4xl lg:text-5xl font-bold text-white mb-6"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                Upcoming Events
+              </h1>
+              <p className="text-xl text-white/90">
+                Join us at community gatherings, fundraisers, and volunteer 
+                opportunities throughout Birmingham.
               </p>
             </div>
-          )}
-        </SectionWrapper>
-
-        {/* Host Your Own Event */}
-        <SectionWrapper background="subtle" padding="default">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[var(--color-text-primary)] mb-4">
-              Host a Fundraiser for The Ladder
-            </h2>
-            <p className="text-[var(--color-text-secondary)] mb-6">
-              Want to organize your own event to benefit The Ladder? We&apos;d love to 
-              support you! From birthday fundraisers to corporate giving events, 
-              there are many ways to get involved.
-            </p>
-            <a
-              href="/contact?subject=host-event"
-              className="btn btn-primary"
-            >
-              Contact Us to Learn More
-            </a>
           </div>
-        </SectionWrapper>
+        </section>
 
-        {/* Past Events */}
-        {pastEvents.length > 0 && (
-          <SectionWrapper background="light" padding="large">
-            <SectionHeader
-              subtitle="Past Events"
-              title="What We've Done"
-            />
-            <div className="space-y-6 max-w-4xl mx-auto">
-              {pastEvents.map((event, index) => (
-                <EventCard
-                  key={index}
-                  title={event.title}
-                  slug={event.slug}
-                  eventType={event.eventType}
-                  eventDate={event.eventDate}
-                  location={event.location}
-                  description={event.description}
-                  status={event.status}
-                />
-              ))}
+        {/* Events List */}
+        <section className="py-16 lg:py-24 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              {hasEvents ? (
+                <div className="space-y-8">
+                  {events.map((event) => (
+                    <div 
+                      key={event._id}
+                      className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow"
+                    >
+                      <div className="flex flex-col md:flex-row">
+                        {/* Event Image */}
+                        {event.mainImage?.asset && (
+                          <div className="md:w-1/3 h-48 md:h-auto relative">
+                            <Image
+                              src={event.mainImage.asset.url || '/TheLadder/photos/LadderImage.jpg'}
+                              alt={event.mainImage.alt || event.title}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                        )}
+                        
+                        {/* Event Details */}
+                        <div className={`p-6 ${event.mainImage?.asset ? 'md:w-2/3' : 'w-full'}`}>
+                          {event.featured && (
+                            <span className="inline-block px-3 py-1 bg-[var(--color-accent)]/10 text-[var(--color-accent)] text-xs font-medium rounded-full mb-3">
+                              Featured Event
+                            </span>
+                          )}
+                          
+                          <h2 
+                            className="text-2xl font-bold text-[var(--color-text-primary)] mb-3"
+                            style={{ fontFamily: 'var(--font-heading)' }}
+                          >
+                            {event.title}
+                          </h2>
+                          
+                          <div className="flex flex-wrap gap-4 text-sm text-[var(--color-text-secondary)] mb-4">
+                            <div className="flex items-center gap-2">
+                              <Calendar className="w-4 h-4 text-[var(--color-primary)]" />
+                              {formatEventDate(event.eventDate)}
+                            </div>
+                            {event.eventTime && (
+                              <div className="flex items-center gap-2">
+                                <Clock className="w-4 h-4 text-[var(--color-primary)]" />
+                                {event.eventTime}
+                              </div>
+                            )}
+                          </div>
+                          
+                          {event.excerpt && (
+                            <p className="text-[var(--color-text-secondary)] mb-4 line-clamp-2">
+                              {event.excerpt}
+                            </p>
+                          )}
+                          
+                          {event.registrationUrl && (
+                            <a
+                              href={event.registrationUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="btn btn-primary inline-flex items-center gap-2"
+                            >
+                              Register Now
+                              <ExternalLink className="w-4 h-4" />
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                /* No events message */
+                <div className="bg-gray-50 rounded-xl p-12 border border-gray-200 text-center">
+                  <div className="w-16 h-16 bg-[var(--color-primary)]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <Calendar className="w-8 h-8 text-[var(--color-primary)]" />
+                  </div>
+                  <h2 
+                    className="text-2xl font-bold text-[var(--color-text-primary)] mb-4"
+                    style={{ fontFamily: 'var(--font-heading)' }}
+                  >
+                    No Upcoming Events
+                  </h2>
+                  <p className="text-[var(--color-text-secondary)] mb-8 max-w-md mx-auto">
+                    We don&apos;t have any scheduled events at the moment, but check back 
+                    soon or follow us on social media for announcements.
+                  </p>
+                  
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a
+                      href="https://instagram.com/theladder_bham"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-secondary"
+                    >
+                      Follow Us on Instagram
+                    </a>
+                    <Link href="/contact" className="btn btn-primary">
+                      Contact Us
+                    </Link>
+                  </div>
+                </div>
+              )}
             </div>
-          </SectionWrapper>
-        )}
+          </div>
+        </section>
 
-        <CTASection variant="dark" />
+        {/* Ways to Get Involved */}
+        <section className="py-16 lg:py-24 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 
+                className="text-3xl font-bold text-[var(--color-text-primary)] mb-4"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                Other Ways to Get Involved
+              </h2>
+              <p className="text-lg text-[var(--color-text-secondary)]">
+                You don&apos;t need to wait for an event to make a difference.
+              </p>
+            </div>
+
+            <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-8">
+              <div className="bg-white rounded-xl p-8 border border-gray-200 text-center">
+                <div className="w-14 h-14 bg-[var(--color-accent)]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <Heart className="w-7 h-7 text-[var(--color-accent)]" />
+                </div>
+                <h3 className="font-semibold text-[var(--color-text-primary)] mb-2">
+                  Make a Donation
+                </h3>
+                <p className="text-sm text-[var(--color-text-secondary)] mb-4">
+                  Your gift directly removes barriers for Birmingham residents.
+                </p>
+                <Link href="/donate" className="text-[var(--color-primary)] font-medium hover:underline flex items-center justify-center gap-1">
+                  Donate Now <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+              
+              <div className="bg-white rounded-xl p-8 border border-gray-200 text-center">
+                <div className="w-14 h-14 bg-[var(--color-primary)]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-7 h-7 text-[var(--color-primary)]" />
+                </div>
+                <h3 className="font-semibold text-[var(--color-text-primary)] mb-2">
+                  Volunteer
+                </h3>
+                <p className="text-sm text-[var(--color-text-secondary)] mb-4">
+                  Share your time and skills to help our mission.
+                </p>
+                <Link href="/volunteer" className="text-[var(--color-primary)] font-medium hover:underline flex items-center justify-center gap-1">
+                  Learn More <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+              
+              <div className="bg-white rounded-xl p-8 border border-gray-200 text-center">
+                <div className="w-14 h-14 bg-[var(--color-secondary)]/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <Calendar className="w-7 h-7 text-[var(--color-secondary)]" />
+                </div>
+                <h3 className="font-semibold text-[var(--color-text-primary)] mb-2">
+                  Monthly Giving
+                </h3>
+                <p className="text-sm text-[var(--color-text-secondary)] mb-4">
+                  Provide sustained support with a recurring donation.
+                </p>
+                <Link href="/monthly-giving" className="text-[var(--color-primary)] font-medium hover:underline flex items-center justify-center gap-1">
+                  Start Giving <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
       </main>
-
       <SiteFooter />
     </>
   )

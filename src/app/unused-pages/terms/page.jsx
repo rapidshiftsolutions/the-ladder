@@ -42,7 +42,7 @@ export default function TermsPage() {
             <div className="bg-primary-500/10 border border-primary-500/20 rounded-lg p-4 mb-8">
               <p className="text-text-primary text-sm">
                 These terms govern your use of The Ladder's services, website, donations, and volunteer participation. 
-                <strong>The Ladder</strong> is a 501(c)(3) tax-exempt nonprofit organization (EIN: 47-2123160) 
+                <strong>The Ladder</strong> is a 501(c)(3) tax-exempt nonprofit organization (EIN: 82-0737087) 
                 incorporated in Alabama.
               </p>
             </div>
@@ -357,7 +357,7 @@ export default function TermsPage() {
                       <p className="text-sm">
                         <strong className="text-text-primary">Organization Details:</strong>
                       </p>
-                      <p className="text-sm">EIN: 47-2123160</p>
+                      <p className="text-sm">EIN: 82-0737087</p>
                       <p className="text-sm">501(c)(3) Tax-Exempt Status</p>
                       <p className="text-sm">Alabama Nonprofit Corporation</p>
                     </div>

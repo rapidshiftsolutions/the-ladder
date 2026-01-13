@@ -161,7 +161,7 @@ export default function DonationSectionRedesigned() {
 
               {/* Tax Deductible Notice */}
               <p className="text-xs text-[#718096] text-center mt-4">
-                The Ladder is a 501(c)(3) tax-exempt organization (EIN: 47-2123160).
+                The Ladder is a 501(c)(3) tax-exempt organization (EIN: 82-0737087).
                 Your donation is tax-deductible to the extent allowed by law.
               </p>
             </div>

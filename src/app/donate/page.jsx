@@ -63,7 +63,7 @@ export default function DonatePage() {
                 </span>
                 <span className="flex items-center gap-2">
                   <Shield className="w-4 h-4" />
-                  EIN: 47-2123160
+                  EIN: 82-0737087
                 </span>
               </div>
             </div>
@@ -313,7 +313,7 @@ export default function DonatePage() {
                     Is my donation tax-deductible?
                   </h3>
                   <p className="text-[var(--color-text-secondary)]">
-                    Yes. The Ladder is a 501(c)(3) tax-exempt organization (EIN: 47-2123160). 
+                    Yes. The Ladder is a 501(c)(3) tax-exempt organization (EIN: 82-0737087). 
                     All donations are tax-deductible to the fullest extent allowed by law. 
                     You will receive a receipt for your records.
                   </p>

@@ -190,7 +190,7 @@ Board members have personal experiences overcoming significant life obstacles, i
 
 ### Legal Status
 - 501(c)(3) tax-exempt status
-- EIN: 47-2123160
+- EIN: 82-0737087
 - Founded: 2021
 - Still building financial reporting history (less than 3 years old)
 
@@ -223,43 +223,51 @@ Board members have personal experiences overcoming significant life obstacles, i
 
 This comprehensive documentation captures The Ladder's unique positioning as a gap-filling nonprofit that partners with other organizations to help individuals overcome specific barriers preventing their success.
 
-## Apple iOS Glass Morphism Design System
+## Institutional Trust Design System
 
 ### Official Design Methodology
-**IMPORTANT**: All design and development work MUST follow the comprehensive design methodology documented in `DESIGN_METHODOLOGY.md`. This document contains the complete Apple iOS glass morphism design system developed specifically for The Ladder.
+**IMPORTANT**: All design and development work MUST follow the comprehensive design methodology documented in `DESIGN-LANGUAGE.md`. This document contains the complete Institutional Trust design system developed specifically for The Ladder, inspired by established nonprofits like the Red Cross and United Way.
 
 ### Core Design Principles
-The Ladder website employs authentic Apple iOS glass morphism design principles to create a premium, trustworthy, and modern user experience that aligns with Apple's human interface guidelines while maintaining nonprofit accessibility.
+The Ladder website employs an **Institutional Trust** design system that emphasizes credibility, professionalism, and accessibility while maintaining warmth and approachability.
 
-#### Core Glass Elements
-- **Glassmorphism Cards**: Semi-transparent backgrounds with blur effects
-- **Depth & Layering**: Multiple glass layers creating visual hierarchy  
-- **Smooth Animations**: 60fps transitions and micro-interactions
-- **Premium Typography**: Host Grotesk for headings, Inter for body text
-- **Subtle Shadows**: Multi-layer shadow systems for depth
-- **Interactive States**: Hover, focus, and active glass state transitions
+#### Core Design Elements
+- **Clean Cards**: Professional cards with subtle shadows and borders (no glass effects)
+- **Clear Visual Hierarchy**: Serif headings, sans-serif body text
+- **Trust Signals**: Prominent display of 501(c)(3) status, EIN, and credibility badges
+- **Professional Typography**: Merriweather for headings, Source Sans 3 for body text
+- **Subtle Shadows**: Clean shadow systems for depth
+- **Simple Transitions**: Professional fade and slide animations
 
-#### Color System with Enhanced Contrast (WCAG AA Compliant)
+#### Color System (WCAG AA Compliant)
 ```css
-/* Primary Glass Colors */
---glass-white: rgba(255, 255, 255, 0.1);
---glass-blue: rgba(44, 62, 80, 0.15);    /* Trust Blue with transparency */
---glass-green: rgba(39, 174, 96, 0.12);  /* Growth Green with transparency */
---glass-accent: rgba(231, 76, 60, 0.1);  /* Hope Orange with transparency */
+/* Primary Colors - Institutional Trust */
+--color-primary: #1B4F72;         /* Deep blue - trust, stability */
+--color-primary-light: #2874A6;   /* Hover states */
+--color-primary-dark: #154360;    /* Active states */
 
-/* High Contrast Text (WCAG AA) */
---text-primary: #1A1A1A;      /* 15.3:1 contrast ratio on white */
---text-secondary: #4A5568;    /* 7.4:1 contrast ratio on white */
---text-on-glass: #2D3748;    /* 9.7:1 contrast ratio on glass */
+/* Secondary Colors - Growth */
+--color-secondary: #148F77;       /* Teal green - success, outcomes */
+--color-secondary-light: #1ABC9C; /* Accents */
 
-/* Backdrop Blur Effects */
---blur-sm: blur(4px);
---blur-md: blur(8px);
---blur-lg: blur(16px);
---blur-xl: blur(24px);
+/* Accent Colors - Conversion Optimized */
+--color-accent: #E67E22;          /* Warm orange - donation CTAs */
+--color-accent-light: #F39C12;    /* Hover states */
+
+/* Text Colors (WCAG AA) */
+--color-text-primary: #1C2833;    /* Primary headings and text */
+--color-text-secondary: #566573;  /* Body text, descriptions */
+--color-text-muted: #85929E;      /* Helper text */
 ```
 
-### Mobile-First Responsive Design
+### Typography System
+```css
+/* Font Families */
+--font-heading: 'Merriweather', Georgia, serif;
+--font-body: 'Source Sans 3', system-ui, sans-serif;
+```
+
+### Responsive Design
 #### Breakpoint System
 ```css
 /* Mobile First Approach */
@@ -269,11 +277,11 @@ The Ladder website employs authentic Apple iOS glass morphism design principles 
 --wide: 1440px;     /* Large screen optimization */
 ```
 
-#### Touch Targets & Accessibility
-- **Minimum Touch Target**: 44px × 44px (Apple HIG compliance)
-- **Font Size**: 16px minimum (prevents mobile zoom)
-- **Thumb Zones**: CTAs positioned in natural thumb reach areas
-- **Gesture Support**: Swipe, pinch, and scroll optimizations
+#### Accessibility Requirements
+- **Minimum Touch Target**: 44px × 44px (WCAG compliance)
+- **Font Size**: 16px minimum base font size
+- **Skip Navigation**: Skip to main content link for keyboard users
+- **Focus Indicators**: 3px solid outline with offset for visibility
 
 ### Page Access Control & Security
 
@@ -403,7 +411,7 @@ This enhanced design system ensures The Ladder website represents the profession
   - Active content showcasing community work
 
 ### Legal & Financial Details
-- **EIN**: 47-2123160
+- **EIN**: 82-0737087
 - **Founded**: 2021 (relatively new organization)
 - **Status**: Building operational history and financial reporting
 - **Transparency**: Listed on Charity Navigator and ProPublica Nonprofit Explorer
@@ -1052,7 +1060,7 @@ Contact: [through website]
     "Individual Support"
   ],
   "nonprofitStatus": "NonprofitType501c3",
-  "taxID": "47-2123160",
+  "taxID": "82-0737087",
   "foundingDate": "2021",
   "slogan": "Helping people climb over life's barriers, one rung at a time"
 }
@@ -1608,7 +1616,7 @@ by the terms of service of the applicable payment processor.</p>
 **Tax-Deductible Status:**
 ```html
 <p><strong>Tax Deductibility:</strong> The Ladder is a 501(c)(3) tax-exempt 
-organization (EIN: 47-2123160). Donations are tax-deductible to the extent 
+organization (EIN: 82-0737087). Donations are tax-deductible to the extent 
 allowed by law. Consult your tax advisor for specific guidance.</p>
 ```
 

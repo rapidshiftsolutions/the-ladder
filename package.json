@@ -35,8 +35,11 @@
     "tailwindcss": "^4.0.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.0",
+    "@playwright/test": "^1.57.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "^15.1.6",
+    "lighthouse": "^12.8.2",
     "prettier": "^3.3.2",
     "prettier-plugin-tailwindcss": "^0.6.5",
     "sharp": "^0.34.2",

@@ -158,7 +158,7 @@ export default function ContactSectionRedesigned() {
           <div className="inline-flex items-center gap-2 bg-gray-100 rounded-full px-6 py-3">
             <Shield className="w-5 h-5 text-[#2C3E50]" />
             <p className="text-sm text-[#4A5568]">
-              <strong>501(c)(3) Tax-Exempt Organization</strong> • EIN: 47-2123160
+              <strong>501(c)(3) Tax-Exempt Organization</strong> • EIN: 82-0737087
             </p>
           </div>
         </div>

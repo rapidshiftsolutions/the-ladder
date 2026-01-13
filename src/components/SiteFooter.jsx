@@ -226,7 +226,7 @@ export default function SiteFooter() {
               {/* EIN Badge */}
               <div className="mt-6 p-3 bg-gray-50 rounded-lg">
                 <p className="text-xs text-[var(--color-text-secondary)]">
-                  <strong className="text-[var(--color-text-primary)]">EIN:</strong> 47-2123160
+                  <strong className="text-[var(--color-text-primary)]">EIN:</strong> 82-0737087
                 </p>
                 <p className="text-xs text-[var(--color-text-secondary)] mt-1">
                   Tax-deductible donations

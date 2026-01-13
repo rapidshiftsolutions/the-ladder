@@ -3,6 +3,8 @@ import SiteFooter from '/src/components/SiteFooter'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight, Shield, Heart, Users } from 'lucide-react'
+import { client } from '@/sanity/lib/client'
+import { boardMembersQuery } from '@/sanity/queries/leadershipQuery'
 
 export const metadata = {
   title: 'Leadership Team | Board of Directors',
@@ -15,31 +17,50 @@ export const metadata = {
   }
 }
 
-const boardMembers = [
+// Revalidate every hour
+export const revalidate = 3600
+
+// Fallback data in case Sanity is unavailable
+const fallbackBoardMembers = [
   {
+    _id: 'fallback-chairman',
     name: 'Board Chairman',
-    role: 'Chairman of the Board',
+    title: 'Chairman of the Board',
     organization: 'Blue Cross Blue Shield of Alabama',
     bio: 'Healthcare industry executive with extensive nonprofit board experience. Passionate about community health and crisis intervention. Brings strategic leadership and healthcare industry connections to The Ladder.',
     image: null
   },
   {
+    _id: 'fallback-treasurer',
     name: 'Board Treasurer',
-    role: 'Treasurer',
+    title: 'Treasurer',
     organization: 'Co-Owner, DDS Solutions',
     bio: 'Business leader with expertise in operations and financial management. Committed to efficient resource allocation and sustainable organizational growth. Ensures fiscal responsibility and transparency.',
     image: null
   },
   {
+    _id: 'fallback-secretary',
     name: 'Board Secretary',
-    role: 'Secretary',
+    title: 'Secretary',
     organization: 'Community Volunteer & Mentor',
     bio: 'Certified Peer Support Specialist with lived experience in recovery. Dedicated to helping others overcome personal barriers through mentorship and compassionate support.',
     image: null
   }
 ]
 
-export default function LeadershipTeamPage() {
+async function getBoardMembers() {
+  try {
+    const members = await client.fetch(boardMembersQuery)
+    return members && members.length > 0 ? members : fallbackBoardMembers
+  } catch (error) {
+    console.error('Error fetching board members:', error)
+    return fallbackBoardMembers
+  }
+}
+
+export default async function LeadershipTeamPage() {
+  const boardMembers = await getBoardMembers()
+
   return (
     <>
       <SiteHeader />
@@ -108,17 +129,29 @@ export default function LeadershipTeamPage() {
             </div>
 
             <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
-              {boardMembers.map((member, index) => (
+              {boardMembers.map((member) => (
                 <div 
-                  key={index} 
+                  key={member._id} 
                   className="bg-gray-50 rounded-xl p-8 border border-gray-200 text-center"
                 >
-                  {/* Avatar Placeholder */}
-                  <div className="w-24 h-24 bg-[var(--color-primary)]/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <span className="text-3xl font-bold text-[var(--color-primary)]">
-                      {member.role.split(' ').map(w => w[0]).join('')}
-                    </span>
-                  </div>
+                  {/* Avatar */}
+                  {member.image?.asset?.url ? (
+                    <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-6">
+                      <Image
+                        src={member.image.asset.url}
+                        alt={member.name}
+                        width={96}
+                        height={96}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-24 h-24 bg-[var(--color-primary)]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <span className="text-3xl font-bold text-[var(--color-primary)]">
+                        {member.title?.split(' ').map(w => w[0]).join('') || member.name?.[0] || '?'}
+                      </span>
+                    </div>
+                  )}
                   
                   <h3 
                     className="text-xl font-bold text-[var(--color-text-primary)] mb-1"
@@ -127,7 +160,7 @@ export default function LeadershipTeamPage() {
                     {member.name}
                   </h3>
                   <p className="text-[var(--color-primary)] font-medium mb-2">
-                    {member.role}
+                    {member.title}
                   </p>
                   <p className="text-sm text-[var(--color-text-secondary)] mb-4">
                     {member.organization}
@@ -135,6 +168,17 @@ export default function LeadershipTeamPage() {
                   <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
                     {member.bio}
                   </p>
+                  
+                  {member.linkedin && (
+                    <a 
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 mt-4 text-sm text-[var(--color-primary)] hover:underline"
+                    >
+                      View LinkedIn Profile
+                    </a>
+                  )}
                 </div>
               ))}
             </div>

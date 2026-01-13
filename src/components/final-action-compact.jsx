@@ -145,7 +145,7 @@ export default function FinalActionCompact() {
           
           <div className="text-white/60 text-sm">
             <p>The Ladder • Birmingham, Alabama</p>
-            <p className="mt-1">501(c)(3) Nonprofit Organization • EIN: 47-2123160</p>
+            <p className="mt-1">501(c)(3) Nonprofit Organization • EIN: 82-0737087</p>
           </div>
         </div>
 

@@ -184,7 +184,7 @@ export default function ContactPage() {
                         <div className="text-[var(--color-text-secondary)]">
                           <strong className="text-[var(--color-text-primary)]">501(c)(3) Nonprofit</strong>
                         </div>
-                        <div className="text-[var(--color-text-secondary)]">EIN: 47-2123160</div>
+                        <div className="text-[var(--color-text-secondary)]">EIN: 82-0737087</div>
                         <div className="text-[var(--color-text-secondary)]">Founded 2021</div>
                       </div>
                     </div>

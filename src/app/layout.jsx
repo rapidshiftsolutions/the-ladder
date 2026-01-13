@@ -185,7 +185,7 @@ export default function RootLayout({ children }) {
                 }
               ],
               "nonprofitStatus": "NonprofitType501c3",
-              "taxID": "47-2123160",
+              "taxID": "82-0737087",
               "foundingDate": "2021",
               "knowsAbout": [
                 "Crisis Intervention",

@@ -370,7 +370,7 @@ const MobileNavbar = ({ isOpen, setIsOpen, navItems }) => {
           {/* Organization Info */}
           <div className="bg-[var(--ladder-blue)] text-white rounded-xl p-4">
             <div className="text-center mb-3">
-              <div className="text-xs uppercase tracking-wide opacity-75 mb-1">501(c)(3) Nonprofit • EIN: 47-2123160</div>
+              <div className="text-xs uppercase tracking-wide opacity-75 mb-1">501(c)(3) Nonprofit • EIN: 82-0737087</div>
               <div className="font-bold">Birmingham's Barrier Removal Experts</div>
             </div>
             <div className="space-y-2 text-sm">

@@ -1,527 +1,271 @@
-import { Building2, Users, Target, TrendingUp, Award, CheckCircle, Calendar, DollarSign } from 'lucide-react'
+import SiteHeader from '/src/components/SiteHeader'
+import SiteFooter from '/src/components/SiteFooter'
+import Link from 'next/link'
+import { Building2, CheckCircle, ArrowRight, Heart, Users, Award, Target } from 'lucide-react'
 
 export const metadata = {
-  title: 'Corporate Partnerships | The Ladder - Birmingham Nonprofit Business Partnerships',
-  description: 'Partner with The Ladder to make a meaningful impact in Birmingham. Corporate sponsorships, employee volunteer programs, and CSR partnerships that remove barriers and strengthen communities.',
-  keywords: 'corporate partnerships Birmingham, nonprofit corporate sponsorship, CSR partnerships Alabama, employee volunteer programs, corporate social responsibility Birmingham, business community partnerships',
+  title: 'Corporate Partnerships | Community Impact Partnerships',
+  description: 'Partner with The Ladder to make a meaningful impact in Birmingham. Corporate sponsorship, matching gifts, and employee giving programs.',
   openGraph: {
-    title: 'Corporate Partnerships | The Ladder',
-    description: 'Partner with The Ladder to make a meaningful impact in Birmingham. Corporate sponsorships and employee volunteer programs that remove barriers and strengthen communities.',
-    type: 'website',
-    url: 'https://the-ladder.org/corporate-partnerships',
-  },
-  alternates: {
-    canonical: 'https://the-ladder.org/corporate-partnerships'
+    title: 'Corporate Partnerships | The Ladder Birmingham',
+    description: 'Partner with us to create meaningful community impact in Birmingham.',
+    url: 'https://www.the-ladder.org/corporate-partnerships',
+    type: 'website'
   }
 }
 
+const partnershipLevels = [
+  {
+    name: 'Community Partner',
+    amount: '$1,000 - $4,999',
+    benefits: [
+      'Logo on website',
+      'Social media recognition',
+      'Quarterly impact reports',
+      'Annual appreciation event invitation'
+    ]
+  },
+  {
+    name: 'Champion Partner',
+    amount: '$5,000 - $9,999',
+    benefits: [
+      'All Community Partner benefits',
+      'Featured logo placement',
+      'Monthly impact updates',
+      'Employee volunteer opportunities',
+      'Recognition in annual report'
+    ]
+  },
+  {
+    name: 'Leadership Partner',
+    amount: '$10,000+',
+    benefits: [
+      'All Champion Partner benefits',
+      'Premier logo placement',
+      'Custom impact reporting',
+      'Named giving opportunity',
+      'Executive board meeting invitation',
+      'Custom employee engagement program'
+    ]
+  }
+]
+
 export default function CorporatePartnershipsPage() {
-  const partnershipTiers = [
-    {
-      name: 'Community Champion',
-      amount: '$2,500',
-      period: 'annually',
-      icon: <CheckCircle className="h-8 w-8 text-[var(--ladder-blue)]" />,
-      benefits: [
-        'Logo on website partner page',
-        'Social media recognition',
-        'Quarterly impact reports',
-        '2 employee volunteer opportunities',
-        'Certificate of partnership'
-      ]
-    },
-    {
-      name: 'Barrier Breaker',
-      amount: '$5,000',
-      period: 'annually',
-      icon: <Target className="h-8 w-8 text-[var(--ladder-gold)]" />,
-      benefits: [
-        'All Community Champion benefits',
-        'Logo in annual report',
-        'Speaking opportunity at events',
-        '4 employee volunteer opportunities',
-        'Custom impact dashboard',
-        'Media coverage inclusion'
-      ],
-      popular: true
-    },
-    {
-      name: 'Legacy Builder',
-      amount: '$10,000+',
-      period: 'annually',
-      icon: <Award className="h-8 w-8 text-[var(--ladder-red)]" />,
-      benefits: [
-        'All Barrier Breaker benefits',
-        'Naming opportunity for programs',
-        'Exclusive networking events',
-        'Unlimited employee volunteering',
-        'Board member guest speaking',
-        'Custom partnership agreement',
-        'Executive advisory role'
-      ]
-    }
-  ]
-
-  const volunteerPrograms = [
-    {
-      title: 'Skills-Based Volunteering',
-      description: 'Legal, financial, marketing, and IT professionals providing specialized services',
-      time: '2-4 hours/month',
-      impact: '200% more effective than general volunteering'
-    },
-    {
-      title: 'Team Building Days',
-      description: 'Group volunteer activities that strengthen teams while serving the community',
-      time: '4-8 hours/event',
-      impact: '95% of participants report increased job satisfaction'
-    },
-    {
-      title: 'Mentorship Programs',
-      description: 'One-on-one guidance for individuals navigating specific life challenges',
-      time: '1 hour/week',
-      impact: '78% of mentees achieve their primary goal within 6 months'
-    },
-    {
-      title: 'Board Service',
-      description: 'Executive leadership opportunities on our Board of Directors',
-      time: '3-5 hours/month',
-      impact: 'Direct influence on organizational strategy and impact'
-    }
-  ]
-
-  const currentPartners = [
-    'Birmingham Business Alliance',
-    'Regions Bank',
-    'Alabama Power',
-    'UAB Health System',
-    'Protective Life',
-    'BBVA Compass',
-    'McWane Inc.',
-    'ServisFirst Bank'
-  ]
-
-  const caseStudies = [
-    {
-      partner: 'Regional Financial Services',
-      challenge: 'High employee turnover and low community engagement scores',
-      solution: 'Monthly financial literacy workshops and employee volunteer program',
-      results: [
-        '32% reduction in employee turnover',
-        '89% improvement in community perception',
-        '156 families received financial counseling',
-        '$2.3M in debt eliminated for participants'
-      ]
-    },
-    {
-      partner: 'Technology Consulting Firm',
-      challenge: 'Need for meaningful CSR program with measurable impact',
-      solution: 'Skills-based volunteering program providing IT support and digital literacy',
-      results: [
-        '45 nonprofits received tech upgrades',
-        '200+ individuals gained digital skills',
-        '98% employee participation rate',
-        'Featured in Harvard Business Review'
-      ]
-    }
-  ]
-
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[var(--ladder-blue)] via-[var(--ladder-blue-light)] to-[var(--ladder-gold)] text-white py-20 overflow-hidden">
-        {/* Glass morphism background elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-1/3 left-1/5 w-80 h-80 bg-white/4 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/3 right-1/5 w-96 h-96 bg-white/3 rounded-full blur-3xl"></div>
-        </div>
+    <>
+      <SiteHeader />
+      <main id="main-content" className="min-h-screen bg-white">
         
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="glass-card bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 shadow-2xl">
-              <Building2 className="h-16 w-16 mx-auto mb-6 text-white" />
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+        {/* Hero Section */}
+        <section className="bg-[var(--color-primary)] py-16 lg:py-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto text-center">
+              <h1 
+                className="text-4xl lg:text-5xl font-bold text-white mb-6"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
                 Corporate Partnerships
               </h1>
-              <p className="text-xl md:text-2xl mb-8 leading-relaxed">
-                Join Birmingham's leading businesses in removing barriers and strengthening our community through strategic partnerships that create lasting impact.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
-                  href="#partnership-tiers" 
-                  className="glass-button bg-white/20 backdrop-blur-md text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/30 transition-all duration-300 border border-white/30"
-                >
-                  View Partnership Options
-                </a>
-                <a 
-                  href="#contact-partnerships" 
-                  className="glass-button bg-white/10 backdrop-blur-md border-2 border-white/40 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/20 transition-all duration-300"
-                >
-                  Schedule Consultation
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Partner Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              Why Partner with The Ladder?
-            </h2>
-            <p className="text-lg text-gray-600 mb-12">
-              Corporate partnerships with The Ladder go beyond traditional CSR. We create meaningful connections between your business values and community impact.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <TrendingUp className="h-12 w-12 text-[var(--ladder-blue)] mx-auto mb-4" />
-              <h3 className="font-semibold text-lg mb-3">Measurable Impact</h3>
-              <p className="text-gray-600">
-                Track your investment with detailed impact reports and real community outcomes.
-              </p>
-            </div>
-            <div className="text-center">
-              <Users className="h-12 w-12 text-[var(--ladder-gold)] mx-auto mb-4" />
-              <h3 className="font-semibold text-lg mb-3">Employee Engagement</h3>
-              <p className="text-gray-600">
-                Boost morale and retention through meaningful volunteer opportunities.
-              </p>
-            </div>
-            <div className="text-center">
-              <Building2 className="h-12 w-12 text-[var(--ladder-red)] mx-auto mb-4" />
-              <h3 className="font-semibold text-lg mb-3">Brand Alignment</h3>
-              <p className="text-gray-600">
-                Align your brand with proven community impact and social responsibility.
-              </p>
-            </div>
-            <div className="text-center">
-              <Target className="h-12 w-12 text-[var(--ladder-green)] mx-auto mb-4" />
-              <h3 className="font-semibold text-lg mb-3">Strategic Focus</h3>
-              <p className="text-gray-600">
-                Target your giving for maximum impact in areas that matter to your business.
+              <p className="text-xl text-white/90">
+                Partner with The Ladder to create meaningful, measurable impact 
+                in Birmingham while demonstrating your commitment to community.
               </p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Partnership Tiers */}
-      <section id="partnership-tiers" className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              Partnership Investment Levels
-            </h2>
-            <p className="text-lg text-gray-600">
-              Choose the partnership level that aligns with your company's goals and capacity for impact.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {partnershipTiers.map((tier, index) => (
-              <div 
-                key={index} 
-                className={`relative glass-card backdrop-blur-xl border-2 rounded-2xl shadow-2xl p-8 transition-all duration-300 hover:scale-105 ${tier.popular ? 'bg-white/70 border-[var(--ladder-gold)]/60 transform scale-105' : 'bg-white/60 border-white/40'}`}
-              >
-                {tier.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-[var(--ladder-gold)] text-white px-4 py-2 rounded-full text-sm font-semibold">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-                
-                <div className="text-center mb-6">
-                  {tier.icon}
-                  <h3 className="text-xl font-bold mt-4 mb-2">{tier.name}</h3>
-                  <div className="text-3xl font-bold text-[var(--ladder-blue)] mb-1">
-                    {tier.amount}
-                  </div>
-                  <div className="text-gray-600">{tier.period}</div>
-                </div>
-
-                <ul className="space-y-3 mb-8">
-                  {tier.benefits.map((benefit, benefitIndex) => (
-                    <li key={benefitIndex} className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-[var(--ladder-green)] mt-0.5 mr-3 flex-shrink-0" />
-                      <span className="text-gray-700">{benefit}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <a 
-                  href="#contact-partnerships"
-                  className={`block w-full text-center py-3 px-6 rounded-lg font-semibold transition-colors ${
-                    tier.popular 
-                      ? 'bg-[var(--ladder-gold)] text-white hover:bg-[var(--ladder-gold)]/90' 
-                      : 'bg-[var(--ladder-blue)] text-white hover:bg-[var(--ladder-blue)]/90'
-                  }`}
-                >
-                  Start Partnership
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Employee Volunteer Programs */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              Employee Volunteer Programs
-            </h2>
-            <p className="text-lg text-gray-600">
-              Engage your team in meaningful volunteer opportunities that build skills, strengthen relationships, and create lasting community impact.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {volunteerPrograms.map((program, index) => (
-              <div key={index} className="glass-card bg-white/60 backdrop-blur-xl border border-white/40 rounded-xl p-6 shadow-xl hover:bg-white/70 transition-all duration-300">
-                <h3 className="text-xl font-semibold mb-3">{program.title}</h3>
-                <p className="text-gray-600 mb-4">{program.description}</p>
-                <div className="flex justify-between items-center text-sm">
-                  <div className="flex items-center text-[var(--ladder-blue)]">
-                    <Calendar className="h-4 w-4 mr-1" />
-                    <span>{program.time}</span>
-                  </div>
-                  <div className="text-[var(--ladder-green)] font-medium">
-                    {program.impact}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Success Stories */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              Partnership Success Stories
-            </h2>
-            <p className="text-lg text-gray-600">
-              See how Birmingham businesses are creating meaningful impact through strategic partnerships with The Ladder.
-            </p>
-          </div>
-
-          <div className="space-y-12 max-w-6xl mx-auto">
-            {caseStudies.map((study, index) => (
-              <div key={index} className="glass-card bg-white/50 backdrop-blur-xl border border-white/30 rounded-2xl p-8 shadow-xl hover:bg-white/60 transition-all duration-300">
-                <div className="grid lg:grid-cols-2 gap-8">
-                  <div>
-                    <h3 className="text-2xl font-bold mb-4">{study.partner}</h3>
-                    <div className="mb-6">
-                      <h4 className="font-semibold text-[var(--ladder-red)] mb-2">Challenge:</h4>
-                      <p className="text-gray-700 mb-4">{study.challenge}</p>
-                      <h4 className="font-semibold text-[var(--ladder-blue)] mb-2">Solution:</h4>
-                      <p className="text-gray-700">{study.solution}</p>
+        {/* Why Partner */}
+        <section className="py-16 lg:py-24 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                  <h2 
+                    className="text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] mb-6"
+                    style={{ fontFamily: 'var(--font-heading)' }}
+                  >
+                    Invest in Your Community
+                  </h2>
+                  <p className="text-lg text-[var(--color-text-secondary)] mb-6 leading-relaxed">
+                    Corporate partnerships with The Ladder offer a unique opportunity 
+                    to see direct, measurable impact. Every dollar you invest goes 
+                    directly to removing barriers for Birmingham residents.
+                  </p>
+                  <p className="text-lg text-[var(--color-text-secondary)] mb-8 leading-relaxed">
+                    We provide transparent reporting on exactly how your investment 
+                    changes lives, giving you meaningful stories to share with your 
+                    stakeholders and employees.
+                  </p>
+                  
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-6 h-6 text-[var(--color-secondary)] flex-shrink-0 mt-0.5" />
+                      <span className="text-[var(--color-text-primary)]">
+                        100% of donations to direct assistance
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-6 h-6 text-[var(--color-secondary)] flex-shrink-0 mt-0.5" />
+                      <span className="text-[var(--color-text-primary)]">
+                        Transparent impact reporting
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-6 h-6 text-[var(--color-secondary)] flex-shrink-0 mt-0.5" />
+                      <span className="text-[var(--color-text-primary)]">
+                        Employee engagement opportunities
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-6 h-6 text-[var(--color-secondary)] flex-shrink-0 mt-0.5" />
+                      <span className="text-[var(--color-text-primary)]">
+                        Tax-deductible contributions
+                      </span>
                     </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-[var(--ladder-green)] mb-4">Results:</h4>
-                    <ul className="space-y-2">
-                      {study.results.map((result, resultIndex) => (
-                        <li key={resultIndex} className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-[var(--ladder-green)] mt-0.5 mr-3 flex-shrink-0" />
-                          <span className="text-gray-700">{result}</span>
-                        </li>
-                      ))}
-                    </ul>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="bg-gray-50 rounded-xl p-6 border border-gray-200 text-center">
+                    <div className="w-12 h-12 bg-[var(--color-primary)]/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                      <Target className="w-6 h-6 text-[var(--color-primary)]" />
+                    </div>
+                    <div 
+                      className="text-2xl font-bold text-[var(--color-primary)] mb-1"
+                      style={{ fontFamily: 'var(--font-heading)' }}
+                    >
+                      95%
+                    </div>
+                    <div className="text-sm text-[var(--color-text-secondary)]">Success Rate</div>
+                  </div>
+                  
+                  <div className="bg-gray-50 rounded-xl p-6 border border-gray-200 text-center">
+                    <div className="w-12 h-12 bg-[var(--color-primary)]/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                      <Users className="w-6 h-6 text-[var(--color-primary)]" />
+                    </div>
+                    <div 
+                      className="text-2xl font-bold text-[var(--color-primary)] mb-1"
+                      style={{ fontFamily: 'var(--font-heading)' }}
+                    >
+                      500+
+                    </div>
+                    <div className="text-sm text-[var(--color-text-secondary)]">Lives Changed</div>
+                  </div>
+                  
+                  <div className="bg-gray-50 rounded-xl p-6 border border-gray-200 text-center">
+                    <div className="w-12 h-12 bg-[var(--color-primary)]/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                      <Heart className="w-6 h-6 text-[var(--color-primary)]" />
+                    </div>
+                    <div 
+                      className="text-2xl font-bold text-[var(--color-primary)] mb-1"
+                      style={{ fontFamily: 'var(--font-heading)' }}
+                    >
+                      100%
+                    </div>
+                    <div className="text-sm text-[var(--color-text-secondary)]">To Direct Aid</div>
+                  </div>
+                  
+                  <div className="bg-gray-50 rounded-xl p-6 border border-gray-200 text-center">
+                    <div className="w-12 h-12 bg-[var(--color-primary)]/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                      <Award className="w-6 h-6 text-[var(--color-primary)]" />
+                    </div>
+                    <div 
+                      className="text-2xl font-bold text-[var(--color-primary)] mb-1"
+                      style={{ fontFamily: 'var(--font-heading)' }}
+                    >
+                      501(c)(3)
+                    </div>
+                    <div className="text-sm text-[var(--color-text-secondary)]">Tax Exempt</div>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Current Partners */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              Our Corporate Partners
-            </h2>
-            <p className="text-lg text-gray-600">
-              Join Birmingham's most forward-thinking companies in supporting barrier removal and community strengthening.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            {currentPartners.map((partner, index) => (
-              <div key={index} className="glass-card bg-white/60 backdrop-blur-xl border border-white/40 rounded-xl p-6 shadow-xl text-center hover:bg-white/70 transition-all duration-300">
-                <div className="text-lg font-semibold text-gray-700">{partner}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ROI Calculator */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              Partnership Return on Investment
-            </h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Corporate partnerships with The Ladder deliver measurable returns across multiple dimensions.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <div className="bg-[var(--ladder-blue)] text-white rounded-xl p-8 text-center">
-              <DollarSign className="h-12 w-12 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold mb-2">Financial Impact</h3>
-              <ul className="space-y-2 text-left">
-                <li>• Tax deduction benefits</li>
-                <li>• Reduced recruitment costs</li>
-                <li>• Lower employee turnover</li>
-                <li>• Increased customer loyalty</li>
-              </ul>
-            </div>
-            <div className="bg-[var(--ladder-green)] text-white rounded-xl p-8 text-center">
-              <Users className="h-12 w-12 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold mb-2">Employee Benefits</h3>
-              <ul className="space-y-2 text-left">
-                <li>• 23% higher job satisfaction</li>
-                <li>• 31% increase in retention</li>
-                <li>• Enhanced team cohesion</li>
-                <li>• Professional skill development</li>
-              </ul>
-            </div>
-            <div className="bg-[var(--ladder-gold)] text-white rounded-xl p-8 text-center">
-              <TrendingUp className="h-12 w-12 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold mb-2">Brand Value</h3>
-              <ul className="space-y-2 text-left">
-                <li>• Improved brand perception</li>
-                <li>• Media coverage and PR</li>
-                <li>• Community recognition</li>
-                <li>• ESG compliance enhancement</li>
-              </ul>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Contact Section */}
-      <section id="contact-partnerships" className="py-16 bg-[var(--ladder-blue)] text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">
-              Start Your Partnership Journey
-            </h2>
-            <p className="text-xl mb-8 leading-relaxed">
-              Ready to create meaningful impact in Birmingham while strengthening your business? Let's discuss how a partnership with The Ladder can achieve your corporate social responsibility goals.
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-8 mb-12">
-              <div className="bg-white/10 rounded-lg p-6">
-                <h3 className="font-semibold text-lg mb-3">Partnership Consultation</h3>
-                <p className="mb-4">Schedule a free 30-minute consultation to explore partnership opportunities.</p>
-                <a 
-                  href="mailto:partnerships@the-ladder.org?subject=Corporate Partnership Inquiry" 
-                  className="bg-white text-[var(--ladder-blue)] px-6 py-2 rounded-lg font-semibold hover:bg-gray-50 transition-colors inline-block"
-                >
-                  Schedule Meeting
-                </a>
-              </div>
-              <div className="bg-white/10 rounded-lg p-6">
-                <h3 className="font-semibold text-lg mb-3">Partnership Proposal</h3>
-                <p className="mb-4">Request a customized partnership proposal for your organization.</p>
-                <a 
-                  href="mailto:partnerships@the-ladder.org?subject=Partnership Proposal Request" 
-                  className="bg-white text-[var(--ladder-blue)] px-6 py-2 rounded-lg font-semibold hover:bg-gray-50 transition-colors inline-block"
-                >
-                  Request Proposal
-                </a>
-              </div>
-            </div>
-
-            <div className="border-t border-white/20 pt-8">
-              <p className="text-lg mb-4">
-                <strong>Corporate Partnerships Team</strong>
+        {/* Partnership Levels */}
+        <section className="py-16 lg:py-24 bg-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 
+                className="text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] mb-4"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                Partnership Levels
+              </h2>
+              <p className="text-lg text-[var(--color-text-secondary)] max-w-3xl mx-auto">
+                Choose the level that fits your company&apos;s giving goals.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a 
-                  href="mailto:partnerships@the-ladder.org" 
-                  className="text-white hover:text-[var(--ladder-gold)] transition-colors"
+            </div>
+
+            <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
+              {partnershipLevels.map((level, index) => (
+                <div 
+                  key={index} 
+                  className={`bg-white rounded-xl p-8 border-2 ${
+                    index === 2 ? 'border-[var(--color-primary)]' : 'border-gray-200'
+                  }`}
                 >
-                  partnerships@the-ladder.org
-                </a>
-                <span className="hidden sm:inline text-white/60">|</span>
-                <a 
-                  href="tel:+12055555678" 
-                  className="text-white hover:text-[var(--ladder-gold)] transition-colors"
-                >
-                  (205) 555-5678
-                </a>
-              </div>
+                  {index === 2 && (
+                    <div className="bg-[var(--color-primary)] text-white text-sm font-medium px-3 py-1 rounded-full inline-block mb-4">
+                      Most Popular
+                    </div>
+                  )}
+                  <h3 
+                    className="text-xl font-bold text-[var(--color-text-primary)] mb-2"
+                    style={{ fontFamily: 'var(--font-heading)' }}
+                  >
+                    {level.name}
+                  </h3>
+                  <div className="text-2xl font-bold text-[var(--color-primary)] mb-6">
+                    {level.amount}
+                  </div>
+                  <ul className="space-y-3">
+                    {level.benefits.map((benefit, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm text-[var(--color-text-secondary)]">
+                        <CheckCircle className="w-4 h-4 text-[var(--color-secondary)] flex-shrink-0 mt-0.5" />
+                        {benefit}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            <div className="text-center mt-8">
+              <p className="text-[var(--color-text-secondary)]">
+                Custom partnership packages available for larger commitments.
+              </p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Schema.org Structured Data */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "NonProfit",
-          "name": "The Ladder",
-          "url": "https://the-ladder.org",
-          "logo": "https://the-ladder.org/TheLadder/logos/The Ladder - Logo.png",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Birmingham",
-            "addressRegion": "AL",
-            "addressCountry": "US"
-          },
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+1-205-555-5678",
-            "contactType": "Partnership Inquiries",
-            "email": "partnerships@the-ladder.org"
-          },
-          "sameAs": [
-            "https://facebook.com/theladderorg",
-            "https://twitter.com/theladderorg",
-            "https://linkedin.com/company/theladderorg"
-          ],
-          "taxID": "47-2123160",
-          "offers": [
-            {
-              "@type": "Offer",
-              "name": "Community Champion Partnership",
-              "price": "2500",
-              "priceCurrency": "USD",
-              "description": "Annual corporate partnership including website recognition, volunteer opportunities, and impact reporting"
-            },
-            {
-              "@type": "Offer", 
-              "name": "Barrier Breaker Partnership",
-              "price": "5000",
-              "priceCurrency": "USD",
-              "description": "Premium corporate partnership with enhanced benefits and speaking opportunities"
-            },
-            {
-              "@type": "Offer",
-              "name": "Legacy Builder Partnership", 
-              "price": "10000",
-              "priceCurrency": "USD",
-              "description": "Top-tier corporate partnership with naming opportunities and executive advisory roles"
-            }
-          ]
-        })
-      }} />
-    </div>
+        {/* CTA */}
+        <section className="py-16 lg:py-20 bg-[var(--color-primary)]">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 
+              className="text-3xl lg:text-4xl font-bold text-white mb-6"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              Let&apos;s Discuss Your Partnership
+            </h2>
+            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+              We&apos;d love to explore how a partnership with The Ladder can 
+              help you achieve your community impact goals.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/contact" className="btn btn-lg bg-white text-[var(--color-primary)] hover:bg-gray-100">
+                Contact Us
+              </Link>
+              <Link href="/donate" className="btn btn-lg bg-[var(--color-accent)] text-white hover:bg-[var(--color-accent-light)]">
+                Donate Now
+              </Link>
+            </div>
+          </div>
+        </section>
+
+      </main>
+      <SiteFooter />
+    </>
   )
 }
