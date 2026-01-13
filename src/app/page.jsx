@@ -1,9 +1,9 @@
 import SiteHeader from '../components/SiteHeader'
 import HeroCompact from '../components/hero-compact'
-import ProblemSolutionCompact from '../components/problem-solution-compact'
+import ProblemSolutionRedesigned from '../components/problem-solution-redesigned'
 import HowItWorksRedesigned from '../components/how-it-works-redesigned'
 import ImpactTrustRedesigned from '../components/impact-trust-redesigned'
-import FinalActionCompact from '../components/final-action-compact'
+import FinalActionRedesigned from '../components/final-action-redesigned'
 import SiteFooter from '../components/SiteFooter'
 import { client } from '@/sanity/lib/client'
 import { homepageContentQuery, heroSectionQuery } from '@/sanity/queries/homepageQuery'
@@ -107,16 +107,10 @@ export default async function Home() {
           stats={impactStats}
           siteSettings={siteSettings}
         />
-        <ProblemSolutionCompact 
-          content={homepageContent}
-        />
+        <ProblemSolutionRedesigned />
         <HowItWorksRedesigned />
         <ImpactTrustRedesigned />
-        <FinalActionCompact 
-          content={homepageContent}
-          impactStats={impactStats}
-          siteSettings={siteSettings}
-        />
+        <FinalActionRedesigned />
       </main>
       <SiteFooter siteSettings={siteSettings} />
     </>

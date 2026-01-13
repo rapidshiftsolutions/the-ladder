@@ -1695,3 +1695,48 @@ html, body {
     min-width: 44px;
   }
 }
+
+/* =============================================================================
+   SECTION BACKGROUND UTILITIES
+   For consistent light/dark alternation across pages
+   ============================================================================= */
+
+/* Light section (white) */
+.section-light {
+  background-color: var(--color-white, #FFFFFF);
+}
+
+/* Gray section (light gray) */
+.section-gray {
+  background-color: var(--color-bg-secondary, #F8F9FA);
+}
+
+/* Dark section (primary blue) */
+.section-dark {
+  background-color: var(--color-primary, #1B4F72);
+  color: white;
+}
+
+.section-dark h1,
+.section-dark h2,
+.section-dark h3,
+.section-dark h4 {
+  color: white;
+}
+
+.section-dark p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Standard section padding */
+.section-padding {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}

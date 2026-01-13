@@ -17,11 +17,6 @@ const ServiceWorkerRegistration = dynamic(
   { ssr: false }
 );
 
-const InstallPrompt = dynamic(
-  () => import('./InstallPrompt'),
-  { ssr: false }
-);
-
 const PerformanceMonitor = dynamic(
   () => import('./PerformanceMonitor'),
   { ssr: false }
@@ -32,9 +27,6 @@ export default function DeferredComponents() {
     <>
       {/* Service worker for PWA functionality - deferred */}
       <ServiceWorkerRegistration />
-      
-      {/* PWA Install prompt - deferred */}
-      <InstallPrompt />
       
       {/* Performance monitoring - deferred */}
       <PerformanceMonitor />
