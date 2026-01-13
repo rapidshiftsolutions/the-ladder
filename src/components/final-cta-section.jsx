@@ -244,7 +244,7 @@ export default function FinalCtaSection() {
                   <stat.icon className="w-8 h-8 text-white" />
                 </div>
                 <div className="text-4xl font-bold text-white mb-2">{stat.number}</div>
-                <div className="text-white/70 font-semibold">{stat.label}</div>
+                <div className="text-white/90 font-semibold">{stat.label}</div>
               </div>
             </div>
           ))}
@@ -287,7 +287,7 @@ export default function FinalCtaSection() {
                 <strong className="text-white"> Let's climb higher, together.</strong>
               </p>
               
-              <div className="text-white/70 text-lg">
+              <div className="text-white/90 text-lg">
                 <p>Contact us at: <strong className="text-white">info@the-ladder.org</strong></p>
                 <p className="mt-2">Birmingham, Alabama • 501(c)(3) Nonprofit</p>
               </div>

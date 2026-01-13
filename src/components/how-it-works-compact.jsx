@@ -166,7 +166,7 @@ export default function HowItWorksCompact() {
             <div className="flex flex-col lg:flex-row gap-8 items-center">
               <div className="flex-1">
                 <motion.div 
-                  className="inline-flex items-center gap-2 bg-[var(--color-secondary)]/20 backdrop-filter backdrop-blur-lg text-white rounded-full px-4 py-2 text-sm font-semibold mb-6 border border-white/20"
+                  className="inline-flex items-center gap-2 bg-[var(--color-secondary)]/20 backdrop-filter backdrop-blur-lg text-[var(--color-secondary)] rounded-full px-4 py-2 text-sm font-semibold mb-6 border border-[var(--color-secondary)]/30"
                   initial={{ scale: 0 }}
                   animate={isInView ? { scale: 1 } : {}}
                   transition={{ delay: 0.6, type: "spring", stiffness: 200 }}
@@ -175,12 +175,12 @@ export default function HowItWorksCompact() {
                   Success Story
                 </motion.div>
                 <h3 
-                  className="text-3xl font-bold text-white mb-6"
+                  className="text-3xl font-bold text-[var(--color-text-primary)] mb-6"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
                   From Barrier to Breakthrough
                 </h3>
-                <p className="text-white/90 text-lg leading-relaxed mb-8">
+                <p className="text-[var(--color-text-secondary)] text-lg leading-relaxed mb-8">
                   &quot;A local housing nonprofit referred Sarah to us. She had secured a new job, 
                   but her car needed $800 in repairs she couldn&apos;t afford. Without transportation, 
                   she would lose the job before starting. We covered the repair cost within 48 hours. 
@@ -190,7 +190,7 @@ export default function HowItWorksCompact() {
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Link
                     href="/success-stories"
-                    className="inline-flex items-center text-white font-semibold hover:text-white/80 transition-colors"
+                    className="inline-flex items-center text-[var(--color-primary)] font-semibold hover:text-[var(--color-primary-dark)] transition-colors"
                   >
                     Read More Success Stories
                     <ArrowRight className="w-5 h-5 ml-2" />
@@ -217,12 +217,12 @@ export default function HowItWorksCompact() {
                       transition={{ duration: 0.3 }}
                     >
                       <div 
-                        className="text-2xl lg:text-3xl font-bold text-white mb-2"
+                        className="text-2xl lg:text-3xl font-bold text-[var(--color-text-primary)] mb-2"
                         style={{ fontFamily: 'var(--font-heading)' }}
                       >
                         {stat.value}
                       </div>
-                      <div className="text-xs text-white/80">{stat.label}</div>
+                      <div className="text-xs text-[var(--color-text-secondary)]">{stat.label}</div>
                     </motion.div>
                   ))}
                 </div>
@@ -254,7 +254,7 @@ export default function HowItWorksCompact() {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <a
                 href="tel:+12055221162"
-                className="btn btn-lg bg-white/10 backdrop-filter backdrop-blur-lg text-white border-2 border-white/30 hover:bg-white/20 inline-flex items-center justify-center px-8 py-4"
+                className="btn btn-lg bg-white/20 backdrop-filter backdrop-blur-lg text-white border-2 border-white/30 hover:bg-white/30 inline-flex items-center justify-center px-8 py-4"
               >
                 <Phone className="w-5 h-5 mr-2" />
                 Call (205) 522-1162

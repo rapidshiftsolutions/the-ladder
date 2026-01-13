@@ -229,30 +229,30 @@ export default function FinalActionCompact() {
             >
               <motion.a 
                 href="tel:+12055221162" 
-                className="flex items-center gap-3 bg-white/10 backdrop-filter backdrop-blur-lg px-6 py-4 rounded-xl border border-white/20 hover:bg-white/20 transition-all"
+                className="flex items-center gap-3 bg-white/20 backdrop-filter backdrop-blur-lg px-6 py-4 rounded-xl border border-white/30 hover:bg-white/30 transition-all text-white"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-                  <Phone className="w-6 h-6" />
+                <div className="w-12 h-12 bg-white/30 rounded-full flex items-center justify-center">
+                  <Phone className="w-6 h-6 text-white" />
                 </div>
-                <span className="font-semibold text-lg">(205) 522-1162</span>
+                <span className="font-semibold text-lg text-white">(205) 522-1162</span>
               </motion.a>
               <motion.a 
                 href="mailto:info@the-ladder.org" 
-                className="flex items-center gap-3 bg-white/10 backdrop-filter backdrop-blur-lg px-6 py-4 rounded-xl border border-white/20 hover:bg-white/20 transition-all"
+                className="flex items-center gap-3 bg-white/20 backdrop-filter backdrop-blur-lg px-6 py-4 rounded-xl border border-white/30 hover:bg-white/30 transition-all text-white"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-                  <Mail className="w-6 h-6" />
+                <div className="w-12 h-12 bg-white/30 rounded-full flex items-center justify-center">
+                  <Mail className="w-6 h-6 text-white" />
                 </div>
-                <span className="font-semibold text-lg">info@the-ladder.org</span>
+                <span className="font-semibold text-lg text-white">info@the-ladder.org</span>
               </motion.a>
             </motion.div>
             
             <motion.div 
-              className="text-white/70 text-base"
+              className="text-white/90 text-base"
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.9 }}

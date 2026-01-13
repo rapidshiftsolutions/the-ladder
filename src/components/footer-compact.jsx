@@ -50,7 +50,7 @@ const FooterCompact = () => {
               </div>
               <div>
                 <h3 className="text-xl font-bold text-white">The Ladder</h3>
-                <p className="text-sm text-white/70">Birmingham, Alabama</p>
+                <p className="text-sm text-white/90">Birmingham, Alabama</p>
               </div>
             </div>
             
@@ -86,7 +86,7 @@ const FooterCompact = () => {
                 <li key={index}>
                   <Link 
                     href={link.href}
-                    className="text-sm text-white/70 hover:text-white transition-colors inline-flex items-center group"
+                    className="text-sm text-white/90 hover:text-white transition-colors inline-flex items-center group"
                   >
                     {link.name}
                     <ArrowRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -102,9 +102,9 @@ const FooterCompact = () => {
               Organization
             </h4>
             <div className="space-y-2 mb-4">
-              <p className="text-sm text-white/70">501(c)(3) Nonprofit</p>
-              <p className="text-sm text-white/70">EIN: 82-0737087</p>
-              <p className="text-sm text-white/70">Founded: 2021</p>
+              <p className="text-sm text-white/90">501(c)(3) Nonprofit</p>
+              <p className="text-sm text-white/90">EIN: 82-0737087</p>
+              <p className="text-sm text-white/90">Founded: 2021</p>
             </div>
             
             <ul className="space-y-1">
@@ -135,7 +135,7 @@ const FooterCompact = () => {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="text-center sm:text-left">
               <p className="text-white font-semibold mb-1">Ready to Remove Barriers?</p>
-              <p className="text-sm text-white/70">Every person deserves the chance to succeed.</p>
+              <p className="text-sm text-white/90">Every person deserves the chance to succeed.</p>
             </div>
             
             <div className="flex gap-3">
