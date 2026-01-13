@@ -68,7 +68,7 @@ export default function SiteFooter({ siteSettings = {} }) {
   return (
     <footer className="bg-white border-t border-gray-200">
       {/* CTA Section */}
-      <section className="bg-[var(--color-primary)] py-12 lg:py-16">
+      <section className="bg-gray-700 py-12 lg:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
