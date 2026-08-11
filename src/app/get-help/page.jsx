@@ -64,21 +64,21 @@ export default function GetHelpPage() {
           </div>
         </section>
 
-        <section className="bg-red-50 border-y border-red-200">
+        <section className="bg-[var(--color-accent)]/[0.06] border-y border-[var(--color-accent)]/20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-              <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center shrink-0">
-                <Phone className="w-6 h-6 text-red-600" />
+              <div className="w-12 h-12 bg-[var(--color-accent)]/10 rounded-full flex items-center justify-center shrink-0">
+                <Phone className="w-6 h-6 text-[var(--color-accent)]" />
               </div>
               <div className="flex-1 text-center sm:text-left">
-                <h2 className="text-lg font-semibold text-red-900 mb-1">Need Immediate Help?</h2>
-                <p className="text-red-700 text-sm">
+                <h2 className="text-lg font-semibold text-[var(--color-accent-dark)] mb-1">Need Immediate Help?</h2>
+                <p className="text-[var(--color-text-secondary)] text-sm">
                   If you&apos;re experiencing a crisis or emergency, call our support line now.
                 </p>
               </div>
               <a
                 href="tel:+12055221162"
-                className="inline-flex items-center px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors"
+                className="btn btn-accent inline-flex items-center px-6 py-3 font-semibold rounded-lg"
               >
                 <Phone className="w-5 h-5 mr-2" />
                 Call (205) 522-1162

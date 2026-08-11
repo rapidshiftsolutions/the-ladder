@@ -64,19 +64,21 @@ test.describe('Page Navigation', () => {
 });
 
 test.describe('Contact Form', () => {
+  // The first form on the page is Netlify's hidden detection stub, so these
+  // tests target the visible form the user actually fills in.
   test('should display contact form', async ({ page }) => {
     await page.goto('/contact');
     
-    const form = page.locator('form');
+    const form = page.locator('form:not([hidden])').first();
     await expect(form).toBeVisible();
   });
 
   test('should have required form fields', async ({ page }) => {
     await page.goto('/contact');
     
-    // Check for common form fields
-    const nameField = page.locator('input[name*="name" i], input[placeholder*="name" i]').first();
-    const emailField = page.locator('input[type="email"], input[name*="email" i]').first();
+    const form = page.locator('form:not([hidden])').first();
+    const nameField = form.locator('input[name*="name" i], input[placeholder*="name" i]').first();
+    const emailField = form.locator('input[type="email"], input[name*="email" i]').first();
     
     // At least one of these should exist
     const hasNameField = await nameField.isVisible().catch(() => false);
