@@ -7,7 +7,7 @@
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#FFFFFF",
-  "theme_color": "#1B4F72",
+  "theme_color": "#0F4C81",
   "categories": ["nonprofit", "charity", "community", "social"],
   "prefer_related_applications": false,
   "shortcuts": [

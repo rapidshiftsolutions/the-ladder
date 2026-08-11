@@ -81,7 +81,7 @@ export default function HeroCompact({
             {/* Main Headline - Fluid typography to ensure max 2 lines */}
             <h1 className="hero-headline font-bold text-white mb-6">
               <span className="hero-headline__line1">{heroContent.heroHeadline}</span>
-              <span className="hero-headline__line2 text-[var(--color-accent-light)]">{heroContent.heroHeadlineAccent}</span>
+              <span className="hero-headline__line2 text-[var(--color-accent-on-dark)]">{heroContent.heroHeadlineAccent}</span>
             </h1>
 
             {/* Subheadline */}

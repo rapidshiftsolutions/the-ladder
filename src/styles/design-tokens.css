@@ -8,20 +8,25 @@
      COLOR PALETTE - Institutional Trust Colors
      ========================================================================= */
   
-  /* Primary Colors - Trust & Stability */
-  --color-primary: #1B4F72;           /* Deep blue - primary brand, trust */
-  --color-primary-light: #2874A6;     /* Lighter blue for hover states */
-  --color-primary-dark: #154360;      /* Darker blue for active states */
+  /* Primary Colors - Trust & Stability
+     Sampled from the logo mark (#104880) and deepened slightly for a richer,
+     truer blue than the previous desaturated navy. */
+  --color-primary: #0F4C81;           /* Deep blue - primary brand, trust */
+  --color-primary-light: #17629F;     /* Lighter blue for hover states */
+  --color-primary-dark: #0A3760;      /* Darker blue for active states */
   
   /* Secondary Colors */
-  --color-secondary: #148F77;         /* Teal green - growth, success */
-  --color-secondary-light: #1ABC9C;   /* Light teal for accents */
-  --color-secondary-dark: #117A65;    /* Dark teal for contrast */
+  --color-secondary: #12806A;         /* Teal green - growth, success */
+  --color-secondary-light: #16A085;   /* Light teal for accents */
+  --color-secondary-dark: #0C6A57;    /* Dark teal for contrast */
   
-  /* Accent Colors - Matching Logo Red */
-  --color-accent: #C0392B;            /* Deep red matching logo - CTAs, donations */
-  --color-accent-light: #E74C3C;      /* Lighter red for hover */
-  --color-accent-dark: #922B21;       /* Darker red for active */
+  /* Accent Colors - Matching Logo Red
+     Crimson-leaning rather than brick, which reads more refined next to the
+     blue and keeps the logo's red family. */
+  --color-accent: #C1272D;            /* Deep red matching logo - CTAs, donations */
+  --color-accent-light: #D93A40;      /* Lighter red for hover */
+  --color-accent-dark: #96181D;       /* Darker red for active */
+  --color-accent-on-dark: #F5A3A0;    /* Red tint readable on the deep blue (4.5:1) */
   
   /* Neutral Colors */
   --color-white: #FFFFFF;
@@ -42,8 +47,8 @@
   --color-success-light: #2ECC71;
   --color-warning: #F39C12;           /* Warning states */
   --color-warning-light: #F5B041;
-  --color-error: #E74C3C;             /* Error states */
-  --color-error-light: #EC7063;
+  --color-error: #D93A40;             /* Error states */
+  --color-error-light: #E8676C;
   --color-info: #3498DB;              /* Info states */
   --color-info-light: #5DADE2;
   
@@ -51,15 +56,15 @@
   --color-bg-primary: #FFFFFF;        /* Main background */
   --color-bg-secondary: #F8F9FA;      /* Alternate sections */
   --color-bg-tertiary: #F4F6F6;       /* Cards, panels */
-  --color-bg-dark: #1B4F72;           /* Dark sections */
+  --color-bg-dark: #0F4C81;           /* Dark sections */
   
   /* Text Colors */
   --color-text-primary: #1C2833;      /* Main text */
   --color-text-secondary: #566573;    /* Secondary text */
   --color-text-muted: #66707D;        /* Muted/helper text — 5:1 on white (WCAG AA) */
   --color-text-inverse: #FFFFFF;      /* Text on dark backgrounds */
-  --color-text-link: #1B4F72;         /* Link color */
-  --color-text-link-hover: #2874A6;   /* Link hover */
+  --color-text-link: #0F4C81;         /* Link color */
+  --color-text-link-hover: #17629F;   /* Link hover */
   
   /* Border Colors */
   --color-border: #E5E8E8;            /* Default borders */
@@ -71,7 +76,7 @@
      ========================================================================= */
   
   /* Font Families */
-  --font-heading: 'Lora', Georgia, 'Times New Roman', serif;
+  --font-heading: 'Newsreader', Georgia, 'Times New Roman', serif;
   --font-body: 'Nunito Sans', system-ui, -apple-system, sans-serif;
   --font-mono: 'SF Mono', Monaco, 'Cascadia Code', monospace;
   
@@ -202,7 +207,7 @@
      FOCUS STATES - Accessibility
      ========================================================================= */
   
-  --focus-ring-color: rgba(27, 79, 114, 0.5);
+  --focus-ring-color: rgba(15, 76, 129, 0.5);
   --focus-ring-width: 3px;
   --focus-ring-offset: 2px;
 

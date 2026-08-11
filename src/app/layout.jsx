@@ -11,7 +11,7 @@ import { client } from '@/sanity/lib/client';
 import { donationSettingsQuery } from '@/sanity/queries/donationSettingsQuery';
 import { DEFAULT_DONATION_SETTINGS } from '@/lib/donationDefaults';
 
-// Friendly & Approachable Design - Lora + Nunito Sans
+// Modern editorial pairing - Newsreader (headings) + Nunito Sans (body)
 // Fonts are now self-hosted via next/font for optimal performance
 
 export const metadata = {
@@ -80,7 +80,7 @@ export const metadata = {
       {
         rel: 'mask-icon',
         url: '/safari-pinned-tab.svg',
-        color: '#1B4F72',
+        color: '#0F4C81',
       },
     ],
   },
@@ -105,7 +105,7 @@ export const metadata = {
 export const revalidate = 60;
 
 export const viewport = {
-  themeColor: '#1B4F72',
+  themeColor: '#0F4C81',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
@@ -152,8 +152,8 @@ export default async function RootLayout({ children }) {
         </noscript>
         
         {/* PWA meta tags */}
-        <meta name="theme-color" content="#1B4F72" />
-        <meta name="msapplication-TileColor" content="#1B4F72" />
+        <meta name="theme-color" content="#0F4C81" />
+        <meta name="msapplication-TileColor" content="#0F4C81" />
         <meta name="msapplication-TileImage" content="/meta.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -256,7 +256,7 @@ export default async function RootLayout({ children }) {
           }
           
           h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-heading), 'Lora', Georgia, serif;
+            font-family: var(--font-heading), 'Newsreader', Georgia, serif;
             font-weight: 700;
             line-height: 1.25;
             color: inherit;

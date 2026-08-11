@@ -4,14 +4,14 @@
 // Self-hosts fonts to eliminate external network requests
 // =============================================================================
 
-import { Lora, Nunito_Sans } from 'next/font/google'
+import { Newsreader, Nunito_Sans } from 'next/font/google'
 
 /**
- * Lora - Serif font for headings
- * Conveys trustworthiness, elegance, and professionalism
- * Perfect for nonprofit organizations seeking to build trust
+ * Newsreader - Serif font for headings
+ * A contemporary editorial serif: higher stroke contrast and refined
+ * terminals read as elegant, while the open shapes keep it modern on screen.
  */
-export const lora = Lora({
+export const newsreader = Newsreader({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-heading',
@@ -46,12 +46,12 @@ export const nunitoSans = Nunito_Sans({
  * Combined font class names for easy application
  * Apply to <html> or <body> element: className={fontVariables}
  */
-export const fontVariables = `${lora.variable} ${nunitoSans.variable}`
+export const fontVariables = `${newsreader.variable} ${nunitoSans.variable}`
 
 /**
  * Font class names object for individual use
  */
 export const fontClasses = {
-  heading: lora.className,
+  heading: newsreader.className,
   body: nunitoSans.className,
 }

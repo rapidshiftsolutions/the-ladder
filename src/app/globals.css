@@ -7,7 +7,7 @@
 @import "../styles/design-tokens.css";
 
 /* =============================================================================
-   GOOGLE FONTS - Lora (serif) + Nunito Sans (sans-serif)
+   GOOGLE FONTS - Newsreader (serif) + Nunito Sans (sans-serif)
    ============================================================================= */
 
 /* Note: Fonts loaded via layout.jsx for optimal performance */
@@ -18,25 +18,25 @@
 
 @theme {
   /* Brand Colors - Institutional Trust Palette */
-  --color-primary: #1B4F72;
-  --color-primary-light: #2874A6;
-  --color-primary-dark: #154360;
+  --color-primary: #0F4C81;
+  --color-primary-light: #17629F;
+  --color-primary-dark: #0A3760;
   
-  --color-secondary: #148F77;
-  --color-secondary-light: #1ABC9C;
+  --color-secondary: #12806A;
+  --color-secondary-light: #16A085;
   
-  --color-accent: #C0392B;
-  --color-accent-light: #E74C3C;
-  --color-accent-dark: #922B21;
+  --color-accent: #C1272D;
+  --color-accent-light: #D93A40;
+  --color-accent-dark: #96181D;
 
   /* Legacy brand names kept as utility colors (bg-ladder-blue, text-ladder-red…)
      so older markup renders in the same Institutional Trust palette. */
-  --color-ladder-blue: #1B4F72;
-  --color-ladder-blue-light: #2874A6;
-  --color-ladder-navy: #154360;
-  --color-ladder-red: #C0392B;
-  --color-ladder-gold: #922B21;
-  --color-ladder-green: #148F77;
+  --color-ladder-blue: #0F4C81;
+  --color-ladder-blue-light: #17629F;
+  --color-ladder-navy: #0A3760;
+  --color-ladder-red: #C1272D;
+  --color-ladder-gold: #96181D;
+  --color-ladder-green: #0C6A57;
   
   /* Neutral Colors */
   --color-background: #FFFFFF;
@@ -46,7 +46,7 @@
   --color-border: #E5E8E8;
   
   /* Typography */
-  --font-heading: 'Lora', Georgia, serif;
+  --font-heading: 'Newsreader', Georgia, serif;
   --font-body: 'Nunito Sans', system-ui, sans-serif;
   
   /* Spacing */
@@ -93,7 +93,7 @@ body {
    TYPOGRAPHY
    ============================================================================= */
 
-/* Headings - Lora Serif
+/* Headings - Newsreader Serif
    Colour is inherited (body sets --color-text-primary) so headings placed on
    dark sections pick up the light text colour instead of forcing charcoal. */
 h1, h2, h3, h4, h5, h6 {
@@ -1008,7 +1008,7 @@ textarea {
   position: absolute;
   inset: 0;
   background-image: 
-    radial-gradient(circle at 20% 80%, rgba(27, 79, 114, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(15, 76, 129, 0.03) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(20, 143, 119, 0.03) 0%, transparent 50%),
     radial-gradient(circle at 50% 50%, rgba(230, 126, 34, 0.02) 0%, transparent 70%);
   animation: patternShift 15s ease-in-out infinite;
@@ -1155,7 +1155,7 @@ textarea {
   height: 150%;
   background: radial-gradient(
     ellipse at center,
-    rgba(27, 79, 114, 0.08) 0%,
+    rgba(15, 76, 129, 0.08) 0%,
     transparent 70%
   );
   animation: logoGlow 3s ease-in-out infinite;
@@ -1371,8 +1371,8 @@ textarea {
   gap: 6px;
   margin-top: 20px;
   padding: 8px 16px;
-  background: rgba(27, 79, 114, 0.05);
-  border: 1px solid rgba(27, 79, 114, 0.1);
+  background: rgba(15, 76, 129, 0.05);
+  border: 1px solid rgba(15, 76, 129, 0.1);
   border-radius: 20px;
   color: var(--color-text-muted);
   font-family: var(--font-body);
@@ -1795,7 +1795,7 @@ a.site-footer__contact:hover {
 
 /* Dark section (primary blue) */
 .section-dark {
-  background-color: var(--color-primary, #1B4F72);
+  background-color: var(--color-primary, #0F4C81);
   color: white;
 }
 
@@ -1914,25 +1914,25 @@ textarea:focus-visible,
 
 .btn-primary {
   background-image: linear-gradient(180deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
-  box-shadow: 0 1px 2px rgba(21, 67, 96, 0.24), 0 4px 12px -4px rgba(21, 67, 96, 0.35);
+  box-shadow: 0 1px 2px rgba(10, 55, 96, 0.24), 0 4px 12px -4px rgba(10, 55, 96, 0.35);
 }
 
 .btn-primary:hover {
   background-image: linear-gradient(180deg, var(--color-primary-light) 0%, var(--color-primary-light) 100%);
-  box-shadow: 0 2px 4px rgba(21, 67, 96, 0.26), 0 10px 20px -6px rgba(21, 67, 96, 0.42);
+  box-shadow: 0 2px 4px rgba(10, 55, 96, 0.26), 0 10px 20px -6px rgba(10, 55, 96, 0.42);
   transform: translateY(-2px);
 }
 
 .btn-accent,
 .btn-donate {
   background-image: linear-gradient(180deg, var(--color-accent-light) 0%, var(--color-accent) 100%);
-  box-shadow: 0 1px 2px rgba(146, 43, 33, 0.24), 0 4px 12px -4px rgba(192, 57, 43, 0.4);
+  box-shadow: 0 1px 2px rgba(150, 24, 29, 0.24), 0 4px 12px -4px rgba(193, 39, 45, 0.4);
 }
 
 .btn-accent:hover,
 .btn-donate:hover {
   background-image: linear-gradient(180deg, var(--color-accent-light) 0%, var(--color-accent-light) 100%);
-  box-shadow: 0 2px 4px rgba(146, 43, 33, 0.26), 0 10px 22px -6px rgba(192, 57, 43, 0.45);
+  box-shadow: 0 2px 4px rgba(150, 24, 29, 0.26), 0 10px 22px -6px rgba(193, 39, 45, 0.45);
   transform: translateY(-2px);
 }
 

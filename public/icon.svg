@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="The Ladder">
-  <rect width="512" height="512" rx="96" fill="#1B4F72"/>
+  <rect width="512" height="512" rx="96" fill="#0F4C81"/>
   <g stroke="#FFFFFF" stroke-width="30" stroke-linecap="round">
     <line x1="176" y1="96" x2="176" y2="416"/>
     <line x1="336" y1="96" x2="336" y2="416"/>
@@ -7,5 +7,5 @@
     <line x1="176" y1="256" x2="336" y2="256"/>
     <line x1="176" y1="344" x2="336" y2="344"/>
   </g>
-  <circle cx="336" cy="126" r="34" fill="#C0392B"/>
+  <circle cx="336" cy="126" r="34" fill="#C1272D"/>
 </svg>
