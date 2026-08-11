@@ -49,15 +49,10 @@ test.describe('Donations Page', () => {
     await expect(legacyPayment).toHaveCount(0);
   });
 
-  test('should show GiveButter embed or configuration state', async ({ page }) => {
+  test('should show GiveButter inline form widget on /donate', async ({ page }) => {
     const embed = page.getByTestId('givebutter-embed');
-    const notConfigured = page.getByTestId('givebutter-not-configured');
-    await expect(embed.or(notConfigured)).toBeVisible();
-
-    if (await embed.isVisible().catch(() => false)) {
-      const widget = page.locator('givebutter-giving-form, givebutter-widget');
-      await expect(widget.first()).toBeAttached();
-    }
+    await expect(embed).toBeVisible();
+    await expect(page.locator('givebutter-widget[id="g8M3W2"]')).toBeAttached();
   });
 
   test('should mention GiveButter and tax-deductible status', async ({ page }) => {
