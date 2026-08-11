@@ -748,8 +748,13 @@ a:focus-visible {
   outline-offset: var(--focus-ring-offset);
 }
 
-/* Touch Targets - 44px minimum */
-a, button, [role="button"], input, select, textarea {
+/* Touch Targets - 44px minimum (footer uses its own link sizing) */
+a:not(.site-footer__link):not(.site-footer__contact),
+button,
+[role="button"],
+input,
+select,
+textarea {
   min-height: 44px;
 }
 
@@ -1680,8 +1685,6 @@ html, body {
 
 /* Ensure all interactive elements have minimum touch target on mobile */
 @media (max-width: 768px) {
-  /* Footer links and small links */
-  footer a:not(.btn),
   nav a:not(.btn) {
     min-height: 44px;
     display: inline-flex;
@@ -1693,6 +1696,76 @@ html, body {
   [role="button"]:not([class*="w-"]):not([class*="h-"]) {
     min-height: 44px;
     min-width: 44px;
+  }
+}
+
+/* Footer typography + wrapping */
+.site-footer {
+  color: var(--color-text-primary);
+}
+
+.site-footer__heading {
+  margin: 0;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+.site-footer__blurb {
+  max-width: 36ch;
+  color: #2f4050;
+  text-wrap: pretty;
+}
+
+.site-footer__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0.3rem 0;
+  font-size: 0.9375rem;
+  line-height: 1.35;
+  color: #2f4050;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+
+.site-footer__link:hover {
+  color: var(--color-primary);
+}
+
+.site-footer__contact {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  min-height: 38px;
+  color: #2f4050;
+  text-decoration: none;
+  line-height: 1.4;
+  transition: color 0.15s ease;
+}
+
+a.site-footer__contact:hover {
+  color: var(--color-primary);
+}
+
+@media (max-width: 639px) {
+  .site-footer__heading {
+    white-space: normal;
+  }
+
+  .site-footer__link {
+    white-space: normal;
+    max-width: 100%;
+    text-wrap: pretty;
+  }
+
+  .site-footer__blurb {
+    max-width: none;
   }
 }
 

@@ -113,15 +113,11 @@ export const viewport = {
 
 export default async function RootLayout({ children }) {
   let givebutterAccountId = DEFAULT_DONATION_SETTINGS.givebutterAccountId
-  let floatingWidgetId = DEFAULT_DONATION_SETTINGS.floatingWidgetId
 
   try {
     const donationSettings = await client.fetch(donationSettingsQuery)
     if (donationSettings?.givebutterAccountId) {
       givebutterAccountId = donationSettings.givebutterAccountId
-    }
-    if (donationSettings?.floatingWidgetId !== undefined) {
-      floatingWidgetId = donationSettings.floatingWidgetId
     }
   } catch (error) {
     console.error('Error fetching Givebutter settings for layout:', error)
@@ -313,7 +309,7 @@ export default async function RootLayout({ children }) {
         </ErrorBoundary>
 
         <GivebutterScript accountId={givebutterAccountId} />
-        <GivebutterFloating widgetId={floatingWidgetId} />
+        <GivebutterFloating />
         
         {/* Deferred non-critical components (PWA, analytics, etc.) */}
         <DeferredComponents />

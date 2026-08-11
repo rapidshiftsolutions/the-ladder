@@ -74,18 +74,22 @@ export default function ServiceWorkerRegistration() {
   if (!updateAvailable || suppressBanner) return null
 
   return (
-    <div className="fixed bottom-4 left-4 z-[100] max-w-sm rounded-lg bg-[var(--color-primary)] p-4 text-white shadow-lg">
-      <p className="mb-2 font-semibold">Update available</p>
-      <p className="mb-3 text-sm text-white/90">
-        A newer version of the site is ready. Refresh when you are not in the middle of donating.
-      </p>
-      <button
-        type="button"
-        onClick={updateServiceWorker}
-        className="rounded bg-white px-4 py-2 text-sm font-semibold text-[var(--color-primary)] hover:bg-white/90"
-      >
-        Refresh now
-      </button>
+    <div className="fixed inset-x-3 bottom-3 z-[100] mx-auto max-w-md rounded-lg border border-white/10 bg-[var(--color-primary)] p-3 text-white shadow-lg sm:inset-x-auto sm:bottom-5 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 sm:p-4">
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <p className="font-semibold leading-tight">Update available</p>
+          <p className="mt-1 text-sm leading-snug text-white/90">
+            Refresh for the latest version when you are ready.
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={updateServiceWorker}
+          className="shrink-0 rounded bg-white px-3 py-2 text-sm font-semibold text-[var(--color-primary)] hover:bg-white/90"
+        >
+          Refresh
+        </button>
+      </div>
     </div>
   )
 }
