@@ -4,7 +4,11 @@ import DOMOptimizer from '/src/components/DOMOptimizer';
 import ErrorBoundary from '/src/components/ErrorBoundary';
 import AppLoadingProvider from '/src/components/AppLoadingProvider';
 import DeferredComponents from '/src/components/DeferredComponents';
+import { DEFAULT_GIVEBUTTER_ACCOUNT_ID } from '/src/lib/givebutter';
 import { fontVariables } from '/src/lib/fonts';
+
+const givebutterAccountId =
+  process.env.NEXT_PUBLIC_GIVEBUTTER_ACCOUNT_ID || DEFAULT_GIVEBUTTER_ACCOUNT_ID;
 
 // Friendly & Approachable Design - Lora + Nunito Sans
 // Fonts are now self-hosted via next/font for optimal performance
@@ -135,6 +139,23 @@ export default function RootLayout({ children }) {
         {/* Resource hints for Sanity CDN */}
         <link rel="dns-prefetch" href="https://cdn.sanity.io" />
         <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
+
+        {/* Resource hints for GiveButter widgets */}
+        <link rel="dns-prefetch" href="https://widgets.givebutter.com" />
+        <link rel="preconnect" href="https://widgets.givebutter.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://givebutter.com" />
+
+        {/*
+          GiveButter widgets library (Step 1 of their install guide).
+          Must live in <head> site-wide before campaign widgets can embed.
+          Account ID is public (same value shown in GiveButter Settings → Integrations).
+        */}
+        {givebutterAccountId ? (
+          <script
+            async
+            src={`https://widgets.givebutter.com/latest.umd.cjs?acct=${encodeURIComponent(givebutterAccountId)}&p=other`}
+          />
+        ) : null}
         
         {/* PWA meta tags */}
         <meta name="theme-color" content="#1B4F72" />

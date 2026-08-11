@@ -154,9 +154,10 @@ export default function MonthlyGivingPage() {
 
             <div className="max-w-5xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {givingLevels.map((level, index) => (
-                <div 
-                  key={index} 
-                  className={`bg-white rounded-xl p-6 border-2 ${
+                <Link
+                  key={index}
+                  href={`/donate?frequency=monthly&amount=${level.amount}`}
+                  className={`bg-white rounded-xl p-6 border-2 block transition-shadow hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/40 ${
                     level.popular ? 'border-[var(--color-secondary)]' : 'border-gray-200'
                   }`}
                 >
@@ -178,17 +179,21 @@ export default function MonthlyGivingPage() {
                   <p className="text-sm text-[var(--color-text-secondary)]">
                     {level.impact}
                   </p>
-                </div>
+                  <span className="mt-4 inline-flex items-center text-sm font-semibold text-[var(--color-primary)]">
+                    Give ${level.amount}/mo
+                    <ArrowRight className="w-4 h-4 ml-1" />
+                  </span>
+                </Link>
               ))}
             </div>
 
             <div className="text-center mt-8">
-              <Link href="/donate" className="btn btn-primary btn-lg">
+              <Link href="/donate?frequency=monthly" className="btn btn-primary btn-lg">
                 Start Monthly Giving
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
               <p className="text-sm text-[var(--color-text-secondary)] mt-4">
-                100% tax-deductible • Cancel anytime • Secure payment
+                100% tax-deductible • Cancel anytime • Secure payment via GiveButter
               </p>
             </div>
           </div>

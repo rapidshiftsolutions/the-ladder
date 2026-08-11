@@ -1,12 +1,13 @@
 import { groq } from 'next-sanity'
 
-// Query to get donation settings
+// Query to get donation settings (GiveButter is the only payment method)
 export const donationSettingsQuery = groq`
   *[_type == "donationSettings"][0] {
     _id,
-    paypalLink,
-    venmoUsername,
-    cashAppTag,
+    givebutterAccountId,
+    givebutterCampaignCode,
+    givebutterWidgetId,
+    givebutterGoalWidgetId,
     suggestedAmounts,
     impactStatements,
     monthlyGivingEnabled,
