@@ -11,16 +11,22 @@ import { getGivebutterConfig, isGivebutterConfigured } from '/src/lib/givebutter
  * Amounts and frequency are handled by GiveButter's hosted form.
  * URL prefill (?amount=50&frequency=monthly) is read by the widget from the page URL.
  */
-export default function DonateClient({ settings }) {
+export default function DonateClient({ settings, widgetIdOverride }) {
   const config = getGivebutterConfig(settings)
-  const configured = isGivebutterConfigured(config)
+  const widgetId = widgetIdOverride || config.widgetId
+  const showGoalBar = !widgetIdOverride && Boolean(config.goalWidgetId)
+  const configured = Boolean(config.accountId && (widgetId || config.campaignCode))
   const taxInfo =
     settings?.taxInfo ||
     'The Ladder is a 501(c)(3) nonprofit organization (EIN: 82-0737087). All donations are tax-deductible to the fullest extent allowed by law.'
 
-  const embed = config.widgetId
-    ? createElement('givebutter-widget', { id: config.widgetId })
+  const embed = widgetId
+    ? createElement('givebutter-widget', { id: widgetId })
     : createElement('givebutter-giving-form', { campaign: config.campaignCode })
+
+  const goalBar = showGoalBar
+    ? createElement('givebutter-widget', { id: config.goalWidgetId })
+    : null
 
   return (
     <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
@@ -42,9 +48,14 @@ export default function DonateClient({ settings }) {
 
         {configured ? (
           <div
-            className="givebutter-embed min-h-[420px]"
+            className="givebutter-embed min-h-[420px] space-y-6"
             data-testid="givebutter-embed"
           >
+            {goalBar ? (
+              <div className="givebutter-goal" data-testid="givebutter-goal">
+                {goalBar}
+              </div>
+            ) : null}
             {embed}
           </div>
         ) : (

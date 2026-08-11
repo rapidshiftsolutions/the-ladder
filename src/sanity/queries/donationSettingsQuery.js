@@ -7,6 +7,7 @@ export const donationSettingsQuery = groq`
     givebutterAccountId,
     givebutterCampaignCode,
     givebutterWidgetId,
+    givebutterGoalWidgetId,
     suggestedAmounts,
     impactStatements,
     monthlyGivingEnabled,

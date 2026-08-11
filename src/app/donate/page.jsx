@@ -28,7 +28,7 @@ export const metadata = {
   }
 }
 
-export default async function DonatePage() {
+export default async function DonatePage({ searchParams }) {
   // Fetch donation settings from Sanity
   let settings = null
   try {
@@ -37,6 +37,10 @@ export default async function DonatePage() {
   } catch (error) {
     console.error('Error fetching donation settings:', error)
   }
+
+  // Allow ?widget=<id> to preview a specific GiveButter dashboard widget
+  const widgetOverride =
+    typeof searchParams?.widget === 'string' ? searchParams.widget : undefined
 
   return (
     <>
@@ -86,7 +90,7 @@ export default async function DonatePage() {
         <section className="py-12 lg:py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <DonateClient settings={settings} />
+              <DonateClient settings={settings} widgetIdOverride={widgetOverride} />
             </div>
           </div>
         </section>

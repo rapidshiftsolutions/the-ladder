@@ -31,11 +31,19 @@ export const donationSettingsType = defineType({
     }),
     defineField({
       name: 'givebutterWidgetId',
-      title: 'GiveButter Widget ID (optional)',
+      title: 'GiveButter Form Widget ID',
       type: 'string',
       group: 'paymentMethods',
       description:
-        'Optional. From campaign Sharing → Widgets → Embed. When set, the page uses <givebutter-widget> instead of the giving form.',
+        'Primary /donate embed from campaign Sharing → Widgets → Embed. Default in code: g8M3W2 (inline giving form).',
+    }),
+    defineField({
+      name: 'givebutterGoalWidgetId',
+      title: 'GiveButter Goal Bar Widget ID (optional)',
+      type: 'string',
+      group: 'paymentMethods',
+      description:
+        'Optional progress bar shown above the form. Default in code: LZovEY.',
     }),
 
     // Legacy fields — hidden so editors cannot reintroduce old methods

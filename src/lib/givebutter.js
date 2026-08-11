@@ -9,6 +9,15 @@
  */
 export const DEFAULT_GIVEBUTTER_ACCOUNT_ID = 'cj1p7s9MwIXbWFeF'
 
+/** Primary /donate embed — full inline giving form */
+export const DEFAULT_GIVEBUTTER_WIDGET_ID = 'g8M3W2'
+
+/** Optional campaign goal bar shown above the form on /donate */
+export const DEFAULT_GIVEBUTTER_GOAL_WIDGET_ID = 'LZovEY'
+
+/** Compact donate button widget (header/sidebar use); opens GiveButter modal */
+export const DEFAULT_GIVEBUTTER_BUTTON_WIDGET_ID = 'prW2aY'
+
 export function getGivebutterConfig(settings = null) {
   return {
     accountId:
@@ -22,7 +31,11 @@ export function getGivebutterConfig(settings = null) {
     widgetId:
       settings?.givebutterWidgetId ||
       process.env.NEXT_PUBLIC_GIVEBUTTER_WIDGET_ID ||
-      '',
+      DEFAULT_GIVEBUTTER_WIDGET_ID,
+    goalWidgetId:
+      settings?.givebutterGoalWidgetId ||
+      process.env.NEXT_PUBLIC_GIVEBUTTER_GOAL_WIDGET_ID ||
+      DEFAULT_GIVEBUTTER_GOAL_WIDGET_ID,
   }
 }
 
