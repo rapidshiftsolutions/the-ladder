@@ -218,7 +218,7 @@ export default async function EventsPage() {
                   Share your time and skills to help our mission.
                 </p>
                 <Link href="/volunteer" className="text-[var(--color-primary)] font-medium hover:underline flex items-center justify-center gap-1">
-                  Learn More <ArrowRight className="w-4 h-4" />
+                  Learn about volunteering <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
               

@@ -138,7 +138,7 @@ export default async function MonthlyGivingPage() {
                   }`}
                 >
                   {tier.isHighlighted && (
-                    <div className="bg-[var(--color-secondary)] text-white text-xs font-medium px-2 py-1 rounded-full inline-block mb-3">
+                    <div className="bg-[var(--color-secondary-dark)] text-white text-xs font-medium px-2 py-1 rounded-full inline-block mb-3">
                       Most Popular
                     </div>
                   )}

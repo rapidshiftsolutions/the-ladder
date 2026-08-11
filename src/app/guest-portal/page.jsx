@@ -116,7 +116,7 @@ export default function GuestPortalLogin() {
             </form>
 
             <div className="mt-6 pt-6 border-t border-gray-200">
-              <p className="text-sm text-gray-500 text-center">
+              <p className="text-sm text-[var(--color-text-secondary)] text-center">
                 Don't have a password?{' '}
                 <Link href="/contact" className="text-ladder-blue hover:underline font-medium">
                   Contact your case manager
@@ -126,7 +126,7 @@ export default function GuestPortalLogin() {
           </div>
 
           {/* Help Text */}
-          <p className="text-center text-white/60 text-sm mt-6">
+          <p className="text-center text-white/80 text-sm mt-6">
             Your password was provided by your case manager at The Ladder.
           </p>
         </div>

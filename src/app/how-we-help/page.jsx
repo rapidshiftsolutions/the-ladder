@@ -286,7 +286,7 @@ export default function HowWeHelpPage() {
                 Call (205) 522-1162
               </a>
             </div>
-            <p className="text-white/60 text-sm mt-6">
+            <p className="text-white/80 text-sm mt-6">
               All services are free and completely confidential.
             </p>
           </div>

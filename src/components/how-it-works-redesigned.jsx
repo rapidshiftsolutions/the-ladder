@@ -84,7 +84,7 @@ export default function HowItWorksRedesigned() {
                   <div className="w-16 h-16 rounded-full bg-[var(--color-primary)] flex items-center justify-center">
                     <step.icon className="w-7 h-7 text-white" />
                   </div>
-                  <span className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-[var(--color-secondary)] text-white text-xs font-bold flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-[var(--color-secondary-dark)] text-white text-xs font-bold flex items-center justify-center">
                     {step.number}
                   </span>
                 </div>

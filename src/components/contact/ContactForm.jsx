@@ -208,7 +208,7 @@ export default function ContactForm({
               className="flex items-center gap-2 text-sm font-semibold text-[var(--color-text-primary)] mb-2"
             >
               <Phone className="w-4 h-4 text-[var(--color-primary)]" />
-              Phone Number <span className="text-gray-400 font-normal">(Optional)</span>
+              Phone Number <span className="text-[var(--color-text-muted)] font-normal">(Optional)</span>
             </label>
             <input
               type="tel"
@@ -274,7 +274,7 @@ export default function ContactForm({
             rows={5}
             required
           />
-          <p className="mt-1.5 text-xs text-gray-500">
+          <p className="mt-1.5 text-xs text-[var(--color-text-secondary)]">
             {formData.message.length}/1000 characters
           </p>
         </div>
