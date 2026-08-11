@@ -16,8 +16,9 @@ GiveButter is the **sole** donation method. Do not reintroduce PayPal / Venmo / 
 
 - Env (preferred): `NEXT_PUBLIC_GIVEBUTTER_ACCOUNT_ID`, `NEXT_PUBLIC_GIVEBUTTER_CAMPAIGN_CODE`, optional `NEXT_PUBLIC_GIVEBUTTER_WIDGET_ID` (see `.env.example`)
 - CMS override: Sanity singleton **Donation Settings** fields `givebutterAccountId`, `givebutterCampaignCode`, `givebutterWidgetId`
-- Widget script is loaded once via [`src/components/GivebutterScript.jsx`](src/components/GivebutterScript.jsx) from the root layout
-- Checkout UI: [`src/app/donate/DonateClient.jsx`](src/app/donate/DonateClient.jsx) renders `<givebutter-giving-form>` (or `<givebutter-widget>` if Widget ID is set)
+- Widgets library (GiveButter step 1) is installed in [`src/app/layout.jsx`](src/app/layout.jsx) `<head>` as `widgets.givebutter.com/latest.umd.cjs?acct=…&p=other`. Default Account ID: `cj1p7s9MwIXbWFeF`.
+- Checkout UI: [`src/app/donate/DonateClient.jsx`](src/app/donate/DonateClient.jsx) renders `<givebutter-giving-form>` (or `<givebutter-widget>` if Widget ID is set). Until Campaign Code / Widget ID is set, `/donate` shows a configuration fallback.
+- After creating a widget in GiveButter (**Sharing → Widgets → Embed**), set `NEXT_PUBLIC_GIVEBUTTER_CAMPAIGN_CODE` or `NEXT_PUBLIC_GIVEBUTTER_WIDGET_ID` (or the matching Sanity Donation Settings fields).
 - Monthly path: `/monthly-giving` CTAs go to `/donate?frequency=monthly` (GiveButter URL prefill). Tier cards also pass `amount`.
 - If Account ID / Campaign Code are missing, `/donate` shows a “being configured” fallback with a contact link — not a hard crash.
 - Netlify CSP in [`netlify.toml`](netlify.toml) allowlists `widgets.givebutter.com` / `*.givebutter.com`.
