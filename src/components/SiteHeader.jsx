@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Menu, X, Heart, Phone, ChevronDown, Mail, Shield } from 'lucide-react'
+import GivebutterButton from '@/components/givebutter/GivebutterButton'
 
 // Navigation structure with dropdowns
 const navigation = [
@@ -265,15 +266,13 @@ export default function SiteHeader() {
               ))}
             </div>
 
-            {/* Desktop CTA */}
+            {/* Desktop CTA — Givebutter button widget with branded fallback */}
             <div className="hidden lg:flex lg:items-center lg:gap-3">
-              <Link
-                href="/donate"
-                className="btn btn-accent flex items-center gap-2 text-sm"
-              >
-                <Heart className="w-4 h-4" />
-                Donate Now
-              </Link>
+              <GivebutterButton
+                widgetId="prW2aY"
+                fallbackHref="/donate"
+                fallbackLabel="Donate Now"
+              />
             </div>
 
             {/* Mobile Menu Button */}

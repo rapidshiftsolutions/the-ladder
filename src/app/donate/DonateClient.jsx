@@ -112,56 +112,52 @@ function OtherWaysToGive({ settings }) {
 
 export default function DonateClient({ settings }) {
   return (
-    <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8 lg:p-10">
-      <div className="text-center mb-6">
+    <div
+      id="donate-form"
+      className="scroll-mt-24 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:p-8"
+    >
+      <div className="mb-5 text-center">
         <h2
-          className="text-2xl sm:text-3xl font-bold text-[var(--color-text-primary)] mb-3"
+          className="mb-2 text-2xl font-bold text-[var(--color-text-primary)] sm:text-3xl"
           style={{ fontFamily: 'var(--font-heading)' }}
         >
           {settings.formSectionTitle}
         </h2>
         {settings.donationPageIntro && (
-          <p className="text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+          <p className="mx-auto max-w-xl text-[var(--color-text-secondary)]">
             {settings.donationPageIntro}
           </p>
         )}
       </div>
 
-      <div className="flex flex-wrap justify-center gap-4 text-sm text-[var(--color-text-secondary)] mb-6">
-        <span className="inline-flex items-center gap-2">
-          <Shield className="w-4 h-4 text-[var(--color-primary)]" />
-          {settings.trustBadgeText || '501(c)(3) · EIN 82-0737087'}
+      <div className="mb-6 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-[var(--color-text-secondary)]">
+        <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
+          <Lock className="h-4 w-4 shrink-0 text-[var(--color-primary)]" />
+          Secure checkout
         </span>
-        <span className="inline-flex items-center gap-2">
-          <Lock className="w-4 h-4 text-[var(--color-primary)]" />
-          Secure checkout via Givebutter
-        </span>
-        <span className="inline-flex items-center gap-2">
-          <CheckCircle className="w-4 h-4 text-[var(--color-secondary)]" />
+        <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
+          <CheckCircle className="h-4 w-4 shrink-0 text-[var(--color-secondary)]" />
           Tax-deductible
         </span>
+        <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
+          <Shield className="h-4 w-4 shrink-0 text-[var(--color-primary)]" />
+          501(c)(3) verified
+        </span>
       </div>
 
-      <div id="donate-form">
-        <GivebutterWidget
-          widgetId={settings.donateWidgetId}
-          embedUrl={settings.embedUrl}
-          campaignCode={settings.campaignCode}
-          className="mx-auto"
-          minHeight="720px"
-          title="Donate to The Ladder"
-        />
-      </div>
+      <GivebutterWidget
+        widgetId={settings.donateWidgetId}
+        embedUrl={settings.embedUrl}
+        campaignCode={settings.campaignCode}
+        className="mx-auto"
+        minHeight="560px"
+        maxWidth="640px"
+        title="Donate to The Ladder"
+      />
 
       {settings.taxInfo && (
-        <p className="mt-6 text-sm text-center text-[var(--color-text-muted)]">
+        <p className="mt-6 text-center text-sm text-[var(--color-text-muted)]">
           {settings.taxInfo}
-        </p>
-      )}
-
-      {settings.matchingGiftInfo && (
-        <p className="mt-3 text-sm text-center text-[var(--color-text-secondary)]">
-          {settings.matchingGiftInfo}
         </p>
       )}
 

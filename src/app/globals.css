@@ -1828,7 +1828,7 @@ a.site-footer__contact:hover {
 
 .givebutter-embed-iframe {
   width: 100%;
-  max-width: 560px;
+  max-width: 640px;
   min-height: 720px;
   border: 0;
   border-radius: 12px;
@@ -1837,6 +1837,31 @@ a.site-footer__contact:hover {
   background: transparent;
 }
 
+.givebutter-widget-host givebutter-widget {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
 .givebutter-floating-host givebutter-widget {
   max-width: 220px;
+}
+
+/* Nav Givebutter button: fallback link shows until the widget renders */
+.gb-button-slot {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+}
+
+.gb-button-host {
+  display: inline-flex;
+  align-items: center;
+  max-width: 220px;
+  overflow: hidden;
+}
+
+.gb-button-host givebutter-widget {
+  display: block;
 }

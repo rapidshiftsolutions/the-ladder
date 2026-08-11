@@ -1,7 +1,16 @@
 import SiteHeader from '/src/components/SiteHeader'
 import SiteFooter from '/src/components/SiteFooter'
 import Link from 'next/link'
-import { Heart, Shield, ArrowRight } from 'lucide-react'
+import {
+  Heart,
+  Shield,
+  ArrowRight,
+  Lock,
+  BadgeCheck,
+  Building2,
+  Mail,
+  Phone,
+} from 'lucide-react'
 import { client } from '@/sanity/lib/client'
 import { donationSettingsQuery } from '@/sanity/queries/donationSettingsQuery'
 import { impactExamplesByAmountQuery } from '@/sanity/queries/impactExamplesQuery'
@@ -87,7 +96,7 @@ export default async function DonatePage() {
       />
       <SiteHeader />
       <main id="main-content" className="min-h-screen bg-white">
-        <section className="relative overflow-hidden bg-[var(--color-primary)] py-10 lg:py-14">
+        <section className="relative overflow-hidden bg-[var(--color-primary)] py-10 lg:py-12">
           <div
             className="absolute inset-0 opacity-20"
             style={{
@@ -104,60 +113,126 @@ export default async function DonatePage() {
                 </span>
               </div>
               <h1
-                className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4"
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 text-balance"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 {settings.heroTitle}
               </h1>
-              <p className="text-lg sm:text-xl text-white/90">{settings.heroSubtitle}</p>
+              <p className="text-lg sm:text-xl text-white/90 text-pretty">
+                {settings.heroSubtitle}
+              </p>
             </div>
           </div>
         </section>
 
-        <section className="py-10 lg:py-14 bg-gradient-to-b from-gray-50 to-white">
+        <section className="bg-gradient-to-b from-gray-50 to-white py-10 lg:py-14">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mx-auto">
+            <div className="mx-auto grid max-w-6xl items-start gap-8 lg:grid-cols-[minmax(0,1.7fr)_minmax(300px,1fr)] lg:gap-10">
               <DonateClient settings={settings} />
-            </div>
-          </div>
-        </section>
 
-        <section className="py-12 lg:py-16 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <h2
-                  className="text-3xl font-bold text-[var(--color-text-primary)] mb-4"
-                  style={{ fontFamily: 'var(--font-heading)' }}
-                >
-                  Your Impact in Action
-                </h2>
-                <p className="text-lg text-[var(--color-text-secondary)]">
-                  Every dollar you give creates real, measurable change in someone&apos;s life.
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-3 gap-6">
-                {impactExamples.slice(0, 3).map((example) => (
-                  <div
-                    key={example._id}
-                    className="text-center p-6 bg-gray-50 rounded-xl border border-gray-200"
+              <aside className="space-y-6 lg:sticky lg:top-28">
+                <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+                  <h2
+                    className="mb-4 text-lg font-bold text-[var(--color-text-primary)]"
+                    style={{ fontFamily: 'var(--font-heading)' }}
                   >
-                    <div
-                      className="text-4xl font-bold text-[var(--color-primary)] mb-2"
-                      style={{ fontFamily: 'var(--font-heading)' }}
-                    >
-                      ${example.amount}
+                    Your Gift in Action
+                  </h2>
+                  <ul className="space-y-4">
+                    {impactExamples.slice(0, 3).map((example) => (
+                      <li key={example._id} className="flex items-start gap-4">
+                        <span
+                          className="mt-0.5 inline-flex h-12 w-16 shrink-0 items-center justify-center rounded-lg bg-[var(--color-primary)]/5 text-base font-bold text-[var(--color-primary)]"
+                          style={{ fontFamily: 'var(--font-heading)' }}
+                        >
+                          ${example.amount}
+                        </span>
+                        <div className="min-w-0">
+                          <p className="font-semibold text-[var(--color-text-primary)]">
+                            {example.title}
+                          </p>
+                          <p className="text-sm leading-snug text-[var(--color-text-secondary)]">
+                            {example.description}
+                          </p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {settings.monthlyGivingEnabled && (
+                  <div className="rounded-2xl border border-[var(--color-secondary)]/30 bg-[var(--color-secondary)]/5 p-6">
+                    <div className="mb-2 inline-flex items-center gap-2 text-[var(--color-secondary)]">
+                      <Heart className="h-4 w-4" />
+                      <span className="text-sm font-semibold">Give monthly</span>
                     </div>
-                    <h3 className="font-semibold text-[var(--color-text-primary)] mb-2">
-                      {example.title}
-                    </h3>
-                    <p className="text-sm text-[var(--color-text-secondary)]">
-                      {example.description}
+                    <p className="mb-4 text-sm leading-relaxed text-[var(--color-text-secondary)]">
+                      Monthly donors give us the stability to act the moment someone hits a
+                      missing rung. Choose “Monthly” in the form, or learn more first.
                     </p>
+                    <Link
+                      href="/monthly-giving"
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--color-secondary)] underline-offset-4 hover:underline"
+                    >
+                      About monthly giving
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
                   </div>
-                ))}
-              </div>
+                )}
+
+                <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+                  <h2
+                    className="mb-4 text-lg font-bold text-[var(--color-text-primary)]"
+                    style={{ fontFamily: 'var(--font-heading)' }}
+                  >
+                    Why Donors Trust Us
+                  </h2>
+                  <ul className="space-y-3 text-sm text-[var(--color-text-secondary)]">
+                    <li className="flex items-start gap-3">
+                      <BadgeCheck className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-secondary)]" />
+                      <span>
+                        501(c)(3) tax-exempt nonprofit — EIN 82-0737087
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Lock className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-primary)]" />
+                      <span>Payments processed securely by Givebutter</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Heart className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-accent)]" />
+                      <span>100% of donations fund direct barrier removal</span>
+                    </li>
+                    {settings.matchingGiftInfo && (
+                      <li className="flex items-start gap-3">
+                        <Building2 className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-primary)]" />
+                        <span>{settings.matchingGiftInfo}</span>
+                      </li>
+                    )}
+                  </ul>
+                </div>
+
+                <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6">
+                  <p className="mb-3 text-sm font-semibold text-[var(--color-text-primary)]">
+                    Questions about giving?
+                  </p>
+                  <div className="space-y-2 text-sm">
+                    <a
+                      href="mailto:info@the-ladder.org"
+                      className="flex items-center gap-2 text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-primary)]"
+                    >
+                      <Mail className="h-4 w-4 shrink-0 text-[var(--color-primary)]" />
+                      info@the-ladder.org
+                    </a>
+                    <a
+                      href="tel:+12055221162"
+                      className="flex items-center gap-2 text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-primary)]"
+                    >
+                      <Phone className="h-4 w-4 shrink-0 text-[var(--color-primary)]" />
+                      (205) 522-1162
+                    </a>
+                  </div>
+                </div>
+              </aside>
             </div>
           </div>
         </section>

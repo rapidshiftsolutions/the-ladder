@@ -1,18 +1,21 @@
 'use client'
 
+import { useEffect, useRef, useState } from 'react'
+
 /**
- * Renders a Givebutter donation experience.
- * Prefers the official iframe embed (reliable across CSP/SW), with an optional
- * custom-element fallback when only a dashboard widget ID is available.
+ * Full Givebutter donation form.
+ * Mounts the native giving-form widget first (best UX: auto-height, inline
+ * flow) and automatically falls back to the official iframe embed if the
+ * widget fails to initialize (blocked script, ad blocker, etc.).
  */
 export default function GivebutterWidget({
   widgetId,
   embedUrl,
   campaignCode,
   className = '',
-  minHeight = '720px',
+  minHeight = '600px',
   title = 'Donate to The Ladder',
-  maxWidth = '560px',
+  maxWidth = '640px',
 }) {
   const src =
     embedUrl ||
@@ -20,7 +23,36 @@ export default function GivebutterWidget({
       ? `https://givebutter.com/embed/c/${encodeURIComponent(campaignCode)}`
       : null)
 
-  if (!src && !widgetId) {
+  const [mode, setMode] = useState(widgetId ? 'widget' : src ? 'iframe' : 'empty')
+  const hostRef = useRef(null)
+
+  useEffect(() => {
+    if (mode !== 'widget') return undefined
+    const host = hostRef.current
+    if (!host) return undefined
+
+    host.innerHTML = ''
+    const el = document.createElement('givebutter-widget')
+    el.setAttribute('id', widgetId)
+    host.appendChild(el)
+
+    let attempts = 0
+    const timer = setInterval(() => {
+      attempts += 1
+      const rect = el.getBoundingClientRect()
+      const hasContent = (el.shadowRoot?.childElementCount || 0) > 0
+      if (hasContent && rect.height > 100) {
+        clearInterval(timer)
+      } else if (attempts > 32) {
+        clearInterval(timer)
+        if (src) setMode('iframe')
+      }
+    }, 250)
+
+    return () => clearInterval(timer)
+  }, [mode, widgetId, src])
+
+  if (mode === 'empty') {
     return (
       <div
         className={`rounded-xl border border-dashed border-gray-300 bg-gray-50 p-8 text-center text-[var(--color-text-secondary)] ${className}`}
@@ -31,13 +63,15 @@ export default function GivebutterWidget({
     )
   }
 
-  if (src) {
-    return (
-      <div
-        className={`givebutter-widget-host w-full max-w-full ${className}`}
-        data-givebutter-widget={widgetId || campaignCode || 'embed'}
-        data-givebutter-embed={src}
-      >
+  return (
+    <div
+      className={`givebutter-widget-host w-full max-w-full ${className}`}
+      data-givebutter-widget={widgetId || campaignCode || 'embed'}
+      data-givebutter-mode={mode}
+    >
+      {mode === 'widget' ? (
+        <div ref={hostRef} style={{ minHeight }} className="mx-auto w-full" />
+      ) : (
         <iframe
           src={src}
           title={title}
@@ -45,8 +79,8 @@ export default function GivebutterWidget({
           style={{
             width: '100%',
             maxWidth,
-            minHeight,
-            height: minHeight,
+            minHeight: '720px',
+            height: '720px',
             border: 0,
             borderRadius: '12px',
             display: 'block',
@@ -57,6 +91,8 @@ export default function GivebutterWidget({
           allow="payment *"
           referrerPolicy="strict-origin-when-cross-origin"
         />
+      )}
+      {src && (
         <p className="mt-3 text-center text-xs text-[var(--color-text-muted)]">
           Having trouble with the form?{' '}
           <a
@@ -69,33 +105,7 @@ export default function GivebutterWidget({
           </a>
           .
         </p>
-      </div>
-    )
-  }
-
-  // Dashboard widget ID fallback (custom element)
-  return (
-    <GivebutterCustomElement
-      widgetId={widgetId}
-      className={className}
-      minHeight={minHeight}
-    />
-  )
-}
-
-function GivebutterCustomElement({ widgetId, className, minHeight }) {
-  return (
-    <div
-      className={`givebutter-widget-host w-full max-w-full overflow-hidden ${className}`}
-      style={{ minHeight }}
-      data-givebutter-widget={widgetId}
-      ref={(node) => {
-        if (!node || !widgetId) return
-        if (node.querySelector('givebutter-widget')) return
-        const el = document.createElement('givebutter-widget')
-        el.setAttribute('id', widgetId)
-        node.appendChild(el)
-      }}
-    />
+      )}
+    </div>
   )
 }
