@@ -228,12 +228,12 @@ export default function SiteFooter({ siteSettings = {} }) {
 
       <div className="border-t border-gray-200 bg-gray-50 py-5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center justify-between gap-3 text-center text-sm text-[#2f4050] md:flex-row md:text-left">
-            <p className="whitespace-nowrap">
+          <div className="flex flex-col items-center justify-between gap-2 text-center text-sm text-[#2f4050] md:flex-row md:gap-4 md:text-left">
+            <p>
               © {currentYear} {settings.orgName}. All rights reserved.
             </p>
-            <p className="text-pretty md:max-w-md md:text-right">
-              Donations are tax-deductible to the fullest extent allowed by law.
+            <p className="text-pretty md:text-right">
+              Donations are tax-deductible as allowed by law.
             </p>
           </div>
         </div>
