@@ -96,8 +96,11 @@ export default async function MonthlyGivingPage() {
 
                 <GivebutterWidget
                   widgetId={settings.monthlyWidgetId}
+                  embedUrl={settings.embedUrl}
+                  campaignCode={settings.campaignCode}
                   className="mx-auto"
-                  minHeight="520px"
+                  minHeight="720px"
+                  title="Monthly giving to The Ladder"
                 />
 
                 {settings.taxInfo && (

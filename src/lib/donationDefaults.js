@@ -1,8 +1,15 @@
 export const DEFAULT_DONATION_SETTINGS = {
   givebutterAccountId: 'cj1p7s9MwIXbWFeF',
-  donateWidgetId: 'prW2aY',
+  // Campaign / embed (primary — iframe is most reliable)
+  campaignCode: '9TRRVI',
+  embedUrl:
+    'https://givebutter.com/embed/c/support-local-people-striving-for-better-lives-9trrvi',
+  // Dashboard widget IDs (verified against Givebutter elements API)
+  // g8M3W2 = giving-form, prW2aY = button, LZovEY = goal-bar
+  donateWidgetId: 'g8M3W2',
   monthlyWidgetId: 'g8M3W2',
-  floatingWidgetId: 'LZovEY',
+  floatingWidgetId: 'prW2aY',
+  goalWidgetId: 'LZovEY',
   heroTitle: 'Help Someone Overcome a Barrier Today',
   heroSubtitle:
     'Your gift removes a specific obstacle keeping someone in Birmingham from moving forward.',
@@ -100,5 +107,16 @@ export const DEFAULT_DONATE_FAQS = [
 ]
 
 export function mergeDonationSettings(settings) {
-  return { ...DEFAULT_DONATION_SETTINGS, ...(settings || {}) }
+  const merged = { ...DEFAULT_DONATION_SETTINGS, ...(settings || {}) }
+  // Sanity empty strings should not wipe critical Givebutter defaults
+  for (const key of [
+    'givebutterAccountId',
+    'campaignCode',
+    'embedUrl',
+    'donateWidgetId',
+    'monthlyWidgetId',
+  ]) {
+    if (!merged[key]) merged[key] = DEFAULT_DONATION_SETTINGS[key]
+  }
+  return merged
 }

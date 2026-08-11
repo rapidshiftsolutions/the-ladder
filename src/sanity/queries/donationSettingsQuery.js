@@ -4,9 +4,12 @@ export const donationSettingsQuery = groq`
   *[_type == "donationSettings"][0] {
     _id,
     givebutterAccountId,
+    campaignCode,
+    embedUrl,
     donateWidgetId,
     monthlyWidgetId,
     floatingWidgetId,
+    goalWidgetId,
     heroTitle,
     heroSubtitle,
     donationPageIntro,

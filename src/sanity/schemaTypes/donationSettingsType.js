@@ -27,24 +27,41 @@ export const donationSettingsType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'donateWidgetId',
-      title: 'Donate Page Widget ID',
+      name: 'campaignCode',
+      title: 'Givebutter Campaign Code',
       type: 'string',
       group: 'givebutter',
       description:
-        'Paste the Widget ID from Givebutter Sharing → Widgets for the main donate form. Example: prW2aY',
-      initialValue: 'prW2aY',
-      validation: (Rule) => Rule.required(),
+        'Six-character campaign code from the Givebutter campaign page (e.g. 9TRRVI). Used for embeds.',
+      initialValue: '9TRRVI',
+    }),
+    defineField({
+      name: 'embedUrl',
+      title: 'Givebutter Embed URL',
+      type: 'url',
+      group: 'givebutter',
+      description:
+        'Full iframe embed URL from Givebutter Sharing → Embed. Preferred for /donate and /monthly-giving.',
+      initialValue:
+        'https://givebutter.com/embed/c/support-local-people-striving-for-better-lives-9trrvi',
+    }),
+    defineField({
+      name: 'donateWidgetId',
+      title: 'Donate Form Widget ID (optional)',
+      type: 'string',
+      group: 'givebutter',
+      description:
+        'Dashboard Widget ID for a Form widget (type: giving-form). Current: g8M3W2. Embed URL above is used first.',
+      initialValue: 'g8M3W2',
     }),
     defineField({
       name: 'monthlyWidgetId',
-      title: 'Monthly Giving Widget ID',
+      title: 'Monthly Giving Widget ID (optional)',
       type: 'string',
       group: 'givebutter',
       description:
-        'Paste the Widget ID for the monthly giving form on /monthly-giving. Example: g8M3W2',
+        'Optional Form widget ID for /monthly-giving. Usually the same as the donate form.',
       initialValue: 'g8M3W2',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'floatingWidgetId',
@@ -52,7 +69,15 @@ export const donationSettingsType = defineType({
       type: 'string',
       group: 'givebutter',
       description:
-        'Paste the Widget ID for the sitewide floating donate button. Example: LZovEY. Leave blank to hide.',
+        'Button widget ID for the floating donate control (type: button). Current: prW2aY. Leave blank to use the branded Donate button only.',
+      initialValue: 'prW2aY',
+    }),
+    defineField({
+      name: 'goalWidgetId',
+      title: 'Goal Bar Widget ID (optional)',
+      type: 'string',
+      group: 'givebutter',
+      description: 'Optional goal-bar widget ID (e.g. LZovEY) if you want a progress bar elsewhere.',
       initialValue: 'LZovEY',
     }),
 

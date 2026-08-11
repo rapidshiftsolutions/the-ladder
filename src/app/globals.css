@@ -1752,3 +1752,18 @@ html, body {
   display: block;
   width: 100%;
 }
+
+.givebutter-embed-iframe {
+  width: 100%;
+  max-width: 560px;
+  min-height: 720px;
+  border: 0;
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto;
+  background: transparent;
+}
+
+.givebutter-floating-host givebutter-widget {
+  max-width: 220px;
+}

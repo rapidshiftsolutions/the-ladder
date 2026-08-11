@@ -1,7 +1,7 @@
 import SiteHeader from '/src/components/SiteHeader'
 import SiteFooter from '/src/components/SiteFooter'
 import Link from 'next/link'
-import { Heart, Shield, CheckCircle, ArrowRight, Lock } from 'lucide-react'
+import { Heart, Shield, ArrowRight } from 'lucide-react'
 import { client } from '@/sanity/lib/client'
 import { donationSettingsQuery } from '@/sanity/queries/donationSettingsQuery'
 import { impactExamplesByAmountQuery } from '@/sanity/queries/impactExamplesQuery'
@@ -87,7 +87,7 @@ export default async function DonatePage() {
       />
       <SiteHeader />
       <main id="main-content" className="min-h-screen bg-white">
-        <section className="relative overflow-hidden bg-[var(--color-primary)] py-14 lg:py-20">
+        <section className="relative overflow-hidden bg-[var(--color-primary)] py-10 lg:py-14">
           <div
             className="absolute inset-0 opacity-20"
             style={{
@@ -97,39 +97,24 @@ export default async function DonatePage() {
           />
           <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-2 mb-6">
+              <div className="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-2 mb-4">
                 <Shield className="w-4 h-4 text-white" />
                 <span className="text-sm font-medium text-white">
                   {settings.trustBadgeText || '501(c)(3) Tax-Exempt Organization'}
                 </span>
               </div>
               <h1
-                className="text-4xl lg:text-5xl font-bold text-white mb-6"
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 {settings.heroTitle}
               </h1>
-              <p className="text-xl text-white/90 mb-8">{settings.heroSubtitle}</p>
-
-              <div className="flex flex-wrap justify-center gap-6 text-white/80 text-sm">
-                <span className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4" />
-                  Direct barrier removal
-                </span>
-                <span className="flex items-center gap-2">
-                  <Lock className="w-4 h-4" />
-                  Secure via Givebutter
-                </span>
-                <span className="flex items-center gap-2">
-                  <Shield className="w-4 h-4" />
-                  EIN: 82-0737087
-                </span>
-              </div>
+              <p className="text-lg sm:text-xl text-white/90">{settings.heroSubtitle}</p>
             </div>
           </div>
         </section>
 
-        <section className="py-12 lg:py-16 bg-gradient-to-b from-gray-50 to-white">
+        <section className="py-10 lg:py-14 bg-gradient-to-b from-gray-50 to-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto">
               <DonateClient settings={settings} />

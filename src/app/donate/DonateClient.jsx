@@ -142,11 +142,16 @@ export default function DonateClient({ settings }) {
         </span>
       </div>
 
-      <GivebutterWidget
-        widgetId={settings.donateWidgetId}
-        className="mx-auto"
-        minHeight="520px"
-      />
+      <div id="donate-form">
+        <GivebutterWidget
+          widgetId={settings.donateWidgetId}
+          embedUrl={settings.embedUrl}
+          campaignCode={settings.campaignCode}
+          className="mx-auto"
+          minHeight="720px"
+          title="Donate to The Ladder"
+        />
+      </div>
 
       {settings.taxInfo && (
         <p className="mt-6 text-sm text-center text-[var(--color-text-muted)]">

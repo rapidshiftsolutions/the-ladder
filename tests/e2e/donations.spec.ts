@@ -14,9 +14,12 @@ test.describe('Donations Page', () => {
     await expect(page).toHaveTitle(/Donate/i);
   });
 
-  test('should display Givebutter donate widget host', async ({ page }) => {
+  test('should display Givebutter donate embed', async ({ page }) => {
     const widgetHost = page.locator('[data-givebutter-widget], .givebutter-widget-host');
     await expect(widgetHost.first()).toBeVisible();
+    const iframe = page.locator('iframe.givebutter-embed-iframe, iframe[title*="Donate" i]');
+    await expect(iframe.first()).toBeVisible();
+    await expect(iframe.first()).toHaveAttribute('src', /givebutter\.com/);
   });
 
   test('should show trust signals near the form', async ({ page }) => {
@@ -44,6 +47,8 @@ test.describe('Monthly Giving Page', () => {
     await expect(page).toHaveTitle(/Monthly/i);
     const widgetHost = page.locator('[data-givebutter-widget], .givebutter-widget-host');
     await expect(widgetHost.first()).toBeVisible();
+    const iframe = page.locator('iframe.givebutter-embed-iframe, iframe[src*="givebutter.com"]');
+    await expect(iframe.first()).toBeVisible();
   });
 });
 
