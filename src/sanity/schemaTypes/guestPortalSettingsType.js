@@ -4,12 +4,15 @@ export const guestPortalSettingsType = defineType({
   name: 'guestPortalSettings',
   title: 'Guest Portal Settings',
   type: 'document',
+  description:
+    'Shared password and content for the invitation-only guest portal. Change the password anytime — people you invite use it to apply for sponsorship.',
   fields: [
     defineField({
       name: 'portalPassword',
       title: 'Portal Access Password',
       type: 'string',
-      description: 'Shared password for guest portal access',
+      description:
+        'Shared password given to referred individuals. Anyone with this password can log in and submit a sponsorship application. Use at least 6 characters.',
       validation: (Rule) => Rule.required().min(6),
     }),
     defineField({
@@ -17,7 +20,9 @@ export const guestPortalSettingsType = defineType({
       title: 'Welcome Message',
       type: 'text',
       rows: 3,
-      initialValue: 'Welcome to The Ladder Guest Portal. Here you\'ll find resources and information to support your journey.',
+      description: 'Shown on the portal dashboard after login.',
+      initialValue:
+        "Welcome to The Ladder Guest Portal. Use the application form to request sponsorship for a specific barrier you're facing.",
     }),
     defineField({
       name: 'portalResources',

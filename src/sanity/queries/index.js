@@ -16,3 +16,5 @@ export * from './impactExamplesQuery'
 // Settings queries
 export * from './siteSettingsQuery'
 export * from './donationSettingsQuery'
+export * from './guestPortalSettingsQuery'
+export * from './seoSettingsQuery'

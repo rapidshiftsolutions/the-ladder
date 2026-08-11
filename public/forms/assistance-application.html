@@ -1,0 +1,48 @@
+<!--
+  Static HTML form for Netlify Forms detection (assistance applications).
+  Actual submissions are created via /api/guest-portal/apply and mirrored here for email notifications.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assistance Application - The Ladder Birmingham</title>
+</head>
+<body>
+  <form
+    name="assistance-application"
+    method="POST"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+    action="/guest-portal/apply?success=true"
+  >
+    <p hidden>
+      <label>Don't fill this out: <input name="bot-field" /></label>
+    </p>
+    <p>
+      <label>Full Name: <input type="text" name="fullName" required /></label>
+    </p>
+    <p>
+      <label>Email: <input type="email" name="email" required /></label>
+    </p>
+    <p>
+      <label>Phone: <input type="tel" name="phone" /></label>
+    </p>
+    <p>
+      <label>Referring Partner: <input type="text" name="referringPartner" required /></label>
+    </p>
+    <p>
+      <label>Barrier Description: <textarea name="barrierDescription" required></textarea></label>
+    </p>
+    <p>
+      <label>Help Requested: <textarea name="helpRequested"></textarea></label>
+    </p>
+    <p>
+      <label>Consent: <input type="text" name="consentGiven" /></label>
+    </p>
+    <p>
+      <button type="submit">Submit</button>
+    </p>
+  </form>
+</body>
+</html>

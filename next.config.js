@@ -9,4 +9,18 @@ module.exports = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/donate-now',
+        destination: '/donate',
+        permanent: true,
+      },
+      {
+        source: '/apply-assistance',
+        destination: '/guest-portal',
+        permanent: true,
+      },
+    ]
+  },
 };

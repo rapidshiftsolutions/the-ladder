@@ -43,9 +43,18 @@ const trustBadges = [
   }
 ]
 
-export default function ImpactTrustRedesigned() {
+export default function ImpactTrustRedesigned({ stats = null, content = null }) {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: "-50px" })
+
+  const resolvedStats = stats
+    ? [
+        { icon: Users, number: String(stats.individualsHelped || '500+'), label: 'Individuals Helped' },
+        { icon: CheckCircle, number: String(stats.successRate || '95%'), label: 'Success Rate' },
+        { icon: Clock, number: String(stats.responseTime || '24hr'), label: 'Response Time' },
+        { icon: DollarSign, number: String(stats.directImpact || '100%'), label: 'Direct Impact' },
+      ]
+    : impactStats
 
   return (
     <section 
@@ -70,13 +79,15 @@ export default function ImpactTrustRedesigned() {
             Measurable Results
           </h2>
           <p className="text-lg text-[var(--color-text-secondary)] max-w-xl mx-auto">
-            Every number represents a real person who overcame a barrier.
+            {content?.impactTestimonialQuote
+              ? 'Real outcomes from people who climbed past a missing rung.'
+              : 'Every number represents a real person who overcame a barrier.'}
           </p>
         </motion.div>
 
         {/* Impact Stats Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-12">
-          {impactStats.map((stat, index) => (
+          {resolvedStats.map((stat, index) => (
             <motion.div
               key={stat.label}
               className="text-center p-6 bg-[var(--color-bg-secondary)] rounded-xl"

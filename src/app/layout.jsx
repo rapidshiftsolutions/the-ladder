@@ -5,6 +5,11 @@ import ErrorBoundary from '/src/components/ErrorBoundary';
 import AppLoadingProvider from '/src/components/AppLoadingProvider';
 import DeferredComponents from '/src/components/DeferredComponents';
 import { fontVariables } from '/src/lib/fonts';
+import GivebutterScript from '@/components/givebutter/GivebutterScript';
+import GivebutterFloating from '@/components/givebutter/GivebutterFloating';
+import { client } from '@/sanity/lib/client';
+import { donationSettingsQuery } from '@/sanity/queries/donationSettingsQuery';
+import { DEFAULT_DONATION_SETTINGS } from '@/lib/donationDefaults';
 
 // Friendly & Approachable Design - Lora + Nunito Sans
 // Fonts are now self-hosted via next/font for optimal performance
@@ -106,7 +111,22 @@ export const viewport = {
   maximumScale: 5,
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  let givebutterAccountId = DEFAULT_DONATION_SETTINGS.givebutterAccountId
+  let floatingWidgetId = DEFAULT_DONATION_SETTINGS.floatingWidgetId
+
+  try {
+    const donationSettings = await client.fetch(donationSettingsQuery)
+    if (donationSettings?.givebutterAccountId) {
+      givebutterAccountId = donationSettings.givebutterAccountId
+    }
+    if (donationSettings?.floatingWidgetId !== undefined) {
+      floatingWidgetId = donationSettings.floatingWidgetId
+    }
+  } catch (error) {
+    console.error('Error fetching Givebutter settings for layout:', error)
+  }
+
   return (
     <html lang="en" className={fontVariables}>
       <head>
@@ -132,9 +152,11 @@ export default function RootLayout({ children }) {
         {/* Social sharing images */}
         <meta property="og:image:secure_url" content="https://the-ladder.org/meta.png" />
 
-        {/* Resource hints for Sanity CDN */}
+        {/* Resource hints for Sanity CDN + Givebutter */}
         <link rel="dns-prefetch" href="https://cdn.sanity.io" />
         <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://widgets.givebutter.com" />
+        <link rel="preconnect" href="https://widgets.givebutter.com" crossOrigin="anonymous" />
         
         {/* PWA meta tags */}
         <meta name="theme-color" content="#1B4F72" />
@@ -289,6 +311,9 @@ export default function RootLayout({ children }) {
             </DOMOptimizer>
           </AppLoadingProvider>
         </ErrorBoundary>
+
+        <GivebutterScript accountId={givebutterAccountId} />
+        <GivebutterFloating widgetId={floatingWidgetId} />
         
         {/* Deferred non-critical components (PWA, analytics, etc.) */}
         <DeferredComponents />

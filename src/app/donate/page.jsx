@@ -2,13 +2,21 @@ import SiteHeader from '/src/components/SiteHeader'
 import SiteFooter from '/src/components/SiteFooter'
 import Link from 'next/link'
 import { Heart, Shield, CheckCircle, ArrowRight, Lock } from 'lucide-react'
-import { sanityFetch } from '@/sanity/lib/live'
+import { client } from '@/sanity/lib/client'
 import { donationSettingsQuery } from '@/sanity/queries/donationSettingsQuery'
+import { impactExamplesByAmountQuery } from '@/sanity/queries/impactExamplesQuery'
+import { donateFaqsQuery } from '@/sanity/queries/faqQuery'
 import DonateClient from './DonateClient'
+import {
+  DEFAULT_DONATE_FAQS,
+  DEFAULT_IMPACT_EXAMPLES,
+  mergeDonationSettings,
+} from '@/lib/donationDefaults'
 
 export const metadata = {
   title: 'Donate | Support Birmingham Residents in Need',
-  description: 'Your donation helps Birmingham residents overcome barriers to success. The Ladder is a 501(c)(3) nonprofit. 100% of donations go to direct assistance. Donate securely today.',
+  description:
+    'Your donation helps Birmingham residents overcome barriers to success. The Ladder is a 501(c)(3) nonprofit. Donate securely through Givebutter today.',
   keywords: [
     'donate Birmingham Alabama',
     'Birmingham nonprofit donation',
@@ -18,60 +26,99 @@ export const metadata = {
     'Birmingham charity donations',
     'monthly giving Birmingham',
     'tax deductible donation Birmingham',
-    '501c3 donation Alabama'
+    '501c3 donation Alabama',
   ],
   openGraph: {
     title: 'Donate | Support Birmingham Residents in Need | The Ladder',
-    description: 'Your tax-deductible donation provides direct crisis intervention and barrier removal assistance to Birmingham residents. Every dollar creates real impact.',
-    url: 'https://www.the-ladder.org/donate',
-    type: 'website'
-  }
+    description:
+      'Your tax-deductible donation provides direct crisis intervention and barrier removal assistance to Birmingham residents.',
+    url: 'https://the-ladder.org/donate',
+    type: 'website',
+  },
+  alternates: {
+    canonical: 'https://the-ladder.org/donate',
+  },
 }
 
+export const revalidate = 3600
+
 export default async function DonatePage() {
-  // Fetch donation settings from Sanity
-  let settings = null
+  let settingsRaw = null
+  let impactExamples = DEFAULT_IMPACT_EXAMPLES
+  let faqs = DEFAULT_DONATE_FAQS
+
   try {
-    const result = await sanityFetch({ query: donationSettingsQuery })
-    settings = result?.data
+    const [settingsResult, impactResult, faqResult] = await Promise.all([
+      client.fetch(donationSettingsQuery),
+      client.fetch(impactExamplesByAmountQuery),
+      client.fetch(donateFaqsQuery),
+    ])
+    settingsRaw = settingsResult
+    if (impactResult?.length) impactExamples = impactResult.slice(0, 6)
+    if (faqResult?.length) faqs = faqResult
   } catch (error) {
-    console.error('Error fetching donation settings:', error)
+    console.error('Error fetching donation page content:', error)
+  }
+
+  const settings = mergeDonationSettings(settingsRaw)
+  const monthlyTiers =
+    settings.monthlyGivingTiers?.length > 0
+      ? settings.monthlyGivingTiers
+      : mergeDonationSettings(null).monthlyGivingTiers
+
+  const donateJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'DonateAction',
+    name: 'Donate to The Ladder',
+    target: 'https://the-ladder.org/donate',
+    recipient: {
+      '@type': 'NGO',
+      name: 'The Ladder',
+      taxID: '82-0737087',
+      url: 'https://the-ladder.org',
+    },
   }
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(donateJsonLd) }}
+      />
       <SiteHeader />
       <main id="main-content" className="min-h-screen bg-white">
-        {/* Hero Section */}
-        <section className="bg-[var(--color-primary)] py-16 lg:py-20">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative overflow-hidden bg-[var(--color-primary)] py-14 lg:py-20">
+          <div
+            className="absolute inset-0 opacity-20"
+            style={{
+              backgroundImage:
+                'radial-gradient(circle at 20% 20%, rgba(255,255,255,0.25), transparent 45%), radial-gradient(circle at 80% 0%, rgba(26,188,156,0.35), transparent 40%)',
+            }}
+          />
+          <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-center">
               <div className="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-2 mb-6">
                 <Shield className="w-4 h-4 text-white" />
                 <span className="text-sm font-medium text-white">
-                  501(c)(3) Tax-Exempt Organization
+                  {settings.trustBadgeText || '501(c)(3) Tax-Exempt Organization'}
                 </span>
               </div>
-              <h1 
+              <h1
                 className="text-4xl lg:text-5xl font-bold text-white mb-6"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                Help Someone Overcome a Barrier Today
+                {settings.heroTitle}
               </h1>
-              <p className="text-xl text-white/90 mb-8">
-                Your donation directly supports Birmingham residents in crisis. 
-                Every contribution removes real obstacles and creates lasting change.
-              </p>
-              
-              {/* Trust Indicators */}
+              <p className="text-xl text-white/90 mb-8">{settings.heroSubtitle}</p>
+
               <div className="flex flex-wrap justify-center gap-6 text-white/80 text-sm">
                 <span className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4" />
-                  100% to Direct Services
+                  Direct barrier removal
                 </span>
                 <span className="flex items-center gap-2">
                   <Lock className="w-4 h-4" />
-                  Secure Payment
+                  Secure via Givebutter
                 </span>
                 <span className="flex items-center gap-2">
                   <Shield className="w-4 h-4" />
@@ -82,21 +129,19 @@ export default async function DonatePage() {
           </div>
         </section>
 
-        {/* Main Donation Section */}
-        <section className="py-12 lg:py-16 bg-gray-50">
+        <section className="py-12 lg:py-16 bg-gradient-to-b from-gray-50 to-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-3xl mx-auto">
               <DonateClient settings={settings} />
             </div>
           </div>
         </section>
 
-        {/* Impact Section */}
         <section className="py-12 lg:py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
-                <h2 
+                <h2
                   className="text-3xl font-bold text-[var(--color-text-primary)] mb-4"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
@@ -106,157 +151,109 @@ export default async function DonatePage() {
                   Every dollar you give creates real, measurable change in someone&apos;s life.
                 </p>
               </div>
-              
+
               <div className="grid md:grid-cols-3 gap-6">
-                <div className="text-center p-6 bg-gray-50 rounded-xl border border-gray-200">
-                  <div 
-                    className="text-4xl font-bold text-[var(--color-primary)] mb-2"
-                    style={{ fontFamily: 'var(--font-heading)' }}
+                {impactExamples.slice(0, 3).map((example) => (
+                  <div
+                    key={example._id}
+                    className="text-center p-6 bg-gray-50 rounded-xl border border-gray-200"
                   >
-                    $50
+                    <div
+                      className="text-4xl font-bold text-[var(--color-primary)] mb-2"
+                      style={{ fontFamily: 'var(--font-heading)' }}
+                    >
+                      ${example.amount}
+                    </div>
+                    <h3 className="font-semibold text-[var(--color-text-primary)] mb-2">
+                      {example.title}
+                    </h3>
+                    <p className="text-sm text-[var(--color-text-secondary)]">
+                      {example.description}
+                    </p>
                   </div>
-                  <h3 className="font-semibold text-[var(--color-text-primary)] mb-2">Transportation</h3>
-                  <p className="text-sm text-[var(--color-text-secondary)]">
-                    Provides transportation so someone can get to a job interview or medical appointment
-                  </p>
-                </div>
-                <div className="text-center p-6 bg-gray-50 rounded-xl border border-gray-200">
-                  <div 
-                    className="text-4xl font-bold text-[var(--color-primary)] mb-2"
-                    style={{ fontFamily: 'var(--font-heading)' }}
-                  >
-                    $150
-                  </div>
-                  <h3 className="font-semibold text-[var(--color-text-primary)] mb-2">Housing Barrier</h3>
-                  <p className="text-sm text-[var(--color-text-secondary)]">
-                    Helps with a deposit, documentation, or other barrier preventing stable housing
-                  </p>
-                </div>
-                <div className="text-center p-6 bg-gray-50 rounded-xl border border-gray-200">
-                  <div 
-                    className="text-4xl font-bold text-[var(--color-primary)] mb-2"
-                    style={{ fontFamily: 'var(--font-heading)' }}
-                  >
-                    $300
-                  </div>
-                  <h3 className="font-semibold text-[var(--color-text-primary)] mb-2">Career Access</h3>
-                  <p className="text-sm text-[var(--color-text-secondary)]">
-                    Removes barriers to education, certification, or job training opportunities
-                  </p>
-                </div>
+                ))}
               </div>
             </div>
           </div>
         </section>
 
-        {/* Monthly Giving CTA */}
-        <section className="py-12 lg:py-16 bg-[var(--color-secondary)]/10 border-y border-[var(--color-secondary)]/20">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 bg-[var(--color-secondary)]/10 text-[var(--color-secondary)] rounded-full px-4 py-2 mb-6">
-                <Heart className="w-4 h-4" />
-                <span className="text-sm font-medium">Recommended</span>
-              </div>
-              <h2 
-                className="text-3xl font-bold text-[var(--color-text-primary)] mb-4 text-center"
-                style={{ fontFamily: 'var(--font-heading)' }}
-              >
-                Become a Monthly Donor
-              </h2>
-              <div className="max-w-2xl mx-auto">
-                <p className="text-lg text-[var(--color-text-secondary)] mb-8 text-center">
-                  Monthly donors provide the stable, predictable support that allows us to respond 
-                  immediately when someone needs help. Your recurring gift has 8x the lifetime 
-                  impact of a one-time donation.
+        {settings.monthlyGivingEnabled && (
+          <section className="py-12 lg:py-16 bg-[var(--color-secondary)]/10 border-y border-[var(--color-secondary)]/20">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-4xl mx-auto text-center">
+                <div className="inline-flex items-center gap-2 bg-[var(--color-secondary)]/10 text-[var(--color-secondary)] rounded-full px-4 py-2 mb-6">
+                  <Heart className="w-4 h-4" />
+                  <span className="text-sm font-medium">Recommended</span>
+                </div>
+                <h2
+                  className="text-3xl font-bold text-[var(--color-text-primary)] mb-4"
+                  style={{ fontFamily: 'var(--font-heading)' }}
+                >
+                  {settings.monthlyGivingHeadline}
+                </h2>
+                <p className="text-lg text-[var(--color-text-secondary)] mb-8 max-w-2xl mx-auto">
+                  {settings.monthlyGivingDescription}
                 </p>
-              </div>
-              
-              <div className="grid md:grid-cols-3 gap-6 mb-8">
-                <div className="p-6 bg-white rounded-xl border border-gray-200">
-                  <div className="text-2xl font-bold text-[var(--color-primary)] mb-1">$25/mo</div>
-                  <div className="text-sm text-[var(--color-text-secondary)]">Supporter</div>
-                </div>
-                <div className="p-6 bg-white rounded-xl border-2 border-[var(--color-secondary)]">
-                  <div className="text-2xl font-bold text-[var(--color-secondary)] mb-1">$50/mo</div>
-                  <div className="text-sm text-[var(--color-text-secondary)]">Advocate</div>
-                </div>
-                <div className="p-6 bg-white rounded-xl border border-gray-200">
-                  <div className="text-2xl font-bold text-[var(--color-primary)] mb-1">$100/mo</div>
-                  <div className="text-sm text-[var(--color-text-secondary)]">Champion</div>
-                </div>
-              </div>
-              
-              <Link 
-                href="/monthly-giving" 
-                className="btn btn-primary btn-lg"
-              >
-                Learn About Monthly Giving
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Link>
-            </div>
-          </div>
-        </section>
 
-        {/* FAQ Section */}
+                <div className="grid md:grid-cols-3 gap-6 mb-8">
+                  {monthlyTiers.slice(0, 3).map((tier) => (
+                    <div
+                      key={`${tier.name}-${tier.amount}`}
+                      className={`p-6 bg-white rounded-xl border ${
+                        tier.isHighlighted
+                          ? 'border-2 border-[var(--color-secondary)]'
+                          : 'border-gray-200'
+                      }`}
+                    >
+                      <div
+                        className={`text-2xl font-bold mb-1 ${
+                          tier.isHighlighted
+                            ? 'text-[var(--color-secondary)]'
+                            : 'text-[var(--color-primary)]'
+                        }`}
+                      >
+                        ${tier.amount}/mo
+                      </div>
+                      <div className="text-sm text-[var(--color-text-secondary)]">{tier.name}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <Link href="/monthly-giving" className="btn btn-primary btn-lg inline-flex items-center">
+                  Learn About Monthly Giving
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
+              </div>
+            </div>
+          </section>
+        )}
+
         <section className="py-12 lg:py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto">
-              <h2 
+              <h2
                 className="text-3xl font-bold text-[var(--color-text-primary)] text-center mb-12"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 Frequently Asked Questions
               </h2>
-              
+
               <div className="space-y-6">
-                <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
-                  <h3 className="text-lg font-semibold text-[var(--color-text-primary)] mb-2">
-                    Is my donation tax-deductible?
-                  </h3>
-                  <p className="text-[var(--color-text-secondary)]">
-                    Yes. The Ladder is a 501(c)(3) tax-exempt organization (EIN: 82-0737087). 
-                    All donations are tax-deductible to the fullest extent allowed by law. 
-                    You will receive a receipt for your records.
-                  </p>
-                </div>
-                
-                <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
-                  <h3 className="text-lg font-semibold text-[var(--color-text-primary)] mb-2">
-                    Where does my donation go?
-                  </h3>
-                  <p className="text-[var(--color-text-secondary)]">
-                    100% of your donation goes directly to barrier removal assistance for 
-                    individuals in crisis. We maintain financial transparency and publish 
-                    annual reports showing exactly how funds are used.
-                  </p>
-                </div>
-                
-                <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
-                  <h3 className="text-lg font-semibold text-[var(--color-text-primary)] mb-2">
-                    Can I donate in honor or memory of someone?
-                  </h3>
-                  <p className="text-[var(--color-text-secondary)]">
-                    Yes. During the donation process, you can specify if your gift is in honor 
-                    or memory of someone special. We can send acknowledgment cards to recipients 
-                    if you provide their contact information.
-                  </p>
-                </div>
-                
-                <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
-                  <h3 className="text-lg font-semibold text-[var(--color-text-primary)] mb-2">
-                    How can I see the impact of my donation?
-                  </h3>
-                  <p className="text-[var(--color-text-secondary)]">
-                    All donors can view our success stories and annual reports. Monthly donors 
-                    receive quarterly impact updates with specific stories of how their gifts 
-                    made a difference.
-                  </p>
-                </div>
+                {faqs.map((faq) => (
+                  <div
+                    key={faq._id}
+                    className="bg-gray-50 rounded-xl p-6 border border-gray-200"
+                  >
+                    <h3 className="text-lg font-semibold text-[var(--color-text-primary)] mb-2">
+                      {faq.question}
+                    </h3>
+                    <p className="text-[var(--color-text-secondary)]">{faq.answer}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </section>
-
       </main>
       <SiteFooter />
     </>

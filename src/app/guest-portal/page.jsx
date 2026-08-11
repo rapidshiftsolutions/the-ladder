@@ -27,7 +27,7 @@ export default function GuestPortalLogin() {
       const data = await response.json()
 
       if (data.success) {
-        router.push(data.redirectTo || '/guest-portal/dashboard')
+        router.push(data.redirectTo || '/guest-portal/apply')
       } else {
         setError(data.error || 'Invalid password. Please try again.')
       }
@@ -62,7 +62,9 @@ export default function GuestPortalLogin() {
               </svg>
             </div>
             <h1 className="text-3xl font-bold text-white mb-2 font-heading">Guest Portal</h1>
-            <p className="text-white/70">Access your resources and information</p>
+            <p className="text-white/70">
+              Enter the shared password from your partner nonprofit to apply for sponsorship
+            </p>
           </div>
 
           {/* Login Form */}

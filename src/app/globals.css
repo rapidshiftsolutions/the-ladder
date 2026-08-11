@@ -1740,3 +1740,15 @@ html, body {
     padding-bottom: 5rem;
   }
 }
+
+/* Givebutter embeds */
+.givebutter-widget-host {
+  width: 100%;
+  max-width: 100%;
+}
+
+.givebutter-widget-host givebutter-widget,
+.givebutter-floating-host givebutter-widget {
+  display: block;
+  width: 100%;
+}

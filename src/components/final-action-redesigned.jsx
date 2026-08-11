@@ -5,7 +5,9 @@ import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import { Heart, HandHeart, Building2, ArrowRight } from 'lucide-react'
 
-const actionOptions = [
+const iconMap = { Heart, HandHeart, Building2 }
+
+const defaultActionOptions = [
   {
     icon: Heart,
     title: "Need Help?",
@@ -29,9 +31,29 @@ const actionOptions = [
   }
 ]
 
-export default function FinalActionRedesigned() {
+export default function FinalActionRedesigned({ content = null }) {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: "-50px" })
+  const headline = content?.finalCtaHeadline || 'Ready to Take the Next Step?'
+  const accent = content?.finalCtaHeadlineAccent
+  const subheadline =
+    content?.finalCtaSubheadline || "There's a place for everyone in our mission."
+
+  const actionOptions = content?.ctaOptions?.length
+    ? content.ctaOptions.map((option, index) => {
+        const Icon =
+          iconMap[option.iconName] ||
+          defaultActionOptions[index]?.icon ||
+          Heart
+        return {
+          icon: Icon,
+          title: option.title,
+          description: option.description,
+          cta: option.ctaText,
+          href: option.ctaLink || '/contact',
+        }
+      })
+    : defaultActionOptions
 
   return (
     <section 
@@ -50,10 +72,11 @@ export default function FinalActionRedesigned() {
             className="text-3xl lg:text-4xl font-bold text-white mb-4"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            Ready to Take the Next Step?
+            {headline}
+            {accent ? <span className="block text-white/90">{accent}</span> : null}
           </h2>
           <p className="text-lg text-white/80 max-w-xl mx-auto">
-            There's a place for everyone in our mission.
+            {subheadline}
           </p>
         </motion.div>
 

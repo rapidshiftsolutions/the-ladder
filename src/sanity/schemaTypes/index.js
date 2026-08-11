@@ -33,6 +33,7 @@ import { siteSettingsType } from './siteSettingsType'
 import { donationSettingsType } from './donationSettingsType'
 import { guestPortalSettingsType } from './guestPortalSettingsType'
 import { seoSettingsType } from './seoSettingsType'
+import { assistanceApplicationType } from './assistanceApplicationType'
 
 export const schema = {
   types: [
@@ -58,6 +59,7 @@ export const schema = {
     donationSettingsType,
     guestPortalSettingsType,
     seoSettingsType,
+    assistanceApplicationType,
     
     // Legacy types (hidden in studio, kept for data migration)
     postType,

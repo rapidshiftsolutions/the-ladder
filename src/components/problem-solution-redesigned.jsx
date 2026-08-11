@@ -5,21 +5,28 @@ import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import { AlertCircle, CheckCircle, ArrowRight } from 'lucide-react'
 
-const challenges = [
+const defaultChallenges = [
   { service: "Housing program", gap: "can't help with car repairs needed for work" },
   { service: "Job training", gap: "can't address childcare barriers during classes" },
   { service: "Healthcare services", gap: "can't solve transportation to appointments" }
 ]
 
-const solutions = [
+const defaultSolutions = [
   { title: "Partner referrals", description: "Nonprofits send us clients facing barriers outside their scope" },
   { title: "Individual focus", description: "We address your exact obstacle with personalized support" },
   { title: "Quick response", description: "24-hour initial response, typically resolved within 30 days" }
 ]
 
-export default function ProblemSolutionRedesigned() {
+export default function ProblemSolutionRedesigned({ content = null }) {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, margin: "-50px" })
+  const challenges = content?.challengeItems?.length ? content.challengeItems : defaultChallenges
+  const solutions = content?.solutionItems?.length ? content.solutionItems : defaultSolutions
+  const badge = content?.problemSectionBadge || 'The Missing Rung'
+  const headline = content?.problemSectionHeadline || 'Bridging the Gap'
+  const subheadline =
+    content?.problemSectionSubheadline ||
+    "Sometimes individuals face barriers that don't fit into any single organization's services. That's where we step in."
 
   return (
     <section ref={sectionRef} className="py-16 lg:py-20 bg-white">
@@ -32,17 +39,16 @@ export default function ProblemSolutionRedesigned() {
           transition={{ duration: 0.5 }}
         >
           <span className="inline-block text-sm font-semibold text-[var(--color-primary)] uppercase tracking-wider mb-3">
-            The Missing Rung
+            {badge}
           </span>
           <h2 
             className="text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] mb-4"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            Bridging the Gap
+            {headline}
           </h2>
           <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
-            Sometimes individuals face barriers that don't fit into any single organization's services. 
-            That's where we step in.
+            {subheadline}
           </p>
         </motion.div>
 

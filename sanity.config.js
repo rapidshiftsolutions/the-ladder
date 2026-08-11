@@ -13,7 +13,6 @@ import {
   HelpCircleIcon,
   CreditCardIcon,
   BlockContentIcon,
-  RocketIcon,
   LinkIcon,
   EarthGlobeIcon,
   LockIcon,
@@ -154,6 +153,55 @@ const theLadderStructure = (S) => {
         ),
 
       S.divider(),
+
+      // ==========================================
+      // APPLICATIONS - Portal sponsorship requests
+      // ==========================================
+      S.listItem()
+        .title('Applications')
+        .icon(DocumentTextIcon)
+        .child(
+          S.list()
+            .title('Assistance Applications')
+            .items([
+              S.listItem()
+                .title('All Applications')
+                .icon(DocumentTextIcon)
+                .schemaType('assistanceApplication')
+                .child(
+                  S.documentList()
+                    .title('All Applications')
+                    .filter('_type == "assistanceApplication"')
+                    .defaultOrdering([{ field: 'submittedAt', direction: 'desc' }])
+                ),
+              S.listItem()
+                .title('New')
+                .child(
+                  S.documentList()
+                    .title('New Applications')
+                    .filter('_type == "assistanceApplication" && status == "new"')
+                    .defaultOrdering([{ field: 'submittedAt', direction: 'desc' }])
+                ),
+              S.listItem()
+                .title('In Review')
+                .child(
+                  S.documentList()
+                    .title('In Review')
+                    .filter('_type == "assistanceApplication" && status == "in_review"')
+                    .defaultOrdering([{ field: 'submittedAt', direction: 'desc' }])
+                ),
+              S.listItem()
+                .title('Approved')
+                .child(
+                  S.documentList()
+                    .title('Approved')
+                    .filter('_type == "assistanceApplication" && status == "approved"')
+                    .defaultOrdering([{ field: 'submittedAt', direction: 'desc' }])
+                ),
+            ])
+        ),
+      
+      S.divider(),
       
       // ==========================================
       // HOMEPAGE & PAGES - Page-specific content
@@ -173,16 +221,6 @@ const theLadderStructure = (S) => {
                     .schemaType('homepageContent')
                     .documentId('homepageContent')
                     .title('Homepage Content')
-                ),
-              S.listItem()
-                .title('Process Steps')
-                .icon(RocketIcon)
-                .schemaType('processStep')
-                .child(
-                  S.documentList()
-                    .title('Process Steps ("How It Works")')
-                    .filter('_type == "processStep"')
-                    .defaultOrdering([{field: 'stepNumber', direction: 'asc'}])
                 ),
               S.listItem()
                 .title('FAQs')
@@ -210,6 +248,55 @@ const theLadderStructure = (S) => {
                 ),
             ])
         ),
+
+      S.divider(),
+
+      // ==========================================
+      // DONATIONS - Givebutter & giving copy
+      // ==========================================
+      S.listItem()
+        .title('Donations')
+        .icon(CreditCardIcon)
+        .child(
+          S.list()
+            .title('Donations')
+            .items([
+              S.listItem()
+                .title('Donation Settings')
+                .icon(CreditCardIcon)
+                .child(
+                  S.document()
+                    .schemaType('donationSettings')
+                    .documentId('donationSettings')
+                    .title('Donation Settings')
+                ),
+              S.listItem()
+                .title('Impact Examples')
+                .icon(ChartUpwardIcon)
+                .schemaType('impactExample')
+                .child(
+                  S.documentList()
+                    .title('Donation Impact Examples')
+                    .filter('_type == "impactExample"')
+                    .defaultOrdering([{ field: 'amount', direction: 'asc' }])
+                ),
+            ])
+        ),
+
+      S.divider(),
+
+      // ==========================================
+      // PORTAL - Guest portal password & content
+      // ==========================================
+      S.listItem()
+        .title('Portal')
+        .icon(LockIcon)
+        .child(
+          S.document()
+            .schemaType('guestPortalSettings')
+            .documentId('guestPortalSettings')
+            .title('Guest Portal Settings')
+        ),
       
       S.divider(),
       
@@ -233,15 +320,6 @@ const theLadderStructure = (S) => {
                     .title('Site Settings')
                 ),
               S.listItem()
-                .title('Donation Settings')
-                .icon(CreditCardIcon)
-                .child(
-                  S.document()
-                    .schemaType('donationSettings')
-                    .documentId('donationSettings')
-                    .title('Donation Settings')
-                ),
-              S.listItem()
                 .title('SEO Settings')
                 .icon(EarthGlobeIcon)
                 .child(
@@ -249,15 +327,6 @@ const theLadderStructure = (S) => {
                     .schemaType('seoSettings')
                     .documentId('seoSettings')
                     .title('SEO Settings')
-                ),
-              S.listItem()
-                .title('Guest Portal Settings')
-                .icon(LockIcon)
-                .child(
-                  S.document()
-                    .schemaType('guestPortalSettings')
-                    .documentId('guestPortalSettings')
-                    .title('Guest Portal Settings')
                 ),
             ])
         ),

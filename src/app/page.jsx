@@ -53,7 +53,7 @@ export const metadata = {
     images: ['/meta.png']
   },
   alternates: {
-    canonical: 'https://www.the-ladder.org'
+    canonical: 'https://the-ladder.org'
   },
   robots: {
     index: true,
@@ -107,10 +107,10 @@ export default async function Home() {
           stats={impactStats}
           siteSettings={siteSettings}
         />
-        <ProblemSolutionRedesigned />
+        <ProblemSolutionRedesigned content={homepageContent} />
         <HowItWorksRedesigned />
-        <ImpactTrustRedesigned />
-        <FinalActionRedesigned />
+        <ImpactTrustRedesigned stats={impactStats} content={homepageContent} />
+        <FinalActionRedesigned content={homepageContent} />
       </main>
       <SiteFooter siteSettings={siteSettings} />
     </>
