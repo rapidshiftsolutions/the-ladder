@@ -317,6 +317,7 @@ export default function SiteHeader() {
             id="mobile-menu"
             role="dialog"
             aria-modal="true"
+            aria-label="Main menu"
           >
             <div className="px-4 py-6 space-y-1">
               {navigation.map((item) => (

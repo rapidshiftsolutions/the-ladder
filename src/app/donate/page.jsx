@@ -241,12 +241,12 @@ export default async function DonatePage() {
           <section className="py-12 lg:py-16 bg-[var(--color-secondary)]/10 border-y border-[var(--color-secondary)]/20">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
               <div className="max-w-4xl mx-auto text-center">
-                <div className="inline-flex items-center gap-2 bg-[var(--color-secondary)]/10 text-[var(--color-secondary)] rounded-full px-4 py-2 mb-6">
+                <div className="inline-flex items-center gap-2 bg-[var(--color-secondary-dark)] text-white rounded-full px-4 py-2 mb-6 shadow-sm">
                   <Heart className="w-4 h-4" />
-                  <span className="text-sm font-medium">Recommended</span>
+                  <span className="text-sm font-semibold">Recommended</span>
                 </div>
                 <h2
-                  className="text-3xl font-bold text-[var(--color-text-primary)] mb-4"
+                  className="heading-rule heading-rule--centered text-3xl font-bold text-[var(--color-text-primary)] mb-4"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
                   {settings.monthlyGivingHeadline}

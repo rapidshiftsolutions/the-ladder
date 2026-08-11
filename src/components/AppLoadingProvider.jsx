@@ -107,21 +107,14 @@ const AppLoadingProvider = memo(function AppLoadingProvider({ children, minLoadT
 
   return (
     <AppLoadingContext.Provider value={contextValue}>
-      {/* Loading screen overlay */}
+      {/* Loading screen overlay — sits on top; content below stays painted
+          so LCP fires on the real page, and no-JS visitors still see content */}
       <LoadingScreen 
         isLoading={isLoading} 
         onLoadComplete={handleLoadComplete}
       />
       
-      {/* Main content - rendered but hidden until loaded */}
-      <div 
-        className={`app-content ${loadComplete ? 'app-content--loaded' : 'app-content--loading'}`}
-        style={{
-          opacity: loadComplete ? 1 : 0,
-          visibility: loadComplete ? 'visible' : 'hidden',
-          transition: 'opacity 0.3s ease-out',
-        }}
-      >
+      <div className="app-content app-content--loaded">
         {children}
       </div>
     </AppLoadingContext.Provider>

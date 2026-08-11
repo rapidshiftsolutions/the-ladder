@@ -174,12 +174,12 @@ export default async function SuccessStoriesPage() {
                               </div>
                             )}
                             <div>
-                              <h3 
+                              <h2 
                                 className="text-xl font-bold text-[var(--color-text-primary)]"
                                 style={{ fontFamily: 'var(--font-heading)' }}
                               >
                                 {story.name}
-                              </h3>
+                              </h2>
                               <span className="inline-block px-3 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-xs font-medium rounded-full mt-1">
                                 {barrierLabels[story.barrier] || story.barrier}
                               </span>

@@ -49,11 +49,11 @@ export default function HowItWorksRedesigned() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
-          <span className="inline-block text-sm font-semibold text-[var(--color-primary)] uppercase tracking-wider mb-3">
+          <span className="eyebrow eyebrow--centered mb-3">
             Our Process
           </span>
           <h2 
-            className="text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] mb-4"
+            className="heading-rule heading-rule--centered text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] mb-4"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             How We Help

@@ -56,7 +56,7 @@
   /* Text Colors */
   --color-text-primary: #1C2833;      /* Main text */
   --color-text-secondary: #566573;    /* Secondary text */
-  --color-text-muted: #85929E;        /* Muted/helper text */
+  --color-text-muted: #66707D;        /* Muted/helper text — 5:1 on white (WCAG AA) */
   --color-text-inverse: #FFFFFF;      /* Text on dark backgrounds */
   --color-text-link: #1B4F72;         /* Link color */
   --color-text-link-hover: #2874A6;   /* Link hover */
@@ -205,6 +205,20 @@
   --focus-ring-color: rgba(27, 79, 114, 0.5);
   --focus-ring-width: 3px;
   --focus-ring-offset: 2px;
+
+  /* =========================================================================
+     LEGACY BRAND ALIASES
+     Older components reference --ladder-* names. They resolve to the
+     Institutional Trust palette so the whole site stays on one set of colors.
+     ========================================================================= */
+
+  --ladder-blue: var(--color-primary);
+  --ladder-blue-light: var(--color-primary-light);
+  --ladder-navy: var(--color-primary-dark);
+  --ladder-red: var(--color-accent);
+  --ladder-gold: var(--color-accent-dark);
+  /* Darker teal: the base secondary fails AA as text on light backgrounds */
+  --ladder-green: var(--color-secondary-dark);
 }
 
 /* Dark mode overrides (optional, for future use) */

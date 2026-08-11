@@ -129,13 +129,6 @@ export default async function RootLayout({ children }) {
         {/* Character encoding - must be in first 1024 bytes */}
         <meta charSet="utf-8" />
         
-        {/* Preload LCP image for faster Largest Contentful Paint */}
-        <link 
-          rel="preload" 
-          as="image" 
-          href="/TheLadder/photos/Jamil.jpg"
-          fetchPriority="high"
-        />
         
         {/* Premium Sharing Meta Tags */}
         <meta property="og:rich_attachment" content="true" />
@@ -150,9 +143,13 @@ export default async function RootLayout({ children }) {
 
         {/* Resource hints for Sanity CDN + Givebutter */}
         <link rel="dns-prefetch" href="https://cdn.sanity.io" />
-        <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://widgets.givebutter.com" />
-        <link rel="preconnect" href="https://widgets.givebutter.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://widgets.givebutter.com" />
+
+        {/* Without JS the splash can never fade out — hide it */}
+        <noscript>
+          <style>{`.loading-screen{display:none!important}`}</style>
+        </noscript>
         
         {/* PWA meta tags */}
         <meta name="theme-color" content="#1B4F72" />
@@ -243,7 +240,9 @@ export default async function RootLayout({ children }) {
         
         {/* Critical CSS - Uses CSS variables from next/font */}
         <style dangerouslySetInnerHTML={{ __html: `
-          /* Critical CSS for above-the-fold content */
+          /* Critical CSS for above-the-fold content.
+             Scoped to @layer base so Tailwind utilities still win. */
+          @layer base {
           body {
             margin: 0;
             background-color: #FFFFFF;
@@ -260,7 +259,7 @@ export default async function RootLayout({ children }) {
             font-family: var(--font-heading), 'Lora', Georgia, serif;
             font-weight: 700;
             line-height: 1.25;
-            color: #1C2833;
+            color: inherit;
             margin: 0;
           }
           
@@ -279,6 +278,8 @@ export default async function RootLayout({ children }) {
             min-height: 44px;
           }
           
+          }
+
           /* Screen reader only */
           .sr-only {
             position: absolute;

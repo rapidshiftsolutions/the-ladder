@@ -215,7 +215,7 @@ export default function ApplyForm() {
         <span>
           I consent to The Ladder storing and processing this information to review my
           sponsorship request. See our{' '}
-          <Link href="/privacy" className="text-[var(--color-primary)] underline">
+          <Link href="/privacy" className="content-link">
             Privacy Policy
           </Link>
           .

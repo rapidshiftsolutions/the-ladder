@@ -37,13 +37,15 @@ export function SectionHeader({
   return (
     <div className={`mb-12 ${centered ? 'text-center' : ''}`}>
       {subtitle && (
-        <p className="text-[var(--ladder-gold)] font-semibold mb-2 uppercase tracking-wide text-sm">
+        <p className={`eyebrow mb-3 ${centered ? 'eyebrow--centered' : ''}`}>
           {subtitle}
         </p>
       )}
-      
+
       {title && (
-        <h2 className={`text-3xl md:text-4xl font-bold text-gray-900 mb-6 ${titleClassName}`}>
+        <h2
+          className={`heading-rule ${centered ? 'heading-rule--centered' : ''} text-3xl md:text-4xl font-bold text-gray-900 mb-6 ${titleClassName}`}
+        >
           {title}
         </h2>
       )}

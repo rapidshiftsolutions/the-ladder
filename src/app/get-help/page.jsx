@@ -130,11 +130,11 @@ export default function GetHelpPage() {
 
                   <p className="mt-6 text-sm text-[var(--color-text-muted)]">
                     Don&apos;t have a referral yet?{' '}
-                    <Link href="/contact" className="text-[var(--color-primary)] underline">
+                    <Link href="/contact" className="content-link">
                       Contact us
                     </Link>{' '}
                     or explore{' '}
-                    <Link href="/partners" className="text-[var(--color-primary)] underline">
+                    <Link href="/partners" className="content-link">
                       partner organizations
                     </Link>
                     .

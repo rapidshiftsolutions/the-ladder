@@ -69,11 +69,11 @@ export default function ImpactTrustRedesigned({ stats = null, content = null }) 
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
-          <span className="inline-block text-sm font-semibold text-[var(--color-primary)] uppercase tracking-wider mb-3">
+          <span className="eyebrow eyebrow--centered mb-3">
             Our Impact
           </span>
           <h2 
-            className="text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] mb-4"
+            className="heading-rule heading-rule--centered text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] mb-4"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             Measurable Results
@@ -90,16 +90,16 @@ export default function ImpactTrustRedesigned({ stats = null, content = null }) 
           {resolvedStats.map((stat, index) => (
             <motion.div
               key={stat.label}
-              className="text-center p-6 bg-[var(--color-bg-secondary)] rounded-xl"
+              className="group rounded-xl border border-[var(--color-border)] bg-white p-6 text-center shadow-[0_1px_3px_rgba(28,40,51,0.06)] transition-all duration-200 hover:-translate-y-1 hover:border-[var(--color-primary)]/25 hover:shadow-[0_12px_28px_-12px_rgba(28,40,51,0.25)]"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: index * 0.1 }}
             >
-              <div className="w-12 h-12 rounded-full bg-[var(--color-primary)]/10 flex items-center justify-center mx-auto mb-4">
-                <stat.icon className="w-6 h-6 text-[var(--color-primary)]" />
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-light)] shadow-sm ring-4 ring-[var(--color-primary)]/10">
+                <stat.icon className="w-6 h-6 text-white" />
               </div>
               <div 
-                className="text-3xl lg:text-4xl font-bold text-[var(--color-primary)] mb-2"
+                className="stat-value text-3xl lg:text-4xl font-bold text-[var(--color-primary)]"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 {stat.number}

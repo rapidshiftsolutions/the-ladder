@@ -273,7 +273,7 @@ export default function BarrierRemovalGuidePage() {
   ]
 
   return (
-    <div className="min-h-screen bg-white">
+    <div id="main-content" className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-[var(--ladder-blue)] via-[var(--ladder-blue-light)] to-[var(--ladder-green)] text-white py-20">
         <div className="container mx-auto px-4">
@@ -435,15 +435,15 @@ export default function BarrierRemovalGuidePage() {
                         <div className="flex gap-4">
                           <label className="flex items-center">
                             <input type="radio" name={`${index}-${questionIndex}`} value="yes" className="mr-2" />
-                            <span className="text-green-600">Yes</span>
+                            <span className="text-[var(--color-text-primary)]">Yes</span>
                           </label>
                           <label className="flex items-center">
                             <input type="radio" name={`${index}-${questionIndex}`} value="somewhat" className="mr-2" />
-                            <span className="text-yellow-600">Somewhat</span>
+                            <span className="text-[var(--color-text-primary)]">Somewhat</span>
                           </label>
                           <label className="flex items-center">
                             <input type="radio" name={`${index}-${questionIndex}`} value="no" className="mr-2" />
-                            <span className="text-red-600">No</span>
+                            <span className="text-[var(--color-text-primary)]">No</span>
                           </label>
                         </div>
                       </div>

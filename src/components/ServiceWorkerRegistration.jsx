@@ -22,6 +22,10 @@ export default function ServiceWorkerRegistration() {
 
     let cancelled = false
 
+    // On a first visit the worker installs and claims the page immediately, which
+    // is not an "update". Only treat it as one when a controller already existed.
+    const hadControllerOnLoad = Boolean(navigator.serviceWorker.controller)
+
     navigator.serviceWorker
       .register('/sw.js', {
         scope: '/',
@@ -29,7 +33,6 @@ export default function ServiceWorkerRegistration() {
       })
       .then((reg) => {
         if (cancelled) return
-        console.log('[ServiceWorkerRegistration] Service Worker registered:', reg.scope)
         setRegistration(reg)
         reg.update().catch(() => {})
       })
@@ -38,16 +41,14 @@ export default function ServiceWorkerRegistration() {
       })
 
     const onMessage = (event) => {
-      if (event.data && event.data.type === 'NEW_VERSION_AVAILABLE') {
+      if (hadControllerOnLoad && event.data && event.data.type === 'NEW_VERSION_AVAILABLE') {
         setUpdateAvailable(true)
       }
     }
 
-    // Avoid reload loops: only reload once when a waiting worker takes control
-    // after the user explicitly accepts an update (or we soft-prompt).
+    // Soft prompt only — never force-reload, which could interrupt a donation.
     const onControllerChange = () => {
-      if (refreshingRef.current) return
-      // Soft update only — do not force-reload during donation checkout
+      if (refreshingRef.current || !hadControllerOnLoad) return
       setUpdateAvailable(true)
     }
 

@@ -63,6 +63,8 @@ export default function HeroCompact({
             blurDataURL={heroBlurDataURL}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary)]/95 via-[var(--color-primary)]/85 to-[var(--color-primary)]/75" />
+          {/* Ladder-rung motif echoing the logo */}
+          <div className="hero-rungs" aria-hidden="true" />
         </div>
 
         {/* Content */}
@@ -122,53 +124,27 @@ export default function HeroCompact({
       </div>
 
       {/* Trust Bar / Stats Section */}
-      <div className="bg-gray-50 border-y border-gray-200">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div 
-                className="text-3xl lg:text-4xl font-bold text-[var(--color-primary)] mb-1"
-                style={{ fontFamily: 'var(--font-heading)' }}
-              >
-                {impactStats.individualsHelped}
+      <div className="border-b border-gray-200 bg-gradient-to-b from-gray-50 to-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-10">
+          <div className="grid grid-cols-2 gap-y-8 gap-x-8 md:grid-cols-4 md:gap-x-12">
+            {[
+              { value: impactStats.individualsHelped, label: impactStats.individualsHelpedLabel },
+              { value: impactStats.successRate, label: impactStats.successRateLabel },
+              { value: impactStats.responseTime, label: impactStats.responseTimeLabel },
+              { value: impactStats.directImpact, label: impactStats.directImpactLabel },
+            ].map((stat) => (
+              <div key={stat.label} className="stat-block text-center">
+                <div
+                  className="stat-value text-3xl font-bold text-[var(--color-primary)] lg:text-4xl"
+                  style={{ fontFamily: 'var(--font-heading)' }}
+                >
+                  {stat.value}
+                </div>
+                <div className="text-sm font-medium text-[var(--color-text-secondary)]">
+                  {stat.label}
+                </div>
               </div>
-              <div className="text-sm text-[var(--color-text-secondary)]">
-                {impactStats.individualsHelpedLabel}
-              </div>
-            </div>
-            <div className="text-center">
-              <div 
-                className="text-3xl lg:text-4xl font-bold text-[var(--color-primary)] mb-1"
-                style={{ fontFamily: 'var(--font-heading)' }}
-              >
-                {impactStats.successRate}
-              </div>
-              <div className="text-sm text-[var(--color-text-secondary)]">
-                {impactStats.successRateLabel}
-              </div>
-            </div>
-            <div className="text-center">
-              <div 
-                className="text-3xl lg:text-4xl font-bold text-[var(--color-primary)] mb-1"
-                style={{ fontFamily: 'var(--font-heading)' }}
-              >
-                {impactStats.responseTime}
-              </div>
-              <div className="text-sm text-[var(--color-text-secondary)]">
-                {impactStats.responseTimeLabel}
-              </div>
-            </div>
-            <div className="text-center">
-              <div 
-                className="text-3xl lg:text-4xl font-bold text-[var(--color-primary)] mb-1"
-                style={{ fontFamily: 'var(--font-heading)' }}
-              >
-                {impactStats.directImpact}
-              </div>
-              <div className="text-sm text-[var(--color-text-secondary)]">
-                {impactStats.directImpactLabel}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
