@@ -4,66 +4,112 @@ export const donationSettingsType = defineType({
   name: 'donationSettings',
   title: 'Donation Settings',
   type: 'document',
-  description: 'Configure donation options, payment links, and giving programs. Changes here affect the Donate page and donation CTAs across the site.',
+  description: 'Configure GiveButter donations and giving programs. GiveButter is the only donation method on the site.',
   groups: [
-    { name: 'paymentMethods', title: 'Payment Methods', default: true },
+    { name: 'paymentMethods', title: 'GiveButter', default: true },
     { name: 'givingLevels', title: 'Giving Levels' },
     { name: 'monthlyGiving', title: 'Monthly Giving' },
     { name: 'messaging', title: 'Messaging & Legal' },
   ],
   fields: [
-    // Payment Methods Group
+    // GiveButter (sole payment method)
+    defineField({
+      name: 'givebutterAccountId',
+      title: 'GiveButter Account ID',
+      type: 'string',
+      group: 'paymentMethods',
+      description:
+        'From GiveButter: Settings → Integrations → Widgets. Falls back to NEXT_PUBLIC_GIVEBUTTER_ACCOUNT_ID if empty.',
+    }),
+    defineField({
+      name: 'givebutterCampaignCode',
+      title: 'GiveButter Campaign Code',
+      type: 'string',
+      group: 'paymentMethods',
+      description:
+        'Short campaign code shown near the campaign title. Falls back to NEXT_PUBLIC_GIVEBUTTER_CAMPAIGN_CODE if empty. Campaign must be Live.',
+    }),
+    defineField({
+      name: 'givebutterWidgetId',
+      title: 'GiveButter Widget ID (optional)',
+      type: 'string',
+      group: 'paymentMethods',
+      description:
+        'Optional. From campaign Sharing → Widgets → Embed. When set, the page uses <givebutter-widget> instead of the giving form.',
+    }),
+
+    // Legacy fields — hidden so editors cannot reintroduce old methods
     defineField({
       name: 'paypalLink',
-      title: 'PayPal Donation Link',
+      title: 'PayPal Donation Link (deprecated)',
       type: 'url',
       group: 'paymentMethods',
-      description: 'Your PayPal.me link or PayPal donation page URL. Example: https://paypal.me/theladder or your PayPal Giving Fund link.',
+      hidden: true,
+      deprecated: {
+        reason: 'GiveButter is the only donation method. This field is no longer used.',
+      },
     }),
     defineField({
       name: 'paypalButtonId',
-      title: 'PayPal Button ID',
+      title: 'PayPal Button ID (deprecated)',
       type: 'string',
       group: 'paymentMethods',
-      description: 'If using an embedded PayPal donation button, enter the button ID here. Leave blank if using a link instead.',
+      hidden: true,
+      deprecated: {
+        reason: 'GiveButter is the only donation method. This field is no longer used.',
+      },
     }),
     defineField({
       name: 'venmoUsername',
-      title: 'Venmo Username',
+      title: 'Venmo Username (deprecated)',
       type: 'string',
       group: 'paymentMethods',
-      description: 'Your Venmo username WITHOUT the @ symbol. Example: "TheLadderBham" not "@TheLadderBham"',
+      hidden: true,
+      deprecated: {
+        reason: 'GiveButter is the only donation method. This field is no longer used.',
+      },
     }),
     defineField({
       name: 'venmoQrCode',
-      title: 'Venmo QR Code Image',
+      title: 'Venmo QR Code Image (deprecated)',
       type: 'image',
       group: 'paymentMethods',
-      description: 'Optional: Upload your Venmo QR code image for mobile users.',
+      hidden: true,
+      deprecated: {
+        reason: 'GiveButter is the only donation method. This field is no longer used.',
+      },
       options: { hotspot: false },
     }),
     defineField({
       name: 'cashAppTag',
-      title: 'Cash App Tag',
+      title: 'Cash App Tag (deprecated)',
       type: 'string',
       group: 'paymentMethods',
-      description: 'Your Cash App tag WITHOUT the $ symbol. Example: "TheLadder" not "$TheLadder"',
+      hidden: true,
+      deprecated: {
+        reason: 'GiveButter is the only donation method. This field is no longer used.',
+      },
     }),
     defineField({
       name: 'zelleEmail',
-      title: 'Zelle Email/Phone',
+      title: 'Zelle Email/Phone (deprecated)',
       type: 'string',
       group: 'paymentMethods',
-      description: 'Email or phone number registered with Zelle for donations.',
+      hidden: true,
+      deprecated: {
+        reason: 'GiveButter is the only donation method. This field is no longer used.',
+      },
     }),
     defineField({
       name: 'checkInstructions',
-      title: 'Check/Mail Instructions',
+      title: 'Check/Mail Instructions (deprecated)',
       type: 'text',
       rows: 3,
       group: 'paymentMethods',
-      description: 'Instructions for donors who want to mail a check. Include mailing address and who to make checks payable to.',
-      initialValue: 'Make checks payable to "The Ladder" and mail to:\nThe Ladder\nBirmingham, AL',
+      hidden: true,
+      deprecated: {
+        reason: 'GiveButter is the only donation method. This field is no longer used.',
+      },
     }),
 
     // Giving Levels Group
@@ -72,7 +118,7 @@ export const donationSettingsType = defineType({
       title: 'Suggested Donation Amounts',
       type: 'array',
       group: 'givingLevels',
-      description: 'Pre-set donation amount buttons. Recommend 4-6 amounts spanning small to large donations. Order matters - first amount is often selected by default.',
+      description: 'Informational amounts shown in marketing copy. Checkout amounts are controlled in GiveButter.',
       of: [{ 
         type: 'number',
         validation: (Rule) => Rule.positive().integer(),
@@ -84,7 +130,7 @@ export const donationSettingsType = defineType({
       title: 'Default Selected Amount',
       type: 'number',
       group: 'givingLevels',
-      description: 'Which amount should be pre-selected? Should match one of your suggested amounts. Tip: A mid-range amount often works best.',
+      description: 'Reference default for marketing; GiveButter controls checkout defaults.',
       initialValue: 100,
     }),
     defineField({
@@ -92,7 +138,7 @@ export const donationSettingsType = defineType({
       title: 'Minimum Donation Amount',
       type: 'number',
       group: 'givingLevels',
-      description: 'Minimum accepted donation. Consider payment processing fees when setting this.',
+      description: 'Reference minimum for marketing; configure the real minimum in GiveButter.',
       initialValue: 5,
     }),
 
@@ -102,7 +148,7 @@ export const donationSettingsType = defineType({
       title: 'Enable Monthly Giving',
       type: 'boolean',
       group: 'monthlyGiving',
-      description: 'Turn on/off the monthly giving option on the donation page.',
+      description: 'Turn on/off monthly giving CTAs. Recurring must also be enabled on the GiveButter campaign.',
       initialValue: true,
     }),
     defineField({
@@ -189,7 +235,7 @@ export const donationSettingsType = defineType({
       type: 'text',
       rows: 4,
       group: 'messaging',
-      description: 'Message shown after a successful donation. Express gratitude and reinforce impact.',
+      description: 'Reference thank-you copy. GiveButter also sends its own receipts/thank-you emails.',
       initialValue: 'Thank you for your generous donation! Your gift directly helps Birmingham residents overcome barriers and build better lives. You\'ll receive a receipt for your tax records shortly.',
     }),
     defineField({
@@ -215,7 +261,7 @@ export const donationSettingsType = defineType({
     prepare() {
       return { 
         title: 'Donation Settings',
-        subtitle: 'Payment methods, giving levels, and messaging',
+        subtitle: 'GiveButter, giving levels, and messaging',
       }
     },
   },

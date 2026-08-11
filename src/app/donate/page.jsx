@@ -186,13 +186,21 @@ export default async function DonatePage() {
                 </div>
               </div>
               
-              <Link 
-                href="/monthly-giving" 
-                className="btn btn-primary btn-lg"
-              >
-                Learn About Monthly Giving
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Link>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Link
+                  href="/donate?frequency=monthly"
+                  className="btn btn-primary btn-lg"
+                >
+                  Start Monthly Giving
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
+                <Link
+                  href="/monthly-giving"
+                  className="btn btn-secondary btn-lg"
+                >
+                  Learn About Monthly Giving
+                </Link>
+              </div>
             </div>
           </div>
         </section>

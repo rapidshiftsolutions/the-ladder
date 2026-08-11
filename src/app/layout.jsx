@@ -4,6 +4,7 @@ import DOMOptimizer from '/src/components/DOMOptimizer';
 import ErrorBoundary from '/src/components/ErrorBoundary';
 import AppLoadingProvider from '/src/components/AppLoadingProvider';
 import DeferredComponents from '/src/components/DeferredComponents';
+import GivebutterScript from '/src/components/GivebutterScript';
 import { fontVariables } from '/src/lib/fonts';
 
 // Friendly & Approachable Design - Lora + Nunito Sans
@@ -135,6 +136,11 @@ export default function RootLayout({ children }) {
         {/* Resource hints for Sanity CDN */}
         <link rel="dns-prefetch" href="https://cdn.sanity.io" />
         <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
+
+        {/* Resource hints for GiveButter widgets */}
+        <link rel="dns-prefetch" href="https://widgets.givebutter.com" />
+        <link rel="preconnect" href="https://widgets.givebutter.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://givebutter.com" />
         
         {/* PWA meta tags */}
         <meta name="theme-color" content="#1B4F72" />
@@ -292,6 +298,9 @@ export default function RootLayout({ children }) {
         
         {/* Deferred non-critical components (PWA, analytics, etc.) */}
         <DeferredComponents />
+
+        {/* GiveButter widgets — sole donation checkout provider */}
+        <GivebutterScript accountId={process.env.NEXT_PUBLIC_GIVEBUTTER_ACCOUNT_ID} />
       </body>
     </html>
   );
