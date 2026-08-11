@@ -40,3 +40,8 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Playwright output
+/test-results/
+/playwright-report/
+/blob-report/
