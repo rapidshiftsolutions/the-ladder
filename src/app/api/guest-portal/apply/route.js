@@ -1,6 +1,8 @@
 import { cookies } from 'next/headers'
 import { getSanityWriteClient, isValidGuestSessionToken } from '@/lib/sanityServer'
 
+export const dynamic = 'force-dynamic'
+
 const RATE_WINDOW_MS = 60_000
 const RATE_LIMIT = 5
 const recentSubmissions = new Map()

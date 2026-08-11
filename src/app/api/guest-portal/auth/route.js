@@ -1,6 +1,8 @@
 import { cookies } from 'next/headers'
 import { getSanityWriteClient, isValidGuestSessionToken } from '@/lib/sanityServer'
 
+export const dynamic = 'force-dynamic'
+
 function generateSessionToken() {
   const timestamp = Date.now()
   const random = Math.random().toString(36).substring(2, 15)

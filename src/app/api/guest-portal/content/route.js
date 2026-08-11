@@ -2,6 +2,8 @@ import { cookies } from 'next/headers'
 import { getSanityWriteClient, isValidGuestSessionToken } from '@/lib/sanityServer'
 import { guestPortalSettingsQuery } from '@/sanity/queries/guestPortalSettingsQuery'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET() {
   try {
     const cookieStore = await cookies()
