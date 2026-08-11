@@ -24,7 +24,7 @@ export default function GivebutterScript({ accountId }) {
   return (
     <Script
       id="givebutter-widgets"
-      src={`https://widgets.givebutter.com/latest.umd.cjs?acct=${encodeURIComponent(readyAccountId)}`}
+      src={`https://widgets.givebutter.com/latest.umd.cjs?acct=${encodeURIComponent(readyAccountId)}&p=other`}
       strategy="afterInteractive"
     />
   )
