@@ -886,10 +886,8 @@ textarea {
    UTILITY CLASSES
    ============================================================================= */
 
-/* Text Alignment */
-.text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-right { text-align: right; }
+/* Text alignment and line-clamp are provided by Tailwind. Redefining them here
+   (unlayered) would beat responsive variants such as `sm:text-left`. */
 
 /* Text Colors */
 .text-primary { color: var(--color-primary); }
@@ -904,28 +902,6 @@ textarea {
 .bg-secondary { background-color: var(--color-bg-secondary); }
 .bg-white { background-color: var(--color-bg-primary); }
 .bg-accent { background-color: var(--color-accent); }
-
-/* Line Clamp */
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.line-clamp-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.line-clamp-4 {
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
 
 /* Hide Scrollbar */
 .hide-scrollbar::-webkit-scrollbar {
