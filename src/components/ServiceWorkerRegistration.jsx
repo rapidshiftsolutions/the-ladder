@@ -1,11 +1,15 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 
 export default function ServiceWorkerRegistration() {
+  const pathname = usePathname() || ''
   const [updateAvailable, setUpdateAvailable] = useState(false)
   const [registration, setRegistration] = useState(null)
   const refreshingRef = useRef(false)
+  const suppressBanner =
+    pathname.startsWith('/donate') || pathname.startsWith('/monthly-giving')
 
   useEffect(() => {
     if (
@@ -67,7 +71,7 @@ export default function ServiceWorkerRegistration() {
     }
   }
 
-  if (!updateAvailable) return null
+  if (!updateAvailable || suppressBanner) return null
 
   return (
     <div className="fixed bottom-4 left-4 z-[100] max-w-sm rounded-lg bg-[var(--color-primary)] p-4 text-white shadow-lg">
