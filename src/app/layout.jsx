@@ -2,7 +2,6 @@
 import './globals.css';
 import DOMOptimizer from '/src/components/DOMOptimizer';
 import ErrorBoundary from '/src/components/ErrorBoundary';
-import AppLoadingProvider from '/src/components/AppLoadingProvider';
 import DeferredComponents from '/src/components/DeferredComponents';
 import { fontVariables } from '/src/lib/fonts';
 import GivebutterScript from '@/components/givebutter/GivebutterScript';
@@ -146,11 +145,6 @@ export default async function RootLayout({ children }) {
         <link rel="dns-prefetch" href="https://widgets.givebutter.com" />
         <link rel="preconnect" href="https://widgets.givebutter.com" />
 
-        {/* Without JS the splash can never fade out — hide it */}
-        <noscript>
-          <style>{`.loading-screen{display:none!important}`}</style>
-        </noscript>
-        
         {/* PWA meta tags */}
         <meta name="theme-color" content="#0F4C81" />
         <meta name="msapplication-TileColor" content="#0F4C81" />
@@ -311,11 +305,9 @@ export default async function RootLayout({ children }) {
         </a>
         
         <ErrorBoundary>
-          <AppLoadingProvider minLoadTime={600}>
-            <DOMOptimizer>
-              {children}
-            </DOMOptimizer>
-          </AppLoadingProvider>
+          <DOMOptimizer>
+            {children}
+          </DOMOptimizer>
         </ErrorBoundary>
 
         <GivebutterScript accountId={givebutterAccountId} />

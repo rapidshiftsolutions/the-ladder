@@ -1,8 +1,4 @@
-'use client'
-
-import { useRef } from 'react'
 import Link from 'next/link'
-import { motion, useInView } from 'framer-motion'
 import { Users, CheckCircle, Clock, DollarSign, Shield, Award, Handshake, ArrowRight } from 'lucide-react'
 
 const impactStats = [
@@ -44,8 +40,6 @@ const trustBadges = [
 ]
 
 export default function ImpactTrustRedesigned({ stats = null, content = null }) {
-  const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, margin: "-50px" })
 
   const resolvedStats = stats
     ? [
@@ -58,16 +52,12 @@ export default function ImpactTrustRedesigned({ stats = null, content = null }) 
 
   return (
     <section 
-      ref={sectionRef}
       className="py-16 lg:py-20 bg-white"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.div 
+        <div 
           className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
         >
           <span className="eyebrow eyebrow--centered mb-3">
             Our Impact
@@ -83,17 +73,14 @@ export default function ImpactTrustRedesigned({ stats = null, content = null }) 
               ? 'Real outcomes from people who climbed past a missing rung.'
               : 'Every number represents a real person who overcame a barrier.'}
           </p>
-        </motion.div>
+        </div>
 
         {/* Impact Stats Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-12">
           {resolvedStats.map((stat, index) => (
-            <motion.div
+            <div
               key={stat.label}
               className="group rounded-xl border border-[var(--color-border)] bg-white p-6 text-center shadow-[0_1px_3px_rgba(28,40,51,0.06)] transition-all duration-200 hover:-translate-y-1 hover:border-[var(--color-primary)]/25 hover:shadow-[0_12px_28px_-12px_rgba(28,40,51,0.25)]"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
             >
               <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-light)] shadow-sm ring-4 ring-[var(--color-primary)]/10">
                 <stat.icon className="w-6 h-6 text-white" />
@@ -107,16 +94,13 @@ export default function ImpactTrustRedesigned({ stats = null, content = null }) 
               <div className="text-sm text-[var(--color-text-secondary)] font-medium">
                 {stat.label}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Trust Badges */}
-        <motion.div 
+        <div 
           className="flex flex-wrap items-center justify-center gap-6 lg:gap-10 py-6 border-t border-b border-[var(--color-border)]"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.4, delay: 0.4 }}
         >
           {trustBadges.map((badge) => (
             <div key={badge.label} className="flex items-center gap-2 text-[var(--color-text-secondary)]">
@@ -124,14 +108,11 @@ export default function ImpactTrustRedesigned({ stats = null, content = null }) 
               <span className="text-sm font-medium">{badge.label}</span>
             </div>
           ))}
-        </motion.div>
+        </div>
 
         {/* CTA */}
-        <motion.div 
+        <div 
           className="text-center mt-10"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.4, delay: 0.5 }}
         >
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
@@ -148,7 +129,7 @@ export default function ImpactTrustRedesigned({ stats = null, content = null }) 
               View Annual Reports
             </Link>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

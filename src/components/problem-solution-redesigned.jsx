@@ -1,8 +1,4 @@
-'use client'
-
-import { useRef } from 'react'
 import Link from 'next/link'
-import { motion, useInView } from 'framer-motion'
 import { AlertCircle, CheckCircle, ArrowRight } from 'lucide-react'
 
 const defaultChallenges = [
@@ -18,8 +14,6 @@ const defaultSolutions = [
 ]
 
 export default function ProblemSolutionRedesigned({ content = null }) {
-  const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, margin: "-50px" })
   const challenges = content?.challengeItems?.length ? content.challengeItems : defaultChallenges
   const solutions = content?.solutionItems?.length ? content.solutionItems : defaultSolutions
   const badge = content?.problemSectionBadge || 'The Missing Rung'
@@ -29,14 +23,11 @@ export default function ProblemSolutionRedesigned({ content = null }) {
     "Sometimes individuals face barriers that don't fit into any single organization's services. That's where we step in."
 
   return (
-    <section ref={sectionRef} className="py-16 lg:py-20 bg-white">
+    <section className="py-16 lg:py-20 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.div 
+        <div 
           className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
         >
           <span className="eyebrow eyebrow--centered mb-3">
             {badge}
@@ -50,16 +41,13 @@ export default function ProblemSolutionRedesigned({ content = null }) {
           <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
             {subheadline}
           </p>
-        </motion.div>
+        </div>
 
         {/* Two Column Grid */}
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mb-10">
           {/* The Challenge */}
-          <motion.div 
+          <div 
             className="p-6 lg:p-8 bg-red-50 rounded-xl border border-red-100"
-            initial={{ opacity: 0, x: -20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.4, delay: 0.1 }}
           >
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-lg bg-red-500 flex items-center justify-center">
@@ -83,14 +71,11 @@ export default function ProblemSolutionRedesigned({ content = null }) {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
           {/* Our Approach */}
-          <motion.div 
+          <div 
             className="p-6 lg:p-8 bg-[var(--color-secondary)]/5 rounded-xl border border-[var(--color-secondary)]/20"
-            initial={{ opacity: 0, x: 20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.4, delay: 0.2 }}
           >
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-lg bg-[var(--color-secondary)] flex items-center justify-center">
@@ -114,15 +99,12 @@ export default function ProblemSolutionRedesigned({ content = null }) {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
         </div>
 
         {/* CTA */}
-        <motion.div 
+        <div 
           className="text-center"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.4, delay: 0.3 }}
         >
           <Link
             href="/how-we-help"
@@ -131,7 +113,7 @@ export default function ProblemSolutionRedesigned({ content = null }) {
             Learn how we help
             <ArrowRight className="w-4 h-4" />
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

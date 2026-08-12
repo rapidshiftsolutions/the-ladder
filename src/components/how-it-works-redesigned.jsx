@@ -1,8 +1,4 @@
-'use client'
-
-import { useRef } from 'react'
 import Link from 'next/link'
-import { motion, useInView } from 'framer-motion'
 import { Phone, Users, FileText, CheckCircle, ArrowRight } from 'lucide-react'
 
 const steps = [
@@ -33,21 +29,15 @@ const steps = [
 ]
 
 export default function HowItWorksRedesigned() {
-  const sectionRef = useRef(null)
-  const isInView = useInView(sectionRef, { once: true, margin: "-50px" })
 
   return (
     <section 
-      ref={sectionRef}
       className="py-16 lg:py-20 bg-[var(--color-bg-secondary)]"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.div 
+        <div 
           className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
         >
           <span className="eyebrow eyebrow--centered mb-3">
             Our Process
@@ -61,17 +51,14 @@ export default function HowItWorksRedesigned() {
           <p className="text-lg text-[var(--color-text-secondary)] max-w-xl mx-auto">
             A simple, proven process to help you overcome barriers.
           </p>
-        </motion.div>
+        </div>
 
         {/* Steps Grid */}
         <div className="grid md:grid-cols-4 gap-6 lg:gap-8 mb-12">
           {steps.map((step, index) => (
-            <motion.div
+            <div
               key={step.number}
               className="relative"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
             >
               {/* Connector line (desktop) */}
               {index < steps.length - 1 && (
@@ -99,16 +86,13 @@ export default function HowItWorksRedesigned() {
                   {step.description}
                 </p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* CTA */}
-        <motion.div 
+        <div 
           className="text-center"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.4, delay: 0.5 }}
         >
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
@@ -126,7 +110,7 @@ export default function HowItWorksRedesigned() {
               (205) 522-1162
             </a>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

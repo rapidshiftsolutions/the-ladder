@@ -66,7 +66,7 @@ export default function HeroCompact({
         <div className="hero__grid">
           {/* Copy */}
           <div className="hero__copy">
-            <span className="hero__badge hero-animate hero-animate--badge">
+            <span className="hero__badge">
               <ShieldCheck className="h-4 w-4" aria-hidden="true" />
               {heroContent.trustBadgeText}
             </span>
@@ -76,11 +76,11 @@ export default function HeroCompact({
               <span className="hero__title-accent">{heroContent.heroHeadlineAccent}</span>
             </h1>
 
-            <p className="hero__sub hero-animate hero-animate--subheadline">
+            <p className="hero__sub">
               {heroContent.heroSubheadline}
             </p>
 
-            <div className="hero__ctas hero-animate hero-animate--ctas">
+            <div className="hero__ctas">
               <Link href={heroContent.heroPrimaryCtaLink} className="hero__cta hero__cta--primary">
                 {heroContent.heroPrimaryCta}
                 <ArrowRight className="h-5 w-5" aria-hidden="true" />
@@ -91,7 +91,7 @@ export default function HeroCompact({
               </Link>
             </div>
 
-            <div className="hero__meta hero-animate hero-animate--contact">
+            <div className="hero__meta">
               <a href={`tel:${phone.replace(/[^0-9+]/g, '')}`} className="hero__meta-link">
                 <Phone className="h-4 w-4" aria-hidden="true" />
                 {phone}
