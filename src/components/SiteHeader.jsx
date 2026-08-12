@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Menu, X, Heart, Phone, ChevronDown, Mail, Shield } from 'lucide-react'
+import { Menu, X, Heart, Phone, ChevronDown, Mail, Shield, LogIn } from 'lucide-react'
 import GivebutterButton from '@/components/givebutter/GivebutterButton'
 
 // Navigation structure with dropdowns
@@ -65,7 +65,7 @@ function NavDropdown({ item, isActive }) {
       onMouseLeave={handleMouseLeave}
     >
       <button
-        className={`flex items-center gap-1 px-3 xl:px-4 h-10 text-sm font-medium transition-colors rounded-md leading-none ${
+        className={`flex items-center gap-1 whitespace-nowrap px-2 xl:px-4 h-10 text-sm font-medium transition-colors rounded-md leading-none ${
           isActive 
             ? 'text-[var(--color-primary)] bg-[var(--color-primary)]/5' 
             : 'text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-gray-50'
@@ -254,7 +254,7 @@ export default function SiteHeader() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className={`flex items-center px-3 xl:px-4 h-10 text-sm font-medium transition-colors rounded-md leading-none ${
+                    className={`flex items-center whitespace-nowrap px-2 xl:px-4 h-10 text-sm font-medium transition-colors rounded-md leading-none ${
                       isNavActive(item)
                         ? 'text-[var(--color-primary)] bg-[var(--color-primary)]/5'
                         : 'text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-gray-50'
@@ -266,8 +266,19 @@ export default function SiteHeader() {
               ))}
             </div>
 
-            {/* Desktop CTA — Givebutter button widget with branded fallback */}
-            <div className="hidden lg:flex lg:items-center lg:gap-3">
+            {/* Desktop CTAs — outlined login sits beside the donation button so
+                referred applicants have an obvious way in without competing
+                with the primary give action. */}
+            <div className="hidden lg:flex lg:items-center lg:gap-2 xl:gap-3">
+              <Link
+                href="/guest-portal"
+                className="flex items-center gap-2 whitespace-nowrap rounded-lg border border-[var(--color-primary)]/30 px-3 xl:px-4 h-11 text-sm font-semibold text-[var(--color-primary)] transition-colors hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)]/5"
+              >
+                <LogIn className="w-4 h-4" aria-hidden="true" />
+                <span className="xl:hidden">Log In</span>
+                <span className="hidden xl:inline">Portal Login</span>
+              </Link>
+
               <GivebutterButton
                 widgetId="prW2aY"
                 fallbackHref="/donate"
@@ -294,11 +305,14 @@ export default function SiteHeader() {
           </div>
         </nav>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu
+            `inert` while closed: the panel stays in the DOM at opacity 0, so
+            without it a keyboard user tabs through 19 invisible links. */}
         <div
           className={`lg:hidden fixed inset-0 z-40 transition-opacity duration-300 ${
             mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
           }`}
+          {...(mobileMenuOpen ? {} : { inert: '' })}
         >
           {/* Backdrop */}
           <div 
@@ -355,15 +369,7 @@ export default function SiteHeader() {
               
               {/* Mobile CTAs */}
               <div className="pt-4 space-y-3">
-                <Link
-                  href="/guest-portal"
-                  className="block px-4 py-3 text-base font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-gray-50 rounded-lg transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Guest Portal
-                </Link>
-                
-                <div className="px-4 pt-2">
+                <div className="px-4 space-y-3">
                   <Link
                     href="/donate"
                     className="btn btn-accent w-full flex items-center justify-center gap-2"
@@ -372,6 +378,19 @@ export default function SiteHeader() {
                     <Heart className="w-4 h-4" />
                     Donate Now
                   </Link>
+
+                  <Link
+                    href="/guest-portal"
+                    className="flex w-full items-center justify-center gap-2 rounded-lg border-2 border-[var(--color-primary)] px-4 py-3 text-base font-semibold text-[var(--color-primary)] transition-colors hover:bg-[var(--color-primary)]/5"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <LogIn className="w-4 h-4" aria-hidden="true" />
+                    Portal Login
+                  </Link>
+
+                  <p className="text-center text-xs text-[var(--color-text-secondary)]">
+                    Applying for assistance? Sign in with the password from your partner nonprofit.
+                  </p>
                 </div>
                 
                 {/* Mobile Contact */}
