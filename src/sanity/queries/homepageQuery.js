@@ -17,6 +17,7 @@ export const homepageContentQuery = groq`
       },
       alt
     },
+    heroImageCaption,
     heroPrimaryCta,
     heroPrimaryCtaLink,
     heroSecondaryCta,
@@ -88,6 +89,7 @@ export const heroSectionQuery = groq`
       },
       alt
     },
+    heroImageCaption,
     heroPrimaryCta,
     heroPrimaryCtaLink,
     heroSecondaryCta,

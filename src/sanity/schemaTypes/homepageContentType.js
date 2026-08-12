@@ -43,10 +43,10 @@ export const homepageContentType = defineType({
     }),
     defineField({
       name: 'heroImage',
-      title: 'Hero Background Image',
+      title: 'Hero Photo',
       type: 'image',
       group: 'hero',
-      description: 'The main background image for the hero section. Recommended: High-quality photo showing impact (e.g., a success story subject). Minimum 1920x1080px. Will have a color overlay applied.',
+      description: 'The photo shown beside the headline. Use a real person or family you have helped. It appears in a framed panel roughly 700x460px, so upload at least 1400x920px for a sharp result.',
       options: { hotspot: true },
       fields: [
         {
@@ -56,6 +56,15 @@ export const homepageContentType = defineType({
           description: 'Describe the image for accessibility. Example: "Jamil - a success story from The Ladder"',
         },
       ],
+    }),
+    defineField({
+      name: 'heroImageCaption',
+      title: 'Hero Photo Caption',
+      type: 'string',
+      group: 'hero',
+      description: 'Short caption on the small card over the photo. Name the person and what changed for them. Example: "Jamil - back on the road and back to work". Keep it under 60 characters.',
+      initialValue: 'Jamil — back on the road and back to work',
+      validation: (Rule) => Rule.max(60).warning('Short captions fit the card best'),
     }),
     defineField({
       name: 'heroPrimaryCta',
