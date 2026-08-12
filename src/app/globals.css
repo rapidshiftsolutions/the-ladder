@@ -168,6 +168,38 @@ h6 {
 } /* end @layer base */
 
 /* =============================================================================
+   TEXT WRAPPING
+
+   Ragged last lines were the most visible mobile problem: 73 blocks across the
+   site ended with a single orphaned word. `pretty` pulls a word down to avoid
+   that, `balance` evens out heading line lengths. Both are progressive — older
+   browsers simply keep the previous behaviour.
+   ============================================================================= */
+
+p,
+li,
+dd,
+blockquote,
+figcaption,
+.hero__sub {
+  text-wrap: pretty;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/* At 390px, 20px body copy fits only ~28 characters per line, which reads as a
+   narrow ragged column. Cap it so lines carry more words. */
+@media (max-width: 480px) {
+  p.text-xl {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+}
+
+
+/* =============================================================================
    DISPLAY FACE WEIGHT
 
    Instrument Serif ships one weight (400). These rules are intentionally
@@ -1745,5 +1777,69 @@ textarea:focus-visible,
   .btn:hover,
   .card:hover {
     transform: none;
+  }
+}
+
+/* =============================================================================
+   NARROW SCREEN CORRECTIONS
+
+   Placed last on purpose: these override the button and spacing rules defined
+   earlier in this file, which otherwise win on source order.
+   ============================================================================= */
+
+@media (max-width: 639px) {
+  /* Generous button padding eats the available line and pushes longer labels
+     onto extra lines. */
+  .btn {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .btn-lg {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  /* A stacked CTA column inside a centred parent shrinks to its widest child,
+     which broke labels like "Read Success Stories" onto three lines. */
+  .flex-col:has(> .btn) {
+    width: 100%;
+  }
+
+  .flex-col:has(> .btn) > .btn {
+    width: 100%;
+  }
+
+  /* 40-48px of card padding leaves under 240px of text column on a 360px
+     phone, which forces short ragged lines. */
+  .p-10,
+  .p-12 {
+    padding: 1.5rem;
+  }
+
+  /* 18px button text plus an icon does not fit a full-width phone button. */
+  .btn-lg {
+    font-size: 1rem;
+  }
+
+  /* The trust badge ran to three lines in a pill, which reads as a mistake.
+     Compact type and a rounded rectangle handle two lines cleanly. */
+  .hero__badge {
+    font-size: 0.6875rem;
+    padding: 0.4rem 0.7rem;
+    border-radius: 12px;
+    line-height: 1.35;
+  }
+
+  /* Even out the caption instead of leaving one word on its own line. */
+  .hero__caption {
+    text-wrap: balance;
+  }
+
+  /* Footer links sit at 38px, which is fine for a cursor but tight for a
+     thumb. Give them a full 44px target on touch-sized screens. */
+  .site-footer__link,
+  .site-footer__contact {
+    min-height: 44px;
   }
 }

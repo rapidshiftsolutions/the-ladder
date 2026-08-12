@@ -216,7 +216,7 @@ export default function VolunteerPage() {
                 </div>
               </div>
               
-              <Link href="/contact" className="btn btn-primary btn-lg">
+              <Link href="/contact" className="btn btn-primary btn-lg w-full justify-center sm:w-auto">
                 Contact Us About Volunteering
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>

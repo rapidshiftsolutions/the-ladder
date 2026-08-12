@@ -158,7 +158,7 @@ export default function HowWeHelpPage() {
                         </p>
                       </div>
                     </div>
-                    <ul className="space-y-2 ml-16">
+                    <ul className="space-y-2 sm:ml-16">
                       {step.details.map((detail, i) => (
                         <li key={i} className="flex items-center gap-2 text-sm text-[var(--color-text-secondary)]">
                           <CheckCircle className="w-4 h-4 text-[var(--color-secondary)]" />
