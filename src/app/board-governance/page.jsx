@@ -88,7 +88,6 @@ export default function BoardGovernancePage() {
                   </div>
                   <h3 
                     className="text-xl font-semibold text-[var(--color-text-primary)]"
-                    style={{ fontFamily: 'var(--font-heading)' }}
                   >
                     Fiduciary Responsibility
                   </h3>
@@ -120,7 +119,6 @@ export default function BoardGovernancePage() {
                   </div>
                   <h3 
                     className="text-xl font-semibold text-[var(--color-text-primary)]"
-                    style={{ fontFamily: 'var(--font-heading)' }}
                   >
                     Transparency
                   </h3>
@@ -152,7 +150,6 @@ export default function BoardGovernancePage() {
                   </div>
                   <h3 
                     className="text-xl font-semibold text-[var(--color-text-primary)]"
-                    style={{ fontFamily: 'var(--font-heading)' }}
                   >
                     Ethical Standards
                   </h3>
@@ -184,7 +181,6 @@ export default function BoardGovernancePage() {
                   </div>
                   <h3 
                     className="text-xl font-semibold text-[var(--color-text-primary)]"
-                    style={{ fontFamily: 'var(--font-heading)' }}
                   >
                     Board Structure
                   </h3>

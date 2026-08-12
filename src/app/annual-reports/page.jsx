@@ -114,7 +114,6 @@ export default async function AnnualReportsPage() {
                       <div>
                         <h3
                           className="text-xl font-bold text-[var(--color-text-primary)]"
-                          style={{ fontFamily: 'var(--font-heading)' }}
                         >
                           {report.title || `${report.year} Annual Report`}
                         </h3>
@@ -147,7 +146,6 @@ export default async function AnnualReportsPage() {
                   </div>
                   <h3
                     className="text-2xl font-bold text-[var(--color-text-primary)] mb-4"
-                    style={{ fontFamily: 'var(--font-heading)' }}
                   >
                     Annual Report Coming Soon
                   </h3>

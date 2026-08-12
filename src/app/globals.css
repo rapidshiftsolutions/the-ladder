@@ -7,7 +7,7 @@
 @import "../styles/design-tokens.css";
 
 /* =============================================================================
-   GOOGLE FONTS - Newsreader (serif) + Nunito Sans (sans-serif)
+   GOOGLE FONTS - Instrument Serif (display) + Nunito Sans (body)
    ============================================================================= */
 
 /* Note: Fonts loaded via layout.jsx for optimal performance */
@@ -46,7 +46,7 @@
   --color-border: #E5E8E8;
   
   /* Typography */
-  --font-heading: 'Newsreader', Georgia, serif;
+  --font-heading: 'Instrument Serif', Georgia, serif;
   --font-body: 'Nunito Sans', system-ui, sans-serif;
   
   /* Spacing */
@@ -93,13 +93,25 @@ body {
    TYPOGRAPHY
    ============================================================================= */
 
-/* Headings - Newsreader Serif
+/* Headings - Instrument Serif
    Colour is inherited (body sets --color-text-primary) so headings placed on
    dark sections pick up the light text colour instead of forcing charcoal. */
-h1, h2, h3, h4, h5, h6 {
+h1, h2 {
   font-family: var(--font-heading);
-  font-weight: var(--font-bold);
+  font-weight: 400;
   line-height: var(--leading-tight);
+  letter-spacing: -0.015em;
+  color: inherit;
+  margin: 0;
+}
+
+/* The display face has a single light weight, which looks spindly below about
+   28px and loses its hierarchy against bold body copy. Smaller headings use
+   the sans instead. */
+h3, h4, h5, h6 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  line-height: var(--leading-snug);
   color: inherit;
   margin: 0;
 }
@@ -154,6 +166,29 @@ h6 {
 }
 
 } /* end @layer base */
+
+/* =============================================================================
+   DISPLAY FACE WEIGHT
+
+   Instrument Serif ships one weight (400). These rules are intentionally
+   unlayered so they beat Tailwind's `font-bold`/`font-semibold` utilities,
+   which would otherwise ask the browser to synthesize a faux bold.
+   ============================================================================= */
+
+h1, h2,
+.hero__title-accent,
+[style*="--font-heading"] {
+  font-weight: 400;
+}
+
+/* Impact numerals stay in the sans: a single-weight serif reads too delicate
+   for figures that need to look confident. */
+.stat-value,
+.hero__proof-value {
+  font-family: var(--font-body);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
 
 /* =============================================================================
    HERO — editorial split layout
@@ -290,9 +325,8 @@ h6 {
 .hero__title-accent {
   font-family: var(--font-heading);
   font-style: italic;
-  font-weight: 700;
-  font-size: clamp(2.5rem, 5.6vw, 4.5rem);
-  line-height: 1.02;
+  font-size: clamp(2.9rem, 6.4vw, 5.25rem);
+  line-height: 1;
   letter-spacing: -0.02em;
   color: var(--color-accent);
   text-wrap: balance;

@@ -4,18 +4,22 @@
 // Self-hosts fonts to eliminate external network requests
 // =============================================================================
 
-import { Newsreader, Nunito_Sans } from 'next/font/google'
+import { Instrument_Serif, Nunito_Sans } from 'next/font/google'
 
 /**
- * Newsreader - Serif font for headings
- * A contemporary editorial serif: higher stroke contrast and refined
- * terminals read as elegant, while the open shapes keep it modern on screen.
+ * Instrument Serif - display face for headings
+ * High stroke contrast and dramatic italics give it a modern elegance that
+ * reads as designed rather than institutional.
+ *
+ * It ships a single weight (400). Headings are pinned to 400 in globals.css so
+ * that `font-bold` utilities cannot trigger a synthesized faux bold, and the
+ * impact numerals use the sans instead, where 400 would look too delicate.
  */
-export const newsreader = Newsreader({
+export const instrumentSerif = Instrument_Serif({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-heading',
-  weight: ['400', '500', '600', '700'],
+  weight: ['400'],
   style: ['normal', 'italic'],
   fallback: ['Georgia', 'Times New Roman', 'serif'],
   preload: true,
@@ -46,12 +50,12 @@ export const nunitoSans = Nunito_Sans({
  * Combined font class names for easy application
  * Apply to <html> or <body> element: className={fontVariables}
  */
-export const fontVariables = `${newsreader.variable} ${nunitoSans.variable}`
+export const fontVariables = `${instrumentSerif.variable} ${nunitoSans.variable}`
 
 /**
  * Font class names object for individual use
  */
 export const fontClasses = {
-  heading: newsreader.className,
+  heading: instrumentSerif.className,
   body: nunitoSans.className,
 }

@@ -96,7 +96,6 @@ export default function FinalActionRedesigned({ content = null }) {
               
               <h3 
                 className="text-xl font-bold text-[var(--color-text-primary)] mb-2"
-                style={{ fontFamily: 'var(--font-heading)' }}
               >
                 {action.title}
               </h3>

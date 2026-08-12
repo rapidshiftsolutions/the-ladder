@@ -67,7 +67,6 @@ export default function ProblemSolutionRedesigned({ content = null }) {
               </div>
               <h3 
                 className="text-xl font-bold text-[var(--color-text-primary)]"
-                style={{ fontFamily: 'var(--font-heading)' }}
               >
                 The Challenge
               </h3>
@@ -99,7 +98,6 @@ export default function ProblemSolutionRedesigned({ content = null }) {
               </div>
               <h3 
                 className="text-xl font-bold text-[var(--color-text-primary)]"
-                style={{ fontFamily: 'var(--font-heading)' }}
               >
                 Our Approach
               </h3>

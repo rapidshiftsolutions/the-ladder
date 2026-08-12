@@ -85,7 +85,6 @@ export default function ContactForm({
         </div>
         <h3 
           className="text-2xl font-bold text-[var(--color-text-primary)] mb-3"
-          style={{ fontFamily: 'var(--font-heading)' }}
         >
           Message Sent Successfully!
         </h3>

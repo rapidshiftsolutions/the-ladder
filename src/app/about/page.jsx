@@ -78,7 +78,6 @@ export default function AboutPage() {
                   <div className="bg-[var(--color-primary)]/5 rounded-xl p-6 border border-[var(--color-primary)]/20">
                     <h3 
                       className="text-lg font-semibold text-[var(--color-text-primary)] mb-2"
-                      style={{ fontFamily: 'var(--font-heading)' }}
                     >
                       Why &quot;The Ladder&quot;?
                     </h3>
@@ -93,7 +92,6 @@ export default function AboutPage() {
                 <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
                   <h3 
                     className="text-xl font-bold text-[var(--color-text-primary)] mb-6"
-                    style={{ fontFamily: 'var(--font-heading)' }}
                   >
                     Our Core Values
                   </h3>

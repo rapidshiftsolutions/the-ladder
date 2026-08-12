@@ -163,7 +163,7 @@ export default function HowWeHelpRedesigned() {
                 {/* Content */}
                 <h3 
                   className="text-xl lg:text-2xl font-bold mb-4 relative z-10" 
-                  style={{ color: '#1d1d1f', fontFamily: 'var(--font-heading)' }}
+                  style={{ color: '#1d1d1f' }}
                 >
                   {step.title}
                 </h3>

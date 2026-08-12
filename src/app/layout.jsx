@@ -11,7 +11,7 @@ import { client } from '@/sanity/lib/client';
 import { donationSettingsQuery } from '@/sanity/queries/donationSettingsQuery';
 import { DEFAULT_DONATION_SETTINGS } from '@/lib/donationDefaults';
 
-// Modern editorial pairing - Newsreader (headings) + Nunito Sans (body)
+// Modern editorial pairing - Instrument Serif (display) + Nunito Sans (body)
 // Fonts are now self-hosted via next/font for optimal performance
 
 export const metadata = {
@@ -255,10 +255,19 @@ export default async function RootLayout({ children }) {
             -webkit-font-smoothing: antialiased;
           }
           
-          h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-heading), 'Newsreader', Georgia, serif;
-            font-weight: 700;
+          h1, h2 {
+            font-family: var(--font-heading), 'Instrument Serif', Georgia, serif;
+            font-weight: 400;
             line-height: 1.25;
+            letter-spacing: -0.015em;
+            color: inherit;
+            margin: 0;
+          }
+
+          h3, h4, h5, h6 {
+            font-family: var(--font-body), 'Nunito Sans', system-ui, sans-serif;
+            font-weight: 600;
+            line-height: 1.375;
             color: inherit;
             margin: 0;
           }

@@ -150,7 +150,6 @@ export default function HowWeHelpPage() {
                       <div>
                         <h3 
                           className="text-xl font-bold text-[var(--color-text-primary)] mb-1"
-                          style={{ fontFamily: 'var(--font-heading)' }}
                         >
                           {step.title}
                         </h3>

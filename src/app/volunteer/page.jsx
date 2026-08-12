@@ -115,7 +115,6 @@ export default function VolunteerPage() {
                   </div>
                   <h3 
                     className="text-2xl font-bold text-[var(--color-text-primary)] mb-2"
-                    style={{ fontFamily: 'var(--font-heading)' }}
                   >
                     100% Volunteer-Run
                   </h3>
@@ -157,7 +156,6 @@ export default function VolunteerPage() {
                 >
                   <h3 
                     className="text-xl font-bold text-[var(--color-text-primary)] mb-2"
-                    style={{ fontFamily: 'var(--font-heading)' }}
                   >
                     {opp.title}
                   </h3>

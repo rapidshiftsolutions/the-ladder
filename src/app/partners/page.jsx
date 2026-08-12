@@ -173,7 +173,6 @@ export default async function PartnersPage() {
                 <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
                   <h3 
                     className="text-xl font-bold text-[var(--color-text-primary)] mb-6"
-                    style={{ fontFamily: 'var(--font-heading)' }}
                   >
                     How Partnership Works
                   </h3>
@@ -260,7 +259,6 @@ export default async function PartnersPage() {
                   <div key={category}>
                     <h3 
                       className="text-xl font-bold text-[var(--color-text-primary)] mb-6 flex items-center gap-2"
-                      style={{ fontFamily: 'var(--font-heading)' }}
                     >
                       <span className="w-8 h-0.5 bg-[var(--color-primary)]" />
                       {categoryLabels[category] || category}

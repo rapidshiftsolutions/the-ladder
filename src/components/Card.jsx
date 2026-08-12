@@ -53,7 +53,7 @@ export default function Card({
       )}
       
       {title && (
-        <h3 className="text-xl font-semibold text-[var(--color-text-primary)] mb-3" style={{ fontFamily: 'var(--font-heading)' }}>
+        <h3 className="text-xl font-semibold text-[var(--color-text-primary)] mb-3">
           {title}
         </h3>
       )}
@@ -152,7 +152,6 @@ export function TeamCard({
       )}
       <h3 
         className="text-xl font-semibold text-[var(--color-text-primary)] mb-1"
-        style={{ fontFamily: 'var(--font-heading)' }}
       >
         {name}
       </h3>
@@ -202,7 +201,6 @@ export function FeatureCard({
       )}
       <h3 
         className="text-lg font-semibold text-[var(--color-text-primary)] mb-2"
-        style={{ fontFamily: 'var(--font-heading)' }}
       >
         {title}
       </h3>

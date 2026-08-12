@@ -92,7 +92,6 @@ export default function HowItWorksRedesigned() {
                 {/* Content */}
                 <h3 
                   className="text-lg font-bold text-[var(--color-text-primary)] mb-2"
-                  style={{ fontFamily: 'var(--font-heading)' }}
                 >
                   {step.title}
                 </h3>

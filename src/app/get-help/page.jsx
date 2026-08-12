@@ -146,7 +146,6 @@ export default function GetHelpPage() {
                 <div className="bg-white rounded-xl border border-gray-200 p-6">
                   <h3
                     className="text-lg font-bold text-[var(--color-text-primary)] mb-4"
-                    style={{ fontFamily: 'var(--font-heading)' }}
                   >
                     Barriers We Address
                   </h3>
@@ -170,7 +169,6 @@ export default function GetHelpPage() {
                 <div className="bg-[var(--color-primary)]/5 rounded-xl border border-[var(--color-primary)]/20 p-6">
                   <h3
                     className="text-lg font-bold text-[var(--color-text-primary)] mb-4"
-                    style={{ fontFamily: 'var(--font-heading)' }}
                   >
                     Our Promise to You
                   </h3>

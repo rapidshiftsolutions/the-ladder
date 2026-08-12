@@ -199,7 +199,6 @@ export default function HowItWorksCompact({
                   {/* Content */}
                   <h3 
                     className="text-xl lg:text-2xl font-bold text-[var(--color-text-primary)] mb-4"
-                    style={{ fontFamily: 'var(--font-heading)' }}
                   >
                     {step.title}
                   </h3>
@@ -236,7 +235,6 @@ export default function HowItWorksCompact({
                 </motion.div>
                 <h3 
                   className="text-3xl font-bold text-[var(--color-text-primary)] mb-6"
-                  style={{ fontFamily: 'var(--font-heading)' }}
                 >
                   {testimonial.headline}
                 </h3>

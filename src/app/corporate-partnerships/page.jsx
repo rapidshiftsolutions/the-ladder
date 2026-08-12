@@ -215,7 +215,6 @@ export default function CorporatePartnershipsPage() {
                   )}
                   <h3 
                     className="text-xl font-bold text-[var(--color-text-primary)] mb-2"
-                    style={{ fontFamily: 'var(--font-heading)' }}
                   >
                     {level.name}
                   </h3>

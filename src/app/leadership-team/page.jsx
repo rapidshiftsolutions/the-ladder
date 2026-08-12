@@ -155,7 +155,6 @@ export default async function LeadershipTeamPage() {
                   
                   <h3 
                     className="text-xl font-bold text-[var(--color-text-primary)] mb-1"
-                    style={{ fontFamily: 'var(--font-heading)' }}
                   >
                     {member.name}
                   </h3>

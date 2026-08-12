@@ -120,7 +120,6 @@ export default function ContactPage() {
                   <div className="bg-gray-50 rounded-xl border border-gray-200 p-6">
                     <h3 
                       className="text-lg font-bold text-[var(--color-text-primary)] mb-4"
-                      style={{ fontFamily: 'var(--font-heading)' }}
                     >
                       How Can We Help?
                     </h3>
@@ -167,7 +166,6 @@ export default function ContactPage() {
                   <div className="bg-white rounded-xl border border-gray-200 p-6">
                     <h3 
                       className="text-lg font-bold text-[var(--color-text-primary)] mb-4"
-                      style={{ fontFamily: 'var(--font-heading)' }}
                     >
                       About The Ladder
                     </h3>
@@ -194,7 +192,6 @@ export default function ContactPage() {
                   <div className="bg-[var(--color-primary)]/5 rounded-xl border border-[var(--color-primary)]/20 p-6">
                     <h3 
                       className="text-lg font-bold text-[var(--color-text-primary)] mb-2"
-                      style={{ fontFamily: 'var(--font-heading)' }}
                     >
                       Response Time
                     </h3>
