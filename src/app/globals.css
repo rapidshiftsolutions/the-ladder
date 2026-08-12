@@ -1720,6 +1720,14 @@ textarea:focus-visible,
   justify-content: center;
 }
 
+/* Card and panel titles sit around 20px, where the single-weight display serif
+   reads spindly, so they use the sans like the other sub-display headings. */
+.card-title {
+  font-family: var(--font-body);
+  font-weight: 700;
+  letter-spacing: normal;
+}
+
 /* --- Accent rule under section headings --- */
 .heading-rule::after {
   content: '';

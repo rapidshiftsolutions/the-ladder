@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { AlertCircle, CheckCircle2 } from 'lucide-react'
 
 const initialForm = {
   fullName: '',
@@ -14,6 +15,38 @@ const initialForm = {
   botField: '',
 }
 
+// The API rejects a barrier description under 20 characters, so the form says so
+// up front rather than failing on submit.
+const BARRIER_MIN = 20
+
+const fieldClass =
+  'w-full rounded-lg border border-[var(--color-border-dark)] bg-white px-4 py-3 text-base text-[var(--color-text-primary)] transition-colors placeholder:text-[var(--color-text-muted)] focus:border-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/25 disabled:bg-gray-50'
+
+function Legend({ step, children }) {
+  return (
+    <legend className="mb-4 flex items-center gap-2.5">
+      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[var(--color-primary)]/10 text-sm font-bold text-[var(--color-primary)]">
+        {step}
+      </span>
+      <span className="text-lg text-[var(--color-text-primary)]">{children}</span>
+    </legend>
+  )
+}
+
+function Label({ htmlFor, children, optional = false }) {
+  return (
+    <label
+      htmlFor={htmlFor}
+      className="mb-2 block text-sm font-semibold text-[var(--color-text-primary)]"
+    >
+      {children}
+      {optional && (
+        <span className="ml-1.5 font-normal text-[var(--color-text-muted)]">(optional)</span>
+      )}
+    </label>
+  )
+}
+
 export default function ApplyForm() {
   const [form, setForm] = useState(initialForm)
   const [error, setError] = useState('')
@@ -24,6 +57,9 @@ export default function ApplyForm() {
     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value
     setForm((prev) => ({ ...prev, [field]: value }))
   }
+
+  const barrierCount = form.barrierDescription.trim().length
+  const barrierShort = barrierCount > 0 && barrierCount < BARRIER_MIN
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -55,27 +91,21 @@ export default function ApplyForm() {
 
   if (success) {
     return (
-      <div className="rounded-2xl border border-[var(--color-secondary)]/30 bg-[var(--color-secondary)]/10 p-8 text-center">
-        <h2
-          className="text-2xl font-bold text-[var(--color-text-primary)] mb-3"
-          style={{ fontFamily: 'var(--font-heading)' }}
-        >
-          Application received
-        </h2>
-        <p className="text-[var(--color-text-secondary)] mb-6">
-          Thank you. The Ladder team will review your request and follow up soon.
-          You can return to the dashboard anytime while your portal session is active.
+      <div className="py-6 text-center">
+        <span className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-[var(--color-secondary)]/10">
+          <CheckCircle2 className="h-7 w-7 text-[var(--color-secondary-dark)]" aria-hidden="true" />
+        </span>
+        <h2 className="text-2xl">Application received</h2>
+        <p className="mx-auto mt-3 max-w-md text-[var(--color-text-secondary)]">
+          Thank you for trusting us with this. A team member reviews every application
+          and will follow up within 24 hours, usually by phone.
         </p>
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+        <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
           <Link href="/guest-portal/dashboard" className="btn btn-primary">
-            Back to Dashboard
+            Back to dashboard
           </Link>
-          <button
-            type="button"
-            className="btn btn-secondary"
-            onClick={() => setSuccess(false)}
-          >
-            Submit Another Application
+          <button type="button" className="btn btn-secondary" onClick={() => setSuccess(false)}>
+            Submit another application
           </button>
         </div>
       </div>
@@ -83,7 +113,7 @@ export default function ApplyForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+    <form onSubmit={handleSubmit} className="space-y-10" noValidate>
       {/* Honeypot */}
       <input
         type="text"
@@ -96,61 +126,67 @@ export default function ApplyForm() {
         aria-hidden="true"
       />
 
-      <div>
-        <label htmlFor="fullName" className="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
-          Full name *
-        </label>
-        <input
-          id="fullName"
-          name="fullName"
-          type="text"
-          required
-          value={form.fullName}
-          onChange={updateField('fullName')}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg text-base focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent"
-          disabled={loading}
-        />
-      </div>
+      <fieldset>
+        <Legend step={1}>About you</Legend>
 
-      <div className="grid sm:grid-cols-2 gap-5">
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
-            Email *
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            value={form.email}
-            onChange={updateField('email')}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg text-base focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent"
-            disabled={loading}
-          />
-        </div>
-        <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
-            Phone
-          </label>
-          <input
-            id="phone"
-            name="phone"
-            type="tel"
-            value={form.phone}
-            onChange={updateField('phone')}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg text-base focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent"
-            disabled={loading}
-          />
-        </div>
-      </div>
+        <div className="space-y-5">
+          <div>
+            <Label htmlFor="fullName">Full name</Label>
+            <input
+              id="fullName"
+              name="fullName"
+              type="text"
+              required
+              autoComplete="name"
+              value={form.fullName}
+              onChange={updateField('fullName')}
+              className={fieldClass}
+              disabled={loading}
+            />
+          </div>
 
-      <div>
-        <label
-          htmlFor="referringPartner"
-          className="block text-sm font-medium text-[var(--color-text-primary)] mb-2"
-        >
-          Referring partner organization *
-        </label>
+          <div className="grid gap-5 sm:grid-cols-2">
+            <div>
+              <Label htmlFor="email">Email</Label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                autoComplete="email"
+                inputMode="email"
+                value={form.email}
+                onChange={updateField('email')}
+                className={fieldClass}
+                disabled={loading}
+              />
+            </div>
+            <div>
+              <Label htmlFor="phone" optional>Phone</Label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                autoComplete="tel"
+                inputMode="tel"
+                placeholder="(205) 555-0123"
+                value={form.phone}
+                onChange={updateField('phone')}
+                className={fieldClass}
+                disabled={loading}
+              />
+              <p className="mt-1.5 text-xs text-[var(--color-text-secondary)]">
+                A phone number is the fastest way for us to reach you.
+              </p>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <Legend step={2}>Your referral</Legend>
+
+        <Label htmlFor="referringPartner">Referring partner organization</Label>
         <input
           id="referringPartner"
           name="referringPartner"
@@ -159,82 +195,102 @@ export default function ApplyForm() {
           value={form.referringPartner}
           onChange={updateField('referringPartner')}
           placeholder="Which nonprofit referred you?"
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg text-base focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent"
+          className={fieldClass}
           disabled={loading}
         />
-      </div>
+        <p className="mt-1.5 text-xs text-[var(--color-text-secondary)]">
+          The organization that gave you the portal password.
+        </p>
+      </fieldset>
 
-      <div>
-        <label
-          htmlFor="barrierDescription"
-          className="block text-sm font-medium text-[var(--color-text-primary)] mb-2"
-        >
-          What barrier is keeping you from moving forward? *
-        </label>
-        <textarea
-          id="barrierDescription"
-          name="barrierDescription"
-          required
-          rows={5}
-          value={form.barrierDescription}
-          onChange={updateField('barrierDescription')}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg text-base focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent"
-          disabled={loading}
-        />
-      </div>
+      <fieldset>
+        <Legend step={3}>The barrier</Legend>
 
-      <div>
-        <label
-          htmlFor="helpRequested"
-          className="block text-sm font-medium text-[var(--color-text-primary)] mb-2"
-        >
-          Type or amount of help requested (optional)
-        </label>
-        <textarea
-          id="helpRequested"
-          name="helpRequested"
-          rows={3}
-          value={form.helpRequested}
-          onChange={updateField('helpRequested')}
-          placeholder="Example: temporary transportation, housing deposit, work equipment..."
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg text-base focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent"
-          disabled={loading}
-        />
-      </div>
+        <div className="space-y-5">
+          <div>
+            <Label htmlFor="barrierDescription">
+              What barrier is keeping you from moving forward?
+            </Label>
+            <textarea
+              id="barrierDescription"
+              name="barrierDescription"
+              required
+              rows={6}
+              value={form.barrierDescription}
+              onChange={updateField('barrierDescription')}
+              placeholder="Share what happened and what it is stopping you from doing. Specific details help us act faster."
+              className={fieldClass}
+              disabled={loading}
+              aria-describedby="barrier-help"
+            />
+            <p
+              id="barrier-help"
+              className={`mt-1.5 text-xs ${
+                barrierShort ? 'text-[var(--color-accent-dark)]' : 'text-[var(--color-text-secondary)]'
+              }`}
+            >
+              {barrierShort
+                ? `A little more detail, please — ${BARRIER_MIN - barrierCount} more characters.`
+                : `Please write at least ${BARRIER_MIN} characters.`}
+            </p>
+          </div>
 
-      <label className="flex items-start gap-3 text-sm text-[var(--color-text-secondary)]">
-        <input
-          type="checkbox"
-          name="consentGiven"
-          checked={form.consentGiven}
-          onChange={updateField('consentGiven')}
-          className="mt-1 h-5 w-5 rounded border-gray-300"
-          required
-          disabled={loading}
-        />
-        <span>
-          I consent to The Ladder storing and processing this information to review my
-          sponsorship request. See our{' '}
-          <Link href="/privacy" className="content-link">
-            Privacy Policy
-          </Link>
-          .
-        </span>
-      </label>
-
-      {error && (
-        <div className="rounded-lg bg-red-50 text-red-700 px-4 py-3 text-sm" role="alert">
-          {error}
+          <div>
+            <Label htmlFor="helpRequested" optional>Type or amount of help requested</Label>
+            <textarea
+              id="helpRequested"
+              name="helpRequested"
+              rows={3}
+              value={form.helpRequested}
+              onChange={updateField('helpRequested')}
+              placeholder="Example: temporary transportation, housing deposit, work equipment…"
+              className={fieldClass}
+              disabled={loading}
+            />
+          </div>
         </div>
-      )}
+      </fieldset>
 
-      <button
-        type="submit"
-        disabled={loading}
-        className="btn btn-primary btn-lg w-full sm:w-auto disabled:opacity-50"
-      >
-        {loading ? 'Submitting...' : 'Submit Application'}
-      </button>
+      <div className="space-y-5 border-t border-[var(--color-border)] pt-6">
+        <div className="flex items-start gap-3">
+          <input
+            id="consentGiven"
+            type="checkbox"
+            name="consentGiven"
+            checked={form.consentGiven}
+            onChange={updateField('consentGiven')}
+            className="mt-0.5 h-5 w-5 shrink-0 rounded border-[var(--color-border-dark)] accent-[var(--color-primary)]"
+            required
+            disabled={loading}
+          />
+          <label htmlFor="consentGiven" className="text-sm leading-relaxed text-[var(--color-text-secondary)]">
+            I consent to The Ladder storing and processing this information to review my
+            sponsorship request. See our <Link href="/privacy" className="content-link">Privacy Policy</Link>.
+          </label>
+        </div>
+
+        {error && (
+          <div
+            className="flex items-start gap-2.5 rounded-lg border border-[var(--color-accent)]/25 bg-[var(--color-accent)]/[0.06] px-4 py-3 text-sm text-[var(--color-accent-dark)]"
+            role="alert"
+          >
+            <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+            <span>{error}</span>
+          </div>
+        )}
+
+        <button
+          type="submit"
+          disabled={loading}
+          className="btn btn-primary btn-lg w-full justify-center disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+        >
+          {loading ? 'Submitting…' : 'Submit application'}
+        </button>
+
+        <p className="text-xs text-[var(--color-text-secondary)]">
+          Your application goes straight to The Ladder team. It is never shared publicly.
+        </p>
+      </div>
     </form>
   )
 }
