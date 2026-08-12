@@ -9,10 +9,10 @@ export const metadata = {
     title: 'Barrier Removal Guide | The Ladder',
     description: 'Comprehensive guide to identifying and removing barriers to success. Practical strategies for overcoming challenges and accessing resources in Birmingham.',
     type: 'website',
-    url: 'https://the-ladder.org/barrier-removal-guide',
+    url: '/barrier-removal-guide',
   },
   alternates: {
-    canonical: 'https://the-ladder.org/barrier-removal-guide'
+    canonical: '/barrier-removal-guide'
   }
 }
 

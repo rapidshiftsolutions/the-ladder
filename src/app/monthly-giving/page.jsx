@@ -14,11 +14,11 @@ export const metadata = {
   openGraph: {
     title: 'Monthly Giving | The Ladder Birmingham',
     description: 'Join our community of monthly donors and create lasting impact.',
-    url: 'https://the-ladder.org/monthly-giving',
+    url: '/monthly-giving',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://the-ladder.org/monthly-giving',
+    canonical: '/monthly-giving',
   },
 }
 

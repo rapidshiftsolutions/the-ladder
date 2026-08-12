@@ -12,11 +12,11 @@ export const metadata = {
   openGraph: {
     title: 'Blog | The Ladder Birmingham',
     description: 'News, updates, and stories from The Ladder.',
-    url: 'https://the-ladder.org/blog',
+    url: '/blog',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://the-ladder.org/blog',
+    canonical: '/blog',
   },
 }
 

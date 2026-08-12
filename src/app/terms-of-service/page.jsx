@@ -8,10 +8,10 @@ export const metadata = {
     title: 'Terms of Service | The Ladder',
     description: 'Terms of Service for The Ladder nonprofit website and services. User responsibilities and legal agreements.',
     type: 'website',
-    url: 'https://the-ladder.org/terms-of-service',
+    url: '/terms-of-service',
   },
   alternates: {
-    canonical: 'https://the-ladder.org/terms-of-service'
+    canonical: '/terms-of-service'
   }
 }
 

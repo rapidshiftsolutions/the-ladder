@@ -19,11 +19,11 @@ export const metadata = {
     title: 'Get Help | Apply for Assistance | The Ladder Birmingham',
     description:
       'Apply for free barrier removal assistance through The Ladder’s invitation-only guest portal.',
-    url: 'https://the-ladder.org/get-help',
+    url: '/get-help',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://the-ladder.org/get-help',
+    canonical: '/get-help',
   },
 }
 

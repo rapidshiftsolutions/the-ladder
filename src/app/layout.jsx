@@ -8,6 +8,7 @@ import GivebutterScript from '@/components/givebutter/GivebutterScript';
 import GivebutterFloating from '@/components/givebutter/GivebutterFloating';
 import { client } from '@/sanity/lib/client';
 import { donationSettingsQuery } from '@/sanity/queries/donationSettingsQuery';
+import { SITE_URL } from '@/lib/siteUrl';
 import { DEFAULT_DONATION_SETTINGS } from '@/lib/donationDefaults';
 
 // Modern editorial pairing - Instrument Serif (display) + Nunito Sans (body)
@@ -18,10 +19,10 @@ export const metadata = {
     template: '%s | The Ladder',
     default: 'The Ladder - Birmingham Nonprofit Helping Individuals Overcome Barriers',
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://the-ladder.org'),
+  metadataBase: new URL(SITE_URL),
   description: 'The Ladder is a Birmingham, Alabama 501(c)(3) nonprofit helping individuals overcome barriers to success. We partner with local organizations to provide crisis intervention, emergency assistance, and personalized support.',
   keywords: ['Birmingham nonprofit', 'crisis intervention Alabama', 'emergency assistance Birmingham', 'barrier removal', 'individual support', 'community partnerships', 'nonprofit Birmingham AL', 'crisis help', 'emergency aid'],
-  authors: [{ name: 'The Ladder', url: 'https://the-ladder.org' }],
+  authors: [{ name: 'The Ladder', url: SITE_URL }],
   creator: 'The Ladder',
   publisher: 'The Ladder',
   formatDetection: {
@@ -32,13 +33,13 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://the-ladder.org',
+    url: SITE_URL,
     siteName: 'The Ladder',
     title: 'The Ladder - Birmingham Nonprofit Helping Individuals Overcome Barriers',
     description: 'Birmingham 501(c)(3) helping individuals overcome barriers through crisis intervention and community partnerships. Apply for help or donate today.',
     images: [
       {
-        url: '/meta.png',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'The Ladder - Birmingham Nonprofit',
@@ -53,7 +54,7 @@ export const metadata = {
     site: '@theladder_bham',
     creator: '@theladder_bham',
     images: {
-      url: '/meta.png',
+      url: '/og-image.png',
       alt: 'The Ladder - Birmingham Nonprofit',
     },
   },
@@ -85,7 +86,7 @@ export const metadata = {
   },
   manifest: '/site.webmanifest',
   alternates: {
-    canonical: 'https://the-ladder.org',
+    canonical: SITE_URL,
   },
   robots: {
     index: true,
@@ -138,7 +139,7 @@ export default async function RootLayout({ children }) {
         <meta name="apple-touch-fullscreen" content="yes" />
         
         {/* Social sharing images */}
-        <meta property="og:image:secure_url" content="https://the-ladder.org/meta.png" />
+        <meta property="og:image:secure_url" content={`${SITE_URL}/og-image.png`} />
 
         {/* Resource hints for Sanity CDN + Givebutter */}
         <link rel="dns-prefetch" href="https://cdn.sanity.io" />
@@ -148,7 +149,7 @@ export default async function RootLayout({ children }) {
         {/* PWA meta tags */}
         <meta name="theme-color" content="#0F4C81" />
         <meta name="msapplication-TileColor" content="#0F4C81" />
-        <meta name="msapplication-TileImage" content="/meta.png" />
+        <meta name="msapplication-TileImage" content="/icon-512x512.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="The Ladder" />
@@ -171,9 +172,9 @@ export default async function RootLayout({ children }) {
               "name": "The Ladder",
               "alternateName": "The Ladder Birmingham",
               "description": "The Ladder is a Birmingham, Alabama 501(c)(3) nonprofit organization that helps individuals overcome specific barriers preventing their success through crisis intervention, emergency assistance, and community partnerships.",
-              "url": "https://the-ladder.org",
-              "logo": "https://the-ladder.org/TheLadder/logos/The Ladder - Logo.png",
-              "image": "https://the-ladder.org/meta.png",
+              "url": SITE_URL,
+              "logo": `${SITE_URL}/TheLadder/logos/The Ladder - Logo.png`,
+              "image": `${SITE_URL}/og-image.png`,
               "email": "info@the-ladder.org",
               "telephone": "+1-205-522-1162",
               "address": {

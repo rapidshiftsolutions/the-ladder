@@ -1,5 +1,7 @@
+import { SITE_URL } from '@/lib/siteUrl'
+
 export default function robots() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://the-ladder.org'
+  const baseUrl = SITE_URL
 
   return {
     rules: [

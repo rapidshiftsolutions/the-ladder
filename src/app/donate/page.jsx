@@ -41,11 +41,11 @@ export const metadata = {
     title: 'Donate | Support Birmingham Residents in Need | The Ladder',
     description:
       'Your tax-deductible donation provides direct crisis intervention and barrier removal assistance to Birmingham residents.',
-    url: 'https://the-ladder.org/donate',
+    url: '/donate',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://the-ladder.org/donate',
+    canonical: '/donate',
   },
 }
 
@@ -84,7 +84,7 @@ export default async function DonatePage() {
       '@type': 'NGO',
       name: 'The Ladder',
       taxID: '82-0737087',
-      url: 'https://the-ladder.org',
+      url: '/',
     },
   }
 

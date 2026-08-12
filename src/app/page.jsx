@@ -39,7 +39,7 @@ export const metadata = {
     siteName: 'The Ladder',
     images: [
       {
-        url: '/meta.png',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'The Ladder - Birmingham Nonprofit Helping Individuals Overcome Barriers'
@@ -50,10 +50,10 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'The Ladder | Birmingham Nonprofit Helping Individuals Overcome Barriers',
     description: 'Birmingham 501(c)(3) helping individuals overcome barriers through crisis intervention and community partnerships.',
-    images: ['/meta.png']
+    images: ['/og-image.png']
   },
   alternates: {
-    canonical: 'https://the-ladder.org'
+    canonical: '/'
   },
   robots: {
     index: true,

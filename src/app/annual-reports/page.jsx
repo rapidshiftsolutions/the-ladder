@@ -13,11 +13,11 @@ export const metadata = {
   openGraph: {
     title: 'Annual Reports | The Ladder Birmingham',
     description: 'Our annual impact and financial reports.',
-    url: 'https://the-ladder.org/annual-reports',
+    url: '/annual-reports',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://the-ladder.org/annual-reports',
+    canonical: '/annual-reports',
   },
 }
 

@@ -1,7 +1,9 @@
+import { SITE_URL } from '@/lib/siteUrl'
+
 import { publicClient } from '@/sanity/lib/client'
 import { groq } from 'next-sanity'
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://the-ladder.org'
+const baseUrl = SITE_URL
 
 export default async function sitemap() {
   const staticPages = [
