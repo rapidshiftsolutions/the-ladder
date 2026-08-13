@@ -1598,11 +1598,11 @@ a.site-footer__contact:hover {
   max-width: 220px;
 }
 
-/* Nav Givebutter button: fallback link shows until the widget renders */
+/* Nav Givebutter button */
 .gb-button-slot {
   display: inline-flex;
   align-items: center;
-  gap: 0;
+  max-width: 220px;
 }
 
 .gb-button-host {
