@@ -279,11 +279,7 @@ export default function SiteHeader() {
                 <span className="hidden xl:inline">Portal Login</span>
               </Link>
 
-              <GivebutterButton
-                widgetId="prW2aY"
-                fallbackHref="/donate"
-                fallbackLabel="Donate Now"
-              />
+              <GivebutterButton widgetId="prW2aY" />
             </div>
 
             {/* Mobile Menu Button */}

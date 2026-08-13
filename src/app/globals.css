@@ -1598,18 +1598,11 @@ a.site-footer__contact:hover {
   max-width: 220px;
 }
 
-/* Nav Givebutter button: fallback + widget share one cell (never stack) */
+/* Nav Givebutter button */
 .gb-button-slot {
-  position: relative;
-  display: inline-grid;
+  display: inline-flex;
   align-items: center;
-  justify-items: stretch;
   max-width: 220px;
-}
-
-.gb-button-host,
-.gb-button-fallback {
-  grid-area: 1 / 1;
 }
 
 .gb-button-host {
@@ -1617,15 +1610,6 @@ a.site-footer__contact:hover {
   align-items: center;
   max-width: 220px;
   overflow: hidden;
-}
-
-.gb-button-host:not(.is-ready) {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.gb-button-fallback {
-  justify-self: stretch;
 }
 
 .gb-button-host givebutter-widget {
