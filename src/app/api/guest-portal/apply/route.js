@@ -65,8 +65,8 @@ function validatePayload(body) {
 
 async function notifyNetlifyForm(data, request) {
   const siteUrl =
-    process.env.URL ||
     process.env.NEXT_PUBLIC_SITE_URL ||
+    process.env.URL ||
     request.headers.get('origin') ||
     'https://the-ladder.org'
 
