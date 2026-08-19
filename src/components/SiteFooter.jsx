@@ -11,6 +11,7 @@ const footerLinks = {
     { name: 'Leadership Team', href: '/leadership-team' },
     { name: 'Governance', href: '/board-governance' },
     { name: 'Success Stories', href: '/success-stories' },
+    { name: 'Blog', href: '/blog' },
     { name: 'Annual Reports', href: '/annual-reports' },
     { name: 'Financials', href: '/financials' },
   ],

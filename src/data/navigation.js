@@ -66,6 +66,18 @@ export const NavItems = [
   {
     name: "About Us",
     href: "/about",
+    sections: [
+      {
+        heading: "About",
+        links: [
+          { name: "Our Mission", href: "/about" },
+          { name: "Leadership Team", href: "/leadership-team" },
+          { name: "Board Governance", href: "/board-governance" },
+          { name: "Success Stories", href: "/success-stories" },
+          { name: "Blog", href: "/blog" },
+        ]
+      }
+    ]
   },
   {
     name: "Get Help",
@@ -103,6 +115,7 @@ export const FooterNavItems = [
       { name: "Our Mission", href: "/about" },
       { name: "Leadership Team", href: "/board-governance" },
       { name: "Success Stories", href: "/success-stories" },
+      { name: "Blog", href: "/blog" },
       { name: "Partners", href: "/partners" },
     ]
   },

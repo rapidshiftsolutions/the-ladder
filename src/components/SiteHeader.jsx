@@ -12,8 +12,9 @@ const DEFAULT_PHONE = '(205) 306-1690'
 const DEFAULT_EMAIL = 'info@the-ladder.org'
 
 function toTelHref(phone) {
-  const digits = String(phone || '').replace(/[^0-9+]/g, '')
-  return `tel:${digits}`
+  const digits = String(phone || '').replace(/\D/g, '')
+  const national = digits.length === 11 && digits.startsWith('1') ? digits.slice(1) : digits
+  return `tel:+1${national}`
 }
 
 // Navigation structure with dropdowns
@@ -26,6 +27,7 @@ const navigation = [
       { name: 'Leadership Team', href: '/leadership-team' },
       { name: 'Board Governance', href: '/board-governance' },
       { name: 'Success Stories', href: '/success-stories' },
+      { name: 'Blog', href: '/blog' },
     ]
   },
   { name: 'How We Help', href: '/how-we-help' },
