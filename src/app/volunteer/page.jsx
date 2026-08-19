@@ -207,11 +207,11 @@ export default function VolunteerPage() {
                     volunteer@the-ladder.org
                   </a>
                   <a 
-                    href="tel:+12055221162"
+                    href="tel:+12053061690"
                     className="flex items-center justify-center gap-2 text-[var(--color-primary)] font-medium hover:underline"
                   >
                     <Phone className="w-5 h-5" />
-                    (205) 522-1162
+                    (205) 306-1690
                   </a>
                 </div>
               </div>

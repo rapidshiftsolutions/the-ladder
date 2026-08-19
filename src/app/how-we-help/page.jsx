@@ -33,7 +33,7 @@ export default function HowWeHelpPage() {
       title: 'Reach Out',
       description: 'Contact us by phone, email, or through our website. We respond to all inquiries within 24 hours during business days.',
       details: [
-        'Call (205) 522-1162',
+        'Call (205) 306-1690',
         'Email info@the-ladder.org',
         'Submit an online request'
       ]
@@ -280,9 +280,9 @@ export default function HowWeHelpPage() {
                 <HelpingHand className="w-5 h-5 mr-2" />
                 Apply for Help
               </Link>
-              <a href="tel:+12055221162" className="btn btn-lg bg-white/10 text-white border-2 border-white/30 hover:bg-white/20">
+              <a href="tel:+12053061690" className="btn btn-lg bg-white/10 text-white border-2 border-white/30 hover:bg-white/20">
                 <Phone className="w-5 h-5 mr-2" />
-                Call (205) 522-1162
+                Call (205) 306-1690
               </a>
             </div>
             <p className="text-white/80 text-sm mt-6">

@@ -17,7 +17,7 @@ export default function SpecialStructuredData({ special }) {
       "@type": "AutomotiveBusiness",
       "name": "OEM Radio Repair",
       "url": "https://oemradiorepair.com",
-      "telephone": "(205) 522-1162",
+      "telephone": "(205) 306-1690",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "2413 1st Ave S",

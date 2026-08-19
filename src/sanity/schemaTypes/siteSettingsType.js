@@ -66,7 +66,7 @@ export const siteSettingsType = defineType({
       type: 'string',
       group: 'contact',
       description: 'Main contact phone number. Format: (XXX) XXX-XXXX. This appears in the header, footer, and throughout the site.',
-      initialValue: '(205) 522-1162',
+      initialValue: '(205) 306-1690',
       validation: (Rule) => Rule.required().error('A contact phone number is required'),
     }),
     defineField({

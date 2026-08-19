@@ -161,11 +161,11 @@ export default function GuestPortalApplyPage() {
               </p>
               <div className="mt-4 space-y-2">
                 <a
-                  href="tel:+12055221162"
+                  href="tel:+12053061690"
                   className="flex items-center gap-2 text-sm font-semibold text-[var(--color-primary)] hover:underline"
                 >
                   <Phone className="h-4 w-4" aria-hidden="true" />
-                  (205) 522-1162
+                  (205) 306-1690
                 </a>
                 <a
                   href="mailto:info@the-ladder.org"

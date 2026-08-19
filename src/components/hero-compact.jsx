@@ -39,7 +39,7 @@ export default function HeroCompact({
   // Merge with defaults
   const heroContent = { ...defaultContent, ...content }
   const impactStats = { ...defaultStats, ...stats }
-  const phone = siteSettings?.phone || '(205) 522-1162'
+  const phone = siteSettings?.phone || '(205) 306-1690'
   
   // Get hero image URL or use default
   const heroImageUrl = heroContent.heroImage?.asset?.url || '/TheLadder/photos/Jamil.jpg'

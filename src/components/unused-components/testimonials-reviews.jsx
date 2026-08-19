@@ -197,16 +197,16 @@ export default function TestimonialsReviews() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                  href="tel:2055221162"
+                  href="tel:2053061690"
                   className="inline-flex items-center justify-center px-8 py-4 bg-primary-500 text-black font-bold rounded-lg hover:bg-primary-600 transition-all duration-300"
                 >
                   Get Your Repair Quote
                 </a>
                 <a
-                  href="tel:2055221162"
+                  href="tel:2053061690"
                   className="inline-flex items-center justify-center px-8 py-4 bg-surface-800/50 backdrop-blur-sm border border-primary-500/30 text-text-primary font-medium rounded-lg hover:bg-surface-700/50 transition-all duration-300"
                 >
-                  Call (205) 522-1162
+                  Call (205) 306-1690
                 </a>
               </div>
             </motion.div>

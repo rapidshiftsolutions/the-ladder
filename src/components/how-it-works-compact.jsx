@@ -100,7 +100,7 @@ export default function HowItWorksCompact({
       : defaultTestimonial.stats
   } : defaultTestimonial
 
-  const phone = siteSettings?.phone || '(205) 522-1162'
+  const phone = siteSettings?.phone || '(205) 306-1690'
 
   return (
     <section 

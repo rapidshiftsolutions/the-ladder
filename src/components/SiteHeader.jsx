@@ -197,9 +197,9 @@ export default function SiteHeader() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-9">
             <div className="flex items-center gap-5">
-              <a href="tel:+12055221162" className="flex items-center gap-1.5 hover:text-white/80 transition-colors">
+              <a href="tel:+12053061690" className="flex items-center gap-1.5 hover:text-white/80 transition-colors">
                 <Phone className="w-3.5 h-3.5" />
-                (205) 522-1162
+                (205) 306-1690
               </a>
               <a href="mailto:info@the-ladder.org" className="flex items-center gap-1.5 hover:text-white/80 transition-colors">
                 <Mail className="w-3.5 h-3.5" />
@@ -392,11 +392,11 @@ export default function SiteHeader() {
                 {/* Mobile Contact */}
                 <div className="px-4 pt-4 space-y-3">
                   <a 
-                    href="tel:+12055221162" 
+                    href="tel:+12053061690" 
                     className="flex items-center gap-2 text-[var(--color-primary)] font-medium"
                   >
                     <Phone className="w-4 h-4" />
-                    (205) 522-1162
+                    (205) 306-1690
                   </a>
                   <a 
                     href="mailto:info@the-ladder.org" 

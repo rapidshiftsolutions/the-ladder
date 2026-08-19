@@ -26,7 +26,7 @@ export const businessInfoType = defineType({
       title: 'Phone Number',
       type: 'string',
       validation: Rule => Rule.required(),
-      initialValue: '(205) 522-1162',
+      initialValue: '(205) 306-1690',
     }),
     defineField({
       name: 'email',

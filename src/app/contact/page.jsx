@@ -53,14 +53,14 @@ export default function ContactPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               <a 
-                href="tel:+12055221162"
+                href="tel:+12053061690"
                 className="flex items-center gap-4 p-4 bg-white rounded-lg border border-gray-200 hover:border-[var(--color-primary)] hover:shadow-md transition-all"
               >
                 <div className="w-12 h-12 bg-[var(--color-primary)]/10 rounded-lg flex items-center justify-center">
                   <Phone className="w-6 h-6 text-[var(--color-primary)]" />
                 </div>
                 <div>
-                  <div className="font-semibold text-[var(--color-text-primary)]">(205) 522-1162</div>
+                  <div className="font-semibold text-[var(--color-text-primary)]">(205) 306-1690</div>
                   <div className="text-sm text-[var(--color-text-secondary)]">Call us directly</div>
                 </div>
               </a>

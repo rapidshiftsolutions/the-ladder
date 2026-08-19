@@ -224,11 +224,11 @@ export default async function DonatePage() {
                       info@the-ladder.org
                     </a>
                     <a
-                      href="tel:+12055221162"
+                      href="tel:+12053061690"
                       className="flex items-center gap-2 text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-primary)]"
                     >
                       <Phone className="h-4 w-4 shrink-0 text-[var(--color-primary)]" />
-                      (205) 522-1162
+                      (205) 306-1690
                     </a>
                   </div>
                 </div>

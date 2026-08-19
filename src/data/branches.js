@@ -18,7 +18,7 @@ export const mainLocation = {
     saturday: 'closed', 
     sunday: 'closed' 
   },
-  phone: "(205) 522-1162",
+  phone: "(205) 306-1690",
   email: "info@oemradiorepair.com",
   ownerTitle: "Founder",
   ownerName: "Alex Harmon",

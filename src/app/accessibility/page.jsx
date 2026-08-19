@@ -150,11 +150,11 @@ export default function AccessibilityPage() {
                       accessibility@the-ladder.org
                     </a>
                     <a 
-                      href="tel:+12055221162" 
+                      href="tel:+12053061690" 
                       className="flex items-center gap-2 text-[var(--color-primary)] hover:underline"
                     >
                       <Phone className="w-4 h-4" />
-                      (205) 522-1162
+                      (205) 306-1690
                     </a>
                   </div>
                 </div>

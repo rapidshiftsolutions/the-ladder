@@ -128,10 +128,10 @@ class ErrorBoundary extends React.Component {
             <p className="mt-6 text-sm text-[var(--color-text-muted)]">
               Need help? Call us at{' '}
               <a 
-                href="tel:+12055221162" 
+                href="tel:+12053061690" 
                 className="text-[var(--color-primary)] hover:underline"
               >
-                (205) 522-1162
+                (205) 306-1690
               </a>
             </p>
             

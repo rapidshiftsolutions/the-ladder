@@ -58,10 +58,10 @@ export default function ContactContent() {
                   <div className="flex-1">
                     <h3 className="text-lg font-bold text-text-primary mb-2">Phone</h3>
                     <a 
-                      href="tel:2055221162"
+                      href="tel:2053061690"
                       className="text-2xl font-bold text-primary-500 hover:text-primary-600 transition-colors"
                     >
-                      (205) 522-1162
+                      (205) 306-1690
                     </a>
                     <p className="text-text-secondary text-sm mt-1">
                       Call us directly for immediate assistance or to schedule an appointment
@@ -135,7 +135,7 @@ export default function ContactContent() {
                   Book your appointment online for fast, convenient scheduling
                 </p>
                 <Link
-                  href="tel:2055221162"
+                  href="tel:2053061690"
                   className="inline-flex items-center justify-center px-8 py-4 bg-primary-500 text-black font-bold rounded-lg hover:bg-primary-600 transition-all duration-300 group w-full sm:w-auto"
                 >
                   Book Online
@@ -169,11 +169,11 @@ export default function ContactContent() {
                   Call us directly for urgent service needs or same-day appointments.
                 </p>
                 <a
-                  href="tel:2055221162"
+                  href="tel:2053061690"
                   className="inline-flex items-center justify-center px-6 py-3 bg-primary-500 text-black font-bold rounded-lg hover:bg-primary-600 transition-all duration-300 w-full"
                 >
                   <Phone className="mr-2 w-5 h-5" />
-                  Call Now: (205) 522-1162
+                  Call Now: (205) 306-1690
                 </a>
               </div>
             </motion.div>

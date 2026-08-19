@@ -278,10 +278,10 @@ export default function TermsOfServicePage() {
                 <h3 className="font-semibold text-lg mb-3">Call Us</h3>
                 <p className="mb-4">Speak with our administrative team</p>
                 <a 
-                  href="tel:+12055555123" 
+                  href="tel:+12053061690" 
                   className="bg-white text-[var(--ladder-blue)] px-6 py-2 rounded-lg font-semibold hover:bg-gray-50 transition-colors inline-block"
                 >
-                  (205) 555-5123
+                  (205) 306-1690
                 </a>
               </div>
             </div>

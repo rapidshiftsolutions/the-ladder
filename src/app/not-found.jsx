@@ -53,7 +53,7 @@ export default function NotFound() {
               </Link>
               <Link href="/contact" className="text-center p-4 bg-white rounded-lg hover:shadow-lg transition-shadow">
                 <div className="text-[var(--ladder-red)] font-semibold text-sm mb-1">Contact</div>
-                <div className="text-gray-600 text-xs">(205) 522-1162</div>
+                <div className="text-gray-600 text-xs">(205) 306-1690</div>
               </Link>
             </div>
           </div>

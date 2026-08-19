@@ -103,11 +103,11 @@ export default function HowItWorksRedesigned() {
               <ArrowRight className="w-4 h-4" />
             </Link>
             <a
-              href="tel:+12055221162"
+              href="tel:+12053061690"
               className="inline-flex items-center justify-center gap-2 bg-white border border-[var(--color-border-dark)] hover:border-[var(--color-primary)] text-[var(--color-text-primary)] px-6 py-3 rounded-lg font-semibold transition-colors min-h-[48px]"
             >
               <Phone className="w-4 h-4" />
-              (205) 522-1162
+              (205) 306-1690
             </a>
           </div>
         </div>

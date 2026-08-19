@@ -34,7 +34,7 @@ const footerLinks = {
 
 const defaultSettings = {
   orgName: 'The Ladder',
-  phone: '(205) 522-1162',
+  phone: '(205) 306-1690',
   email: 'info@the-ladder.org',
   address: {
     city: 'Birmingham',

@@ -200,10 +200,10 @@ export default function GuestPortalDashboard() {
               </a>
               <div className="mt-3">
                 <a
-                  href="tel:+12055221162"
+                  href="tel:+12053061690"
                   className="text-[var(--color-primary)] font-semibold underline-offset-2 hover:underline"
                 >
-                  (205) 522-1162
+                  (205) 306-1690
                 </a>
               </div>
             </div>

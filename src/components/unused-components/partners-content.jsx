@@ -165,7 +165,7 @@ export default function PartnersContent() {
               businesses that share our commitment to quality service and the automotive community.
             </p>
             <a
-              href="tel:2055221162"
+              href="tel:2053061690"
               className="inline-flex items-center px-6 py-3 bg-primary-500 text-black font-bold rounded-lg hover:bg-primary-600 transition-colors duration-200"
             >
               <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">

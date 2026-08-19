@@ -176,7 +176,7 @@ export default async function RootLayout({ children }) {
               "logo": `${SITE_URL}/TheLadder/logos/The Ladder - Logo.png`,
               "image": `${SITE_URL}/og-image.png`,
               "email": "info@the-ladder.org",
-              "telephone": "+1-205-522-1162",
+              "telephone": "+1-205-306-1690",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Birmingham",

@@ -77,11 +77,11 @@ export default function GetHelpPage() {
                 </p>
               </div>
               <a
-                href="tel:+12055221162"
+                href="tel:+12053061690"
                 className="btn btn-accent inline-flex items-center px-6 py-3 font-semibold rounded-lg"
               >
                 <Phone className="w-5 h-5 mr-2" />
-                Call (205) 522-1162
+                Call (205) 306-1690
               </a>
             </div>
           </div>

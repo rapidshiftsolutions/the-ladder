@@ -89,7 +89,7 @@ export default function OfflinePage() {
           <div className="mt-8 pt-8 border-t border-gray-800">
             <div className="text-gray-400 text-sm font-inter space-y-2">
               <p><strong>Location:</strong> 2413 1st Ave S, Birmingham, AL 37821</p>
-              <p><strong>Phone:</strong> (205) 522-1162</p>
+              <p><strong>Phone:</strong> (205) 306-1690</p>
               <p><strong>Hours:</strong> Mon-Fri 8AM-6PM, Sat 8AM-4PM</p>
             </div>
           </div>

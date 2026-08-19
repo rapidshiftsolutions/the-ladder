@@ -122,11 +122,11 @@ export default function AboutContent() {
                   <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <a
-                  href="tel:2055221162"
+                  href="tel:2053061690"
                   className="inline-flex items-center justify-center px-6 py-3 bg-surface-800/50 backdrop-blur-sm border border-primary-500/30 text-text-primary font-medium rounded-lg hover:bg-surface-700/50 transition-all duration-300"
                 >
                   <Phone className="mr-2 w-5 h-5" />
-                  (205) 522-1162
+                  (205) 306-1690
                 </a>
               </div>
             </motion.div>
@@ -344,7 +344,7 @@ export default function AboutContent() {
                       <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </Link>
                     <a
-                      href="tel:2055221162"
+                      href="tel:2053061690"
                       className="inline-flex items-center justify-center px-6 py-3 bg-surface-700 border border-primary-500/30 text-primary-500 font-medium rounded-lg hover:bg-surface-600 transition-all duration-300"
                     >
                       <Phone className="mr-2 w-5 h-5" />
@@ -385,10 +385,10 @@ export default function AboutContent() {
                   <div className="flex items-center space-x-3">
                     <Phone className="w-5 h-5 text-primary-500" />
                     <a 
-                      href="tel:2055221162"
+                      href="tel:2053061690"
                       className="text-primary-500 hover:text-primary-600 font-medium"
                     >
-                      (205) 522-1162
+                      (205) 306-1690
                     </a>
                   </div>
                   <div className="flex items-center space-x-3">

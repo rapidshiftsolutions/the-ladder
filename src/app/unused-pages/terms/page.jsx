@@ -349,7 +349,7 @@ export default function TermsPage() {
                       <p className="font-semibold text-text-primary">Executive Director</p>
                       <p>The Ladder</p>
                       <p>P.O. Box [TBD], Birmingham, AL 35233</p>
-                      <p>Phone: (205) 522-1162</p>
+                      <p>Phone: (205) 306-1690</p>
                       <p>Email: legal@the-ladder.org</p>
                     </div>
                     

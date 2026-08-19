@@ -27,7 +27,7 @@ export default function SpecialsListingStructuredData({ specials }) {
           "@type": "AutomotiveBusiness",
           "name": "OEM Radio Repair",
           "url": "https://oemradiorepair.com",
-          "telephone": "(205) 522-1162",
+          "telephone": "(205) 306-1690",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "2413 1st Ave S",
@@ -54,7 +54,7 @@ export default function SpecialsListingStructuredData({ specials }) {
       "alternateName": "OEM Radio Repair Infotainment Service",
       "description": "OEM Radio Repair is Birmingham, AL's premier infotainment repair service specializing in touchscreen digitizer and LCD replacements for Dodge, Chrysler, Jeep, Cadillac, and Ram vehicles.",
       "url": "https://oemradiorepair.com",
-      "telephone": "(205) 522-1162",
+      "telephone": "(205) 306-1690",
       "email": "info@oemradiorepair.com",
       "address": {
         "@type": "PostalAddress",
