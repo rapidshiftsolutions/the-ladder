@@ -48,7 +48,7 @@ const teamMembers = [
   {
     _type: 'teamMember',
     _id: 'board-secretary',
-    name: 'Board Secretary',
+    name: 'Tara Bevelheimer',
     title: 'Secretary',
     organization: 'Community Volunteer & Mentor',
     bio: 'Certified Peer Support Specialist with lived experience in recovery. Dedicated to helping others overcome personal barriers through mentorship and compassionate support. Brings invaluable perspective from personal journey of overcoming obstacles, making them uniquely qualified to understand and assist those The Ladder serves.',
