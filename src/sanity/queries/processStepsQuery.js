@@ -1,8 +1,12 @@
 import { groq } from 'next-sanity'
 
-// Process steps are currently managed via homepageContent; this stub keeps exports valid.
 export const processStepsQuery = groq`
-  *[_type == "homepageContent"][0] {
-    howItWorksSteps
+  *[_type == "processStep" && isActive != false] | order(stepNumber asc) {
+    _id,
+    stepNumber,
+    title,
+    description,
+    iconName,
+    isActive
   }
 `

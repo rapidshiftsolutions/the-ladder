@@ -10,6 +10,8 @@ import { client } from '@/sanity/lib/client';
 import { donationSettingsQuery } from '@/sanity/queries/donationSettingsQuery';
 import { SITE_URL } from '@/lib/siteUrl';
 import { DEFAULT_DONATION_SETTINGS } from '@/lib/donationDefaults';
+import { getSiteSettings } from '@/lib/getSiteSettings';
+import { SiteSettingsProvider } from '@/components/SiteSettingsProvider';
 
 // Modern editorial pairing - Instrument Serif (display) + Nunito Sans (body)
 // Fonts are now self-hosted via next/font for optimal performance
@@ -113,6 +115,7 @@ export const viewport = {
 
 export default async function RootLayout({ children }) {
   let givebutterAccountId = DEFAULT_DONATION_SETTINGS.givebutterAccountId
+  const siteSettings = await getSiteSettings()
 
   try {
     const donationSettings = await client.fetch(donationSettingsQuery)
@@ -307,7 +310,9 @@ export default async function RootLayout({ children }) {
         
         <ErrorBoundary>
           <DOMOptimizer>
-            {children}
+            <SiteSettingsProvider settings={siteSettings}>
+              {children}
+            </SiteSettingsProvider>
           </DOMOptimizer>
         </ErrorBoundary>
 

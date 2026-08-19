@@ -6,12 +6,10 @@ export const client = createClient({
   dataset,
   apiVersion,
   useCdn: true,
-  // Only use token for authenticated requests (not public reads)
-  token: process.env.NEXT_PUBLIC_SANITY_TOKEN,
+  // Public published reads do not need a token. Keep write tokens server-only
+  // via getSanityWriteClient() so they are never shipped to the browser.
   withCredentials: false,
   requestTimeout: 30000,
-  // Add ignoreBrowserTokenWarning to prevent browser token warnings
-  ignoreBrowserTokenWarning: true,
 })
 
 // Create a separate client for public reads without token

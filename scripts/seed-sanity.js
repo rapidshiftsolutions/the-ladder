@@ -10,10 +10,19 @@
 
 import { createClient } from '@sanity/client'
 
+const dataset = process.env.SANITY_DATASET || 'production'
+if (dataset === 'production' && process.env.CONFIRM_PRODUCTION_SEED !== '1') {
+  console.error(
+    'Refusing to seed the production Sanity dataset.\n' +
+      'This protects live editor content. Set CONFIRM_PRODUCTION_SEED=1 to override.'
+  )
+  process.exit(1)
+}
+
 // Initialize Sanity client
 const client = createClient({
   projectId: process.env.SANITY_PROJECT_ID || '9a1830p7',
-  dataset: process.env.SANITY_DATASET || 'production',
+  dataset,
   apiVersion: '2024-01-01',
   token: process.env.SANITY_WRITE_TOKEN,
   useCdn: false,

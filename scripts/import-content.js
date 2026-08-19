@@ -20,6 +20,14 @@ const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
 const apiVersion = '2021-06-07'
 const token = process.env.SANITY_TOKEN
 
+if (dataset === 'production' && process.env.CONFIRM_PRODUCTION_SEED !== '1') {
+  console.error(
+    'Refusing to import into the production Sanity dataset.\n' +
+      'This protects live editor content. Set CONFIRM_PRODUCTION_SEED=1 to override.'
+  )
+  process.exit(1)
+}
+
 if (!token) {
   console.error('❌ Error: SANITY_TOKEN environment variable is required')
   console.log('Usage: SANITY_TOKEN=your_token node scripts/import-content.js')

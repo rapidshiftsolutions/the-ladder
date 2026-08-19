@@ -31,14 +31,21 @@ const defaultStats = {
   directImpactLabel: 'Confidential',
 }
 
+function withoutEmpty(value) {
+  return Object.fromEntries(
+    Object.entries(value || {}).filter(([, item]) => item != null && item !== '')
+  )
+}
+
 export default function HeroCompact({ 
   content = {}, 
   stats = {},
   siteSettings = {} 
 }) {
-  // Merge with defaults
-  const heroContent = { ...defaultContent, ...content }
-  const impactStats = { ...defaultStats, ...stats }
+  // Merge with defaults, ignoring null CMS fields so missing Studio values
+  // do not wipe required links and copy.
+  const heroContent = { ...defaultContent, ...withoutEmpty(content) }
+  const impactStats = { ...defaultStats, ...withoutEmpty(stats) }
   const phone = siteSettings?.phone || '(205) 306-1690'
   
   // Get hero image URL or use default

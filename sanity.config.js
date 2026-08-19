@@ -246,6 +246,16 @@ const theLadderStructure = (S) => {
                     .filter('_type == "impactExample"')
                     .defaultOrdering([{field: 'amount', direction: 'asc'}])
                 ),
+              S.listItem()
+                .title('Process Steps')
+                .icon(HelpCircleIcon)
+                .schemaType('processStep')
+                .child(
+                  S.documentList()
+                    .title('Partnership Process Steps')
+                    .filter('_type == "processStep"')
+                    .defaultOrdering([{ field: 'stepNumber', direction: 'asc' }])
+                ),
             ])
         ),
 

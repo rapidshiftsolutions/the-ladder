@@ -16,7 +16,10 @@
     "test:e2e": "playwright test tests/e2e/",
     "sanity:login": "npx sanity login",
     "sanity:export-content": "node scripts/export-content.js > content-export.ndjson",
-    "sanity:import": "npx sanity dataset import content-export.ndjson production --replace"
+    "sanity:health": "node scripts/sanity-health-check.js",
+    "sanity:ensure-singletons": "node scripts/ensure-sanity-singletons.js",
+    "sanity:import": "npx sanity dataset import content-export.ndjson production",
+    "sanity:import:replace": "npx sanity dataset import content-export.ndjson production --replace"
   },
   "dependencies": {
     "@headlessui/react": "^2.1.1",

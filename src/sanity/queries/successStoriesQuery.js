@@ -2,7 +2,7 @@ import { groq } from 'next-sanity'
 
 // Query to get all success stories
 export const allSuccessStoriesQuery = groq`
-  *[_type == "successStory"] | order(order asc, featured desc, publishedAt desc) {
+  *[_type == "successStory" && isActive != false] | order(order asc, featured desc, publishedAt desc) {
     _id,
     name,
     story,
@@ -25,7 +25,7 @@ export const allSuccessStoriesQuery = groq`
 
 // Query to get featured success stories for homepage
 export const featuredSuccessStoriesQuery = groq`
-  *[_type == "successStory" && featured == true] | order(order asc, publishedAt desc) [0...3] {
+  *[_type == "successStory" && featured == true && isActive != false] | order(order asc, publishedAt desc) [0...3] {
     _id,
     name,
     story,

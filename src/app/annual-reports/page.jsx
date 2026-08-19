@@ -123,9 +123,9 @@ export default async function AnnualReportsPage() {
                           </p>
                         )}
                       </div>
-                      {report.pdfFile?.url ? (
+                      {report.pdfFile?.asset?.url ? (
                         <a
-                          href={report.pdfFile.url}
+                          href={report.pdfFile.asset.url}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="btn btn-primary inline-flex items-center"

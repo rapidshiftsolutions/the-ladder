@@ -1,6 +1,9 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
 import { Heart, Mail, Phone, MapPin, Instagram, Facebook, Linkedin, Shield, Award, CheckCircle } from 'lucide-react'
+import { useSiteSettings } from '@/components/SiteSettingsProvider'
 
 const footerLinks = {
   about: [
@@ -68,12 +71,19 @@ function FooterNavColumn({ title, links }) {
 
 export default function SiteFooter({ siteSettings = {} }) {
   const currentYear = new Date().getFullYear()
+  const cmsSettings = useSiteSettings()
+  const incoming = {
+    ...cmsSettings,
+    ...siteSettings,
+    address: { ...cmsSettings?.address, ...siteSettings?.address },
+    socialLinks: { ...cmsSettings?.socialLinks, ...siteSettings?.socialLinks },
+  }
 
   const settings = {
     ...defaultSettings,
-    ...siteSettings,
-    address: { ...defaultSettings.address, ...siteSettings?.address },
-    socialLinks: { ...defaultSettings.socialLinks, ...siteSettings?.socialLinks },
+    ...incoming,
+    address: { ...defaultSettings.address, ...incoming.address },
+    socialLinks: { ...defaultSettings.socialLinks, ...incoming.socialLinks },
   }
 
   const fullAddress = settings.address.street

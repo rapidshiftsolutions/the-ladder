@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight, Shield, Heart, Users } from 'lucide-react'
 import { client } from '@/sanity/lib/client'
-import { boardMembersQuery } from '@/sanity/queries/leadershipQuery'
+import { boardMembersQuery, staffMembersQuery } from '@/sanity/queries/leadershipQuery'
 
 export const metadata = {
   title: 'Leadership Team | Board of Directors',
@@ -48,18 +48,72 @@ const fallbackBoardMembers = [
   }
 ]
 
-async function getBoardMembers() {
+function MemberCard({ member }) {
+  return (
+    <div className="bg-gray-50 rounded-xl p-8 border border-gray-200 text-center">
+      {member.image?.asset?.url ? (
+        <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-6">
+          <Image
+            src={member.image.asset.url}
+            alt={member.name}
+            width={96}
+            height={96}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      ) : (
+        <div className="w-24 h-24 bg-[var(--color-primary)]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+          <span className="text-3xl font-bold text-[var(--color-primary)]">
+            {member.title?.split(' ').map((w) => w[0]).join('') || member.name?.[0] || '?'}
+          </span>
+        </div>
+      )}
+
+      <h3 className="text-xl font-bold text-[var(--color-text-primary)] mb-1">
+        {member.name}
+      </h3>
+      <p className="text-[var(--color-primary)] font-medium mb-2">
+        {member.title}
+      </p>
+      <p className="text-sm text-[var(--color-text-secondary)] mb-4">
+        {member.organization}
+      </p>
+      <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
+        {member.bio}
+      </p>
+
+      {member.linkedin && (
+        <a
+          href={member.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 mt-4 text-sm text-[var(--color-primary)] hover:underline"
+        >
+          View LinkedIn Profile
+        </a>
+      )}
+    </div>
+  )
+}
+
+async function getLeadership() {
   try {
-    const members = await client.fetch(boardMembersQuery)
-    return members && members.length > 0 ? members : fallbackBoardMembers
+    const [board, staff] = await Promise.all([
+      client.fetch(boardMembersQuery),
+      client.fetch(staffMembersQuery),
+    ])
+    return {
+      boardMembers: board && board.length > 0 ? board : fallbackBoardMembers,
+      staffMembers: staff || [],
+    }
   } catch (error) {
     console.error('Error fetching board members:', error)
-    return fallbackBoardMembers
+    return { boardMembers: fallbackBoardMembers, staffMembers: [] }
   }
 }
 
 export default async function LeadershipTeamPage() {
-  const boardMembers = await getBoardMembers()
+  const { boardMembers, staffMembers } = await getLeadership()
 
   return (
     <>
@@ -130,62 +184,37 @@ export default async function LeadershipTeamPage() {
 
             <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
               {boardMembers.map((member) => (
-                <div 
-                  key={member._id} 
-                  className="bg-gray-50 rounded-xl p-8 border border-gray-200 text-center"
-                >
-                  {/* Avatar */}
-                  {member.image?.asset?.url ? (
-                    <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-6">
-                      <Image
-                        src={member.image.asset.url}
-                        alt={member.name}
-                        width={96}
-                        height={96}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  ) : (
-                    <div className="w-24 h-24 bg-[var(--color-primary)]/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <span className="text-3xl font-bold text-[var(--color-primary)]">
-                        {member.title?.split(' ').map(w => w[0]).join('') || member.name?.[0] || '?'}
-                      </span>
-                    </div>
-                  )}
-                  
-                  <h3 
-                    className="text-xl font-bold text-[var(--color-text-primary)] mb-1"
-                  >
-                    {member.name}
-                  </h3>
-                  <p className="text-[var(--color-primary)] font-medium mb-2">
-                    {member.title}
-                  </p>
-                  <p className="text-sm text-[var(--color-text-secondary)] mb-4">
-                    {member.organization}
-                  </p>
-                  <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
-                    {member.bio}
-                  </p>
-                  
-                  {member.linkedin && (
-                    <a 
-                      href={member.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 mt-4 text-sm text-[var(--color-primary)] hover:underline"
-                    >
-                      View LinkedIn Profile
-                    </a>
-                  )}
-                </div>
+                <MemberCard key={member._id} member={member} />
               ))}
             </div>
           </div>
         </section>
 
+        {staffMembers.length > 0 && (
+          <section className="py-16 lg:py-24 bg-gray-50">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-12">
+                <h2
+                  className="text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] mb-4"
+                  style={{ fontFamily: 'var(--font-heading)' }}
+                >
+                  Staff
+                </h2>
+                <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+                  The people who carry out The Ladder&apos;s day-to-day work with partners and guests.
+                </p>
+              </div>
+              <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
+                {staffMembers.map((member) => (
+                  <MemberCard key={member._id} member={member} />
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* Governance */}
-        <section className="py-16 lg:py-24 bg-gray-50">
+        <section className="py-16 lg:py-24 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">

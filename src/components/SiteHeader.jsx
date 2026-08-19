@@ -6,6 +6,15 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Menu, X, Heart, Phone, ChevronDown, Mail, Shield, LogIn } from 'lucide-react'
 import GivebutterButton from '@/components/givebutter/GivebutterButton'
+import { useSiteSettings } from '@/components/SiteSettingsProvider'
+
+const DEFAULT_PHONE = '(205) 306-1690'
+const DEFAULT_EMAIL = 'info@the-ladder.org'
+
+function toTelHref(phone) {
+  const digits = String(phone || '').replace(/[^0-9+]/g, '')
+  return `tel:${digits}`
+}
 
 // Navigation structure with dropdowns
 const navigation = [
@@ -145,6 +154,10 @@ export default function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
+  const siteSettings = useSiteSettings()
+  const phone = siteSettings.phone || DEFAULT_PHONE
+  const email = siteSettings.email || DEFAULT_EMAIL
+  const telHref = toTelHref(phone)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -197,13 +210,13 @@ export default function SiteHeader() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-9">
             <div className="flex items-center gap-5">
-              <a href="tel:+12053061690" className="flex items-center gap-1.5 hover:text-white/80 transition-colors">
+              <a href={telHref} className="flex items-center gap-1.5 hover:text-white/80 transition-colors">
                 <Phone className="w-3.5 h-3.5" />
-                (205) 306-1690
+                {phone}
               </a>
-              <a href="mailto:info@the-ladder.org" className="flex items-center gap-1.5 hover:text-white/80 transition-colors">
+              <a href={`mailto:${email}`} className="flex items-center gap-1.5 hover:text-white/80 transition-colors">
                 <Mail className="w-3.5 h-3.5" />
-                info@the-ladder.org
+                {email}
               </a>
             </div>
             <div className="flex items-center gap-4 text-white/90">
@@ -392,18 +405,18 @@ export default function SiteHeader() {
                 {/* Mobile Contact */}
                 <div className="px-4 pt-4 space-y-3">
                   <a 
-                    href="tel:+12053061690" 
+                    href={telHref} 
                     className="flex items-center gap-2 text-[var(--color-primary)] font-medium"
                   >
                     <Phone className="w-4 h-4" />
-                    (205) 306-1690
+                    {phone}
                   </a>
                   <a 
-                    href="mailto:info@the-ladder.org" 
+                    href={`mailto:${email}`} 
                     className="flex items-center gap-2 text-[var(--color-primary)] font-medium"
                   >
                     <Mail className="w-4 h-4" />
-                    info@the-ladder.org
+                    {email}
                   </a>
                 </div>
               </div>
